@@ -25,6 +25,8 @@ GLOBAL_LIST_EMPTY(physiology_modification_cache)
 	var/stamina_mod = 1
 	/// % of brain damage taken from all sources
 	var/brain_mod = 1
+	/// multiplier applied to mana regen
+	var/mana_regen_mod = 1
 
 	/// % of burn damage taken from heat (stacks with burn_mod)
 	var/heat_mod = 1

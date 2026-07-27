@@ -179,5 +179,7 @@
 	return get_stat_modifier("hunger_mod")
 /datum/physiology/proc/get_do_after_speed()
 	return get_stat_modifier("do_after_speed")
+/datum/physiology/proc/get_mana_regen_mod()
+	return get_stat_modifier("mana_regen_mod")
 
 #undef ADDITIVE_PHYSIOLOGY_STATS
