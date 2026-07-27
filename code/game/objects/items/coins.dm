@@ -110,6 +110,9 @@
 		dropshrink = 0.2
 	else
 		dropshrink = 1
+	if(quantity <= 0)
+		qdel(src)
+
 	update_appearance(UPDATE_ICON_STATE | UPDATE_DESC | UPDATE_NAME)
 	update_transform()
 
