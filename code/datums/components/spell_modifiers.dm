@@ -19,7 +19,7 @@
 	list/technique_cast_speed_multipliers,
 	list/technique_magnitude_modifications,
 )
-	if(!isitem(parent))
+	if(!isitem(parent) && !ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 	src.form_cost_multipliers = form_cost_multipliers || list()
 	src.form_cast_speed_multipliers = form_cast_speed_multipliers || list()
@@ -29,12 +29,16 @@
 	src.technique_magnitude_modifications = technique_magnitude_modifications || list()
 
 /datum/component/spell_modifier/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equipped))
-	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_dropped))
+	if(isitem(parent))
+		RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equipped))
+		RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_dropped))
 	RegisterSignal(parent, COMSIG_SPELL_REQUEST_MODIFIERS, PROC_REF(on_request_modifiers))
 
 /datum/component/spell_modifier/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED))
+	if(isitem(parent))
+		UnregisterSignal(parent, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED, COMSIG_SPELL_REQUEST_MODIFIERS))
+	else
+		UnregisterSignal(parent, list(COMSIG_SPELL_REQUEST_MODIFIERS))
 
 /datum/component/spell_modifier/proc/on_equipped(datum/source, mob/user)
 	SIGNAL_HANDLER

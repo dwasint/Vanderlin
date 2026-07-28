@@ -163,6 +163,7 @@
 
 	H.adjust_technique_mastery_points(12)
 	H.adjust_form_mastery_points(20)
+	H.AddComponent(/datum/component/spell_modifier, list(), list(), list(FORM_DEATH = 2))
 	H.grant_language(/datum/language/undead)
 	if(H.dna?.species)
 		H.dna.species.native_language = "Zizo Chant"

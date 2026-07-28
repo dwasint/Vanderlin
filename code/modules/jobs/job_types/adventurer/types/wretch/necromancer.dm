@@ -76,6 +76,8 @@
 	)
 	spawned.select_equippable(player_client, selectablerobe, message = "Choose your robe of choice", title = "NECROMANCER")
 
+	spawned.AddComponent(/datum/component/spell_modifier, list(), list(), list(FORM_DEATH = 2))
+
 /datum/outfit/wretch/necromancer
 	name = "Necromancer (Wretch)"
 	pants = /obj/item/clothing/pants/chainlegs
