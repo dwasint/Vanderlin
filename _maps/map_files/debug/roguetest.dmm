@@ -114,10 +114,6 @@
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"aw" = (
-/obj/structure/hotspring,
-/turf/open/floor/cobblerock,
-/area/outdoors/mountains/decap)
 "ax" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors)
@@ -1119,14 +1115,6 @@
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"eD" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal/three,
-/obj/structure/flora/sakura{
-	pixel_y = -13
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "eE" = (
 /obj/structure/stairs/stone/reddish{
 	dir = 8
@@ -1240,12 +1228,6 @@
 /obj/item/clothing/ring/shimmeringlens,
 /turf/open/floor/churchbrick,
 /area/indoors/town/keep)
-"gp" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal/two,
-/obj/effect/falling_sakura,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "gr" = (
 /obj/structure/water_pipe,
 /obj/structure/sprinkler,
@@ -1590,19 +1572,6 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors/mountains/decap)
-"mF" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal,
-/obj/effect/lily_petal/three{
-	pixel_y = -14;
-	pixel_x = -2
-	},
-/obj/effect/lily_petal/two{
-	pixel_y = 13;
-	pixel_x = 11
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "mM" = (
 /mob/living/carbon/human/species/rousman{
 	name = "UNIQUE BLOCKER TESTER"
@@ -1639,6 +1608,10 @@
 "nG" = (
 /turf/open/floor/cobble,
 /area)
+"nJ" = (
+/obj/effect/lily_petal/two,
+/turf/open/water/hotspring,
+/area/outdoors)
 "nN" = (
 /obj/structure/carpet/cyan,
 /turf/open/floor/church/gold,
@@ -1735,6 +1708,12 @@
 	pixel_y = -1
 	},
 /turf/open/floor/wood,
+/area/indoors/town/keep)
+"qq" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/church/gold,
 /area/indoors/town/keep)
 "qr" = (
 /obj/effect/decal/carpet/kover_purple{
@@ -1900,11 +1879,6 @@
 	},
 /turf/closed/mineral/random/med,
 /area/outdoors/mountains/decap)
-"tp" = (
-/obj/structure/hotspring,
-/obj/effect/falling_sakura,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "tI" = (
 /obj/structure/rotation_piece,
 /turf/open/floor/blocks,
@@ -1920,6 +1894,10 @@
 	dir = 4
 	},
 /turf/open/floor/dirt/road,
+/area/outdoors)
+"tR" = (
+/obj/effect/mapping_helpers/broodmother_entry,
+/turf/closed/mineral/bedrock,
 /area/outdoors)
 "tW" = (
 /obj/structure/hotspring/border/ten,
@@ -1938,6 +1916,9 @@
 /obj/structure/well,
 /turf/open/floor/churchbrick,
 /area/indoors/town/keep)
+"uc" = (
+/turf/open/water/hotspring,
+/area/outdoors)
 "ue" = (
 /obj/structure/water_pipe,
 /obj/structure/rotation_piece{
@@ -1986,11 +1967,6 @@
 "vw" = (
 /obj/structure/flora/grass/water/reeds,
 /turf/open/water/clean,
-/area/outdoors)
-"vB" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal/two,
-/turf/open/floor/dirt/road,
 /area/outdoors)
 "vD" = (
 /turf/open/floor/churchbrick,
@@ -2081,10 +2057,6 @@
 	dir = 4
 	},
 /area/outdoors)
-"xj" = (
-/obj/effect/mapping_helpers/broodmother_entry,
-/turf/closed/mineral/bedrock,
-/area/outdoors)
 "xo" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -2157,12 +2129,6 @@
 "zk" = (
 /turf/closed/wall/mineral/tent,
 /area/outdoors/mountains/decap)
-"zm" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal/three,
-/obj/effect/falling_sakura,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "zn" = (
 /obj/structure/hotspring/border/eleven,
 /turf/open/floor/cobblerock,
@@ -2373,6 +2339,13 @@
 /obj/structure/hotspring/border/eleven,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"zU" = (
+/obj/effect/lily_petal/three,
+/obj/structure/flora/sakura{
+	pixel_y = -13
+	},
+/turf/open/water/hotspring,
+/area/outdoors)
 "zX" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -2492,11 +2465,6 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/dirt,
 /area/outdoors)
-"Dz" = (
-/obj/structure/hotspring,
-/obj/structure/hotspring,
-/turf/open/floor/cobblerock,
-/area/outdoors/mountains/decap)
 "DD" = (
 /obj/structure/rotation_piece,
 /obj/structure/flora/grass,
@@ -2513,10 +2481,6 @@
 /area/outdoors)
 "DW" = (
 /turf/open/floor/wood,
-/area/outdoors)
-"DY" = (
-/obj/structure/hotspring,
-/turf/open/floor/dirt/road,
 /area/outdoors)
 "Eo" = (
 /obj/structure/fluff/railing/wood{
@@ -2762,6 +2726,11 @@
 /obj/structure/hotspring/border/eight,
 /turf/open/floor/cobblerock,
 /area/outdoors/mountains/decap)
+"Jp" = (
+/obj/effect/lily_petal/three,
+/obj/effect/falling_sakura,
+/turf/open/water/hotspring,
+/area/outdoors)
 "Jx" = (
 /obj/structure/vertical_gearbox{
 	dir = 4
@@ -2788,11 +2757,6 @@
 /obj/effect/landmark/stall,
 /turf/open/floor/dirt,
 /area/indoors)
-"Kd" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "Ke" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/bridge_stakes{
@@ -2886,6 +2850,11 @@
 	dir = 1
 	},
 /area/outdoors/mountains/decap)
+"LE" = (
+/obj/effect/lily_petal/two,
+/obj/effect/falling_sakura,
+/turf/open/water/hotspring,
+/area/outdoors)
 "LI" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/ruinedwood/spiral,
@@ -3011,6 +2980,9 @@
 "OK" = (
 /turf/open/floor/cobblerock,
 /area/indoors/town/keep)
+"OM" = (
+/turf/open/water/hotspring,
+/area/outdoors/mountains/decap)
 "ON" = (
 /turf/open/floor/churchbrick,
 /area)
@@ -3326,6 +3298,10 @@
 	},
 /turf/open/floor/church/gold,
 /area/indoors/town/keep)
+"UP" = (
+/obj/effect/falling_sakura,
+/turf/open/water/hotspring,
+/area/outdoors)
 "UX" = (
 /obj/structure/rotation_piece{
 	dir = 1
@@ -3384,6 +3360,18 @@
 "VG" = (
 /obj/structure/flora/grass/herb/urtica,
 /turf/open/floor/grass/yel,
+/area/outdoors)
+"VP" = (
+/obj/effect/lily_petal,
+/obj/effect/lily_petal/three{
+	pixel_y = -14;
+	pixel_x = -2
+	},
+/obj/effect/lily_petal/two{
+	pixel_y = 13;
+	pixel_x = 11
+	},
+/turf/open/water/hotspring,
 /area/outdoors)
 "Wa" = (
 /obj/structure/rotation_piece,
@@ -3611,12 +3599,6 @@
 /obj/structure/flora/grass,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"YN" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/open/floor/church/gold,
-/area/indoors/town/keep)
 "YR" = (
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/cobblerock,
@@ -3649,6 +3631,10 @@
 	},
 /turf/open/floor/carpet,
 /area/indoors)
+"ZA" = (
+/obj/effect/lily_petal,
+/turf/open/water/hotspring,
+/area/outdoors)
 
 (1,1,1) = {"
 ac
@@ -8508,8 +8494,8 @@ yP
 yP
 yP
 yP
-aw
-aw
+OM
+OM
 yP
 ac
 ac
@@ -8765,8 +8751,8 @@ aL
 bv
 QR
 hd
-aw
-aw
+OM
+OM
 yP
 ac
 ac
@@ -9022,8 +9008,8 @@ aL
 aL
 cu
 hd
-aw
-aw
+OM
+OM
 yP
 ac
 ac
@@ -9279,8 +9265,8 @@ ah
 aL
 aL
 hd
-aw
-aw
+OM
+OM
 yP
 yP
 ac
@@ -9536,9 +9522,9 @@ ah
 cV
 cz
 hd
-aw
-Dz
-aw
+OM
+OM
+OM
 yP
 ac
 ac
@@ -9794,8 +9780,8 @@ aL
 aL
 An
 zn
-aw
-aw
+OM
+OM
 yP
 ac
 ac
@@ -10051,8 +10037,8 @@ aL
 UY
 cr
 hd
-aw
-aw
+OM
+OM
 yP
 ac
 ac
@@ -10308,8 +10294,8 @@ aL
 bv
 aL
 hd
-aw
-aw
+OM
+OM
 yP
 ac
 ac
@@ -10565,8 +10551,8 @@ cO
 cS
 cz
 hd
-aw
-aw
+OM
+OM
 yP
 ac
 ac
@@ -10822,8 +10808,8 @@ au
 aL
 FX
 YR
-aw
-aw
+OM
+OM
 yP
 ac
 ac
@@ -13370,8 +13356,8 @@ as
 as
 at
 qi
-DY
-Kd
+uc
+ZA
 RC
 eq
 jC
@@ -13627,8 +13613,8 @@ as
 as
 at
 qi
-DY
-DY
+uc
+uc
 SZ
 RF
 Qi
@@ -13884,9 +13870,9 @@ as
 as
 at
 qi
-eD
-tp
-tp
+zU
+UP
+UP
 SZ
 RF
 XT
@@ -14141,8 +14127,8 @@ as
 as
 at
 qi
-tp
-gp
+UP
+LE
 IW
 SE
 SZ
@@ -14398,8 +14384,8 @@ zg
 zg
 at
 qi
-DY
-zm
+uc
+Jp
 HK
 pD
 Ty
@@ -14407,7 +14393,7 @@ tN
 Ty
 Ty
 zF
-mF
+VP
 cp
 Ty
 Ty
@@ -16473,7 +16459,7 @@ ae
 QN
 ew
 Ko
-vB
+nJ
 RC
 NF
 NF
@@ -21602,7 +21588,7 @@ KV
 KV
 KV
 KV
-YN
+qq
 zg
 Wr
 Wr
@@ -21864,7 +21850,7 @@ kE
 Wr
 ai
 Wr
-xj
+tR
 as
 as
 as

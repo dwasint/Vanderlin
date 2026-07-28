@@ -50,19 +50,6 @@
 	},
 /turf/open/floor/cobble,
 /area/indoors)
-"ai" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal,
-/obj/effect/lily_petal/three{
-	pixel_y = -14;
-	pixel_x = -2
-	},
-/obj/effect/lily_petal/two{
-	pixel_y = 13;
-	pixel_x = 11
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "aj" = (
 /obj/structure/hotspring/border/five,
 /obj/structure/bridge{
@@ -74,10 +61,6 @@
 /obj/structure/table/wood/plain/alt,
 /turf/open/floor/woodturned,
 /area/indoors)
-"al" = (
-/obj/structure/hotspring,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "am" = (
 /obj/structure/hotspring/border/eight,
 /turf/open/floor/dirt/road,
@@ -412,10 +395,6 @@
 /obj/item/clothing/armor/leather/vest,
 /turf/open/floor/wood,
 /area/indoors)
-"bl" = (
-/obj/effect/mapping_helpers/virtual_z_link/broodmother_base,
-/turf/closed/mineral,
-/area/broodmother_den)
 "bm" = (
 /turf/open/floor/tile/checker_green,
 /area/indoors)
@@ -1453,10 +1432,6 @@
 /obj/structure/mannequin/male/female,
 /turf/open/floor/wood,
 /area)
-"fX" = (
-/obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "fZ" = (
 /obj/structure/rotation_piece{
 	dir = 8
@@ -1511,6 +1486,14 @@
 	},
 /turf/open/floor/carpet,
 /area/overlord_lair)
+"gv" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_height = 5;
+	link_width = 6;
+	link_id = "broodmother-escape1"
+	},
+/turf/closed/mineral,
+/area/broodmother_den)
 "gA" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/grass,
@@ -1616,20 +1599,11 @@
 /obj/structure/fermentation_keg/random/water,
 /turf/open/floor/tile/kitchen,
 /area/indoors/bandit_lair)
-"hn" = (
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "hq" = (
 /obj/structure/fluff/walldeco/chains,
 /obj/machinery/light/fueled/wallfire/candle/weak/l,
 /turf/open/floor/blocks/paving/vert,
 /area/indoors/vampire_manor)
-"hs" = (
-/obj/structure/broodmother_hole_base{
-	collapse_template = /datum/map_template/broodmother_sinkhole_four
-	},
-/turf/open/floor/dirt,
-/area/broodmother_den)
 "ht" = (
 /obj/machinery/anvil/crafted,
 /obj/item/weapon/hammer/iron,
@@ -1873,6 +1847,10 @@
 	},
 /turf/open/floor/wood,
 /area/indoors)
+"iN" = (
+/obj/structure/fluff/nest,
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "iO" = (
 /obj/effect/decal/cobblerockedge{
 	dir = 6
@@ -1918,10 +1896,6 @@
 /obj/structure/window/stained/zizo,
 /turf/open/floor/cobble,
 /area/indoors/lich)
-"jb" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "jf" = (
 /obj/effect/decal/cobbleedge{
 	dir = 6
@@ -2145,6 +2119,9 @@
 	},
 /turf/open/floor/hexstone,
 /area/indoors)
+"kJ" = (
+/turf/open/floor/sand,
+/area/broodmother_den)
 "kL" = (
 /obj/structure/closet/dirthole/grave,
 /turf/open/floor/dirt,
@@ -2423,6 +2400,12 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/green,
 /area/indoors/lich)
+"mB" = (
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "mE" = (
 /turf/open/floor/cobble/alt,
 /area/outdoors/bog/inhumen_camp)
@@ -2440,6 +2423,10 @@
 	},
 /turf/open/floor/ruinedwood/chevron,
 /area/indoors)
+"mP" = (
+/obj/structure/stairs/stone,
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "mQ" = (
 /obj/structure/flora/tree/evil,
 /turf/open/water/swamp,
@@ -2458,6 +2445,10 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors/woods_safe)
+"mV" = (
+/obj/structure/fluff/nest,
+/turf/open/floor/dirt,
+/area/broodmother_den)
 "mX" = (
 /turf/open/floor/grass/yel,
 /area/outdoors/bog/inhumen_camp)
@@ -2542,6 +2533,9 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"nu" = (
+/turf/open/floor/dirt,
+/area/broodmother_den)
 "nv" = (
 /obj/item/clothing/shirt/dress/silkdress/colored/silkdressprimary,
 /obj/item/clothing/shoes/shortboots,
@@ -2804,6 +2798,9 @@
 /obj/item/natural/feather,
 /turf/open/floor/church,
 /area/indoors/lich)
+"oH" = (
+/turf/open/water/hotspring,
+/area/outdoors)
 "oI" = (
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/bandit_lair)
@@ -2912,6 +2909,10 @@
 /obj/machinery/light/fueled/firebowl/blackfire,
 /turf/open/floor/grass/yel,
 /area/outdoors/bog/inhumen_camp)
+"pI" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base,
+/turf/closed/mineral,
+/area/broodmother_den)
 "pK" = (
 /obj/structure/flora/grass,
 /turf/open/floor/dirt,
@@ -3120,6 +3121,10 @@
 /obj/item/book/tales1,
 /turf/open/floor/herringbone,
 /area/indoors/vampire_manor)
+"qX" = (
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "qY" = (
 /obj/structure/fluff/railing/border{
 	pixel_y = 24
@@ -3344,12 +3349,6 @@
 	},
 /turf/open/floor/cobblerock,
 /area/outdoors/woods_safe)
-"sl" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal/three,
-/obj/effect/falling_sakura,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "sm" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -3425,14 +3424,6 @@
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/water/swamp,
 /area/outdoors/bog/inhumen_camp)
-"sD" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal/three,
-/obj/structure/flora/sakura{
-	pixel_y = -13
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "sE" = (
 /obj/structure/bookcase/random,
 /obj/machinery/light/fueled/wallfire/candle/skull/r,
@@ -3535,14 +3526,6 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"tw" = (
-/obj/effect/mapping_helpers/virtual_z_link/broodmother_base/entry{
-	link_id = "broodmother-escape";
-	link_width = 5;
-	link_height = 4
-	},
-/turf/closed/mineral,
-/area/broodmother_den)
 "ty" = (
 /obj/structure/fluff/stonecoffin,
 /turf/open/floor/churchrough,
@@ -3565,6 +3548,10 @@
 /obj/structure/chair/bench/church,
 /turf/open/floor/carpet/lord/left,
 /area/indoors/lich)
+"tF" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/closed/mineral,
+/area/broodmother_den)
 "tG" = (
 /obj/structure/table/wood/reinforced,
 /obj/item/clothing/neck/talkstone,
@@ -3707,10 +3694,6 @@
 /obj/structure/flora/tree/burnt,
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
-"uB" = (
-/obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/sand,
-/area/broodmother_den)
 "uD" = (
 /obj/structure/bars/passage,
 /turf/open/floor/church,
@@ -3865,14 +3848,9 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/bandit_lair)
-"vy" = (
-/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
-	link_height = 6;
-	link_width = 4;
-	link_id = "broodmother-escape4";
-	invisibility = 100
-	},
-/turf/closed/mineral,
+"vu" = (
+/obj/structure/broodmother_hole_base,
+/turf/open/floor/cobblerock,
 /area/broodmother_den)
 "vz" = (
 /obj/effect/decal/cobbleedge,
@@ -4129,13 +4107,10 @@
 /turf/open/floor/cobblerock,
 /area/outdoors/woods_safe)
 "wO" = (
-/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
-	link_height = 5;
-	link_width = 7;
-	link_id = "broodmother-escape2";
-	invisibility = 100
+/obj/structure/stairs/stone{
+	dir = 1
 	},
-/turf/closed/mineral,
+/turf/open/floor/sand,
 /area/broodmother_den)
 "wR" = (
 /obj/effect/decal/cobbleedge/alt,
@@ -4148,10 +4123,6 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
-"wZ" = (
-/obj/effect/decal/cleanable/blood/gibs/torso,
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "xa" = (
 /obj/structure/fluff/railing/border{
 	pixel_y = 25
@@ -4219,6 +4190,10 @@
 	},
 /turf/open/floor/churchmarble,
 /area/indoors/lich)
+"xE" = (
+/obj/machinery/light/fueled/firebowl/stump,
+/turf/open/floor/cobblerock,
+/area/broodmother_den)
 "xH" = (
 /obj/effect/decal/cobblerockedge{
 	dir = 4
@@ -4277,9 +4252,6 @@
 	},
 /turf/open/floor/church,
 /area/indoors/lich)
-"xV" = (
-/turf/open/openspace,
-/area/broodmother_den)
 "ya" = (
 /obj/structure/table/wood/large/corner_new{
 	dir = 5
@@ -4377,12 +4349,6 @@
 /obj/item/weapon/flail/sflail,
 /turf/open/floor/cobble,
 /area/indoors)
-"yC" = (
-/obj/structure/broodmother_hole_base{
-	collapse_template = /datum/map_template/broodmother_sinkhole_three
-	},
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "yD" = (
 /turf/open/floor/cobble,
 /area/outdoors/bog/inhumen_camp)
@@ -4429,10 +4395,6 @@
 /obj/structure/flora/rock/pile,
 /turf/open/floor/sand,
 /area/outdoors/woods_safe)
-"za" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/sand,
-/area/broodmother_den)
 "zb" = (
 /obj/structure/roguerock,
 /turf/open/water/swamp/deep,
@@ -4515,6 +4477,10 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
+"zA" = (
+/obj/machinery/light/fueled/firebowl/stump,
+/turf/open/floor/sand,
+/area/broodmother_den)
 "zB" = (
 /turf/closed/wall/mineral/tent,
 /area/indoors/lich)
@@ -4525,6 +4491,14 @@
 /obj/item/storage/keyring,
 /turf/open/floor/carpet,
 /area/indoors)
+"zG" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base/entry{
+	link_id = "broodmother-escape";
+	link_width = 5;
+	link_height = 4
+	},
+/turf/closed/mineral,
+/area/broodmother_den)
 "zJ" = (
 /obj/structure/table/wood/reinforced,
 /obj/item/clothing/cloak/raincloak/colored/green,
@@ -4546,6 +4520,15 @@
 "zK" = (
 /turf/open/floor/carpet/green,
 /area/indoors/lich)
+"zO" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_height = 5;
+	link_width = 7;
+	link_id = "broodmother-escape2";
+	invisibility = 100
+	},
+/turf/closed/mineral,
+/area/broodmother_den)
 "zP" = (
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/dirt,
@@ -4652,6 +4635,11 @@
 /obj/structure/closet/crate/chest/old_crate,
 /turf/open/floor/tile,
 /area/indoors)
+"AA" = (
+/obj/effect/lily_petal/three,
+/obj/effect/falling_sakura,
+/turf/open/water/hotspring,
+/area/outdoors)
 "AB" = (
 /obj/structure/table/wood{
 	dir = 4;
@@ -4728,18 +4716,6 @@
 "Ba" = (
 /turf/open/floor/metal/barograte,
 /area/indoors/vampire_manor)
-"Bb" = (
-/obj/structure/broodmother_hole_base,
-/turf/open/floor/cobblerock,
-/area/broodmother_den)
-"Bc" = (
-/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
-	link_height = 5;
-	link_width = 6;
-	link_id = "broodmother-escape1"
-	},
-/turf/closed/mineral,
-/area/broodmother_den)
 "Bd" = (
 /obj/item/natural/rock,
 /turf/open/floor/dirt,
@@ -4792,11 +4768,6 @@
 	},
 /turf/open/floor/grass/yel,
 /area/outdoors/bog/inhumen_camp)
-"Bs" = (
-/obj/effect/decal/cleanable/blood/old,
-/obj/machinery/light/fueled/firebowl/stump,
-/turf/open/floor/dirt,
-/area/broodmother_den)
 "Bv" = (
 /obj/item/natural/wood/plank,
 /turf/open/floor/twig,
@@ -4984,6 +4955,15 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/woods_safe)
+"Cy" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_height = 4;
+	link_width = 7;
+	link_id = "broodmother-escape3";
+	invisibility = 100
+	},
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "Cz" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/churchbrick,
@@ -5013,12 +4993,6 @@
 	},
 /turf/open/floor/churchrough,
 /area/indoors/lich)
-"CJ" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/open/floor/cobblerock,
-/area/broodmother_den)
 "CK" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/carpet/royalblack,
@@ -5205,6 +5179,10 @@
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/dirt/road,
 /area/outdoors/woods_safe)
+"Ef" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "Ei" = (
 /obj/item/painting/skull,
 /turf/closed/wall/mineral/craftstone,
@@ -5222,6 +5200,12 @@
 "Eo" = (
 /turf/open/floor/twig,
 /area/outdoors/bog/inhumen_camp)
+"Ep" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
+/area/broodmother_den)
 "Eq" = (
 /obj/structure/table/wood{
 	icon_state = "largetable"
@@ -5289,6 +5273,9 @@
 	dir = 1
 	},
 /area/indoors/vampire_manor)
+"EK" = (
+/turf/open/openspace,
+/area/broodmother_den)
 "EL" = (
 /obj/structure/hotspring/border/thirteen,
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
@@ -5374,10 +5361,10 @@
 /obj/machinery/light/fueled/wallfire/candle/skull/l,
 /turf/open/floor/tile/masonic,
 /area/overlord_lair)
-"Fw" = (
-/obj/effect/decal/cleanable/blood/old,
-/turf/closed/mineral,
-/area/broodmother_den)
+"Ft" = (
+/obj/effect/lily_petal,
+/turf/open/water/hotspring,
+/area/outdoors)
 "Fx" = (
 /obj/structure/mannequin/male,
 /obj/item/clothing/shirt/robe/dendor,
@@ -5467,6 +5454,9 @@
 /obj/item/clothing/armor/plate/orc,
 /turf/open/floor/carpet,
 /area/indoors)
+"Gd" = (
+/turf/closed/mineral,
+/area/broodmother_den)
 "Ge" = (
 /obj/structure/mannequin/male,
 /obj/item/clothing/shirt/robe/necra,
@@ -5560,12 +5550,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/indoors/bandit_lair)
-"GP" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal/two,
-/obj/effect/falling_sakura,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "GQ" = (
 /obj/structure/door{
 	lockid = "mansionvampire"
@@ -5622,6 +5606,18 @@
 /obj/item/clothing/head/helmet/leather/headscarf,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/bandit_lair)
+"Ht" = (
+/obj/effect/lily_petal,
+/obj/effect/lily_petal/three{
+	pixel_y = -14;
+	pixel_x = -2
+	},
+/obj/effect/lily_petal/two{
+	pixel_y = 13;
+	pixel_x = 11
+	},
+/turf/open/water/hotspring,
+/area/outdoors)
 "Hu" = (
 /obj/structure/table/wood/reinforced,
 /obj/item/clothing/armor/leather/hide,
@@ -5704,6 +5700,10 @@
 	},
 /turf/open/floor/wood,
 /area/indoors)
+"HO" = (
+/obj/effect/lily_petal/two,
+/turf/open/water/hotspring,
+/area/outdoors)
 "HR" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -5735,6 +5735,12 @@
 	},
 /turf/open/floor/ruinedwood/chevron,
 /area/indoors)
+"HY" = (
+/obj/structure/broodmother_hole_base{
+	collapse_template = /datum/map_template/broodmother_sinkhole_two
+	},
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "HZ" = (
 /turf/closed/mineral/bedrock,
 /area/outdoors/bog/inhumen_camp)
@@ -6127,10 +6133,6 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors)
-"Ki" = (
-/obj/structure/fluff/nest,
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "Kj" = (
 /obj/machinery/light/fueled/wallfire,
 /turf/closed/wall/mineral/decostone/long,
@@ -6178,9 +6180,6 @@
 "Ky" = (
 /turf/closed/wall/mineral/decostone/moss/cand,
 /area/outdoors/bog/inhumen_camp)
-"KA" = (
-/turf/open/floor/dirt,
-/area/broodmother_den)
 "KC" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -6199,11 +6198,8 @@
 	},
 /turf/open/floor/tile/checker_green,
 /area/indoors/lich)
-"KO" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/open/floor/dirt,
+"KJ" = (
+/turf/open/floor/naturalstone,
 /area/broodmother_den)
 "KP" = (
 /obj/structure/door{
@@ -6238,8 +6234,11 @@
 /obj/item/clothing/armor/plate/full,
 /turf/open/floor/carpet,
 /area/indoors)
-"La" = (
-/turf/open/floor/sand,
+"KX" = (
+/obj/structure/broodmother_hole_base{
+	collapse_template = /datum/map_template/broodmother_sinkhole_three
+	},
+/turf/open/floor/naturalstone,
 /area/broodmother_den)
 "Le" = (
 /obj/structure/table/wood/reinforced,
@@ -6269,6 +6268,14 @@
 /obj/machinery/light/fueled/wallfire/candle/skull/r,
 /turf/open/floor/churchbrick,
 /area/overlord_lair)
+"Ln" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_width = 5;
+	link_height = 4;
+	link_id = "broodmother-escape"
+	},
+/turf/open/floor/sand,
+/area/broodmother_den)
 "Lo" = (
 /obj/item/clothing/head/helmet/leather/inquisitor,
 /obj/structure/mannequin/male,
@@ -6299,14 +6306,6 @@
 "Lv" = (
 /turf/closed/wall/mineral/wooddark/horizontal,
 /area/indoors/lich)
-"Lw" = (
-/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
-	link_width = 5;
-	link_height = 4;
-	link_id = "broodmother-escape"
-	},
-/turf/open/floor/sand,
-/area/broodmother_den)
 "Lx" = (
 /obj/structure/flora/shells,
 /turf/open/floor/sand,
@@ -6337,11 +6336,6 @@
 	},
 /turf/open/floor/metal/barograte,
 /area/outdoors/bog/inhumen_camp)
-"LE" = (
-/obj/structure/hotspring,
-/obj/effect/falling_sakura,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "LG" = (
 /obj/structure/flora/grass/herb/random,
 /obj/structure/flora/grass,
@@ -6453,6 +6447,15 @@
 /obj/item/reagent_containers/glass/bucket/pot/copper,
 /turf/open/floor/blocks,
 /area/indoors)
+"Mp" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_height = 6;
+	link_width = 4;
+	link_id = "broodmother-escape4";
+	invisibility = 100
+	},
+/turf/closed/mineral,
+/area/broodmother_den)
 "Ms" = (
 /obj/structure/table/wood/reinforced,
 /obj/item/clothing/armor/chainmail/iron,
@@ -6467,6 +6470,12 @@
 /obj/structure/fluff/walldeco/maidendrape,
 /turf/open/floor/dirt,
 /area/outdoors/woods_safe)
+"Mv" = (
+/obj/structure/broodmother_hole_base{
+	collapse_template = /datum/map_template/broodmother_sinkhole_four
+	},
+/turf/open/floor/dirt,
+/area/broodmother_den)
 "Mw" = (
 /obj/structure/hotspring/border/two,
 /turf/open/floor/dirt/road,
@@ -6506,10 +6515,6 @@
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/dirt,
 /area/outdoors/woods_safe)
-"MJ" = (
-/obj/effect/decal/cleanable/blood/gibs/torso,
-/turf/open/floor/sand,
-/area/broodmother_den)
 "ML" = (
 /obj/structure/closet/crate/crafted_closet/inn,
 /obj/machinery/light/fueled/wallfire/candle/skull,
@@ -6540,6 +6545,11 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
+"Na" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/light/fueled/firebowl/stump,
+/turf/open/floor/dirt,
+/area/broodmother_den)
 "Ng" = (
 /obj/item/clothing/shirt/dress/gen/colored/purple,
 /obj/item/clothing/shoes/shortboots,
@@ -6817,9 +6827,6 @@
 /obj/machinery/light/fueled/forge,
 /turf/open/floor/hexstone,
 /area/indoors/vampire_manor)
-"OU" = (
-/turf/closed/mineral/bedrock,
-/area/broodmother_den)
 "OX" = (
 /obj/item/weapon/sword/long/exe,
 /obj/item/weapon/sword/long/exe,
@@ -6835,14 +6842,15 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"Pb" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/sand,
+/area/broodmother_den)
 "Pc" = (
 /obj/machinery/light/fueled/torchholder/c,
 /obj/machinery/light/fueled/hearth,
 /turf/open/floor/cobble,
 /area/indoors/bandit_lair)
-"Pe" = (
-/turf/closed/mineral,
-/area/broodmother_den)
 "Pf" = (
 /obj/structure/rack,
 /obj/item/weapon/axe/stone,
@@ -6851,10 +6859,6 @@
 "Ph" = (
 /turf/open/floor/cobblerock,
 /area/outdoors)
-"Pj" = (
-/obj/machinery/light/fueled/firebowl/stump,
-/turf/open/floor/sand,
-/area/broodmother_den)
 "Pn" = (
 /obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/ore/copper,
@@ -7070,6 +7074,11 @@
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/bandit_lair)
+"QJ" = (
+/obj/effect/lily_petal/two,
+/obj/effect/falling_sakura,
+/turf/open/water/hotspring,
+/area/outdoors)
 "QK" = (
 /obj/structure/fluff/railing/border{
 	layer = 2
@@ -7105,12 +7114,6 @@
 /obj/structure/flora/grass/water,
 /turf/open/water/swamp,
 /area/outdoors/bog/inhumen_camp)
-"QW" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/open/floor/sand,
-/area/broodmother_den)
 "QX" = (
 /obj/item/bin/water/gross,
 /obj/structure/fluff/walldeco/maidendrape,
@@ -7462,6 +7465,9 @@
 	},
 /turf/open/floor/woodturned,
 /area/indoors)
+"SJ" = (
+/turf/closed/mineral/bedrock,
+/area/broodmother_den)
 "SL" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -7514,10 +7520,6 @@
 /obj/structure/fluff/statue/pillar,
 /turf/open/floor/grass/mixyel,
 /area/outdoors/bog/inhumen_camp)
-"SV" = (
-/obj/machinery/light/fueled/firebowl/stump,
-/turf/open/floor/cobblerock,
-/area/broodmother_den)
 "SW" = (
 /obj/structure/mannequin/male,
 /obj/item/clothing/shirt/robe/eora,
@@ -7530,6 +7532,10 @@
 /obj/effect/mapping_helpers/structure/grave_spawner/t2,
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
+"Td" = (
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/turf/open/floor/sand,
+/area/broodmother_den)
 "Te" = (
 /turf/open/floor/dirt,
 /area/outdoors/woods_safe)
@@ -7661,6 +7667,9 @@
 /obj/item/weapon/flail,
 /turf/open/floor/hexstone,
 /area/indoors/vampire_manor)
+"TI" = (
+/turf/open/floor/cobblerock,
+/area/broodmother_den)
 "TM" = (
 /obj/structure/rotation_piece,
 /turf/open/floor/blocks,
@@ -7720,6 +7729,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/bandit_lair)
+"Uh" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/cobblerock,
+/area/broodmother_den)
 "Uj" = (
 /turf/closed/wall/mineral/decostone/center,
 /area/indoors/lich)
@@ -7743,6 +7756,10 @@
 /obj/machinery/light/fueled/oven/south,
 /turf/open/floor/cobble,
 /area/indoors/bandit_lair)
+"Uo" = (
+/obj/effect/falling_sakura,
+/turf/open/water/hotspring,
+/area/outdoors)
 "Up" = (
 /turf/closed/wall/mineral/decostone/long{
 	dir = 1
@@ -7762,11 +7779,6 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors)
-"Uw" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal/two,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "Ux" = (
 /obj/structure/hotspring/border/eleven,
 /obj/effect/lily_petal/three{
@@ -7816,17 +7828,6 @@
 "UN" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors)
-"UO" = (
-/obj/structure/stairs/stone{
-	dir = 1
-	},
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
-"UR" = (
-/obj/structure/hotspring,
-/obj/effect/lily_petal,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "UV" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -7921,8 +7922,10 @@
 	},
 /turf/closed/wall/mineral/decostone/long,
 /area/indoors/lich)
-"Vr" = (
-/obj/structure/stairs/stone,
+"Vs" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
 /turf/open/floor/naturalstone,
 /area/broodmother_den)
 "Vt" = (
@@ -8008,12 +8011,6 @@
 /obj/item/clothing/head/roguehood/astrata,
 /turf/open/floor/wood,
 /area)
-"VV" = (
-/obj/structure/broodmother_hole_base{
-	collapse_template = /datum/map_template/broodmother_sinkhole_two
-	},
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "VW" = (
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/ruinedwood/turned/darker,
@@ -8057,6 +8054,10 @@
 /obj/item/weapon/shield/tower,
 /turf/open/floor/cobble,
 /area/indoors)
+"Wi" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "Wj" = (
 /turf/open/floor/blocks,
 /area/indoors)
@@ -8108,6 +8109,13 @@
 /obj/structure/flora/grass/bush_meagre/yellow,
 /turf/open/floor/grass/yel,
 /area/outdoors/bog/inhumen_camp)
+"WA" = (
+/obj/effect/lily_petal/three,
+/obj/structure/flora/sakura{
+	pixel_y = -13
+	},
+/turf/open/water/hotspring,
+/area/outdoors)
 "WB" = (
 /obj/structure/table/wood{
 	icon_state = "largetable";
@@ -8142,9 +8150,6 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt/road,
 /area/indoors/bandit_lair)
-"WK" = (
-/turf/open/floor/cobblerock,
-/area/broodmother_den)
 "WL" = (
 /obj/structure/mannequin/male,
 /obj/item/clothing/head/priestmask,
@@ -8437,6 +8442,12 @@
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/dirt,
 /area/indoors/lich)
+"YG" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/dirt,
+/area/broodmother_den)
 "YH" = (
 /obj/structure/table/wood/reinforced,
 /turf/open/floor/woodturned,
@@ -8577,6 +8588,10 @@
 "Zl" = (
 /turf/open/floor/herringbone,
 /area/indoors/vampire_manor)
+"Zn" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/sand,
+/area/broodmother_den)
 "Zq" = (
 /obj/structure/roguetent/preopen,
 /turf/open/floor/dirt,
@@ -8600,20 +8615,10 @@
 "Zz" = (
 /turf/open/floor/grass/red,
 /area/outdoors/woods_safe)
-"ZB" = (
-/obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/cobblerock,
-/area/broodmother_den)
 "ZG" = (
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/carpet,
 /area/indoors/vampire_manor)
-"ZH" = (
-/obj/structure/stairs/stone{
-	dir = 4
-	},
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "ZJ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -8634,10 +8639,6 @@
 /obj/structure/door/swing,
 /turf/open/floor/carpet/lord/left,
 /area/indoors/lich)
-"ZO" = (
-/obj/structure/fluff/nest,
-/turf/open/floor/dirt,
-/area/broodmother_den)
 "ZP" = (
 /turf/open/water/swamp/deep,
 /area/outdoors/bog/inhumen_camp)
@@ -8645,15 +8646,6 @@
 /obj/structure/fluff/statue/knight/interior/r,
 /turf/open/floor/churchrough,
 /area/indoors/lich)
-"ZS" = (
-/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
-	link_height = 4;
-	link_width = 7;
-	link_id = "broodmother-escape3";
-	invisibility = 100
-	},
-/turf/open/floor/naturalstone,
-/area/broodmother_den)
 "ZT" = (
 /obj/structure/flora/grass/bush_meagre/yellow,
 /turf/open/floor/dirt,
@@ -11323,8 +11315,8 @@ rQ
 bX
 bX
 Ke
-al
-UR
+oH
+Ft
 Mw
 WW
 JJ
@@ -11453,8 +11445,8 @@ rQ
 bX
 bX
 Ke
-al
-al
+oH
+oH
 kF
 Cp
 Vd
@@ -11583,9 +11575,9 @@ rQ
 bX
 bX
 Ke
-sD
-LE
-LE
+WA
+Uo
+Uo
 kF
 Cp
 iH
@@ -11713,8 +11705,8 @@ rQ
 bX
 bX
 Ke
-LE
-GP
+Uo
+QJ
 Kd
 ab
 kF
@@ -11843,8 +11835,8 @@ rQ
 bX
 bX
 Ke
-al
-sl
+oH
+AA
 xM
 aY
 am
@@ -11852,7 +11844,7 @@ bn
 am
 am
 Rm
-ai
+Ht
 fi
 am
 am
@@ -12902,7 +12894,7 @@ aq
 bp
 xO
 iE
-Uw
+HO
 Mw
 bp
 hN
@@ -16485,48 +16477,48 @@ bz
 Iw
 "}
 (61,1,1) = {"
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
-OU
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
+SJ
 ag
 ag
 ag
@@ -16615,48 +16607,48 @@ bz
 Iw
 "}
 (62,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-CJ
-WK
-KA
-KA
-vy
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Ep
+TI
+nu
+nu
+Mp
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -16745,48 +16737,48 @@ bz
 Iw
 "}
 (63,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-hn
-hn
-hs
-hn
-hn
-hn
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+KJ
+KJ
+Mv
+KJ
+KJ
+KJ
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -16875,48 +16867,48 @@ bz
 Iw
 "}
 (64,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-KA
-hn
-KA
-hn
-KA
-KA
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+nu
+KJ
+nu
+KJ
+nu
+nu
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -17005,48 +16997,48 @@ bz
 Iw
 "}
 (65,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-KO
-hn
-hn
-La
-Pe
-Pe
-Pe
-hn
-ZS
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+YG
+KJ
+KJ
+kJ
+Gd
+Gd
+Gd
+KJ
+Cy
+SJ
 ag
 ag
 ag
@@ -17135,48 +17127,48 @@ bz
 Iw
 "}
 (66,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-uB
-KA
-hn
-hn
-La
-La
-ZB
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-hn
-KA
-La
-Pe
-Pe
-KA
-KA
-KA
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Zn
+nu
+KJ
+KJ
+kJ
+kJ
+Uh
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+KJ
+nu
+kJ
+Gd
+Gd
+nu
+nu
+nu
+SJ
 ag
 ag
 ag
@@ -17265,48 +17257,48 @@ bz
 Iw
 "}
 (67,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-KA
-La
-La
-hn
-hn
-hn
-fX
-hn
-WK
-uB
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Bs
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-hn
-hn
-La
-KA
-KA
-hn
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+nu
+kJ
+kJ
+KJ
+KJ
+KJ
+Ef
+KJ
+TI
+Zn
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Na
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+KJ
+KJ
+kJ
+nu
+nu
+KJ
+SJ
 ag
 ag
 ag
@@ -17395,48 +17387,48 @@ bz
 Iw
 "}
 (68,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-hn
-La
-La
-La
-WK
-hn
-hn
-hn
-Pj
-ZB
-La
-Pe
-Pe
-KA
-hn
-hn
-La
-hn
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-KA
-WK
-KA
-yC
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+KJ
+kJ
+kJ
+kJ
+TI
+KJ
+KJ
+KJ
+zA
+Uh
+kJ
+Gd
+Gd
+nu
+KJ
+KJ
+kJ
+KJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+nu
+TI
+nu
+KX
+SJ
 ag
 ag
 ag
@@ -17525,48 +17517,48 @@ bz
 Iw
 "}
 (69,1,1) = {"
-OU
-Pe
-Pe
-Pe
-hn
-KA
-La
-WK
-WK
-WK
-WK
-La
-La
-KA
-La
-La
-fX
-fX
-La
-KA
-Pe
-Pe
-hn
-KA
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-WK
-WK
-hn
-KA
-OU
+SJ
+Gd
+Gd
+Gd
+KJ
+nu
+kJ
+TI
+TI
+TI
+TI
+kJ
+kJ
+nu
+kJ
+kJ
+Ef
+Ef
+kJ
+nu
+Gd
+Gd
+KJ
+nu
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+TI
+TI
+KJ
+nu
+SJ
 ag
 ag
 ag
@@ -17655,48 +17647,48 @@ bz
 Iw
 "}
 (70,1,1) = {"
-OU
-Pe
-Pe
-Pe
-hn
-WK
-hn
-hn
-WK
-La
-La
-hn
-La
-La
-La
-La
-hn
-hn
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-KA
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-La
-Pe
-Pe
-Pe
-KO
-hn
-KA
-OU
+SJ
+Gd
+Gd
+Gd
+KJ
+TI
+KJ
+KJ
+TI
+kJ
+kJ
+KJ
+kJ
+kJ
+kJ
+kJ
+KJ
+KJ
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+nu
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+kJ
+Gd
+Gd
+Gd
+YG
+KJ
+nu
+SJ
 ag
 ag
 ag
@@ -17785,48 +17777,48 @@ bz
 Iw
 "}
 (71,1,1) = {"
-OU
-Pe
-Pe
-Pe
-WK
-La
-hn
-hn
-hn
-uB
-La
-KA
-La
-La
-La
-KA
-La
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-WK
-Pe
-KA
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-KO
-KA
-WK
-wO
-Pe
-WK
-WK
-KA
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+TI
+kJ
+KJ
+KJ
+KJ
+Zn
+kJ
+nu
+kJ
+kJ
+kJ
+nu
+kJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+TI
+Gd
+nu
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+YG
+nu
+TI
+zO
+Gd
+TI
+TI
+nu
+Gd
+SJ
 ag
 ag
 ag
@@ -17915,48 +17907,48 @@ bz
 Iw
 "}
 (72,1,1) = {"
-OU
-Pe
-Pe
-Pe
-KA
-La
-hn
-hn
-hn
-hn
-La
-La
-La
-fX
-La
-hn
-Pe
-Pe
-Pe
-Pe
-Pe
-KA
-La
-fX
-hn
-La
-Pe
-Pe
-Pe
-Pe
-OU
-KA
-WK
-WK
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+nu
+kJ
+KJ
+KJ
+KJ
+KJ
+kJ
+kJ
+kJ
+Ef
+kJ
+KJ
+Gd
+Gd
+Gd
+Gd
+Gd
+nu
+kJ
+Ef
+KJ
+kJ
+Gd
+Gd
+Gd
+Gd
+SJ
+nu
+TI
+TI
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -18045,48 +18037,48 @@ bz
 Iw
 "}
 (73,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-La
-Pj
-hn
-hn
-La
-La
-hn
-La
-WK
-Pe
-hn
-Pe
-Pe
-Pe
-Pe
-KA
-La
-Pe
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-KA
-VV
-La
-KA
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+kJ
+zA
+KJ
+KJ
+kJ
+kJ
+KJ
+kJ
+TI
+Gd
+KJ
+Gd
+Gd
+Gd
+Gd
+nu
+kJ
+Gd
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+nu
+HY
+kJ
+nu
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -18175,48 +18167,48 @@ bz
 Iw
 "}
 (74,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-hn
-uB
-La
-La
-La
-La
-ZB
-La
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-KA
-KA
-La
-WK
-KA
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+KJ
+Zn
+kJ
+kJ
+kJ
+kJ
+Uh
+kJ
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+nu
+nu
+kJ
+TI
+nu
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -18305,48 +18297,48 @@ HZ
 HZ
 "}
 (75,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-hn
-KA
-KA
-La
-Pe
-WK
-La
-uB
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-WK
-La
-uB
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-KA
-hn
-La
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+KJ
+nu
+nu
+kJ
+Gd
+TI
+kJ
+Zn
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+TI
+kJ
+Zn
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+nu
+KJ
+kJ
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -18435,48 +18427,48 @@ Ae
 HZ
 "}
 (76,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-KA
-Pe
-Pe
-La
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-UO
-La
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+nu
+Gd
+Gd
+kJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Vs
+kJ
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -18565,48 +18557,48 @@ Ae
 HZ
 "}
 (77,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-KA
-tw
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-CJ
-hn
-La
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+nu
+zG
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Ep
+KJ
+kJ
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -18695,48 +18687,48 @@ Ae
 HZ
 "}
 (78,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-WK
-Pe
-Pe
-KA
-KA
-Pe
-hn
-xV
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-La
-hn
-WK
-KA
-KA
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+TI
+Gd
+Gd
+nu
+nu
+Gd
+KJ
+EK
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+kJ
+KJ
+TI
+nu
+nu
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -18825,48 +18817,48 @@ Ae
 HZ
 "}
 (79,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-La
-WK
-fX
-KO
-xV
-xV
-KA
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-La
-KA
-KA
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-WK
-WK
-La
-KA
-hn
-Bc
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+kJ
+TI
+Ef
+YG
+EK
+EK
+nu
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+kJ
+nu
+nu
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+TI
+TI
+kJ
+nu
+KJ
+gv
+SJ
 ag
 ag
 ag
@@ -18955,48 +18947,48 @@ Ae
 HZ
 "}
 (80,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-KA
-La
-KA
-La
-CJ
-xV
-xV
-xV
-KA
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-uB
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-KA
-KA
-La
-KA
-KA
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+nu
+kJ
+nu
+kJ
+Ep
+EK
+EK
+EK
+nu
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+Zn
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+nu
+nu
+kJ
+nu
+nu
+SJ
 ag
 ag
 ag
@@ -19085,48 +19077,48 @@ Ae
 HZ
 "}
 (81,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-Pe
-SV
-KA
-La
-Pe
-Pe
-Pe
-Pe
-KA
-hn
-La
-Pe
-Pe
-bl
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-KA
-hn
-La
-Bb
-hn
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+Gd
+xE
+nu
+kJ
+Gd
+Gd
+Gd
+Gd
+nu
+KJ
+kJ
+Gd
+Gd
+pI
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+nu
+KJ
+kJ
+vu
+KJ
+SJ
 ag
 ag
 ag
@@ -19215,48 +19207,48 @@ Ae
 HZ
 "}
 (82,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-KA
-uB
-Pe
-Pe
-Pe
-ZB
-Pe
-Pe
-Pe
-Pe
-wZ
-WK
-MJ
-za
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-KO
-La
-WK
-hn
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+nu
+Zn
+Gd
+Gd
+Gd
+Uh
+Gd
+Gd
+Gd
+Gd
+qX
+TI
+Td
+Pb
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+YG
+kJ
+TI
+KJ
+SJ
 ag
 ag
 ag
@@ -19345,48 +19337,48 @@ Ae
 HZ
 "}
 (83,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-KA
-fX
-hn
-hn
-fX
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-QW
-uB
-WK
-hn
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+nu
+Ef
+KJ
+KJ
+Ef
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+wO
+Zn
+TI
+KJ
+SJ
 ag
 ag
 ag
@@ -19475,48 +19467,48 @@ Ae
 HZ
 "}
 (84,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-uB
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-ZO
-KA
-La
-La
-hn
-hn
-hn
-Vr
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-Fw
-WK
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Zn
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+mV
+nu
+kJ
+kJ
+KJ
+KJ
+KJ
+mP
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+tF
+TI
+Gd
+SJ
 ag
 ag
 ag
@@ -19605,48 +19597,48 @@ Ae
 HZ
 "}
 (85,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-KA
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-UO
-hn
-hn
-za
-La
-Ki
-La
-La
-La
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-hn
-hn
-Fw
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+nu
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Vs
+KJ
+KJ
+Pb
+kJ
+iN
+kJ
+kJ
+kJ
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+KJ
+KJ
+tF
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -19735,48 +19727,48 @@ Ae
 HZ
 "}
 (86,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-WK
-hn
-hn
-WK
-Pe
-Pe
-hn
-KA
-uB
-La
-WK
-hn
-La
-hn
-KA
-hn
-jb
-La
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-La
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+TI
+KJ
+KJ
+TI
+Gd
+Gd
+KJ
+nu
+Zn
+kJ
+TI
+KJ
+kJ
+KJ
+nu
+KJ
+Wi
+kJ
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+kJ
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -19865,48 +19857,48 @@ Ae
 HZ
 "}
 (87,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-hn
-Pe
-La
-hn
-hn
-Pe
-hn
-KA
-hn
-Pe
-MJ
-fX
-La
-hn
-hn
-La
-fX
-KA
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-KA
-Pe
-Lw
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+KJ
+Gd
+kJ
+KJ
+KJ
+Gd
+KJ
+nu
+KJ
+Gd
+Td
+Ef
+kJ
+KJ
+KJ
+kJ
+Ef
+nu
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+nu
+Gd
+Ln
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -19995,48 +19987,48 @@ Ae
 HZ
 "}
 (88,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pj
-fX
-Pe
-Pe
-La
-fX
-KA
-La
-Pe
-Pe
-Pe
-Pe
-La
-La
-hn
-MJ
-uB
-WK
-La
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-KA
-KA
-WK
-Pe
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+zA
+Ef
+Gd
+Gd
+kJ
+Ef
+nu
+kJ
+Gd
+Gd
+Gd
+Gd
+kJ
+kJ
+KJ
+Td
+Zn
+TI
+kJ
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+nu
+nu
+TI
+Gd
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -20125,48 +20117,48 @@ Ae
 HZ
 "}
 (89,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-KA
-hn
-La
-WK
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-KA
-Ki
-KA
-WK
-WK
-hn
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-UO
-hn
-hn
-WK
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+nu
+KJ
+kJ
+TI
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+nu
+iN
+nu
+TI
+TI
+KJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+Vs
+KJ
+KJ
+TI
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -20255,48 +20247,48 @@ Ae
 HZ
 "}
 (90,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-ZB
-KA
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-hn
-jb
-La
-La
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-QW
-La
-hn
-hn
-KA
-La
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Uh
+nu
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+KJ
+Wi
+kJ
+kJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+wO
+kJ
+KJ
+KJ
+nu
+kJ
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -20385,48 +20377,48 @@ Ae
 HZ
 "}
 (91,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-La
-ZH
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-WK
-La
-hn
-hn
-La
-La
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+kJ
+mB
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+TI
+kJ
+KJ
+KJ
+kJ
+kJ
+Gd
+Gd
+SJ
 ag
 ag
 ag
@@ -20515,48 +20507,48 @@ Ae
 HZ
 "}
 (92,1,1) = {"
-OU
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-OU
-Pe
-Pe
-Pe
-La
-KA
-La
-KA
-Pe
-Pe
-Pe
-OU
+SJ
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+Gd
+SJ
+Gd
+Gd
+Gd
+kJ
+nu
+kJ
+nu
+Gd
+Gd
+Gd
+SJ
 ag
 ag
 ag
