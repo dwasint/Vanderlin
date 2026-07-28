@@ -502,7 +502,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_SPLIT_PERSONALITY "no_split_personality"
 #define TRAIT_VIRGIN	"virginity"
 #define TRAIT_EXPLOSION_PREVENTER "exploded"
-#define TRAIT_NO_ROT "no_rot"
 
 #define TRAIT_BROOD "Broodspawn"
 
