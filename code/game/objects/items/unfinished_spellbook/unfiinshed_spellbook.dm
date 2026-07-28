@@ -1,4 +1,3 @@
-
 /obj/item/spellbook_unfinished
 	name = "bound scrollpaper"
 	dropshrink = 0.6
