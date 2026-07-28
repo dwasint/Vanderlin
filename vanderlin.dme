@@ -3083,7 +3083,6 @@
 #include "code\modules\crafting\blueprinting\building_footprint\schematic_item.dm"
 #include "code\modules\crafting\blueprinting\building_footprint\thatchwood.dm"
 #include "code\modules\crafting\book_entries\_base.dm"
-#include "code\modules\crafting\book_entries\attunement_matrix.dm"
 #include "code\modules\crafting\book_entries\container_craft.dm"
 #include "code\modules\crafting\book_entries\essences.dm"
 #include "code\modules\crafting\book_entries\gnomes.dm"
