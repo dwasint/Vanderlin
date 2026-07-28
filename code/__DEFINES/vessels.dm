@@ -1,4 +1,3 @@
-
 #define PUTRID_VESSEL_ID "Putrid"
 #define BROODMOTHER_VESSEL_ID "Broodmother"
 #define BROODSPAWN_GOBLIN_VESSEL_ID "Broodspawn Goblin"
