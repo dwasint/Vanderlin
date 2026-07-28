@@ -3104,6 +3104,7 @@
 		return
 
 	mana_pool?.get_mastery().adjust_form_mastery_points(points, used_points, specific_form)
+	check_learnspell()
 
 /mob/proc/adjust_technique_mastery_points(points, used_points = FALSE, specific_technique = null)
 	return
@@ -3113,6 +3114,7 @@
 		return
 
 	mana_pool?.get_mastery().adjust_technique_mastery_points(points, used_points, specific_technique)
+	check_learnspell()
 
 /mob/proc/reset_form_mastery_points(silent = TRUE)
 	return

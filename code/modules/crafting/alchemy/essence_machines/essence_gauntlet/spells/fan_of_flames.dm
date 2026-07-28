@@ -41,7 +41,7 @@
 	name = "flame bolt"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "blastwave"
-	damage = 5
+	damage = 2
 	damage_type = BURN
 	speed = 0.8 SECONDS
 	homing = FALSE

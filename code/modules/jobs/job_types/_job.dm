@@ -1087,6 +1087,7 @@
 	if(!container || !attempt_insert_with_flipping(container, new_item, null, TRUE, TRUE))
 		container = spawned.get_item_by_slot(ITEM_SLOT_BACK_R)
 		if(!container || !attempt_insert_with_flipping(container, new_item, null, TRUE, TRUE))
+			new_item.item_flags &= ~IN_STORAGE
 			if(!spawned.put_in_hands(new_item))
 				container = spawned.get_item_by_slot(ITEM_SLOT_BELT)
 				if(!container || !attempt_insert_with_flipping(container, new_item, null, TRUE, TRUE))
