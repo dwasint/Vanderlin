@@ -34,8 +34,8 @@
 	var/obj/item/weapon/R = new /obj/item/weapon/knife/throwingknife/aetherknife(user.drop_location())
 	R.AddComponent(/datum/component/conjured_item, null, FALSE, user, src)
 
-	if(GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) > 15)
-		var/int_scaling = GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) - 15
+	if(GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) > 10)
+		var/int_scaling = GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) - 10
 		R.force = R.force + int_scaling
 		R.throwforce = FLOOR(R.throwforce + int_scaling * 1.5, 1)
 		R.name = "aetherknife +[int_scaling]"
