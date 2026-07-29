@@ -270,7 +270,7 @@
 							break
 
 		adjust_mana(exponential_decay) //just to be safe, in case we have any left over or didnt have a discharge destination
-		if(amount > get_softcap())
+		if(amount > (get_safe_softcap()-30))
 			if(world.time > next_message)
 				next_message = world.time + 1.5 MINUTES
 				to_chat(parent, span_boldwarning("I am feeling tingly all over."))
