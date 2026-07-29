@@ -73,7 +73,7 @@
 	tracer_type = /obj/effect/projectile/tracer/wormhole
 	impact_type = null
 	hitscan = TRUE
-	damage = 60
+	damage = 30
 	max_range = 12
 	damage_type = BURN
 	woundclass = BCLASS_BURN
@@ -85,12 +85,12 @@
 
 /obj/projectile/magic/arc_bolt/single
 	name = "focused bolt"
-	damage = 60
+	damage = 30
 	arcs = FALSE
 
 /obj/projectile/magic/arc_bolt/single/arc
 	name = "arced bolt"
-	damage = 45
+	damage = 20
 	arcshot = TRUE
 
 
