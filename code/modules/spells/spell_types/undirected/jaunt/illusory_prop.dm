@@ -14,9 +14,6 @@
 	spell_cost = 25
 	has_visual_effects = FALSE
 
-	required_form = FORM_EARTH
-	required_technique = TECHNIQUE_ILLUSION
-
 	var/obj/effect/dummy/bush_disguise/active_dummy = null
 	var/static/list/allowed_structures = list(
 		/obj/item/ingot/gold,
@@ -134,3 +131,8 @@
 	anchored = TRUE
 	duration = 1 SECONDS
 
+
+/datum/action/cooldown/spell/undirected/jaunt/illusory_prop/spell
+	name = "Lesser Illusory Prop"
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_ILLUSION
