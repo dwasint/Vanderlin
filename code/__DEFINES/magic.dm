@@ -9,7 +9,7 @@
 
 #define MANA_POOL_TRANSFER_SKIP_ACTIVE (1<<6)
 
-#define LEYLINE_BASE_RECHARGE 4 // Per second, we recharge this much man
+#define LEYLINE_BASE_RECHARGE 8 // Per second, we recharge this much man
 
 #define MANA_CRYSTAL_BASE_HARDCAP 200
 #define MANA_CRYSTAL_BASE_RECHARGE 0.001
