@@ -11,7 +11,7 @@
 
 	required_form = FORM_ARCANE
 	required_technique = TECHNIQUE_ALTERATION
-	required_level = 6
+	required_level = 12 //lol
 
 	jaunt_type = /obj/effect/dummy/phased_mob/spell_jaunt
 

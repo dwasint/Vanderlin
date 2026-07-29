@@ -244,6 +244,7 @@
 /datum/job/advclass/courtagent/mystic/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.adjust_form_mastery_points(5)
+	spawned.adjust_technique_mastery_points(3)
 
 /datum/outfit/courtagent/mystic
 	name = "Mystic Spy"

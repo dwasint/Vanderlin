@@ -6,6 +6,8 @@
 	click_to_activate = FALSE
 
 	required_form = FORM_AIR
+	required_technique = TECHNIQUE_ILLUSION
+	required_level = 6
 
 	charge_time = 2 SECONDS
 	cooldown_time = 20 SECONDS
