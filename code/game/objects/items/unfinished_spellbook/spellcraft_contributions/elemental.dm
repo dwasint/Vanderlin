@@ -19,7 +19,7 @@
 	)
 
 /datum/spellcraft_contribution/elementalfragment
-	atom_path = /obj/item/natural/iridescentscale
+	atom_path = /obj/item/natural/elementalfragment
 	form_magnitude_modifications = list(
 		FORM_LIGHTNING = 0.1,
 		FORM_WATER = 0.1,
@@ -29,7 +29,7 @@
 	)
 
 /datum/spellcraft_contribution/elementalrelic
-	atom_path = /obj/item/natural/heartwoodcore
+	atom_path = /obj/item/natural/elementalrelic
 	form_cost_multipliers = list(
 		FORM_EARTH = 1.1,
 		FORM_LIGHTNING = 1.1,
