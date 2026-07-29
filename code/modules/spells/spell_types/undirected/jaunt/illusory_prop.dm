@@ -136,3 +136,4 @@
 	name = "Lesser Illusory Prop"
 	required_form = FORM_EARTH
 	required_technique = TECHNIQUE_ILLUSION
+	required_items = null
