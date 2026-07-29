@@ -31,14 +31,14 @@
 /datum/spellcraft_contribution/elementalrelic
 	atom_path = /obj/item/natural/heartwoodcore
 	form_cost_multipliers = list(
-		FORM_EARTH = 1.2,
-		FORM_LIGHTNING = 1.2,
-		FORM_WATER = 1.2,
-		FORM_AIR = 1.2,
-		FORM_ICE = 1.2,
+		FORM_EARTH = 1.1,
+		FORM_LIGHTNING = 1.1,
+		FORM_WATER = 1.1,
+		FORM_AIR = 1.1,
+		FORM_ICE = 1.1,
 	)
 	technique_points = list(
-		TECHNIQUE_ALTERATION = 1,
+		TECHNIQUE_ALTERATION = 2,
 	)
 
 /datum/spellcraft_contribution/airdust

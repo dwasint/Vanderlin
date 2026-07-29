@@ -2,11 +2,11 @@
 	atom_path = /obj/item/natural/voidstone
 
 	technique_points = list(
-		TECHNIQUE_DESTRUCTION = 1,
-		TECHNIQUE_CREATION = 1,
-		TECHNIQUE_ALTERATION = 1,
-		TECHNIQUE_SUMMONING = 1,
-		TECHNIQUE_RESTORATION = 1,
+		TECHNIQUE_DESTRUCTION = 2,
+		TECHNIQUE_CREATION = 2,
+		TECHNIQUE_ALTERATION = 2,
+		TECHNIQUE_SUMMONING = 2,
+		TECHNIQUE_RESTORATION = 2,
 	)
 
 /datum/spellcraft_contribution/bone

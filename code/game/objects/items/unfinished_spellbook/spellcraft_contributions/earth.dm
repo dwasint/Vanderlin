@@ -38,7 +38,7 @@
 		FORM_LIGHTNING = 1.2,
 	)
 	technique_points = list(
-		TECHNIQUE_CREATION = 1,
+		TECHNIQUE_CREATION = 2,
 	)
 
 /datum/spellcraft_contribution/sylvanessence

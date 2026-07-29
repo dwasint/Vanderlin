@@ -28,7 +28,7 @@
 		FORM_WATER = 1.2,
 	)
 	technique_points = list(
-		TECHNIQUE_DESTRUCTION = 1,
+		TECHNIQUE_DESTRUCTION = 2,
 	)
 
 /datum/spellcraft_contribution/abyssalflame
@@ -41,8 +41,8 @@
 		FORM_WATER = 2,
 	)
 	technique_points = list(
-		TECHNIQUE_DESTRUCTION = 2,
-		TECHNIQUE_IMBUE = 1,
+		TECHNIQUE_DESTRUCTION = 3,
+		TECHNIQUE_IMBUE = 2,
 	)
 
 
