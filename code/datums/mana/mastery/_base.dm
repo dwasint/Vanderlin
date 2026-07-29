@@ -309,8 +309,6 @@
 
 	// Rank check: Your mastery level in the track must meet the spell's required level
 	if(level_req > 0)
-		if(technique && get_technique_level(technique) < level_req)
-			return FALSE
 		if(form && get_form_level(form) < level_req)
 			return FALSE
 
