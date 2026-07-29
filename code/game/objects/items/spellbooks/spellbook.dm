@@ -10,6 +10,8 @@
 	name = "tome of the arcyne"
 	desc = "A crackling, glowing book, filled with runes and symbols that hurt the mind to stare at."
 	item_weight = 547 GRAMS
+	grid_height = 64
+	grid_width = 32
 	/// The mob who owns and originally bound this tome
 	var/owner = null
 	/// Up to two additional mobs allowed to read this tome
@@ -142,7 +144,9 @@
 		update_appearance(UPDATE_ICON_STATE)
 		picked = TRUE
 		return
-
+	if(ishuman(loc))
+		if(!(src in user.get_active_held_items()))
+			return
 	if(owner == null)
 		owner = user
 	if(!open)

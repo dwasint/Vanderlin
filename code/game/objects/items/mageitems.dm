@@ -658,6 +658,7 @@
 	item_weight = 40 GRAMS
 	var/obj/item/spellbook/melded_quality = /obj/item/spellbook/adept
 	var/shock_damage = 20
+	var/amplifier = 1
 
 /obj/item/natural/melded/t1
 	name = "arcanic meld"
@@ -675,6 +676,7 @@
 	item_weight = 50 GRAMS
 	melded_quality = /obj/item/spellbook/expert
 	shock_damage = 40
+	amplifier = 1.25
 
 /obj/item/natural/melded/t3
 	name = "sorcerous weave"
@@ -684,6 +686,7 @@
 	item_weight = 60 GRAMS
 	melded_quality = /obj/item/spellbook/master
 	shock_damage = 60
+	amplifier = 1.5
 
 /obj/item/natural/melded/t4
 	name = "magical confluence"
@@ -693,6 +696,7 @@
 	item_weight = 70 GRAMS
 	melded_quality = /obj/item/spellbook/legendary
 	shock_damage = 80
+	amplifier = 1.75
 
 /obj/item/natural/melded/t5
 	name = "arcanic aberation"
@@ -701,6 +705,7 @@
 	item_weight = 80 GRAMS
 	melded_quality = /obj/item/spellbook/legendary
 	shock_damage = 40
+	amplifier = 2
 
 /obj/structure/soul
 	name = "soul"

@@ -157,11 +157,13 @@
 		mastery.adjust_technique_points(generic_points)
 
 	for(var/form in form_points)
-		mastery.invest_form(form, form_points[form])
-		mastery.unspent_form_points += form_points[form]
+		mastery.form_levels[form] = mastery.get_form_level(form) + form_points[form]
+		mastery.initial_form_points += form_points[form]
 	for(var/tech in technique_points)
-		mastery.invest_technique(tech, technique_points[tech])
-		mastery.unspent_technique_points += technique_points[tech]
+		mastery.technique_levels[tech] = mastery.get_technique_level(tech) + technique_points[tech]
+		mastery.initial_technique_points += technique_points[tech]
+
+	mastery.recalculate_unspent_points()
 
 /datum/spellcraft_session/proc/eject_meld(mob/living/user)
 	if(!meld)
@@ -237,7 +239,7 @@
 /obj/item/natural/melded/get_spellcraft_meld_data()
 	return list(
 		"book_type" = melded_quality,
-		"amplifier" = 1.0,
+		"amplifier" = amplifier,
 		"generic_points" = round(shock_damage / 20),
 		"generic_points_form" = round(shock_damage / 10),
 		"shock_damage" = shock_damage,
