@@ -76,3 +76,9 @@
 	form_points = list(
 		FORM_LIGHTNING = 2,
 	)
+
+/datum/spellcraft_contribution/swampdust
+	atom_path = /obj/item/alch/swampdust
+	form_points = list(
+		FORM_ICE = 2,
+	)
