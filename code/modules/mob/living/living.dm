@@ -3104,6 +3104,8 @@
 		return
 
 	mana_pool?.get_mastery().adjust_form_mastery_points(points, used_points, specific_form)
+	if(points > 0)
+		mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	check_learnspell()
 
 /mob/proc/adjust_technique_mastery_points(points, used_points = FALSE, specific_technique = null)
