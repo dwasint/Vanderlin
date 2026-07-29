@@ -155,12 +155,14 @@
 		slot_flags &= ~ITEM_SLOT_HIP
 		open = TRUE
 		playsound(src, 'sound/items/book_open.ogg', 100, FALSE, -1)
-		SEND_SIGNAL(src, COMSIG_MASTERY_ADD_SPELLS, user)
+		if(ismob(loc))
+			SEND_SIGNAL(src, COMSIG_MASTERY_ADD_SPELLS, user)
 	else
 		slot_flags |= ITEM_SLOT_HIP
 		open = FALSE
 		playsound(src, 'sound/items/book_close.ogg', 100, FALSE, -1)
-		SEND_SIGNAL(src, COMSIG_MASTERY_REMOVE_SPELLS, user)
+		if(ismob(loc))
+			SEND_SIGNAL(src, COMSIG_MASTERY_REMOVE_SPELLS, user)
 	update_appearance(UPDATE_ICON_STATE)
 	user.update_inv_hands()
 
