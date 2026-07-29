@@ -55,11 +55,11 @@
 	SIGNAL_HANDLER
 	var/turf/newturf = get_turf(mover)
 
-	if(!old_turf || !new_turf)
+	if(!old_turf || !newturf)
 		return
-	if(old_turf.z != new_turf.z)
+	if(old_turf.z != newturf.z)
 		return
-	if(get_dist(old_turf, new_turf) > 1)
+	if(get_dist(old_turf, newturf) > 1)
 		return
 	tiles_moved++
 
