@@ -81,3 +81,4 @@
 	spell_type = SPELL_MANA
 	required_form = FORM_EARTH
 	required_technique = TECHNIQUE_SUMMONING
+	required_items = null
