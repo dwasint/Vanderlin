@@ -259,6 +259,7 @@
 		target = find_nearest_enemy(summon)
 	if(!isliving(target))
 		return FALSE
+	summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET] = target
 	summon.face_atom(target)
 	var/datum/rmb_intent/feint/F = new()
 	F.special_attack(summon, target)
@@ -272,6 +273,7 @@
 		target = find_nearest_enemy(summon)
 	if(!isliving(target) || !summon.Adjacent(target))
 		return FALSE
+	summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET] = target
 	summon.face_atom(target)
 	if(is_primordial(summon))
 		return primordial_shove(summon, target)
