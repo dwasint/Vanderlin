@@ -13,7 +13,7 @@
 	//playsound(owner, 'sound/magic/whiff.ogg', 50, TRUE)
 
 	var/mob/living/L = owner
-	L.apply_status_effect(/datum/status_effect/buff/haste, 10 SECONDS)
+	L.apply_status_effect(/datum/status_effect/buff/haste, 5 MINUTES)
 	new /obj/effect/temp_visual/snake/swarm(null, L)
 
 /datum/action/cooldown/spell/essence/haste/spell
