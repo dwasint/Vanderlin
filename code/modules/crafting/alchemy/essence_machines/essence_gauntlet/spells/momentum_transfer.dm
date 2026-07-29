@@ -51,8 +51,9 @@
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 	discharge()
 
-/datum/status_effect/buff/momentum_boost/proc/on_moved(datum/source, turf/old_turf, turf/new_turf, ...)
+/datum/status_effect/buff/momentum_boost/proc/on_moved(atom/movable/mover, turf/old_turf, direction)
 	SIGNAL_HANDLER
+	var/turf/newturf = get_turf(mover)
 
 	if(!old_turf || !new_turf)
 		return
