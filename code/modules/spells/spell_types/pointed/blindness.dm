@@ -29,6 +29,7 @@
 /datum/action/cooldown/spell/blindness/miracle
 	name = "Noc's Blindness"
 	charge_sound = 'sound/magic/holycharging.ogg'
+	required_form = null
 
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
