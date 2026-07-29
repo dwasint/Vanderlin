@@ -7,6 +7,10 @@
 	cooldown_time = 2 MINUTES
 	essences = list(/datum/thaumaturgical_essence/energia, /datum/thaumaturgical_essence/motion)
 
+/datum/action/cooldown/spell/essence/momentum_transfer/is_valid_target(atom/cast_on)
+	. = ..()
+	return isliving(cast_on)
+
 /datum/action/cooldown/spell/essence/momentum_transfer/cast(atom/cast_on)
 	. = ..()
 	var/atom/target = cast_on

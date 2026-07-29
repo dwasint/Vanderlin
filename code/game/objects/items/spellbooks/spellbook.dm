@@ -55,6 +55,8 @@
 		picked = TRUE
 
 /obj/item/spellbook/proc/is_open()
+	if(!ismob(loc))
+		return FALSE
 	return !open
 
 /obj/item/spellbook/proc/get_or_make_mastery()
