@@ -952,7 +952,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 			for(var/atom/turf_atom as anything in crds.GetAllTurfStrictContents())
 				if(isobserver(turf_atom))
 					continue
-				if(istype(turf_atom, /obj/item/effect/ebeam))
+				if(istype(turf_atom, /obj/effect/ebeam))
 					continue
 				qdel(turf_atom, force = TRUE)
 
