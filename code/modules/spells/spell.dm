@@ -208,6 +208,8 @@
 
 /datum/action/cooldown/spell/New(Target)
 	. = ..()
+	if(!required_technique) //! ONCE WE BALANCE REMOVE
+		initial_charges *= 3
 	if(!active_msg)
 		active_msg = "You prepare to use [src] on a target..."
 	if(!deactive_msg)
