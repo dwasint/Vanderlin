@@ -108,15 +108,15 @@
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 
 	var/list/selectable_books = list(
-		"Blazing Tome (Fire)" = /obj/item/spellbook/expert/starter/fire,
-		"Frostbound Tome (Ice)" = /obj/item/spellbook/expert/starter/ice,
-		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/expert/starter/lightning,
-		"Stoneveined Tome (Earth)" = /obj/item/spellbook/expert/starter/earth,
-		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/expert/starter/arcane,
-		"Grave-Touched Tome (Death)" = /obj/item/spellbook/expert/starter/death,
-		"Verdant Tome (Life)" = /obj/item/spellbook/expert/starter/life,
-		"Windswept Tome (Air)" = /obj/item/spellbook/expert/starter/air,
-		"Tidebound Tome (Water)" = /obj/item/spellbook/expert/starter/water,
+		"Blazing Tome (Fire)" = /obj/item/spellbook/legendary/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/spellbook/legendary/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/legendary/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/spellbook/legendary/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/legendary/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/spellbook/legendary/starter/death,
+		"Verdant Tome (Life)" = /obj/item/spellbook/legendary/starter/life,
+		"Windswept Tome (Air)" = /obj/item/spellbook/legendary/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/spellbook/legendary/starter/water,
 	)
 
 	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
