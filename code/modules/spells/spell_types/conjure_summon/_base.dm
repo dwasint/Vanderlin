@@ -30,8 +30,8 @@
 	var/list/modes = list()
 	var/summon_noun = "servant"
 	var/recoil_energy_floor = 200
-	var/recoil_severity = CONJURE_RECOIL_FULL
-	var/recoil_stamina_only = FALSE
+	var/recoil_severity = CONJURE_RECOIL_LIGHT
+	var/recoil_stamina_only = TRUE
 	var/static/list/command_word_types = list(
 		/datum/action/cooldown/spell/command_word/fray,
 		/datum/action/cooldown/spell/command_word/harry,
