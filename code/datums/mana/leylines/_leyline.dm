@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 		"12" = 5000,
 		"16" = 500,
 		"20" = 200,
-		"24" = 10
+		"24" = 20
 	)
 	var/leyline_amount = text2num(pickweight(leyline_amount_list))
 	return leyline_amount
