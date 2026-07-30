@@ -109,7 +109,7 @@
 		if(mana_pool.amount > -amount_to_adjust)
 			mana_pool.adjust_mana(amount_to_adjust)
 	else
-		var/safe_ceiling = min(mana_pool.get_softcap(), mana_overload_threshold-10)
+		var/safe_ceiling = min(mana_pool.get_softcap(), mana_overload_threshold-50)
 		if(mana_pool.amount < safe_ceiling)
 			mana_pool.adjust_mana(amount_to_adjust)
 
