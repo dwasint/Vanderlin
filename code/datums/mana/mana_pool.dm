@@ -168,7 +168,7 @@
 
 	if (ethereal_recharge_rate != 0 && (amount < get_safe_softcap()))
 		adjust_mana(ethereal_recharge_rate)
-	if((intrinsic_recharge_sources & MANA_ALL_LEYLINES) && amount < get_safe_softcap())
+	if((intrinsic_recharge_sources & MANA_ALL_LEYLINES) && amount < get_softcap())
 		var/list/leylines = list()
 		for(var/obj/effect/ebeam/beam in range(3, get_turf(parent)))
 			if(!beam.owner.mana_pool)
