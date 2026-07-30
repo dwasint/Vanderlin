@@ -502,7 +502,7 @@
 		if(WOUND_PUNCTURE, WOUND_BLUNT)
 			organ_damage_minimum *= 0.75
 		// Burn damage is unlikely to damage organs
-		if(WOUND_BURN)
+		if(WOUND_BURN, WOUND_INTENSE_BURN)
 			organ_damage_minimum *= 1.5
 		else
 			organ_damage_hit_minimum *= 1
@@ -898,15 +898,11 @@
 	if(multiplier <= 0)
 		return 0
 	var/constant_pain = 0
-	constant_pain += SHOCK_MOD_BRUTE * brute_dam
-	constant_pain += SHOCK_MOD_BURN * burn_dam
-	var/datum/wound/wound
-	for(var/thing in wounds)
-		wound = thing
+	for(var/datum/injury/injury as anything in injuries)
+		constant_pain += injury.return_pain()
+	for(var/datum/wound/wound as anything in wounds)
 		constant_pain += wound.woundpain
-	var/obj/item/organ/organ
-	for(var/thing in get_organs())
-		organ = thing
+	for(var/obj/item/organ/organ as anything in get_organs())
 		constant_pain += organ.get_shock(FALSE)
 	for(var/obj/item/embebbed as anything in embedded_objects)
 		if(embebbed.embedding)
