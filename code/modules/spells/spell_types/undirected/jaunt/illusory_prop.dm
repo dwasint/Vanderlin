@@ -137,3 +137,4 @@
 	required_form = FORM_EARTH
 	required_technique = TECHNIQUE_ILLUSION
 	required_items = null
+	spell_type = SPELL_MANA
