@@ -111,7 +111,7 @@
 	else
 		var/safe_ceiling = min(mana_pool.get_softcap(), mana_overload_threshold-50)
 		if(mana_pool.amount < safe_ceiling)
-			mana_pool.adjust_mana(amount_to_adjust)
+			mana_pool.adjust_mana(amount_to_adjust, TRUE)
 
 /mob/living/carbon/proc/adjust_personal_mana(amount_to_adjust)
 // proc for adjusting mana that CAN go over the softcap

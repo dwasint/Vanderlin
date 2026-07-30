@@ -345,11 +345,16 @@
 
 /// The proc used to modify the mana composition of a mana pool.
 /// Returns how much of "amount" was used.
-/datum/mana_pool/proc/adjust_mana(amount)
+/datum/mana_pool/proc/adjust_mana(amount, safe = FALSE)
 	if (amount == 0)
 		return amount
 
-	var/result = clamp(src.amount + amount, 0, maximum_mana_capacity)
+	var/result = 0
+	if(!safe)
+		result = clamp(src.amount + amount, 0, maximum_mana_capacity)
+	else
+		result = clamp(src.amount + amount, 0, get_safe_softcap())
+
 	. = result - src.amount // Return the amount that was used
 	src.amount = result
 	if(parent && ismob(parent))
@@ -460,7 +465,7 @@
 	var/softcap = get_softcap()
 	if(ismob(parent))
 		var/mob/holder = parent
-		return min(softcap, holder.mana_overload_threshold-10)
+		return min(softcap, holder.mana_overload_threshold-50)
 	else
 		return softcap
 
