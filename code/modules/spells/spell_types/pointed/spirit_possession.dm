@@ -31,7 +31,7 @@
 	var/datum/action/cooldown/spell/pilot_action
 	var/body_base_pixel_x = 0
 	var/body_base_pixel_y = 0
-	var/leash_range = 7
+	var/leash_range = 21
 	var/datum/beam/tether_beam
 
 /datum/action/cooldown/spell/conjure_projection/Destroy()
