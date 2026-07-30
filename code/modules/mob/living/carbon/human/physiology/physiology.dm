@@ -147,38 +147,55 @@
 /// Actual hell but like idk man
 /datum/physiology/proc/get_brute_mod()
 	return get_stat_modifier("brute_mod")
+	
 /datum/physiology/proc/get_burn_mod()
 	return get_stat_modifier("burn_mod")
+	
 /datum/physiology/proc/get_tox_mod()
 	return get_stat_modifier("tox_mod")
+	
 /datum/physiology/proc/get_oxy_mod()
 	return get_stat_modifier("oxy_mod")
+	
 /datum/physiology/proc/get_clone_mod()
 	return get_stat_modifier("clone_mod")
+	
 /datum/physiology/proc/get_stamina_mod()
 	return get_stat_modifier("stamina_mod")
+	
 /datum/physiology/proc/get_brain_mod()
 	return get_stat_modifier("brain_mod")
+	
 /datum/physiology/proc/get_heat_mod()
 	return get_stat_modifier("heat_mod")
+	
 /datum/physiology/proc/get_cold_mod()
 	return get_stat_modifier("cold_mod")
+	
 /datum/physiology/proc/get_damage_resistance()
 	return get_stat_modifier("damage_resistance")
+	
 /datum/physiology/proc/get_siemens_coeff()
 	return get_stat_modifier("siemens_coeff")
+	
 /datum/physiology/proc/get_stun_mod()
 	return get_stat_modifier("stun_mod")
+	
 /datum/physiology/proc/get_bleed_mod()
 	return get_stat_modifier("bleed_mod")
+	
 /datum/physiology/proc/get_pain_mod()
 	return get_stat_modifier("pain_mod")
+	
 /datum/physiology/proc/get_hygiene_mod()
 	return get_stat_modifier("hygiene_mod")
+	
 /datum/physiology/proc/get_hunger_mod()
 	return get_stat_modifier("hunger_mod")
+	
 /datum/physiology/proc/get_do_after_speed()
 	return get_stat_modifier("do_after_speed")
+	
 /datum/physiology/proc/get_mana_regen_mod()
 	return get_stat_modifier("mana_regen_mod")
 
