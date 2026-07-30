@@ -13,8 +13,6 @@
 	invocation = "Vinculum Ferri."
 	invocation_type = INVOCATION_WHISPER
 
-	required_form = FORM_ARCANE
-
 	charge_required = TRUE
 	charge_time = CHARGETIME_MINOR
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
