@@ -189,6 +189,8 @@
 			return summon_kick(summon, aim)
 		if("surge", "bloodrush", "empower")
 			return empower_summon(summon, key, aim)
+		if("target")
+			return summon_target(summon, aim)
 	return FALSE
 
 /datum/action/cooldown/spell/command_word/proc/is_primordial(mob/living/summon)
@@ -204,13 +206,6 @@
 		return
 	P.defprob = initial(P.defprob)
 
-/datum/action/cooldown/spell/command_word/proc/primordial_shove(mob/living/simple_animal/hostile/retaliate/primordial/P, mob/living/target)
-	var/shove_dir = get_dir(P, target)
-	var/turf/dest = get_ranged_target_turf(target, shove_dir, 2)
-	if(dest)
-		target.throw_at(dest, 2, 1, P)
-	return TRUE
-
 /datum/action/cooldown/spell/command_word/proc/primordial_heal(mob/living/simple_animal/hostile/retaliate/primordial/P)
 	if(world.time < P.next_heal_time)
 		return FALSE
@@ -222,20 +217,44 @@
 	P.next_ability_use = 0
 	return TRUE
 
+/datum/action/cooldown/spell/command_word/proc/summon_target(mob/living/summon, atom/aim)
+	var/atom/target = aim
+	if(!target)
+		summon.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
+		summon.balloon_alert_to_viewers("cleared target")
+		return TRUE
+	if(target == summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
+		summon.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
+		summon.balloon_alert_to_viewers("cleared target")
+		return TRUE
+	summon.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
+	summon.balloon_alert_to_viewers("target set")
+	return TRUE
+
+
 /datum/action/cooldown/spell/command_word/proc/summon_special(mob/living/summon, atom/aim)
 	var/atom/target = aim
-	if(!target && summon.ai_controller)
-		target = summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if(!target)
+		target = summon.ai_controller?.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	if(!target)
 		target = find_nearest_enemy(summon)
 	if(!target)
 		return FALSE
 
+	if(!summon.ai_controller)
+		return fire_special_direct(summon, target)
+
+	summon.ai_controller.set_blackboard_key(BB_COMMANDED_TARGET, target)
+	summon.ai_controller.set_blackboard_key(BB_COMMANDED_ACTION, "special")
+	return TRUE
+
+/datum/action/cooldown/spell/command_word/proc/fire_special_direct(mob/living/summon, atom/target)
+	summon.face_atom(target)
+
 	if(istype(summon, /mob/living/simple_animal/hostile/retaliate/primordial))
 		var/mob/living/simple_animal/hostile/retaliate/primordial/P = summon
 		if(world.time < P.next_ability_use)
 			return FALSE
-		P.face_atom(target)
 		P.ability(get_turf(target), P)
 		P.next_ability_use = world.time + P.ability_cooldown
 		return TRUE
@@ -245,7 +264,6 @@
 	var/obj/item/weapon/W = summon.get_active_held_item()
 	if(!istype(W) || !W.weapon_special)
 		return FALSE
-	summon.face_atom(target)
 	if(!W.weapon_special.apply_cost(summon))
 		return FALSE
 	W.weapon_special.deploy(summon, W, target)
@@ -253,31 +271,62 @@
 
 /datum/action/cooldown/spell/command_word/proc/summon_feint(mob/living/summon, atom/aim)
 	var/atom/target = aim
-	if(!target && summon.ai_controller)
-		target = summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if(!target)
+		target = summon.ai_controller?.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	if(!target)
 		target = find_nearest_enemy(summon)
 	if(!isliving(target))
 		return FALSE
-	summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET] = target
+
+	if(!summon.ai_controller)
+		return fire_feint_direct(summon, target)
+
+	summon.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
+	summon.ai_controller.set_blackboard_key(BB_COMMANDED_TARGET, target)
+	summon.ai_controller.set_blackboard_key(BB_COMMANDED_ACTION, "feint")
+	return TRUE
+
+/datum/action/cooldown/spell/command_word/proc/fire_feint_direct(mob/living/summon, mob/living/target)
 	summon.face_atom(target)
+	var/was_passive = FALSE
+	if(isanimal(summon))
+		var/mob/living/simple_animal/SA = summon
+		was_passive = SA.pet_passive
+		SA.pet_passive = FALSE
 	var/datum/rmb_intent/feint/F = new()
 	F.special_attack(summon, target)
+	if(was_passive)
+		addtimer(CALLBACK(src, PROC_REF(restore_pet_passive), summon), 3 SECONDS)
 	return TRUE
 
 /datum/action/cooldown/spell/command_word/proc/summon_kick(mob/living/summon, atom/aim)
 	var/atom/target = aim
-	if(!target && summon.ai_controller)
-		target = summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if(!target)
+		target = summon.ai_controller?.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	if(!target)
 		target = find_nearest_enemy(summon)
-	if(!isliving(target) || !summon.Adjacent(target))
+	if(!isliving(target))
 		return FALSE
-	summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET] = target
-	summon.face_atom(target)
-	if(is_primordial(summon))
-		return primordial_shove(summon, target)
-	INVOKE_ASYNC(src, PROC_REF(do_kick), summon, target)
+
+	if(!summon.ai_controller)
+		if(!summon.Adjacent(target))
+			return FALSE //no controller to path with, fall back to old adjacent-only behavior
+		summon.face_atom(target)
+		if(is_primordial(summon))
+			return primordial_shove(summon, target)
+		INVOKE_ASYNC(src, PROC_REF(do_kick), summon, target)
+		return TRUE
+
+	summon.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
+	summon.ai_controller.set_blackboard_key(BB_COMMANDED_TARGET, target)
+	summon.ai_controller.set_blackboard_key(BB_COMMANDED_ACTION, "kick")
+	return TRUE
+
+/datum/action/cooldown/spell/command_word/proc/primordial_shove(mob/living/simple_animal/hostile/retaliate/primordial/P, mob/living/target)
+	var/shove_dir = get_dir(P, target)
+	var/turf/dest = get_ranged_target_turf(target, shove_dir, 2)
+	if(dest)
+		target.throw_at(dest, 2, 1, P)
 	return TRUE
 
 /datum/action/cooldown/spell/command_word/proc/do_kick(mob/living/summon, mob/living/target)
@@ -289,6 +338,12 @@
 	QDEL_NULL(summon.mmb_intent)
 	summon.mmb_intent = old_mmb
 
+/datum/action/cooldown/spell/command_word/proc/restore_pet_passive(mob/living/summon)
+	if(QDELETED(summon) || !isanimal(summon))
+		return
+	var/mob/living/simple_animal/SA = summon
+	SA.pet_passive = TRUE
+
 /datum/action/cooldown/spell/command_word/proc/do_focus(list/summons)
 	focusing = !focusing
 	var/mob/living/user = owner
@@ -296,7 +351,7 @@
 	var/count = 0
 	for(var/mob/living/summon in summons)
 		if(!summon.ai_controller)
-			continue
+			continue //player-piloted summons have no blackboard targeting for Focus to act on
 		if(focusing)
 			summon.ai_controller.set_blackboard_key(BB_FORCED_ATTACK_ZONE, zone)
 			summon.balloon_alert_to_viewers("<font color='[modes[current_mode]["color"]]'>focus!</font>")
@@ -455,6 +510,7 @@
 	cooldown_time = 1 SECONDS
 	modes = list(
 		list("name" = "Special", "tag" = "SPC", "key" = "special", "color" = LIGHT_COLOR_FIRE, "invocation" = "Impetum!", "cooldown" = 1 SECONDS, "desc" = ""),
+		list("name" = "Target", "tag" = "TGT", "key" = "target", "color" = "#e0a020", "invocation" = "Calcitra!", "cooldown" = 6 SECONDS, "desc" = ""),
 	)
 
 /datum/action/cooldown/spell/command_word/harry

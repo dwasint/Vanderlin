@@ -161,6 +161,9 @@
 #define BB_SNEAKING "bb_sneaking"
 #define BB_SNEAK_COOLDOWN "bb_sneak_cooldown"
 
+#define BB_COMMANDED_ACTION "commanded_action"
+#define BB_COMMANDED_TARGET "commanded_target"
+
 ///key holds the world timer for swimming
 #define BB_KEY_SWIM_TIME "key_swim_time"
 ///key holds the water or land target turf

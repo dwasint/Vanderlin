@@ -48,7 +48,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/primordial
 	icon = 'icons/mob/primordial.dmi'
-	faction = list(FACTION_NEUTRAL)
 	var/next_ability_use
 	var/ability_cooldown = 30 SECONDS
 	var/next_heal_time = 0
