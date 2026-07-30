@@ -75,20 +75,6 @@
 	if(prob(1))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
-	var/list/selectable_books = list(
-		"Blazing Tome (Fire)" = /obj/item/spellbook/apprentice/starter/fire,
-		"Frostbound Tome (Ice)" = /obj/item/spellbook/apprentice/starter/ice,
-		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/apprentice/starter/lightning,
-		"Stoneveined Tome (Earth)" = /obj/item/spellbook/apprentice/starter/earth,
-		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/apprentice/starter/arcane,
-		"Grave-Touched Tome (Death)" = /obj/item/spellbook/apprentice/starter/death,
-		"Verdant Tome (Life)" = /obj/item/spellbook/apprentice/starter/life,
-		"Windswept Tome (Air)" = /obj/item/spellbook/apprentice/starter/air,
-		"Tidebound Tome (Water)" = /obj/item/spellbook/apprentice/starter/water,
-	)
-
-	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 1)
-
 /datum/job/advclass/bandit/roguemage/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
 
@@ -106,6 +92,20 @@
 		"Mage robes" = /obj/item/clothing/shirt/robe/colored/mage,
 	)
 	spawned.select_equippable(player_client, selectablerobe, message = "Choose your robe of choice", title = "WIZARD")
+
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/spellbook/apprentice/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/spellbook/apprentice/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/apprentice/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/spellbook/apprentice/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/apprentice/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/spellbook/apprentice/starter/death,
+		"Verdant Tome (Life)" = /obj/item/spellbook/apprentice/starter/life,
+		"Windswept Tome (Air)" = /obj/item/spellbook/apprentice/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/spellbook/apprentice/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 1)
 
 /datum/outfit/bandit/roguemage
 	name = "Rogue Mage (Bandit)"

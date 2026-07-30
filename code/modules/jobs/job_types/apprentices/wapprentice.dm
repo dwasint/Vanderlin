@@ -74,6 +74,8 @@
 	if(spawned.age == AGE_ADULT)
 		spawned.adjust_form_mastery_points(3)
 
+/datum/job/mageapprentice/on_roundstart(mob/living/spawned, client/player_client)
+	. = ..()
 	var/list/selectable_books = list(
 		"Blazing Tome (Fire)" = /obj/item/spellbook/apprentice/starter/fire,
 		"Frostbound Tome (Ice)" = /obj/item/spellbook/apprentice/starter/ice,

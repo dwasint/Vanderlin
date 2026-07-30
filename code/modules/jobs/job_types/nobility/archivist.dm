@@ -99,7 +99,7 @@
 	attribute_sheet = /datum/attribute_holder/sheet/job/chronicler
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/chronicler/old
 
-/datum/job/advclass/archivist/chronicler/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/advclass/archivist/chronicler/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
 	var/list/selectable_books = list(
 		"Blazing Tome (Fire)" = /obj/item/spellbook/expert/starter/fire,

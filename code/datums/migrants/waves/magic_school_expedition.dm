@@ -103,6 +103,8 @@
 	if(prob(5))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
+/datum/job/migrant/magic_student/on_roundstart(mob/living/spawned, client/player_client)
+	. = ..()
 	var/list/selectable_books = list(
 		"Blazing Tome (Fire)" = /obj/item/spellbook/adept/starter/fire,
 		"Frostbound Tome (Ice)" = /obj/item/spellbook/adept/starter/ice,

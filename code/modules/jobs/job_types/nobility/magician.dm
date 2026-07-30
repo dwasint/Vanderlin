@@ -107,20 +107,6 @@
 	if(spawned.gender == MALE && spawned.dna?.species  && spawned.dna.species.id != SPEC_ID_MEDICATOR)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 
-	var/list/selectable_books = list(
-		"Blazing Tome (Fire)" = /obj/item/spellbook/legendary/starter/fire,
-		"Frostbound Tome (Ice)" = /obj/item/spellbook/legendary/starter/ice,
-		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/legendary/starter/lightning,
-		"Stoneveined Tome (Earth)" = /obj/item/spellbook/legendary/starter/earth,
-		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/legendary/starter/arcane,
-		"Grave-Touched Tome (Death)" = /obj/item/spellbook/legendary/starter/death,
-		"Verdant Tome (Life)" = /obj/item/spellbook/legendary/starter/life,
-		"Windswept Tome (Air)" = /obj/item/spellbook/legendary/starter/air,
-		"Tidebound Tome (Water)" = /obj/item/spellbook/legendary/starter/water,
-	)
-
-	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
-
 /datum/job/magician/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
 
@@ -140,6 +126,20 @@
 		"Wizard robes" = /obj/item/clothing/shirt/robe/wizard,
 	)
 	spawned.select_equippable(player_client, selectablerobe, message = "Choose your robe of choice", title = "WIZARD")
+
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/spellbook/legendary/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/spellbook/legendary/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/legendary/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/spellbook/legendary/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/legendary/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/spellbook/legendary/starter/death,
+		"Verdant Tome (Life)" = /obj/item/spellbook/legendary/starter/life,
+		"Windswept Tome (Air)" = /obj/item/spellbook/legendary/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/spellbook/legendary/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
 
 /datum/outfit/magician
 	name = JOB_COURT_MAGE

@@ -186,8 +186,9 @@
 		TRAIT_NOBLE_POWER
 	)
 
-/datum/job/advclass/minornoble/magickal_graduate/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+/datum/job/advclass/minornoble/magickal_graduate/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
+
 	var/list/selectable_books = list(
 		"Blazing Tome (Fire)" = /obj/item/spellbook/apprentice/starter/fire,
 		"Frostbound Tome (Ice)" = /obj/item/spellbook/apprentice/starter/ice,

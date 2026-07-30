@@ -57,19 +57,6 @@
 	. = ..()
 	if(prob(1))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
-	var/list/selectable_books = list(
-		"Blazing Tome (Fire)" = /obj/item/spellbook/adept/starter/fire,
-		"Frostbound Tome (Ice)" = /obj/item/spellbook/adept/starter/ice,
-		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/adept/starter/lightning,
-		"Stoneveined Tome (Earth)" = /obj/item/spellbook/adept/starter/earth,
-		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/adept/starter/arcane,
-		"Grave-Touched Tome (Death)" = /obj/item/spellbook/adept/starter/death,
-		"Verdant Tome (Life)" = /obj/item/spellbook/adept/starter/life,
-		"Windswept Tome (Air)" = /obj/item/spellbook/adept/starter/air,
-		"Tidebound Tome (Water)" = /obj/item/spellbook/adept/starter/water,
-	)
-
-	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
 
 /datum/job/advclass/wretch/hedgemage/on_roundstart(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
@@ -88,6 +75,20 @@
 		"Mage robes" = /obj/item/clothing/shirt/robe/colored/mage,
 	)
 	spawned.select_equippable(player_client, selectablerobe, message = "Choose your robe of choice", title = "HEDGE MAGE")
+
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/spellbook/adept/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/spellbook/adept/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/adept/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/spellbook/adept/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/adept/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/spellbook/adept/starter/death,
+		"Verdant Tome (Life)" = /obj/item/spellbook/adept/starter/life,
+		"Windswept Tome (Air)" = /obj/item/spellbook/adept/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/spellbook/adept/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
 
 /datum/outfit/wretch/hedgemage
 	name = "Hedge Mage (Wretch)"

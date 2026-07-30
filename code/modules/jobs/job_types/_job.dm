@@ -1069,7 +1069,7 @@
 		if(!length(remaining))
 			break
 
-		var/choice = input(spawned, "Choose a spellbook ([i] of [amount]):", "Spellbook Selection") as null|anything in remaining
+		var/choice = browser_input_list(spawned, "Choose a spellbook ([i] of [amount]):", "Spellbook Selection", remaining)
 		if(!choice)
 			choice = pick(remaining)
 
