@@ -24,7 +24,7 @@
 	charge_time = CHARGETIME_POKE
 	charge_slowdown = CHARGING_SLOWDOWN_SMALL
 	charge_sound = 'sound/magic/charging_fire.ogg'
-	cooldown_time = 6 SECONDS
+	cooldown_time = 24 SECONDS
 	var/spread_step = 8
 
 	spell_impact_intensity = SPELL_IMPACT_LOW
