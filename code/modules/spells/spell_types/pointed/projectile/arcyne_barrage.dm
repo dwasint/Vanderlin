@@ -73,11 +73,11 @@
 	if(H)
 		H.remove_movespeed_modifier(ARCYNE_BARRAGE_SLOWDOWN_ID)
 	if(interrupted)
-		StartCooldown()
+		StartCooldown(cooldown_time)
 		if(H)
 			to_chat(H, span_warning("My barrage falters!"))
 	else
-		StartCooldown()
+		StartCooldown(cooldown_time)
 
 /datum/action/cooldown/spell/projectile/arcyne_barrage/proc/channel_valid(mob/living/carbon/human/H)
 	if(QDELETED(H))
