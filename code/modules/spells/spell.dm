@@ -507,7 +507,7 @@
 			continue
 		if(spell.currently_charging)
 			if(feedback)
-				owner.balloon_alert(owner, "Already channeling!")
+				owner.balloon_alert(owner, "already channeling!")
 			return FALSE
 
 	if(!check_cost(feedback = feedback))
@@ -515,19 +515,19 @@
 
 	if(!(spell_requirements & SPELL_CASTABLE_WHILE_MOUNTED) && owner.client && owner.buckled && isliving(owner.buckled))
 		if(feedback)
-			owner.balloon_alert(owner, "Too distracted riding to cast!")
+			owner.balloon_alert(owner, "too distracted riding to cast!")
 		return FALSE
 
 	if(uses_spellbook_charges && mastery_source && !mastery_source.has_spellbook_charges(type))
 		if(feedback)
-			owner.balloon_alert(owner, "No charges remaining!")
+			owner.balloon_alert(owner, "no charges remaining!")
 		return FALSE
 
 	// Certain spells are not allowed on the centcom zlevel
 	var/turf/caster_turf = get_turf(owner)
 	if((spell_requirements & SPELL_REQUIRES_STATION) && is_centcom_level(caster_turf.z))
 		if(feedback)
-			owner.balloon_alert(owner, "Cannot cast here!")
+			owner.balloon_alert(owner, "cannot cast here!")
 		return FALSE
 
 	if((spell_requirements & SPELL_REQUIRES_MIND) && !owner.mind)
@@ -575,7 +575,7 @@
 			return FALSE
 	if(spell_requirements & SPELL_REQUIRES_SAME_Z)
 		if(owner.z != cast_on.z)
-			owner.balloon_alert(owner, "They are to far to cast on!")
+			owner.balloon_alert(owner, "they are to far to cast on!")
 			return FALSE
 	return TRUE
 
@@ -651,7 +651,7 @@
 			return sig_return
 
 		if(get_dist(owner, cast_on) > cast_range)
-			owner.balloon_alert(owner, "Too far away!")
+			owner.balloon_alert(owner, "too far away!")
 			return sig_return | SPELL_CANCEL_CAST
 
 		if((spell_type == SPELL_MIRACLE) && HAS_TRAIT(cast_on, TRAIT_ATHEISM_CURSE))

@@ -125,28 +125,28 @@
 			. = mastery.try_unlearn_spell(spell_path)
 
 /datum/spellbook/proc/get_modifiers_by_form()
-    return get_modifiers_by_key("form")
+	return get_modifiers_by_key("form")
 
 /datum/spellbook/proc/get_modifiers_by_technique()
-    return get_modifiers_by_key("technique")
+	return get_modifiers_by_key("technique")
 
 /datum/spellbook/proc/get_modifiers_by_key(key)
-    if(!mastery?.parent)
-        return list()
-    var/list/modifiers = list()
-    SEND_SIGNAL(mastery.parent, COMSIG_SPELL_REQUEST_MODIFIERS, modifiers)
+	if(!mastery?.parent)
+		return list()
+	var/list/modifiers = list()
+	SEND_SIGNAL(mastery.parent, COMSIG_SPELL_REQUEST_MODIFIERS, modifiers)
 
-    var/list/by_key = list()
-    for(var/list/entry in modifiers)
-        var/id = entry[key]
-        if(!id)
-            continue
-        if(!by_key[id])
-            by_key[id] = list("cost" = 1, "castSpeed" = 1, "magnitude" = 0)
-        by_key[id]["cost"] *= entry["cost"]
-        by_key[id]["castSpeed"] *= entry["castSpeed"]
-        by_key[id]["magnitude"] += entry["magnitude"]
-    return by_key
+	var/list/by_key = list()
+	for(var/list/entry in modifiers)
+		var/id = entry[key]
+		if(!id)
+			continue
+		if(!by_key[id])
+			by_key[id] = list("cost" = 1, "castSpeed" = 1, "magnitude" = 0)
+		by_key[id]["cost"] *= entry["cost"]
+		by_key[id]["castSpeed"] *= entry["castSpeed"]
+		by_key[id]["magnitude"] += entry["magnitude"]
+	return by_key
 
 /mob/living/proc/open_spellbook()
 	set name = "Open Innate Spells"
