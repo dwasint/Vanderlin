@@ -253,7 +253,7 @@
 
 	if(charge_drain)
 		if(!check_cost(charge_drain))
-			owner.balloon_alert(owner, "I cannot uphold the channeling!")
+			owner.balloon_alert(owner, "i cannot uphold the channeling!")
 			cancel_casting()
 			return PROCESS_KILL
 		invoke_cost(charge_drain)
@@ -262,7 +262,7 @@
 	if(world.time > (charge_started_at + charge_target_time))
 		// We don't want that mouseUp to end in sadness
 		if(!check_cost(charge_drain))
-			owner.balloon_alert(owner, "I cannot uphold the channeling!")
+			owner.balloon_alert(owner, "i cannot uphold the channeling!")
 			cancel_casting()
 			return PROCESS_KILL
 		owner.client?.mouse_override_icon = 'icons/effects/mousemice/charge/spell_charged.dmi'
@@ -494,12 +494,12 @@
 
 	if(!(spell_flags & SPELL_IGNORE_SPELLBLOCK) && HAS_TRAIT(owner, TRAIT_SPELLBLOCK))
 		if(feedback)
-			owner.balloon_alert(owner, "Can't focus on casting...")
+			owner.balloon_alert(owner, "can't focus on casting...")
 		return FALSE
 
 	if(HAS_TRAIT(owner, TRAIT_NOC_CURSE))
 		if(feedback)
-			owner.balloon_alert(owner, "My magicka has left me...")
+			owner.balloon_alert(owner, "my magicka has left me...")
 		return FALSE
 
 	for(var/datum/action/cooldown/spell/spell in owner.actions)
@@ -538,7 +538,7 @@
 	// that corresponds with the spell's antimagic, then they can't actually cast the spell
 	if((spell_requirements & SPELL_REQUIRES_NO_ANTIMAGIC) && !owner.can_cast_magic(antimagic_flags))
 		if(feedback)
-			owner.balloon_alert(owner, "Antimagic is preventing casting!")
+			owner.balloon_alert(owner, "antimagic is preventing casting!")
 		return FALSE
 
 	if(!can_invoke(feedback = feedback))
@@ -547,7 +547,7 @@
 	if(!ishuman(owner))
 		if(spell_requirements & (SPELL_REQUIRES_HUMAN))
 			if(feedback)
-				owner.balloon_alert(owner, "Can only be cast by humans!")
+				owner.balloon_alert(owner, "can only be cast by humans!")
 			return FALSE
 
 	if(LAZYLEN(required_items))
@@ -557,7 +557,7 @@
 				found = TRUE
 				break
 		if(!found && feedback)
-			owner.balloon_alert(owner, "Missing something to cast!")
+			owner.balloon_alert(owner, "missing something to cast!")
 			return FALSE
 
 	return TRUE
@@ -571,7 +571,7 @@
 /datum/action/cooldown/spell/proc/is_valid_target(atom/cast_on)
 	if(click_to_activate && !self_cast_possible)
 		if(cast_on == owner)
-			owner.balloon_alert(owner, "Can't self cast!")
+			owner.balloon_alert(owner, "can't self cast!")
 			return FALSE
 	if(spell_requirements & SPELL_REQUIRES_SAME_Z)
 		if(owner.z != cast_on.z)
@@ -839,7 +839,7 @@
 		owner.balloon_alert(owner, charge_message)
 
 	if(spell_requirements & SPELL_REQUIRES_NO_MOVE)
-		owner.balloon_alert(owner, "Be still while channelling...")
+		owner.balloon_alert(owner, "be still while channelling...")
 
 	if(owner?.mmb_intent)
 		owner.mmb_intent_change(null)
@@ -853,7 +853,7 @@
 		charged = TRUE
 		return
 	if(owner)
-		owner.balloon_alert(owner, "Channeling was interrupted!")
+		owner.balloon_alert(owner, "channeling was interrupted!")
 
 /// End the charging cycle
 /datum/action/cooldown/spell/proc/end_charging()
@@ -898,12 +898,12 @@
 	var/mob/living/living_owner = owner
 	if(invocation_type == INVOCATION_EMOTE && HAS_TRAIT(living_owner, TRAIT_EMOTEMUTE))
 		if(feedback)
-			owner.balloon_alert(owner, "Can't position your hands correctly to invoke!")
+			owner.balloon_alert(owner, "can't position your hands correctly to invoke!")
 		return FALSE
 
 	if((invocation_type == INVOCATION_WHISPER || invocation_type == INVOCATION_SHOUT) && !ignore_can_speak && !living_owner.can_speak_vocal())
 		if(feedback)
-			owner.balloon_alert(owner, "Can't get the words out to invoke!")
+			owner.balloon_alert(owner, "can't get the words out to invoke!")
 		return FALSE
 
 	return TRUE
@@ -931,7 +931,7 @@
 		var/not_stamina_spell = (spell_type != SPELL_STAMINA)
 		if(!caster.check_stamina(used_cost / (1 + not_stamina_spell)))
 			if(feedback)
-				owner.balloon_alert(owner, "Not enough stamina to cast!")
+				owner.balloon_alert(owner, "not enough stamina to cast!")
 			return FALSE
 
 	if(spell_type == NONE || spell_type == SPELL_STAMINA)
@@ -941,7 +941,7 @@
 		if(SPELL_MANA)
 			if(!caster.has_mana_available(used_cost))
 				if(feedback)
-					owner.balloon_alert(owner, "Not enough mana to cast!")
+					owner.balloon_alert(owner, "not enough mana to cast!")
 				return FALSE
 
 			return TRUE
@@ -949,7 +949,7 @@
 		if(SPELL_BLOOD)
 			if(!caster.has_bloodpool_cost(used_cost))
 				if(feedback)
-					owner.balloon_alert(owner, "Need more blood to cast!")
+					owner.balloon_alert(owner, "need more blood to cast!")
 				return FALSE
 
 			return TRUE
@@ -958,7 +958,7 @@
 			var/mob/living/carbon/human/H = caster
 			if(!istype(H) || !H.cleric?.check_devotion(spell_cost))
 				if(feedback)
-					owner.balloon_alert(owner, "Devotion too weak!")
+					owner.balloon_alert(owner, "devotion too weak!")
 				return FALSE
 
 			return TRUE
@@ -967,7 +967,7 @@
 			var/mob/living/carbon/human/H = caster
 			if(!istype(H) || !H.rage_datum?.check_rage(spell_cost))
 				if(feedback)
-					owner.balloon_alert(owner, "Not enough Rage!")
+					owner.balloon_alert(owner, "not enough Rage!")
 				return FALSE
 
 			return TRUE
@@ -984,7 +984,7 @@
 				return FALSE
 			if(!gaunt.can_consume_essence(used_cost, essences))
 				if(feedback)
-					owner.balloon_alert(owner, "Not enough essence!")
+					owner.balloon_alert(owner, "not enough essence!")
 				return FALSE
 
 			return TRUE
@@ -992,7 +992,7 @@
 		if(SPELL_PSYDONIC_MIRACLE)
 			if(!caster.has_bloodpool_cost(used_cost))
 				if(feedback)
-					owner.balloon_alert(owner, "Need more grace to cast!")
+					owner.balloon_alert(owner, "need more grace to cast!")
 				return FALSE
 
 			return TRUE
