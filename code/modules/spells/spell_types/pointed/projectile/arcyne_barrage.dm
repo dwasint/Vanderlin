@@ -113,7 +113,7 @@
 	name = "greater arcyne bolt"
 	icon = 'icons/obj/magic_projectiles.dmi'
 	icon_state = "arcyne_bolt"
-	damage = 45
+	damage = 15
 	nodamage = FALSE
 	damage_type = BRUTE
 	woundclass = BCLASS_BLUNT
