@@ -534,4 +534,4 @@
 /datum/spell_mastery/proc/pass_spell_cast(datum/action/cooldown/spell/spell, atom/cast_on)
 	if(!parent)
 		return
-	SEND_SIGNAL(parent, COMSIG_MASTERY_CAST, spell, cast_on)
+	SEND_SIGNAL(parent, COMSIG_MASTERY_CAST, spell.owner)

@@ -56,11 +56,11 @@
 
 /obj/item/spellbook/proc/is_open()
 	if(!ismob(loc))
-		return FALSE
+		return COMPONENT_MASTERY_CANCEL
 	var/mob/living/liver = loc
 	if(owner)
 		if(!compare_magic(src, liver, FALSE))
-			return FALSE
+			return COMPONENT_MASTERY_CANCEL
 	return !open
 
 /obj/item/spellbook/proc/get_or_make_mastery()
