@@ -30,6 +30,7 @@
 	designlist = list("steel")
 /obj/item/spellbook/mid/starter/ice
 	themed_form = FORM_ICE
+	designlist = list("steel")
 /obj/item/spellbook/mid/starter/lightning
 	themed_form = FORM_LIGHTNING
 	designlist = list("steel")

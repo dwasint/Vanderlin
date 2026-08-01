@@ -58,8 +58,9 @@
 	if(!ismob(loc))
 		return FALSE
 	var/mob/living/liver = loc
-	if(!compare_magic(src, liver, FALSE))
-		return FALSE
+	if(owner)
+		if(!compare_magic(src, liver, FALSE))
+			return FALSE
 	return !open
 
 /obj/item/spellbook/proc/get_or_make_mastery()
