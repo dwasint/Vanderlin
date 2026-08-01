@@ -58,7 +58,7 @@
 	if(!ismob(loc))
 		return FALSE
 	var/mob/living/liver = loc
-	if(!compare_magic(src, compare_magic, FALSE))
+	if(!compare_magic(src, liver, FALSE))
 		return FALSE
 	return !open
 
