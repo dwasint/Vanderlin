@@ -25,9 +25,6 @@
 	if(!firer || !ishuman(hit))
 		return
 
-	if(!firer.clan)
-		return
-
 	var/mob/living/carbon/human/H = hit
 	if(H.bloodpool >= 500) // You'll only get vitae IF they have vitae.
 		H.adjust_bloodpool(-500)

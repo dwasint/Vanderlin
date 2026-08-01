@@ -88,6 +88,7 @@
 /datum/spell_mastery/proc/open_menu(datum/source, mob/living/user)
 	var/datum/spellbook/book = new(parent, src)
 	book.ui_interact(user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /**
  * Grants a spell directly, bypassing the normal spendable-point cost check.

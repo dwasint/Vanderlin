@@ -13,7 +13,7 @@
 	grid_height = 64
 	grid_width = 32
 	/// The mob who owns and originally bound this tome
-	var/owner = null
+	var/mob/living/owner = null
 	/// Up to two additional mobs allowed to read this tome
 	var/list/allowed_readers = list()
 	/// Flat quality bonus stored from a crushed gem, consumed on next read
@@ -47,7 +47,7 @@
 	. = ..()
 	mastery = new /datum/spell_mastery(null, src)
 	apply_themed_bonuses()
-	RegisterSignal(src, COMSIG_MASTERY_CAST, PROC_REF(check_reader_and_recoil))
+	RegisterSignal(src, COMSIG_MASTERY_CAST, PROC_REF(compare_magic))
 	RegisterSignal(src, COMSIG_MASTERY_CHECK_PARENT, PROC_REF(is_open))
 	if(length(designlist) == 1)
 		base_icon_state = "spellbook[designlist[1]]"
@@ -124,6 +124,8 @@
 	if(!open)
 		attack_hand_secondary(user, modifiers)
 		return
+	if(!compare_magic(src, user))
+		return
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return TRUE
 	..()
@@ -151,6 +153,11 @@
 			return
 	if(owner == null)
 		owner = user
+	attempt_open(user)
+
+/obj/item/spellbook/proc/attempt_open(mob/user)
+	if(!compare_magic(src, user))
+		return
 	if(!open)
 		slot_flags &= ~ITEM_SLOT_HIP
 		open = TRUE
@@ -165,6 +172,15 @@
 			SEND_SIGNAL(src, COMSIG_MASTERY_REMOVE_SPELLS, user)
 	update_appearance(UPDATE_ICON_STATE)
 	user.update_inv_hands()
+
+/obj/item/spellbook/proc/compare_magic(datum/source, mob/user)
+	if(!(user in allowed_readers) && user != owner)
+		var/magic_compare = GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/magic/arcane)
+		var/owners_magic = GET_MOB_SKILL_VALUE(owner, /datum/attribute/skill/magic/arcane)
+		if(owners_magic > magic_compare)
+			check_reader_and_recoil(src, user)
+			return FALSE
+	return TRUE
 
 /// Punishes anyone casting a spell sourced from this book who isn't the owner or an
 /// allowed reader. Does not prevent the cast - only recoil()s them.
@@ -207,7 +223,6 @@
 	allowed_readers += target
 
 	playsound(src, "punch", 25, TRUE, -1)
-
 
 /obj/item/spellbook/proc/recoil(mob/user)
 	user.visible_message(span_warning("[src] shoots out a spark of angry, arcyne energy at [user]!"))
