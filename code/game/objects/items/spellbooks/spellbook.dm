@@ -57,6 +57,9 @@
 /obj/item/spellbook/proc/is_open()
 	if(!ismob(loc))
 		return FALSE
+	var/mob/living/liver = loc
+	if(!compare_magic(src, compare_magic, FALSE))
+		return FALSE
 	return !open
 
 /obj/item/spellbook/proc/get_or_make_mastery()
@@ -173,12 +176,13 @@
 	update_appearance(UPDATE_ICON_STATE)
 	user.update_inv_hands()
 
-/obj/item/spellbook/proc/compare_magic(datum/source, mob/user)
+/obj/item/spellbook/proc/compare_magic(datum/source, mob/user, recoil = TRUE)
 	if(!(user in allowed_readers) && user != owner)
 		var/magic_compare = GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/magic/arcane)
 		var/owners_magic = GET_MOB_SKILL_VALUE(owner, /datum/attribute/skill/magic/arcane)
 		if(owners_magic > magic_compare)
-			check_reader_and_recoil(src, user)
+			if(recoil)
+				check_reader_and_recoil(src, user)
 			return FALSE
 	return TRUE
 
