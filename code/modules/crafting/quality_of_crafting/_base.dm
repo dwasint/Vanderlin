@@ -85,7 +85,8 @@
 	var/list/new_blacklist = list()
 	for(var/path in blacklisted_paths)
 		new_blacklist |= typesof(path)
-	blacklisted_paths = new_blacklist
+	if(length(blacklisted_paths))
+		blacklisted_paths = new_blacklist
 
 /**
  * Checks if the recipe can be started with the given items
@@ -307,7 +308,7 @@
  */
 /datum/repeatable_crafting_recipe/proc/process_bundle(obj/item/natural/bundle/item, mob/user, list/copied_requirements, list/to_delete, list/blacklisted_paths)
 	var/obj/item/bundle_path = item:stacktype
-	if(bundle_path in blacklisted_paths)
+	if(length(blacklisted_paths) && (bundle_path in blacklisted_paths))
 		return FALSE
 
 	// Check if this bundle type matches any of our requirements
@@ -803,7 +804,7 @@
 	if(!thing_to_check)
 		return FALSE
 	var/path_to_check = ispath(thing_to_check) ? thing_to_check : thing_to_check.type
-	if(path_to_check in blacklisted_paths)
+	if(length(blacklisted_paths) && (path_to_check in blacklisted_paths))
 		return FALSE
 	if(subtypes_allowed)
 		return ispath(path_to_check, required_type)
