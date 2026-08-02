@@ -94,7 +94,7 @@
 	apply_projection_visuals(body)
 
 	RegisterSignal(vessel, COMSIG_LIVING_DEATH, PROC_REF(on_vessel_lost))
-	RegisterSignal(vessel, COMSIG_QDELETING, PROC_REF(on_vessel_qdel))
+	RegisterSignal(vessel, COMSIG_PREQDELETED, PROC_REF(on_vessel_qdel))
 	RegisterSignal(vessel, COMSIG_MOVABLE_MOVED, PROC_REF(on_tether_moved))
 	RegisterSignal(body, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_body_harmed))
 	RegisterSignal(body, COMSIG_LIVING_DEATH, PROC_REF(on_body_death))
