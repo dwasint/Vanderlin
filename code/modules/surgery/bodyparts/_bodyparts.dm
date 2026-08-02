@@ -168,7 +168,7 @@
 	/// How many injuries we have in this bodypart - NOT always equal to the length of injuries list!
 	var/number_injuries = 0
 	/// The (Bay-style) wound datums currently afflicting this bodypart
-	var/list/datum/injury/injuries = list()
+	var/list/datum/injury/injuries
 	/// The last injury to have afflicted this bodypart
 	var/datum/injury/last_injury
 

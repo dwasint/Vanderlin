@@ -29,8 +29,8 @@
 	if(redstone_id)
 		for(var/obj/structure/S in GLOB.redstone_objs)
 			if(S.redstone_id == redstone_id)
-				redstone_attached |= S
-				S.redstone_attached |= src
+				LAZYADD(redstone_attached, S)
+				LAZYADD(S.redstone_attached, src)
 
 	if(rotation_structure && !QDELETED(src))
 		set_connection_dir()

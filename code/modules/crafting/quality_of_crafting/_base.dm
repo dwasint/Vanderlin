@@ -9,12 +9,12 @@
 	var/category
 	var/atom/output
 	var/output_amount = 1
-	var/list/requirements = list()
-	var/list/reagent_requirements = list()
+	var/list/requirements
+	var/list/reagent_requirements
 	///this is a list of tool usage in their order which executes after requirements and reagents are fufilled these are assoc lists going path = list(text, self_text, sound)
-	var/list/tool_usage = list()
+	var/list/tool_usage
 	///these typepaths and their subtypes (by default) won't be considered as requirements for recipes. override create_blacklisted_paths() for custom blacklist behavior.
-	var/list/blacklisted_paths = list()
+	var/list/blacklisted_paths
 
 	///do we need to be learned
 	var/requires_learning = FALSE
@@ -66,7 +66,7 @@
 	///do we also count reagent subtypes?
 	var/reagent_subtypes_allowed = FALSE
 	///list of types we pass before deletion to the child
-	var/list/pass_types_in_end = list()
+	var/list/pass_types_in_end
 	///this is our extra % added after all skills and such
 	var/extra_chance = 0
 	///do we hide from recipe books
