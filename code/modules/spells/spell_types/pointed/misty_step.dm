@@ -43,6 +43,15 @@
 /obj/effect/temp_visual/blink/Initialize(mapload, new_caster)
 	. = ..()
 
+/datum/action/cooldown/spell/misty_step/is_valid_target(atom/cast_on)
+	. = ..()
+	var/turf/T = get_turf(cast_on)
+	var/dest_err = arcyne_validate_blink_dest(T, owner)
+	if(dest_err)
+		to_chat(owner, span_warning(dest_err))
+		return FALSE
+	return TRUE
+
 /datum/action/cooldown/spell/misty_step/cast(atom/cast_on)
 	. = ..()
 	var/turf/T = get_turf(cast_on)
