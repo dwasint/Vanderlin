@@ -90,7 +90,7 @@
 	if(stacks <= 0)
 		return
 	stacks = 0
-	UNLINT(owner.balloon_alert(owner, "M: 0/[max_stacks]"))
+	owner.balloon_alert(owner, UNLINT("M: 0/[max_stacks]"))
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
@@ -101,7 +101,7 @@
 	if(stacks <= 0)
 		return
 	stacks = 0
-	UNLINT(owner.balloon_alert(owner, "M: 0/[max_stacks]"))
+	owner.balloon_alert(owner, UNLINT("M: 0/[max_stacks]"))
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
@@ -113,7 +113,7 @@
 	last_stack_time = world.time
 	if(stacks == old_stacks)
 		return
-	UNLINT(owner.balloon_alert(owner, "M: [stacks]/[max_stacks]"))
+	owner.balloon_alert(owner, UNLINT("M: [stacks]/[max_stacks]"))
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
@@ -130,7 +130,7 @@
 /datum/status_effect/buff/arcyne_momentum/proc/consume_stacks(amount)
 	var/consumed = min(stacks, amount)
 	stacks = max(stacks - amount, 0)
-	UNLINT(owner.balloon_alert(owner, "M: [stacks]/[max_stacks]"))
+	owner.balloon_alert(owner, UNLINT("M: [stacks]/[max_stacks]"))
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
@@ -139,7 +139,7 @@
 /datum/status_effect/buff/arcyne_momentum/proc/consume_all_stacks()
 	var/consumed = stacks
 	stacks = 0
-	UNLINT(owner.balloon_alert(owner, "M: 0/[max_stacks]"))
+	owner.balloon_alert(owner, UNLINT("M: 0/[max_stacks]"))
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
@@ -175,7 +175,7 @@
 		if(world.time - last_decay_time >= SECOND_PER_MOMENTUM)
 			last_decay_time = world.time
 			stacks = max(stacks - 1, 0)
-			UNLINT(owner.balloon_alert(owner, "M: [stacks]/[max_stacks]"))
+			owner.balloon_alert(owner, UNLINT("M: [stacks]/[max_stacks]"))
 			update_visuals()
 			update_alert()
 			update_spell_buttons()

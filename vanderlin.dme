@@ -4465,6 +4465,7 @@
 #include "code\modules\spells\spell_types\undirected\touch\non_detection.dm"
 #include "code\modules\spells\spell_types\undirected\touch\orison.dm"
 #include "code\modules\spells\spell_types\undirected\touch\prestidigitation.dm"
+#include "code\modules\spells\spell_types\undirected\touch\rune_ward.dm"
 #include "code\modules\surgery\surgery_helpers.dm"
 #include "code\modules\surgery\surgery_tools_rogue.dm"
 #include "code\modules\surgery\surgery_tools_rogue_improv.dm"

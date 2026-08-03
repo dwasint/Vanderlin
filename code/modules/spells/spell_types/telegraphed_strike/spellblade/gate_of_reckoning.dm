@@ -250,7 +250,7 @@
 
 	charges--
 	update_alert()
-	UNLINT(owner.balloon_alert(owner, "PHANTOM THRUST! ([charges] left)"))
+	owner.balloon_alert(owner, UNLINT("PHANTOM THRUST! ([charges] left)"))
 
 	var/datum/action/cooldown/spell/gate_of_reckoning/spell = spell_ref?.resolve()
 	if(!spell)
