@@ -11,7 +11,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/iron_skin
 	duration = 1 MINUTES
 
-/datum/status_effect/buff/iron_skin/on_creation(mob/living/new_owner, var/new_duration = null)
+/datum/status_effect/buff/iron_skin/on_creation(mob/living/new_owner, new_duration = null)
 	if(new_duration)
 		duration = new_duration
 	. = ..()
