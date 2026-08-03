@@ -232,6 +232,9 @@
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/courtagent/mystic
+	traits = list(
+		TRAIT_SORCERER
+	)
 
 	spells = list(
 		/datum/action/cooldown/spell/undirected/message,
