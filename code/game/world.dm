@@ -75,6 +75,8 @@ GLOBAL_VAR(restart_counter)
 			return
 #endif
 
+	MemProfiler = new
+
 	Profile(PROFILE_RESTART)
 	Profile(PROFILE_RESTART, type = "sendmaps")
 
