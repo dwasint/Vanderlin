@@ -75,7 +75,8 @@ GLOBAL_VAR(restart_counter)
 			return
 #endif
 
-	MemProfiler = new
+	if(world.system_type == MS_WINDOWS)
+		MemProfiler = new
 
 	Profile(PROFILE_RESTART)
 	Profile(PROFILE_RESTART, type = "sendmaps")
