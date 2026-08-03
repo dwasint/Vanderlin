@@ -12,7 +12,7 @@
 
 /datum/intent/hand/draw
 	name = "draw"
-	icon_state = "indraw"
+	icon_state = "cast"
 
 /datum/action/cooldown/spell/undirected/touch/rune_ward
 	button_icon = 'icons/mob/actions/spells/mage_utilities.dmi'
