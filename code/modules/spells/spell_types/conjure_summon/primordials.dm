@@ -222,13 +222,16 @@
 	if(!target)
 		summon.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
 		summon.balloon_alert_to_viewers("cleared target")
+		summon.pet_passive = TRUE
 		return TRUE
 	if(target == summon.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
 		summon.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
 		summon.balloon_alert_to_viewers("cleared target")
+		summon.pet_passive = TRUE
 		return TRUE
 	summon.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
 	summon.balloon_alert_to_viewers("target set")
+	summon.pet_passive = FALSE
 	return TRUE
 
 
