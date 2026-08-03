@@ -518,7 +518,7 @@
 
 /datum/action/cooldown/spell/command_word/harry
 	name = "Harry"
-	desc = "Order your summons to Feint or Kick your enemies. Toggle with Shift+G. "
+	desc = "Order your summons to Feint or Kick your enemies. Toggle with Shift+G."
 	button_icon_state = "aetherknife"
 	invocation_type = INVOCATION_SHOUT
 	invocation = "Fallere!"

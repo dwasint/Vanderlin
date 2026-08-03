@@ -1,5 +1,5 @@
 /datum/action/cooldown/spell/conjure_summon/raise_lesser_undead
-	name = "Raise Lesser undead"
+	name = "Raise Lesser Undead"
 	desc = "Summons a temporary skeleton to aid you."
 	button_icon_state = "animate"
 	button_icon = 'icons/mob/actions/roguespells.dmi'
