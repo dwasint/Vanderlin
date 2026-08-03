@@ -506,7 +506,7 @@
 
 /datum/action/cooldown/spell/command_word/fray
 	name = "Fray"
-	desc = "Battle order. Order your summon to unleash a Special, or set a target."
+	desc = "Battle order. Order your summon to unleash a Special, or set a target. Toggle with Shift+G"
 	button_icon_state = "order_servants"
 	invocation_type = INVOCATION_SHOUT
 	invocation = "Impetum!"
@@ -544,7 +544,7 @@
 
 /datum/action/cooldown/spell/command_word/beckon
 	name = "Beckon"
-	desc = "Taunt teleport your servants to a marked spot and attract their aggression, Overload makes one explode with arcyne energy, Focus sets them to strike the zone you are aiming at, it does not guarantee they'll hit."
+	desc = "Taunt teleport your servants to a marked spot and attract their aggression they will attack anything that gets close, Overload makes one explode with arcyne energy, Focus sets them to strike the zone you are aiming at, it does not guarantee they'll hit. Toggle with Shift+G"
 	button_icon_state = "primetriangle"
 	invocation_type = INVOCATION_SHOUT
 	invocation = "Provoco!"
