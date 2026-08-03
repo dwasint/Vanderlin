@@ -183,7 +183,9 @@ export const Steward = (props) => {
               <Table.Cell bold width="100px">
                 Lord's Tax:
               </Table.Cell>
-              <Table.Cell>{lordTax}%</Table.Cell>
+              <Table.Cell>
+                <LordTaxControl value={lordTax} />
+              </Table.Cell>
               <Table.Cell bold width="110px">
                 Guild's Tax:
               </Table.Cell>
@@ -274,6 +276,28 @@ export const Steward = (props) => {
         {tab === 'log' && <LogTab entries={filteredLog} />}
       </Window.Content>
     </Window>
+  );
+};
+
+const LordTaxControl = ({ value }: { value: number }) => {
+  const { act } = useBackend<Data>();
+  const [tax, setTax] = useState(value);
+  return (
+    <Stack align="center">
+      <Stack.Item>
+        <NumberInput
+          width="55px"
+          step={1}
+          minValue={1}
+          maxValue={99}
+          value={tax}
+          onChange={setTax}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <Button onClick={() => act('set_tax', { value: tax })}>Set</Button>
+      </Stack.Item>
+    </Stack>
   );
 };
 
