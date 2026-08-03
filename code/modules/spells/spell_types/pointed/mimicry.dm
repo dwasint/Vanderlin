@@ -17,6 +17,9 @@
 	. = ..()
 	if(!.)
 		return FALSE
+	var/mob/living/carbon/human/user = owner
+	if(user.GetComponent(/datum/component/disguise))
+		return TRUE
 	return ishuman(cast_on)
 
 /datum/action/cooldown/spell/mimicry/cast(mob/living/carbon/human/cast_on)
