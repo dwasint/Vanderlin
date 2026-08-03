@@ -29,7 +29,10 @@
 	AddComponent(/datum/component/ai_aggro_system)
 	if(user && user.mind && user.mind.current)
 		befriend(user)
+	RegisterSignal(src, COMSIG_AI_BLACKBOARD_KEY_CLEARED(BB_BASIC_MOB_CURRENT_TARGET), PROC_REF(pet_passive))
 
+/mob/living/simple_animal/hostile/retaliate/primordial/proc/pet_passive()
+	pet_passive = TRUE
 
 /datum/intent/simple/claw/primordial
 	name = "claw"
