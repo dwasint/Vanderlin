@@ -506,14 +506,14 @@
 
 /datum/action/cooldown/spell/command_word/fray
 	name = "Fray"
-	desc = "Battle order. Order your summon to unleash a Special, or a primordial's special attack."
+	desc = "Battle order. Order your summon to unleash a Special, or set a target."
 	button_icon_state = "order_servants"
 	invocation_type = INVOCATION_SHOUT
 	invocation = "Impetum!"
 	cooldown_time = 1 SECONDS
 	modes = list(
-		list("name" = "Special", "tag" = "SPC", "key" = "special", "color" = LIGHT_COLOR_FIRE, "invocation" = "Impetum!", "cooldown" = 1 SECONDS, "desc" = ""),
 		list("name" = "Target", "tag" = "TGT", "key" = "target", "color" = "#e0a020", "invocation" = "Calcitra!", "cooldown" = 6 SECONDS, "desc" = ""),
+		list("name" = "Special", "tag" = "SPC", "key" = "special", "color" = LIGHT_COLOR_FIRE, "invocation" = "Impetum!", "cooldown" = 1 SECONDS, "desc" = ""),
 	)
 
 /datum/action/cooldown/spell/command_word/harry
