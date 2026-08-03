@@ -1654,7 +1654,7 @@
 			var/selzone = accuracy_check(user.zone_selected, user, target, /datum/attribute/skill/combat/unarmed, user.used_intent)
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 			var/damage = user.get_kick_damage() * 1.5
-      //note we don't really pass in a list for EP because this is pure blunt so its redundant
+			//note we don't really pass in a list for EP because this is pure blunt so its redundant
 			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
 			var/balance = 10
 			target.next_attack_msg.Cut()
