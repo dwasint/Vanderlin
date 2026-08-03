@@ -13,8 +13,6 @@
 	cooldown_time = 5 MINUTES
 	spell_cost = 20
 
-	var/transformed = FALSE
-
 /datum/action/cooldown/spell/mimicry/is_valid_target(atom/cast_on)
 	. = ..()
 	if(!.)
@@ -24,7 +22,7 @@
 /datum/action/cooldown/spell/mimicry/cast(mob/living/carbon/human/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/user = owner
-	if(transformed)
+	if(user.GetComponent(/datum/component/disguise))
 		return_to_normal(user)
 		return
 	try_transform(cast_on, user)

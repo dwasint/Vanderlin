@@ -8,6 +8,8 @@
 	var/examine_suffix
 	var/old_gender
 	var/old_name
+	var/old_prefix
+	var/old_suffix
 
 /datum/component/disguise/Initialize(mob/living/carbon/human/source)
 	if(!ishuman(parent))
@@ -16,6 +18,8 @@
 	old_gender = user.gender
 	user.cut_overlays()
 	old_name = user.real_name
+	old_prefix = user.honorary
+	old_suffix = user.honorary_suffix
 	cloned_appearance = copy_appearance_filter_overlays(source.appearance)
 	examine_tone = source.skin_tone
 	examine_species = source.dna.species
@@ -61,6 +65,8 @@
 	user.regenerate_icons()
 	user.alpha = 255
 	user.update_appearance()
+	user.honorary = old_prefix
+	user.honorary_suffix = old_suffix
 	return ..()
 
 /obj/item/harlequin_disguise_kit
