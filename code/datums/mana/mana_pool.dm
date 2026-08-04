@@ -183,7 +183,7 @@
 		if(length(leylines))
 			for(var/datum/mana_pool/leyline/leyline as anything in leylines)
 				var/sane_distance = leylines[leyline] + 1
-				leyline.transfer_specific_mana(src, (leyline.get_transfer_rate_for(src) / sane_distance) * 0.1)
+				leyline.transfer_specific_mana(src, (leyline.get_transfer_rate_for(src) / sane_distance) * 0.1, safe = TRUE)
 
 	if((intrinsic_recharge_sources & MANA_ALL_PYLONS) && amount < get_softcap())
 		var/list/pylons = list()
@@ -290,12 +290,16 @@
 	var/cached_cap = transfer_caps[target_pool]
 	return (cached_cap || (transfer_default_softcap ? target_pool.get_softcap() : target_pool.maximum_mana_capacity))
 
-/datum/mana_pool/proc/transfer_specific_mana(datum/mana_pool/other_pool, amount_to_transfer, decrement_budget = TRUE)
+/datum/mana_pool/proc/transfer_specific_mana(datum/mana_pool/other_pool, amount_to_transfer, decrement_budget = TRUE, safe = FALSE)
 	// ensure we dont give more than we hold and dont give more than they CAN hold
-	var/adjusted_amount = min(min(amount_to_transfer, amount), (other_pool.maximum_mana_capacity - other_pool.amount))
-	// ^^^^ TODO THIS ISNT THA TGOOD I DONT LIKE IT we should instead have remainders returned on adjust mana and plug it into the OTHER adjust mana
+	var/adjusted_amount = min(amount_to_transfer, amount, other_pool.maximum_mana_capacity - other_pool.amount)
 
-	if (decrement_budget)
+	if(safe && !length(other_pool.decay_prevention))
+		var/safe_ceiling = min(other_pool.get_softcap(), other_pool.parent?.mana_overload_threshold - 50)
+		var/headroom = safe_ceiling - other_pool.amount
+		adjusted_amount = max(0, min(adjusted_amount, headroom))
+
+	if(decrement_budget)
 		donation_budget_this_tick -= amount_to_transfer
 
 	adjust_mana(-adjusted_amount)

@@ -106,12 +106,13 @@
 	if(!mana_pool)
 		return
 	if(amount_to_adjust < 0)
-		if(mana_pool.amount > -amount_to_adjust)
+		if(mana_pool.amount >= -amount_to_adjust)
 			mana_pool.adjust_mana(amount_to_adjust)
 	else
-		var/safe_ceiling = min(mana_pool.get_softcap(), mana_overload_threshold-50)
-		if(mana_pool.amount < safe_ceiling)
-			mana_pool.adjust_mana(amount_to_adjust, TRUE)
+		var/safe_ceiling = min(mana_pool.get_softcap(), mana_overload_threshold - 50)
+		var/headroom = safe_ceiling - mana_pool.amount
+		if(headroom > 0)
+			mana_pool.adjust_mana(min(amount_to_adjust, headroom), TRUE)
 
 /mob/living/carbon/proc/adjust_personal_mana(amount_to_adjust)
 // proc for adjusting mana that CAN go over the softcap
