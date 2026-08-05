@@ -14,7 +14,7 @@
 	new /obj/effect/temp_visual/solosnake(get_turf(target))
 
 	if(target.reagents)
-		target.reagents.remove_all_type(/datum/reagent/toxin)
-		target.reagents.remove_all_type(/datum/reagent/poison)
+		target.reagents.remove_all_type(/datum/reagent/toxin, 999)
+		target.reagents.remove_all_type(/datum/reagent/poison, 999)
 		target.reagents.remove_reagent(/datum/reagent/water/gross, 999)
 		target.reagents.add_reagent(/datum/reagent/water, 20)
