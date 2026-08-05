@@ -73,6 +73,7 @@
 
 /// Fire the projectile(s) at the target.
 /datum/action/cooldown/spell/projectile/proc/fire_projectile(atom/target)
+	current_amount--
 	for(var/i in 1 to projectiles_per_fire)
 		var/active_type = (arc_mode && projectile_type_arc) ? projectile_type_arc : projectile_type
 		var/obj/projectile/to_fire = new active_type(owner.loc)
