@@ -120,9 +120,9 @@
 		if(!check_matches_requirement(attacked_item_path, starting_atom) || !check_matches_requirement(attacking_item_path, attacked_atom))
 			return FALSE
 
-	var/list/copied_requirements = length(requirements) ? requirements.Copy : list()
-	var/list/copied_reagent_requirements = length(reagent_requirements) ? reagent_requirements.Copy : list()
-	var/list/copied_tool_usage = length(tool_usage) ? tool_usage.Copy : list()
+	var/list/copied_requirements = length(requirements) ? requirements.Copy() : list()
+	var/list/copied_reagent_requirements = length(reagent_requirements) ? reagent_requirements.Copy() : list()
+	var/list/copied_tool_usage = length(tool_usage) ? tool_usage.Copy() : list()
 	var/list/usable_contents = list()
 
 	gather_usable_contents(user, usable_contents)
