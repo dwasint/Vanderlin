@@ -20,6 +20,7 @@
 
 	required_form = FORM_FIRE
 	required_technique = TECHNIQUE_DESTRUCTION
+	shared_cooldown = FIREBALL_SHARED_COOLDOWN
 
 
 
