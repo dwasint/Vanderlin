@@ -129,6 +129,7 @@
 	var/tourniquet_mod = 1
 	if(tourniquet)
 		if(tourniquet.bleed_mod)
+			tourniquet_mod = tourniquet.bleed_mod
 		else
 			return 0
 
