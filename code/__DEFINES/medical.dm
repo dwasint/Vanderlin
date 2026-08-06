@@ -402,4 +402,4 @@ DEFINE_BITFIELD(organ_flags, list(
 #define SPLINT_BREAK_THRESHOLD 8 // brute damage in one hit that snaps a splint
 
 #define CPR_GRACE_WINDOW (10 SECONDS) // must land another compression within this window to keep mitigation active
-#define CPR_BRAIN_DAMAGE_MITIGATION 0.35 // multiplier on damage probability while grace is active
+#define CPR_BRAIN_DAMAGE_MITIGATION 0.15 // multiplier on damage probability while grace is active
