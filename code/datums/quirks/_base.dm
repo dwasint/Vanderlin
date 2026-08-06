@@ -129,7 +129,8 @@ GLOBAL_LIST_INIT(quirk_registry, init_quirk_registry())
 /// Called when the quirk is applied to a character
 /datum/quirk/proc/on_spawn()
 	SHOULD_CALL_PARENT(TRUE)
-	owner.add_traits(traits_to_add, "[type]")
+	if(length(traits_to_add))
+		owner.add_traits(traits_to_add, "[type]")
 	return
 
 /// Called when the quirk is removed
