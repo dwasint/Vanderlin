@@ -172,6 +172,14 @@
 	/// The last injury to have afflicted this bodypart
 	var/datum/injury/last_injury
 
+	///bleed stopper 9000, ref to our applied tourniquet
+	var/obj/item/tourniquet/tourniquet
+	///tracked length used for necrosis
+	var/tourniquet_time = 0
+	var/splinted = FALSE
+	/// ref to our splint
+	var/obj/item/splint/splint_item
+
 /obj/item/bodypart/Initialize(mapload)
 	. = ..()
 
@@ -436,8 +444,10 @@
 		var/multiplier = 1
 		if(owner.body_position == LYING_DOWN)
 			multiplier *= pain_heal_rest_multiplier
-		if(remove_pain(amount = (pain_heal_tick * multiplier * delta_time * (PAIN_SYSTEM_SPEED_MODIFIER/10)), updating_health = FALSE))
-			. |= BODYPART_LIFE_UPDATE_HEALTH
+
+		if(!tourniquet)
+			if(remove_pain(amount = (pain_heal_tick * multiplier * delta_time * (PAIN_SYSTEM_SPEED_MODIFIER/10)), updating_health = FALSE))
+				. |= BODYPART_LIFE_UPDATE_HEALTH
 	if(can_decay(passed_temp))
 		if(germ_level || (getorganslotefficiency(ORGAN_SLOT_ARTERY) < ORGAN_FAILING_EFFICIENCY))
 			update_germs(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
@@ -445,12 +455,26 @@
 	if(number_injuries)
 		update_injuries(delta_time, times_fired)
 		. |= BODYPART_LIFE_UPDATE_HEALTH
+	if(tourniquet)
+		tourniquet_time += delta_time SECONDS
+		if(tourniquet_time >= TOURNIQUET_ISCHEMIA_DELAY)
+			if(DT_PROB(TOURNIQUET_DAMAGE_PROB, delta_time))
+				add_pain(rand(2, 4))
+			if(owner && DT_PROB(1, delta_time))
+				owner.custom_pain("My [name] feels cold and distant...", 10, FALSE, src)
+		if(tourniquet_time >= TOURNIQUET_NECROSIS_DELAY && !HAS_TRAIT(src, TRAIT_ROTTEN) && !skeletonized)
+			kill_limb()
+			if(owner)
+				to_chat(owner, span_userdanger("My [name] has gone numb, dark, and still. It's dead."))
+		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /// Check if we need to run on_life()
 /obj/item/bodypart/proc/consider_processing()
 	. = FALSE
+	if(tourniquet) //this is always true, some might say a truth nuke.
+		. = TRUE
 	//else if.. else if.. so on.
-	if(pain_dam >= DAMAGE_PRECISION)
+	else if(pain_dam >= DAMAGE_PRECISION)
 		. = TRUE
 	else if(number_injuries)
 		. = TRUE
@@ -810,6 +834,10 @@
 /obj/item/bodypart/proc/skeletonize(lethal = TRUE)
 	if(bandage)
 		remove_bandage()
+	if(splint_item)
+		remove_splint()
+	if(tourniquet)
+		remove_tourniquet()
 	for(var/obj/item/I in embedded_objects)
 		remove_embedded_object(I)
 	for(var/obj/item/I in src) //dust organs
@@ -1044,8 +1072,12 @@
 	//yes this does mean vampires can use rotten limbs
 	if((HAS_TRAIT(src, TRAIT_ROTTEN) || skeletonized) && !(owner.mob_biotypes & MOB_UNDEAD))
 		return set_disabled(BODYPART_DISABLED_ROT)
+	if(tourniquet)
+		return set_disabled(BODYPART_DISABLED_TOURNIQUET)
 	for(var/datum/wound/ouchie as anything in wounds)
 		if(!ouchie.disabling)
+			continue
+		if(splinted && ouchie.splint_suppression)
 			continue
 		return set_disabled(BODYPART_DISABLED_WOUND)
 	if(HAS_TRAIT(owner, TRAIT_PARALYSIS) || HAS_TRAIT(src, TRAIT_PARALYSIS))
@@ -1760,3 +1792,83 @@
 /obj/item/bodypart/proc/unbandage_limb()
 	for(var/datum/injury/injury as anything in injuries)
 		injury.unbandage_injury()
+
+/obj/item/bodypart/proc/apply_tourniquet(obj/item/tourniquet/new_tourniquet, mob/user)
+	if(tourniquet)
+		return FALSE
+	tourniquet = new_tourniquet
+	new_tourniquet.forceMove(src)
+	tourniquet_time = 0
+	if(owner)
+		owner.update_health_hud()
+	if(can_be_disabled)
+		update_disabled()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human = owner
+		human.update_damage_overlays_real()
+	return TRUE
+
+/obj/item/bodypart/proc/remove_tourniquet(mob/user, sudden = FALSE)
+	if(!tourniquet)
+		return FALSE
+	var/was_ischemic = (tourniquet_time >= TOURNIQUET_ISCHEMIA_DELAY)
+	var/obj/item/removed = tourniquet
+	tourniquet = null
+	var/turf/drop_loc = owner?.drop_location() || drop_location()
+	if(drop_loc)
+		removed.forceMove(drop_loc)
+	else
+		qdel(removed)
+
+	if(sudden && was_ischemic && owner && CAN_HAVE_BLOOD(owner))
+		owner.visible_message(span_danger("Blood sprays from [owner]'s [name] as the tourniquet comes off!"), \
+			span_userdanger("Blood sprays from my [name] as the tourniquet comes off!"))
+		owner.bleed(rand(15, 25))
+		add_pain(rand(10, 15))
+	if(can_be_disabled)
+		update_disabled()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human = owner
+		human.update_damage_overlays_real()
+	return TRUE
+
+/obj/item/bodypart/proc/apply_splint(obj/item/splint/new_splint, mob/user)
+	if(splinted)
+		return FALSE
+	splinted = TRUE
+	splint_item = new_splint
+	new_splint.forceMove(src)
+	for(var/datum/wound/wound as anything in wounds)
+		if(!wound.splint_suppression)
+			wound.passive_healing += splint_item.wound_healing
+	if(can_be_disabled)
+		update_disabled()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human = owner
+		human.update_damage_overlays_real()
+	return TRUE
+
+/obj/item/bodypart/proc/remove_splint(mob/user, broken = FALSE)
+	if(!splinted)
+		return FALSE
+	splinted = FALSE
+	var/obj/item/removed = splint_item
+	for(var/datum/wound/wound as anything in wounds)
+		if(!wound.splint_suppression)
+			wound.passive_healing -= splint_item.wound_healing
+	splint_item = null
+	if(removed)
+		var/turf/drop_loc = owner?.drop_location() || drop_location()
+		if(drop_loc)
+			removed.forceMove(drop_loc)
+		else
+			qdel(removed)
+	if(broken && owner)
+		to_chat(owner, span_userdanger("The splint on my [name] snaps!"))
+		add_pain(rand(5, 10))
+	if(can_be_disabled)
+		update_disabled()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human = owner
+		human.update_damage_overlays_real()
+	return TRUE

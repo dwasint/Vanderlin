@@ -449,6 +449,7 @@
 								ignored_mobs = target)
 
 					target.pump_heart(src)
+					target.cpr_grace_until = world.time + CPR_GRACE_WINDOW
 					if(target.stat < DEAD) // No point in running the revive check
 						return FALSE
 
