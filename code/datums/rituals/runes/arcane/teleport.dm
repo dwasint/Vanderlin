@@ -1,4 +1,4 @@
-/// Flat mana cost per traveler moved through the sigil (caster + each bonded follower)
+/// Flat mana cost per traveler moved through the sigil
 #define ARCYNE_TELEPORT_MANA_PER_TRAVELER 40
 /// Flat mana cost per item
 #define ARCYNE_TELEPORT_MANA_PER_ITEM 4
