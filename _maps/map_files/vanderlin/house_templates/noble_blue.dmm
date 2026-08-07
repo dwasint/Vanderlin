@@ -1228,6 +1228,7 @@
 /turf/open/floor/ruinedwood,
 /area/indoors/town/noble_manor/blue)
 "Xm" = (
+/obj/structure/sign/property_sign/claim,
 /turf/closed/wall/mineral/stone/window/moss,
 /area/outdoors/town/noble_manor/blue)
 "Xo" = (
