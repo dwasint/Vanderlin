@@ -1,7 +1,10 @@
 /datum/spellbook
 	var/mob/living/owner
 	var/datum/spell_mastery/mastery
+	///can we unlearn form and technique spells, kept within the form school though.
 	var/unlearn_mode = FALSE
+	/// If TRUE, this instance auto-closes the moment the owner stops sleeping
+	var/require_sleeping = FALSE
 
 /datum/spellbook/New(mob/living/owner, datum/spell_mastery/_mastery)
 	src.owner = owner
@@ -17,6 +20,22 @@
 
 /datum/spellbook/ui_state(mob/user)
 	return GLOB.always_state
+
+/datum/spellbook/ui_status(mob/user, datum/ui_state/state)
+	if(require_sleeping && !is_owner_sleeping())
+		return UI_CLOSE
+	return ..()
+
+/datum/spellbook/proc/is_owner_sleeping()
+	if(!owner)
+		return FALSE
+	if(HAS_TRAIT(owner, TRAIT_VAMP_DREAMS))
+		return TRUE
+	return owner.IsSleeping()
+
+/datum/spellbook/proc/open_unlearn(mob/user)
+	unlearn_mode = TRUE
+	ui_interact(user)
 
 /datum/spellbook/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

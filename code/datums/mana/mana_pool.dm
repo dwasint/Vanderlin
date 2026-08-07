@@ -109,6 +109,7 @@
 		mastery = new(src)
 		if(isliving(parent))
 			add_verb(parent, list(/mob/living/proc/open_spellbook))
+			ADD_TRAIT(parent, TRAIT_HASMAGIC, INNATE_TRAIT)
 	return mastery
 
 /datum/mana_pool/proc/update_processing_state()
