@@ -19,7 +19,7 @@
 							/obj/structure/flora/grass/herb/random = 20,
 							/obj/structure/flora/grass = 23,
 							/obj/structure/chair/bench/ancientlog = 20,
-							/obj/item/natural/artifact = 4,
+							/obj/item/natural/artifact = 1,
 							/obj/structure/leyline = 3,
 							/obj/structure/voidstoneobelisk = 3,
 							/obj/structure/wild_plant/manabloom = 2,

@@ -35,7 +35,7 @@
 
 /datum/spellcraft_contribution/natural_artifact
 	atom_path = /obj/item/natural/artifact
-	form_points = list(FORM_ARCANE = 4)
+	form_points = list(FORM_ARCANE = 3)
 	form_cost_multipliers = list(FORM_ARCANE = 1.4)
 	technique_points = list(TECHNIQUE_ALTERATION = 2, TECHNIQUE_IMBUE = 2)
 
