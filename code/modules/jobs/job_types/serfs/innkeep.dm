@@ -29,6 +29,8 @@
 	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/innkeep
+	guild_type = /datum/guild/inn
+	is_guild_head = TRUE
 	give_bank_account = 60
 	knows_the_town = TRUE
 	cmode_music = 'sound/music/cmode/towner/CombatInn.ogg'

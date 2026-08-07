@@ -664,7 +664,8 @@
 	save_id = "noble_blue";
 	template_x = 24;
 	template_y = 34;
-	default_template = /datum/map_template/vanderlin_noble_blue
+	default_template = /datum/map_template/vanderlin_noble_blue;
+	faction_type = /datum/noble_faction/vanderlin_blue
 	},
 /turf/closed/mineral,
 /area/under/cave)
@@ -21725,7 +21726,8 @@
 	default_template = /datum/map_template/vanderlin_noble_yellow;
 	save_id = "noble_yellow";
 	template_x = 25;
-	template_y = 25
+	template_y = 25;
+	faction_type = /datum/noble_faction/vanderlin_yellow
 	},
 /turf/open/floor/sand,
 /area/outdoors/beach)
@@ -35198,7 +35200,8 @@
 	property_id = "noble_red";
 	default_template = /datum/map_template/vanderlin_noble_red;
 	template_x = 29;
-	template_y = 26
+	template_y = 26;
+	faction_type = /datum/noble_faction/vanderlin_red
 	},
 /turf/open/openspace,
 /area/outdoors/town/noble_manor/red)

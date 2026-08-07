@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(noble_points)
+
 /obj/effect/abstract/property_noop
 	invisibility = INVISIBILITY_ABSTRACT
 	var/property_id
@@ -42,5 +44,22 @@
 		titles += initial(job.title)
 	return jointext(titles, ", ")
 
+/obj/effect/landmark/house_spot/proc/on_claim(mob/user)
+	return
+
 /obj/effect/landmark/house_spot/noble
 	required_jobs = list(/datum/job/minor_noble)
+	var/datum/noble_faction/faction_type
+
+/obj/effect/landmark/house_spot/noble/Initialize(mapload)
+	. = ..()
+	if(!ispath(faction_type) && !isnull(faction_type))
+		faction_type = text2path(faction_type) //someone map editting
+	LAZYADD(GLOB.noble_points, src)
+
+/obj/effect/landmark/house_spot/noble/on_claim(mob/user)
+	user.create_new_faction(faction_type)
+	LAZYREMOVE(GLOB.noble_points, src)
+
+/mob/proc/create_new_faction(datum/noble_faction/faction_type)
+	new faction_type(src)

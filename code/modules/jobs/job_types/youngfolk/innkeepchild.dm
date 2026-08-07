@@ -31,6 +31,7 @@
 	knows_the_town = TRUE
 
 	outfit = /datum/outfit/innkeep_son
+	guild_type = /datum/guild/inn
 	can_have_apprentices = FALSE
 	can_be_apprentice = TRUE
 	cmode_music = 'sound/music/cmode/towner/CombatInn.ogg'

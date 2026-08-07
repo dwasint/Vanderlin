@@ -35,6 +35,7 @@
 	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/grabber
+	guild_type = /datum/guild/merchant
 	knows_the_town = TRUE
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 	exp_types_granted = list(EXP_TYPE_MERCHANT_COMPANY)

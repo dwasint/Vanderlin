@@ -135,6 +135,8 @@ SUBSYSTEM_DEF(housing)
 	load_property(property, ckey, slot)
 	create_property_controller(property)
 
+	property.on_claim(user)
+
 	return TRUE
 
 /datum/controller/subsystem/housing/proc/get_player_property_slots(ckey, save_id)
