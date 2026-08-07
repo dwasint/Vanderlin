@@ -105,7 +105,7 @@
 	tier = 3
 	blacklisted = FALSE
 	required_atoms = list(
-		/obj/item/natural/artifact = 1,
+		/obj/item/mana_battery/mana_crystal/small = 1,
 		/obj/item/natural/leyline = 1,
 		/obj/item/natural/melded/t2 = 1
 	)
