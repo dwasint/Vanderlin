@@ -61,6 +61,8 @@
 	var/associated_ritual = null
 	/// If TRUE, every item with attunement_values on the rune is pulled into selected_atoms
 	var/takes_all_items = FALSE
+	///are we glowing?
+	var/glowing = FALSE
 
 /obj/effect/decal/cleanable/ritual_rune/Initialize(mapload, set_keyword)
 	. = ..()
@@ -73,6 +75,7 @@
 	animate(src, transform = matrix() * 2, alpha = 0, time = 5, flags = ANIMATION_END_NOW)
 	sleep(0.5 SECONDS)
 	animate(src, transform = matrix(), alpha = 255, time = 0, flags = ANIMATION_END_NOW)
+
 
 /// Called when the rune fails to activate. Shows a fizzle and resets rune_in_use.
 /obj/effect/decal/cleanable/ritual_rune/proc/fail_invoke()
