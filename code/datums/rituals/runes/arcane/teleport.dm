@@ -38,7 +38,7 @@
 		active_ui.cleanup()
 	return ..()
 
-/// Fully replaces the base mana_siphon click handler - this rune doesn't loop-process, it opens a browsing session once per activation
+/// Fully replaces the base mana_siphon click handler - this rune doesn't loop-process, it opens the warp sigil view once per activation.
 /obj/effect/decal/cleanable/ritual_rune/arcyne/mana_siphon/teleport/attack_hand(mob/living/user)
 	if(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/magic/arcane) <= SKILL_LEVEL_NONE)
 		to_chat(user, span_warning("You aren't able to invoke these symbols."))
