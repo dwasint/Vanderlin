@@ -379,7 +379,7 @@
 				"Tidebound Tome (Water)" = /obj/item/spellbook/apprentice/starter/water,
 			)
 
-			grant_selected_spellbooks(spawned, selectable_books, 1)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/job, grant_selected_spellbooks), spawned, selectable_books, 1)
 
 		if("Sword2")
 			spawned.change_stat(STAT_ENDURANCE, 1)
