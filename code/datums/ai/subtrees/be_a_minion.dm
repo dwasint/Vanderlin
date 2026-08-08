@@ -132,10 +132,10 @@
 		if("special")
 			if(istype(pawn, /mob/living/simple_animal/hostile/retaliate/primordial))
 				var/mob/living/simple_animal/hostile/retaliate/primordial/P = pawn
-				if(world.time < P.next_ability_use)
+				if(!COOLDOWN_FINISHED(P, next_ability_use))
 					return finish_action(controller)
 				P.ability(get_turf(target), P)
-				P.next_ability_use = world.time + P.ability_cooldown
+				COOLDOWN_START(P, next_ability_use, P.ability_cooldown)
 			else
 				if(pawn.has_status_effect(/datum/status_effect/debuff/specialcd))
 					return finish_action(controller)

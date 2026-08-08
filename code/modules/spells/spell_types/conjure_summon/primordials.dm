@@ -207,9 +207,9 @@
 	P.defprob = initial(P.defprob)
 
 /datum/action/cooldown/spell/command_word/proc/primordial_heal(mob/living/simple_animal/hostile/retaliate/primordial/P)
-	if(world.time < P.next_heal_time)
+	if(!COOLDOWN_FINISHED(P, next_heal_time))
 		return FALSE
-	P.next_heal_time = world.time + 15 SECONDS
+	COOLDOWN_START(P, next_heal_time, 15 SECONDS)
 	P.adjustHealth(-round(P.maxHealth * 0.25))
 	return TRUE
 
@@ -256,10 +256,10 @@
 
 	if(istype(summon, /mob/living/simple_animal/hostile/retaliate/primordial))
 		var/mob/living/simple_animal/hostile/retaliate/primordial/P = summon
-		if(world.time < P.next_ability_use)
+		if(!COOLDOWN_FINISHED(P, next_ability_use))
 			return FALSE
 		P.ability(get_turf(target), P)
-		P.next_ability_use = world.time + P.ability_cooldown
+		COOLDOWN_START(P, next_ability_use, P.ability_cooldown)
 		return TRUE
 
 	if(summon.has_status_effect(/datum/status_effect/debuff/specialcd))

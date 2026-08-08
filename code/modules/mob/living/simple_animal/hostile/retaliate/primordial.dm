@@ -1,39 +1,6 @@
-						//PRIMORDIALS//
-					//////////////////////
-						//////////////
-
 //The idea for Primordials is that they are conjurable companions for arcyne types. They should cost essentia to conjure, and will follow the command minion order spell.
 //Three differant types, air water and fire. Potential for unique effects/attacks for all three. Perhaps delineate between speed health and damage.
 //Might also be worth looking into a spell to adjust their 'modes' from melee to ranged, or a command for special abilities.
-
-/mob/living/simple_animal/hostile/retaliate/primordial/Initialize(mapload, mob/user)
-	if(user)
-		if(user.mind && user.mind.current)
-			summoner = user.mind.current.real_name
-		else
-			summoner = user.name
-	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOFIRE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_BASHDOORS, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_STRONGBITE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
-
-	. = ..()
-	src.adjust_skill_level(/datum/attribute/skill/combat/unarmed, 30, TRUE)
-	AddComponent(/datum/component/ai_aggro_system)
-	if(user && user.mind && user.mind.current)
-		befriend(user)
-	RegisterSignal(src, COMSIG_AI_BLACKBOARD_KEY_CLEARED(BB_BASIC_MOB_CURRENT_TARGET), PROC_REF(pet_passive))
-
-/mob/living/simple_animal/hostile/retaliate/primordial/proc/pet_passive()
-	pet_passive = TRUE
-
 /datum/intent/simple/claw/primordial
 	name = "claw"
 	icon_state = "instrike"
@@ -52,14 +19,42 @@
 /mob/living/simple_animal/hostile/retaliate/primordial
 	icon = 'icons/mob/primordial.dmi'
 	faction = list()
-	var/next_ability_use
 	var/ability_cooldown = 30 SECONDS
-	var/next_heal_time = 0
+	COOLDOWN_DECLARE(next_ability_use)
+	COOLDOWN_DECLARE(next_heal_time)
+
+/mob/living/simple_animal/hostile/retaliate/primordial/Initialize(mapload, mob/user)
+	if(user)
+		if(user?.mind?.current)
+			summoner = user.mind.current.real_name
+		else
+			summoner = user.name
+	ADD_TRAIT(src, TRAIT_NOMOOD, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_NOHUNGER, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_TOXIMMUNE, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_NOFIRE, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_BASHDOORS, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_NOPAIN, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_STRONGBITE, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_NOFALLDAMAGE1, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_BREADY, INNATE_TRAIT)
+
+	. = ..()
+	src.adjust_skill_level(/datum/attribute/skill/combat/unarmed, 30, TRUE)
+	AddComponent(/datum/component/ai_aggro_system)
+	if(user && user.mind && user.mind.current)
+		befriend(user)
+	RegisterSignal(src, COMSIG_AI_BLACKBOARD_KEY_CLEARED(BB_BASIC_MOB_CURRENT_TARGET), PROC_REF(pet_passive))
 
 /mob/living/simple_animal/hostile/retaliate/primordial/death()
 	..()
 	spill_embedded_objects()
 	qdel(src)
+
+/mob/living/simple_animal/hostile/retaliate/primordial/proc/pet_passive()
+	pet_passive = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/primordial/proc/ability(turf/target_location, mob/living/user)
 	return
@@ -96,7 +91,7 @@
 	var/turf/T = get_turf(cast_on)
 	if(!T)
 		return FALSE
-	if(world.time < P.next_ability_use)
+	if(!COOLDOWN_FINISHED(P, next_ability_use))
 		P.balloon_alert(P, "not ready yet!")
 		return FALSE
 	P.ability(T, P)
@@ -129,14 +124,12 @@
 	ranged_cooldown_time = 4 SECONDS
 	projectiletype = /obj/projectile/magic/spitfire/primordial
 	projectilesound = 'sound/magic/whiteflame.ogg'
-	next_ability_use
 	base_constitution = 10
 	base_strength = 10
 	base_speed = 13
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	defprob = 30
 	retreat_health = 0
-	next_ability_use
 	ai_controller = /datum/ai_controller/flame_primordial
 
 /mob/living/simple_animal/hostile/retaliate/primordial/fire/ability(turf/target_location, mob/living/user)
