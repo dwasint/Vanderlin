@@ -344,7 +344,7 @@
 
 	// Now release rows one after another
 	var/delay = 3 // deciseconds = 0.3s between rows
-	for(var/row_index = 1, row_index <= wave_rows.len, row_index++)
+	for(var/row_index in 1 to length(wave_rows))
 		var/list/row = wave_rows[row_index]
 		spawn(delay * (row_index - 1))
 			for(var/turf/T as anything in row)

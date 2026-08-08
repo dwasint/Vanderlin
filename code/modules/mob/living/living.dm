@@ -3078,9 +3078,6 @@
 	if(!silent && !silent_individual)
 		to_chat(src, span_boldwarning("I forgot all my spells!"))
 
-/mob/proc/adjust_form_mastery_points(points, used_points = FALSE, specific_form = null)
-	return
-
 /mob/living/adjust_form_mastery_points(points, used_points = FALSE, specific_form = null)
 	if(QDELETED(src))
 		return
@@ -3090,9 +3087,6 @@
 		mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	check_learnspell()
 
-/mob/proc/adjust_technique_mastery_points(points, used_points = FALSE, specific_technique = null)
-	return
-
 /mob/living/adjust_technique_mastery_points(points, used_points = FALSE, specific_technique = null)
 	if(QDELETED(src))
 		return
@@ -3100,17 +3094,11 @@
 	mana_pool?.get_mastery().adjust_technique_mastery_points(points, used_points, specific_technique)
 	check_learnspell()
 
-/mob/proc/reset_form_mastery_points(silent = TRUE)
-	return
-
 /mob/living/reset_form_mastery_points(silent = TRUE)
 	if(QDELETED(src))
 		return
 
 	mana_pool?.get_mastery().reset_form_mastery_points(silent)
-
-/mob/proc/reset_technique_mastery_points(silent = TRUE)
-	return
 
 /mob/living/reset_technique_mastery_points(silent = TRUE)
 	if(QDELETED(src))
