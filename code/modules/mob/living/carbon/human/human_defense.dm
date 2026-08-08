@@ -1,6 +1,7 @@
 /mob/living/carbon/human/getarmor(def_zone, type, damage, armor_penetration, blade_dulling, simulate=FALSE)
 	var/armorval = 0
 	var/organnum = 0
+	//!once phys mods are in change this
 	if(has_status_effect(/datum/status_effect/buff/iron_skin))
 		damage *= 0.75
 
