@@ -267,9 +267,7 @@
 				T.ChangeTurf(/turf/open/water/river/flow/west, flags = CHANGETURF_IGNORE_AIR)
 			else if(dx < 0 && dy > 0) // NW corner
 				T.ChangeTurf(/turf/open/water/river/flow, flags = CHANGETURF_IGNORE_AIR)
-	// Auto-remove after duration
-	spawn(duration)
-		qdel(src)
+	QDEL_IN(src, duration)
 
 /obj/effect/primordial_pool/Destroy()
 	// Restore saved turfs
