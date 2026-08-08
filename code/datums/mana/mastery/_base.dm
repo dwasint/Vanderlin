@@ -302,7 +302,7 @@
 		return FALSE
 
 	var/technique = initial(spell_path.required_technique)
-	var/form = initial(spell_path.equired_form)
+	var/form = initial(spell_path.required_form)
 	var/level_req = initial(spell_path.required_level)
 
 	// Check if you have enough specific spell currency remaining for this element
@@ -370,7 +370,7 @@
 		return FALSE
 
 	var/technique = initial(spell_path.required_technique)
-	var/form = initial(spell_path.equired_form)
+	var/form = initial(spell_path.required_form)
 
 	if(form)
 		spendable_form_points[form] += 1
