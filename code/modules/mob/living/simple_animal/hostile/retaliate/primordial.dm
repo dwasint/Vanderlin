@@ -353,7 +353,7 @@
 	for(var/row_index = 1, row_index <= wave_rows.len, row_index++)
 		var/list/row = wave_rows[row_index]
 		spawn(delay * (row_index - 1))
-			for(var/turf/T in row)
+			for(var/turf/T as anything in row)
 				if(!T)
 					continue
 				for(var/mob/living/L in T)
