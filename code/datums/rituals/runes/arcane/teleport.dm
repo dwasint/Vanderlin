@@ -220,25 +220,25 @@
 	update_display()
 
 /datum/sigil_travel_ui/proc/update_display()
-	if(!traveler || !destinations.len || current_index > destinations.len)
+	if(!traveler || !length(destinations) || current_index > length(destinations))
 		return
 
 	var/obj/effect/decal/cleanable/ritual_rune/arcyne/mana_siphon/teleport/current_dest = destinations[current_index]
 	var/area/dest_area = get_area(current_dest)
 
-	to_chat(traveler, span_notice("Exit [current_index]/[destinations.len]: [current_dest.listkey] in [dest_area.name]"))
+	to_chat(traveler, span_notice("Exit [current_index]/[length(destinations)]: [current_dest.listkey] in [dest_area.name]"))
 
 /datum/sigil_travel_ui/proc/navigate(direction)
-	if(!destinations.len)
+	if(!length(destinations))
 		return
 
-	var/attempts = destinations.len
+	var/attempts = length(destinations)
 	while(attempts > 0)
 		current_index += direction
 
 		if(current_index < 1)
-			current_index = destinations.len
-		else if(current_index > destinations.len)
+			current_index = length(destinations)
+		else if(current_index > length(destinations))
 			current_index = 1
 
 		if(!QDELETED(destinations[current_index]))
