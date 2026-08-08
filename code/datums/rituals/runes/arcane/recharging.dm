@@ -29,12 +29,12 @@
 		to_chat(user, span_notice("The rune is already working..."))
 		return
 
-	if(!user.get_active_held_item())
-		if(staged_book)
-			try_invoke(user)
-		else
-			. = ..()
+	if(user.get_active_held_item())
 		return
+	if(staged_book)
+		try_invoke(user)
+		return
+	return ..()
 
 /obj/effect/decal/cleanable/ritual_rune/arcyne/recharge/attack_hand_secondary(mob/living/user, list/modifiers)
 	if(animating)
