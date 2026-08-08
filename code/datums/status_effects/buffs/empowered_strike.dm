@@ -26,7 +26,7 @@
 /datum/status_effect/buff/empowered_strike/on_remove()
 	UnregisterSignal(owner, list(COMSIG_MOB_ITEM_ATTACK, COMSIG_HUMAN_MELEE_UNARMED_ATTACK))
 	owner.remove_filter(EMPOWER_FILTER)
-	return = ..()
+	return ..()
 
 /datum/status_effect/buff/empowered_strike/proc/on_attack(mob/living/source, mob/living/target, mob/living/user, obj/item/weapon)
 	SIGNAL_HANDLER

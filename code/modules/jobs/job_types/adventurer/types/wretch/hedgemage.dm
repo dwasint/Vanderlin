@@ -88,7 +88,7 @@
 		"Tidebound Tome (Water)" = /obj/item/spellbook/adept/starter/water,
 	)
 
-	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
+	grant_selected_spellbooks(spawned, selectable_books, 2)
 
 /datum/outfit/wretch/hedgemage
 	name = "Hedge Mage (Wretch)"

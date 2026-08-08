@@ -53,7 +53,7 @@
 		M = user.apply_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(M)
 		M.add_stacks(1)
-		START_COOLDOWN(src, last_melee_gain, gain_cooldown)
+		COOLDOWN_START(src, last_melee_gain, gain_cooldown)
 
 /datum/component/arcyne_conduit/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER

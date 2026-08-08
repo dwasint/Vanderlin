@@ -202,7 +202,7 @@
 		"Tidebound Tome (Water)" = /obj/item/spellbook/apprentice/starter/water,
 	)
 
-	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
+	grant_selected_spellbooks(spawned, selectable_books, 2)
 
 /datum/outfit/minornoble/magickal_graduate
 	name = "Magical Graduate (noble)"

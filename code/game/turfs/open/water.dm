@@ -891,13 +891,13 @@
 	icon_state = "rockwd2"
 
 /turf/open/water/river/flow/west
-	dir = 8
+	dir = WEST
 
 /turf/open/water/river/flow/east
-	dir = 4
+	dir = EAST
 
 /turf/open/water/river/flow/north
-	dir = 1
+	dir = NORTH
 
 /turf/open/water/river/get_heuristic_slowdown(mob/traverser, travel_dir)
 	. = ..()

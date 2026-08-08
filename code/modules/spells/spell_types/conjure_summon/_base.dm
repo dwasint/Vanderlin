@@ -78,7 +78,7 @@
 		cw.Remove(user)
 
 /datum/action/cooldown/spell/conjure_summon/Destroy()
-	for(var/mob/living/M in conjured_mobs.Copy())
+	for(var/mob/living/M as anything in conjured_mobs)
 		if(!QDELETED(M))
 			qdel(M)
 	conjured_mobs.Cut()

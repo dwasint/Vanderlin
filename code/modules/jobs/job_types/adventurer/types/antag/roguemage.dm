@@ -105,7 +105,7 @@
 		"Tidebound Tome (Water)" = /obj/item/spellbook/apprentice/starter/water,
 	)
 
-	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 1)
+	grant_selected_spellbooks(spawned, selectable_books, 1)
 
 /datum/outfit/bandit/roguemage
 	name = "Rogue Mage (Bandit)"

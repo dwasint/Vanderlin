@@ -21,7 +21,7 @@
 	var/recoil_stamina_only = FALSE
 
 /datum/action/cooldown/spell/raise_undead/Destroy()
-	for(var/mob/living/M in conjured_mobs.Copy())
+	for(var/mob/living/M as anything in conjured_mobs.Copy())
 		if(!QDELETED(M))
 			qdel(M)
 	conjured_mobs.Cut()
@@ -32,11 +32,10 @@
 	conjured_mobs -= summoned
 
 /datum/action/cooldown/spell/raise_undead/proc/register_minion(mob/living/minion, mob/living/user)
-	if(length(conjured_mobs) >= max_summons)
-		for(var/mob/living/M in conjured_mobs.Copy())
-			if(!QDELETED(M))
-				qdel(M)
-		conjured_mobs.Cut()
+	var/mob/living/last = conjured_mobs[length(conjured_mobs)]
+	if(!QDELETED(last))
+		qdel(last)
+	conjured_mobs.len--
 
 	conjured_mobs += minion
 	RegisterSignal(minion, COMSIG_QDELETING, PROC_REF(remove_conjure))
@@ -64,8 +63,6 @@
 
 /datum/action/cooldown/spell/raise_undead/cast(mob/living/carbon/human/cast_on)
 	. = ..()
-	var/mob/living/user = owner
-
 	owner.say("Hgf'ant'kthar!")
 
 	cast_on.visible_message(span_warning("[cast_on.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
@@ -77,7 +74,7 @@
 			to_chat(cast_on, span_danger("You rise as a minion."))
 			cast_on.turn_to_minion(owner, cast_on.ckey)
 			cast_on.visible_message(span_warning("[cast_on.real_name]'s eyes light up with an evil glow."), runechat_message = TRUE)
-			register_minion(cast_on, user)
+			register_minion(cast_on, owner)
 			return
 		else
 			to_chat(cast_on, span_danger("Another soul will take over."))
@@ -91,7 +88,7 @@
 		cast_on.turn_to_minion(owner)
 		cast_on.visible_message(span_warning("[cast_on.real_name]'s eyes light up with a weak glow."), runechat_message = TRUE)
 
-	register_minion(cast_on, user)
+	register_minion(cast_on, owner)
 
 /mob/living/carbon/human/proc/turn_to_minion(mob/living/carbon/human/master, ckey)
 	if(!master)
