@@ -237,36 +237,32 @@
 	. = ..()
 	if(!center)
 		center = get_turf(src)
+
 	// Build a 3x3 block around the center
 	var/list/affected = block(
 		locate(center.x - 1, center.y - 1, center.z),
 		locate(center.x + 1, center.y + 1, center.z)
 	)
+
 	for(var/turf/T as anything in affected)
 		turf_data[T] = T.type
-		var/dx = T.x - center.x
-		var/dy = T.y - center.y
-		if(dx == 0 && dy == 0)
-			T.ChangeTurf(/turf/open/water/ocean, flags = CHANGETURF_IGNORE_AIR)	//deep center
-		else if(dx == 0) // vertical (north/south)
-			if(dy > 0)
-				T.ChangeTurf(/turf/open/water/river/flow, flags = CHANGETURF_IGNORE_AIR)
-			else
-				T.ChangeTurf(/turf/open/water/river/flow/north, flags = CHANGETURF_IGNORE_AIR)
-		else if(dy == 0) // horizontal (east/west)
-			if(dx > 0)
-				T.ChangeTurf(/turf/open/water/river/flow/west, flags = CHANGETURF_IGNORE_AIR)
-			else
-				T.ChangeTurf(/turf/open/water/river/flow/east, flags = CHANGETURF_IGNORE_AIR)
-		else
-			if(dx < 0 && dy < 0) // SW corner
-				T.ChangeTurf(/turf/open/water/river/flow/east, flags = CHANGETURF_IGNORE_AIR)
-			else if(dx > 0 && dy < 0) // SE corner
-				T.ChangeTurf(/turf/open/water/river/flow/north, flags = CHANGETURF_IGNORE_AIR)
-			else if(dx > 0 && dy > 0) // NE corner
-				T.ChangeTurf(/turf/open/water/river/flow/west, flags = CHANGETURF_IGNORE_AIR)
-			else if(dx < 0 && dy > 0) // NW corner
-				T.ChangeTurf(/turf/open/water/river/flow, flags = CHANGETURF_IGNORE_AIR)
+		var/turf_path
+
+		switch(get_dir(center, T))
+			if(0)
+				turf_path = /turf/open/water/ocean
+			if(NORTH, NORTHWEST)
+				turf_path = /turf/open/water/river/flow
+			if(SOUTH, SOUTHEAST)
+				turf_path = /turf/open/water/river/flow/north
+			if(EAST, NORTHEAST)
+				turf_path = /turf/open/water/river/flow/west
+			if(WEST, SOUTHWEST)
+				turf_path = /turf/open/water/river/flow/east
+
+		if(turf_path)
+			T.ChangeTurf(turf_path, flags = CHANGETURF_IGNORE_AIR)
+
 	QDEL_IN(src, duration)
 
 /obj/effect/primordial_pool/Destroy()
