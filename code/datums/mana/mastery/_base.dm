@@ -285,9 +285,9 @@
 	return TRUE
 
 /// Returns the {form points, technique points} cost of learning spell_path, as a 2-item list.
-/datum/spell_mastery/proc/get_spell_cost(spell_path)
-	var/form_cost = initial(spell_path:required_form) ? 1 : 0
-	var/technique_cost = initial(spell_path:required_technique) ? 1 : 0
+/datum/spell_mastery/proc/get_spell_cost(datum/action/cooldown/spell/spell_path)
+	var/form_cost = initial(spell_path.required_form) ? 1 : 0
+	var/technique_cost = initial(spell_path.required_technique) ? 1 : 0
 	return list(form_cost, technique_cost)
 
 /**
@@ -295,15 +295,15 @@
  * check unlocked_spells / can_unlearn_spell for that). Reads spell vars via initial()
  * so we never have to instance the spell just to inspect its requirements.
  */
-/datum/spell_mastery/proc/can_learn_spell(spell_path)
+/datum/spell_mastery/proc/can_learn_spell(datum/action/cooldown/spell/spell_path)
 	if(!ispath(spell_path, /datum/action/cooldown/spell))
 		return FALSE
 	if(spell_path in unlocked_spells)
 		return FALSE
 
-	var/technique = initial(spell_path:required_technique)
-	var/form = initial(spell_path:required_form)
-	var/level_req = initial(spell_path:required_level)
+	var/technique = initial(spell_path.required_technique)
+	var/form = initial(spell_path.equired_form)
+	var/level_req = initial(spell_path.required_level)
 
 	// Check if you have enough specific spell currency remaining for this element
 	if(form && (spendable_form_points[form] || 0) < 1)
@@ -316,7 +316,7 @@
 		if(form && get_form_level(form) < level_req)
 			return FALSE
 
-	var/list/prereqs = initial(spell_path:prerequisite_spells)
+	var/list/prereqs = initial(spell_path.prerequisite_spells)
 	if(length(prereqs))
 		for(var/prereq_path in prereqs)
 			if(!(prereq_path in unlocked_spells))
@@ -324,12 +324,12 @@
 
 	return TRUE
 
-/datum/spell_mastery/proc/try_learn_spell(spell_path)
+/datum/spell_mastery/proc/try_learn_spell(datum/action/cooldown/spell/spell_path)
 	if(!can_learn_spell(spell_path))
 		return FALSE
 
-	var/technique = initial(spell_path:required_technique)
-	var/form = initial(spell_path:required_form)
+	var/technique = initial(spell_path.required_technique)
+	var/form = initial(spell_path.required_form)
 
 	if(form)
 		spendable_form_points[form] -= 1
@@ -344,7 +344,7 @@
 		var/list/charges = parent ? spellbook_charges[AM] : null
 
 		if(charges && isnull(charges[spell_path]))
-			charges[spell_path] = initial(spell_path:initial_charges) || 0
+			charges[spell_path] = initial(spell_path.initial_charges) || 0
 
 		var/datum/action/cooldown/spell/new_spell = new spell_path()
 		RegisterSignal(new_spell, COMSIG_SPELL_CAST, PROC_REF(pass_spell_cast))
@@ -365,12 +365,12 @@
 			add_spells(src, cached_holder)
 	return TRUE
 
-/datum/spell_mastery/proc/try_unlearn_spell(spell_path)
+/datum/spell_mastery/proc/try_unlearn_spell(datum/action/cooldown/spell/spell_path)
 	if(!can_unlearn_spell(spell_path))
 		return FALSE
 
-	var/technique = initial(spell_path:required_technique)
-	var/form = initial(spell_path:required_form)
+	var/technique = initial(spell_path.required_technique)
+	var/form = initial(spell_path.equired_form)
 
 	if(form)
 		spendable_form_points[form] += 1
@@ -535,6 +535,7 @@
 	recalculate_unspent_points()
 
 /datum/spell_mastery/proc/pass_spell_cast(datum/action/cooldown/spell/spell, atom/cast_on)
+	SIGNAL_HANDLER
 	if(!parent)
 		return
 	SEND_SIGNAL(parent, COMSIG_MASTERY_CAST, spell.owner)
