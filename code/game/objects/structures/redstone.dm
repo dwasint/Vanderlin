@@ -39,8 +39,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 				LAZYREMOVE(redstone_attached, O)
 			GLOB.redstone_objs -= src
 			return
-		LAZYADD(buffer_structure.redstone_attached, src)
-		LAZYADD(redstone_attached, buffer_structure)
+		LAZYOR(buffer_structure.redstone_attached, src)
+		LAZYOR(redstone_attached, buffer_structure)
 		GLOB.redstone_objs |= src
 		GLOB.redstone_objs |= buffer_structure
 		to_chat(user, "You calibrate [src] to the output of [buffer_structure].")
@@ -69,8 +69,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 			if(S == src)
 				continue
 			if(S.redstone_id == redstone_id)
-				LAZYADD(redstone_attached, S)
-				LAZYADD(S.redstone_attached, src)
+				LAZYOR(redstone_attached, S)
+				LAZYOR(S.redstone_attached, src)
 
 /obj/structure/proc/redstone_triggered(mob/user)
 	return
