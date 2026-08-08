@@ -129,7 +129,7 @@
 
 	return null
 
-/mob/proc/reduce_status_effect_duration(effect_type, amount = 15 SECONDS)
+/mob/living/proc/reduce_status_effect_duration(effect_type, amount = 15 SECONDS)
 	var/datum/status_effect/S = has_status_effect(effect_type)
 	if(!S)
 		return FALSE
