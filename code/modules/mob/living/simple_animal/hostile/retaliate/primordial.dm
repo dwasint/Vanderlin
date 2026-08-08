@@ -324,39 +324,55 @@
 /mob/living/simple_animal/hostile/retaliate/primordial/air/proc/do_gust(turf/target_location)
 	if(QDELETED(src) || stat == DEAD || !target_location)
 		return
-	var/dir_to_target = get_dir(src, target_location)
 
-	// Starting turf = just in front of the primordial
-	var/turf/current = get_step(get_turf(src), dir_to_target)
+	var/turf/center = get_turf(src)
+	if(!center)
+		return
 
-	// Collect the 3-length line outward from source
-	var/list/wave_rows = list()
+	var/dir_to_target = get_dir(center, target_location)
+	if(!dir_to_target)
+		return
+
+	visible_message(span_danger("[src] exhales a violent gust of wind!"))
+	playsound(src, 'sound/weather/rain/wind_6.ogg', 100, TRUE)
+
+	var/turf/current = get_step(center, dir_to_target)
+	var/left_dir = turn(dir_to_target, 90)
+	var/right_dir = turn(dir_to_target, -90)
+	var/delay = 3
+
 	for(var/i in 1 to 3)
 		if(!current)
 			break
-		var/list/row = list()
-		row += current
-		row += get_step(current, turn(dir_to_target, 90))
-		row += get_step(current, turn(dir_to_target, -90))
 
-		wave_rows += list(row) // push row as sublist
+		var/list/turf/row = list(
+			current,
+			get_step(current, left_dir),
+			get_step(current, right_dir)
+		)
+
+		var/stagger = (i - 1) * delay
+		if(stagger == 0)
+			process_gust_row(row, dir_to_target)
+		else
+			addtimer(CALLBACK(src, PROC_REF(process_gust_row), row, dir_to_target), stagger)
+
 		current = get_step(current, dir_to_target)
 
-	// Now release rows one after another
-	var/delay = 3 // deciseconds = 0.3s between rows
-	for(var/row_index in 1 to length(wave_rows))
-		var/list/row = wave_rows[row_index]
-		spawn(delay * (row_index - 1))
-			for(var/turf/T as anything in row)
-				if(!T)
-					continue
-				for(var/mob/living/L as anything in T)
-					if(L == src)
-						continue
-					knockback(L, dir_to_target, 8)
-				new /obj/effect/temp_visual/gust(T, dir_to_target)
-	visible_message(span_danger("[src] exhales a violent gust of wind!"))
-	playsound(src, 'sound/weather/rain/wind_6.ogg', 100, TRUE)
+/mob/living/simple_animal/hostile/retaliate/primordial/air/proc/process_gust_row(list/turf/row, dir_to_target)
+	if(QDELETED(src) || stat == DEAD)
+		return
+
+	for(var/turf/T as anything in row)
+		if(!T)
+			continue
+
+		new /obj/effect/temp_visual/gust(T, dir_to_target)
+
+		for(var/mob/living/L in T)
+			if(L == src)
+				continue
+			knockback(L, dir_to_target, 8)
 
 
 /mob/living/simple_animal/hostile/retaliate/primordial/air/proc/knockback(mob/living/L, dir, distance)
