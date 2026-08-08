@@ -70,7 +70,7 @@
 	if(COOLDOWN_FINISHED(src, last_melee_gain))
 		return
 	add_stacks(1)
-	START_COOLDOWN(src, last_melee_gain, melee_gain_cooldown)
+	COOLDOWN_START(src, last_melee_gain, melee_gain_cooldown)
 
 // Momentum from knuckle/katar hits — only if the weapon uses unarmed skill
 /datum/status_effect/buff/arcyne_momentum/proc/on_unarmed_item_attack(mob/living/source, mob/living/target, mob/living/user)
@@ -83,7 +83,7 @@
 	if(COOLDOWN_FINISHED(src, last_melee_gain))
 		return
 	add_stacks(1)
-	START_COOLDOWN(src, last_melee_gain, melee_gain_cooldown)
+	COOLDOWN_START(src, last_melee_gain, melee_gain_cooldown)
 
 /datum/status_effect/buff/arcyne_momentum/proc/on_stunned()
 	SIGNAL_HANDLER
@@ -196,9 +196,7 @@
 	owner.cut_overlay(electricity_overlay)
 
 /mob/living/proc/get_arcyne_momentum()
-	if(!istype(target))
-		return 0
-	var/datum/status_effect/buff/arcyne_momentum/M = target.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	var/datum/status_effect/buff/arcyne_momentum/M = has_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(!M)
 		return 0
 	return M.stacks
