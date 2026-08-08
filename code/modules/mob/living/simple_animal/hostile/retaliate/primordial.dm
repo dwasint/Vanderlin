@@ -242,11 +242,8 @@
 		locate(center.x - 1, center.y - 1, center.z),
 		locate(center.x + 1, center.y + 1, center.z)
 	)
-	// Save original turfs
-	for(var/turf/T in affected)
+	for(var/turf/T as anything in affected)
 		turf_data[T] = T.type
-	// Apply whirlpool layout
-	for(var/turf/T in affected)
 		var/dx = T.x - center.x
 		var/dy = T.y - center.y
 		if(dx == 0 && dy == 0)
@@ -276,9 +273,8 @@
 
 /obj/effect/primordial_pool/Destroy()
 	// Restore saved turfs
-	for(var/turf/T in turf_data)
-		if(T)
-			T.ChangeTurf(turf_data[T], flags = CHANGETURF_IGNORE_AIR)
+	for(var/turf/T as anything in turf_data)
+		T?.ChangeTurf(turf_data[T], flags = CHANGETURF_IGNORE_AIR)
 	turf_data.Cut()
 	return ..()
 
@@ -341,7 +337,7 @@
 
 	// Collect the 3-length line outward from source
 	var/list/wave_rows = list()
-	for(var/i = 1, i <= 3, i++)
+	for(var/i in 1 to 3)
 		if(!current)
 			break
 		var/list/row = list()
