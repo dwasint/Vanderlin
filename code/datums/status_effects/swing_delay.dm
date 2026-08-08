@@ -6,11 +6,6 @@
 	mob_overlay_icon_state = "eff_swingdelay"
 	mob_overlay_icon = 'icons/mob/mob_effects.dmi'
 
-/datum/status_effect/swingdelay/on_creation(mob/living/new_owner, newdur)
-	if(newdur)
-		duration = newdur
-	. = ..()
-
 /datum/status_effect/swingdelay/on_apply()
 	. = ..()
 	owner.swing_state = TRUE
