@@ -506,6 +506,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_SPLIT_PERSONALITY "no_split_personality"
 #define TRAIT_VIRGIN	"virginity"
 
+#define TRAIT_CONJURED_SUMMON "conjured_summon"
+#define TRAIT_CONJURE_BACKLASH "conjure_backlash"
+
+#define TRAIT_SORCERER "Unattuned"
+
 /// This mob's surgical operations ignore ALL speed modifiers (even positive ones!) besides tool quality.
 /// The mob can also no longer fail their operations, unless the operation says otherwise
 #define TRAIT_IGNORE_SURGERY_MODIFIERS "ignore_surgery_modifiers"
@@ -643,9 +648,3 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // genetic traits
 #define TRAIT_ANIMAL_NATURAL_ARMOR "natural_armor"
 #define TRAIT_ANIMAL_PRODUCTIVE "trait_productive"
-
-#define TRAIT_CONJURED_SUMMON "conjured_summon"
-#define TRAIT_CONJURE_BACKLASH "conjure_backlash"
-
-#define TRAIT_SORCERER "Unattuned"
-
