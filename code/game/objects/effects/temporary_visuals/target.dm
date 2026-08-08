@@ -120,7 +120,9 @@
 
 /obj/effect/temp_visual/target/lightning/fall(list/hit_atoms)
 	var/turf/T = get_turf(src)
-	sleep(duration)
+	addtimer(CALLBACK(src, PROC_REF(trigger_effect), T), duration)
+
+/obj/effect/temp_visual/target/lightning/proc/trigger_effect(turf/T)
 	playsound(T,'sound/magic/lightning.ogg', 80, TRUE)
 	new /obj/effect/temp_visual/lightning(T)
 
@@ -131,9 +133,7 @@
 	light_color = COLOR_PALE_BLUE_GRAY
 	duration = 1.2 SECONDS
 
-/obj/effect/temp_visual/target/lightning/sundering/fall(list/hit_atoms)
-	var/turf/T = get_turf(src)
-	sleep(duration)
+/obj/effect/temp_visual/target/lightning/sundering/trigger_effect(turf/T)
 	playsound(T,'sound/magic/lightning.ogg', 80, TRUE)
 	new /obj/effect/temp_visual/lightning(T)
 
