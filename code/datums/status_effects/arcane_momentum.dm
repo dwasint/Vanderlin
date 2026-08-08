@@ -1,6 +1,8 @@
 #define MOMENTUM_FILTER "momentum_glow"
 #define MOMENTUM_DECAY_DELAY (8 SECONDS)
 #define SECOND_PER_MOMENTUM (6 SECONDS) // Time between each stack lost during decay.
+#define ARCANE_MIDDLE 3
+#define ARCANE_SAFECAP 6
 
 /atom/movable/screen/alert/status_effect/buff/arcyne_momentum
 	name = "Arcyne Momentum (0)"
@@ -117,10 +119,10 @@
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
-	if(old_stacks < 3 && stacks >= 3)
+	if(old_stacks < ARCANE_MIDDLE && stacks >= ARCANE_MIDDLE)
 		to_chat(owner, span_notice("Arcyne force gathers within me!"))
 		playsound(get_turf(owner), 'sound/magic/charging.ogg', 30, TRUE)
-	if(old_stacks < 6 && stacks >= 6)
+	if(old_stacks < ARCANE_SAFECAP && stacks >= ARCANE_SAFECAP)
 		to_chat(owner, span_warning("Release! I must ACT NOW!"))
 		playsound(get_turf(owner), 'sound/magic/charged.ogg', 50, TRUE)
 	if(old_stacks < overcharge_threshold && stacks >= overcharge_threshold)
@@ -204,3 +206,5 @@
 #undef MOMENTUM_FILTER
 #undef MOMENTUM_DECAY_DELAY
 #undef SECOND_PER_MOMENTUM
+#undef ARCANE_MIDDLE
+#undef ARCANE_SAFECAP
