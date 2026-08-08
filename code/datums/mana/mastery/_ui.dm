@@ -169,7 +169,7 @@
 
 /mob/living/proc/open_spellbook()
 	set name = "Open Innate Spells"
-	set category = "Magic"
+	set category = "RoleUnique.Magic"
 
 	var/datum/spellbook/book = new(src)
 	book.ui_interact(src)
