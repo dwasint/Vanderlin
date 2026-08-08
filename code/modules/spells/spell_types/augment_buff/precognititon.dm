@@ -20,8 +20,8 @@
 	var/mob/living/target = cast_on
 
 	var/hastened = FALSE
-	hastened |= reduce_intent_cooldown(target, /datum/status_effect/debuff/clashcd)
-	hastened |= reduce_intent_cooldown(target, /datum/status_effect/debuff/specialcd)
+	hastened |= target.reduce_status_effect_duration(/datum/status_effect/debuff/clashcd)
+	hastened |= target.reduce_status_effect_duration(/datum/status_effect/debuff/specialcd)
 
 	var/obj/effect/temp_visual/origin_haste/V = new
 	target.vis_contents += V
@@ -31,15 +31,6 @@
 		to_chat(target, span_notice("I glimpse the moments ahead, and ready myself for the next move."))
 	else
 		to_chat(target, span_notice("I glimpse the moments ahead, but there is nothing left to hasten."))
-	return TRUE
-
-/proc/reduce_intent_cooldown(mob/living/target, effect_type, amount = 15 SECONDS)
-	var/datum/status_effect/S = target.has_status_effect(effect_type)
-	if(!S)
-		return FALSE
-	S.duration -= amount
-	if(S.duration <= world.time)
-		target.remove_status_effect(effect_type)
 	return TRUE
 
 /obj/effect/temp_visual/origin_haste
