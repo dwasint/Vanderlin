@@ -117,7 +117,7 @@
 		here.Beam(pylon, icon_state = "drain_life", time = 1 SECONDS, override_target_pixel_y = 32)
 		return TRUE
 
-	if(user && !QDELETED(user) && user.stat == CONSCIOUS)
+	if(!QDELETED(user) && user.stat == CONSCIOUS)
 		if(!isnull(user.mana_pool) && user.has_mana_available(cost))
 			user.mana_pool.adjust_mana(-cost)
 			if(COOLDOWN_FINISHED(src, drain_message))
@@ -250,7 +250,7 @@
 	update_display()
 
 /datum/sigil_travel_ui/proc/move_to_destination()
-	if(!traveler || !destinations.len || current_index > destinations.len)
+	if(!traveler || !length(destinations) || current_index > length(destinations))
 		return
 
 	var/obj/effect/decal/cleanable/ritual_rune/arcyne/mana_siphon/teleport/destination = destinations[current_index]
@@ -265,17 +265,17 @@
 
 	var/turf/final_turf = get_step(traveler, REVERSE_DIR(travel_dir))
 
-	cleanup()
+	cleanup(FALSE)
 
 	to_chat(traveler, span_cult("Your vision clears - you've stepped out of the sigil!"))
 	traveler.visible_message(span_danger("[traveler] steps out of a shimmering sigil."))
 
-	animate(traveler, alpha = 255, time = 0.5 SECONDS)
+	animate(traveler, alpha = 255, time = 0.5 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
 
-	if(origin && !QDELETED(origin))
+	if(!QDELETED(origin))
 		origin.finish_warp(traveler, final_turf, followers)
 
-/datum/sigil_travel_ui/proc/cleanup()
+/datum/sigil_travel_ui/proc/cleanup(clean_alpha = TRUE)
 	if(traveler)
 		UnregisterSignal(traveler, COMSIG_MOVABLE_MOVED)
 
@@ -288,7 +288,7 @@
 			C.screen -= right_button
 			qdel(right_button)
 
-	if(traveler && traveler.alpha == 0)
+	if(clean_alpha && traveler?.alpha != 255)
 		traveler.alpha = 255
 
 	qdel(src)

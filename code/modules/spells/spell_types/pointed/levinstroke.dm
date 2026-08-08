@@ -99,7 +99,7 @@
 	for(var/mob/living/victim in victims)
 		if(QDELETED(victim) || victim.stat == DEAD)
 			continue
-		if(victim.anti_magic_check())
+		if(victim.can_block_magic())
 			victim.visible_message(span_warning("The lightning fades away around [victim]!"))
 			playsound(get_turf(victim), 'sound/magic/magic_nulled.ogg', 100)
 			continue

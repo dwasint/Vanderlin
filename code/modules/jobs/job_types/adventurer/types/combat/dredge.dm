@@ -367,7 +367,7 @@
 			to_chat(spawned,span_info("\
 			I've studied the arcyne, those who step to me shall perish.")
 			)
-			var/list/selectable_books = list(
+			var/static/list/selectable_books = list(
 				"Blazing Tome (Fire)" = /obj/item/spellbook/apprentice/starter/fire,
 				"Frostbound Tome (Ice)" = /obj/item/spellbook/apprentice/starter/ice,
 				"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/apprentice/starter/lightning,

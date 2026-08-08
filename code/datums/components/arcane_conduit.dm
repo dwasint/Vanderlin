@@ -4,8 +4,8 @@
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/outline_color = "#4a90d9"
 	var/gain_cooldown = 2 SECONDS // 2 seconds between melee momentum gains
-	var/last_melee_gain = 0
 	var/datum/weakref/owner_ref
+	COOLDOWN_DECLARE(last_melee_gain)
 
 /datum/component/arcyne_conduit/Initialize(outline_color_override, mob/living/owner)
 	if(!isitem(parent))
@@ -16,7 +16,7 @@
 		owner_ref = WEAKREF(owner)
 		RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(on_owner_death))
 	var/obj/item/I = parent
-	I.add_filter(CONDUIT_FILTER, 2, list("type" = "outline", "color" = outline_color, "alpha" = 200, "size" = 1))
+	I.add_filter(CONDUIT_FILTER, 2, outline_filter(1, outline_color))
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(on_attack_success))
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
@@ -46,14 +46,14 @@
 		return
 	if(target.stat == DEAD)
 		return
-	if(world.time < last_melee_gain + gain_cooldown)
+	if(!COOLDOWN_FINISHED(src, last_melee_gain))
 		return
 	var/datum/status_effect/buff/arcyne_momentum/M = user.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(!M)
 		M = user.apply_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(M)
 		M.add_stacks(1)
-		last_melee_gain = world.time
+		START_COOLDOWN(src, last_melee_gain, gain_cooldown)
 
 /datum/component/arcyne_conduit/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER

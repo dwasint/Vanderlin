@@ -190,7 +190,7 @@
 /datum/job/advclass/minornoble/magickal_graduate/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
 
-	var/list/selectable_books = list(
+	var/static/list/selectable_books = list(
 		"Blazing Tome (Fire)" = /obj/item/spellbook/apprentice/starter/fire,
 		"Frostbound Tome (Ice)" = /obj/item/spellbook/apprentice/starter/ice,
 		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/apprentice/starter/lightning,

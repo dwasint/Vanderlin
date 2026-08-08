@@ -30,27 +30,35 @@
 /obj/item/spellbook/horrible/starter/fire
 	themed_form = FORM_FIRE
 	designlist = list("steel")
+
 /obj/item/spellbook/horrible/starter/ice
 	themed_form = FORM_ICE
 	designlist = list("steel")
+
 /obj/item/spellbook/horrible/starter/lightning
 	themed_form = FORM_LIGHTNING
 	designlist = list("steel")
+
 /obj/item/spellbook/horrible/starter/earth
 	themed_form = FORM_EARTH
 	designlist = list("steel")
+
 /obj/item/spellbook/horrible/starter/arcane
 	themed_form = FORM_ARCANE
 	designlist = list("gem")
+
 /obj/item/spellbook/horrible/starter/death
 	themed_form = FORM_DEATH
 	designlist = list("skin")
+
 /obj/item/spellbook/horrible/starter/life
 	themed_form = FORM_LIFE
 	designlist = list("mimic")
+
 /obj/item/spellbook/horrible/starter/air
 	themed_form = FORM_AIR
 	designlist = list("steel")
+
 /obj/item/spellbook/horrible/starter/water
 	themed_form = FORM_WATER
 	designlist = list("steel")

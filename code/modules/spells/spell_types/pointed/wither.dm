@@ -65,11 +65,11 @@
 		new /obj/effect/temp_visual/wither_strike(damage_turf)
 		playsound(damage_turf, 'sound/magic/shadowstep_destination.ogg', 50)
 		for(var/mob/living/L in damage_turf.contents)
-			if(L.anti_magic_check())
+			if(L.can_block_magic())
 				L.visible_message(span_warning("The dark magic fades away around [L]!"))
 				playsound(damage_turf, 'sound/magic/magic_nulled.ogg', 100)
 				continue
-			L.apply_status_effect(/datum/status_effect/buff/witherd)
+			L.apply_status_effect(/datum/status_effect/debuff/witherd)
 
 /obj/effect/temp_visual/trap/wither_line
 	icon = 'icons/effects/effects.dmi'

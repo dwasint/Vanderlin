@@ -76,7 +76,6 @@
 	sleep(0.5 SECONDS)
 	animate(src, transform = matrix(), alpha = 255, time = 0, flags = ANIMATION_END_NOW)
 
-
 /// Called when the rune fails to activate. Shows a fizzle and resets rune_in_use.
 /obj/effect/decal/cleanable/ritual_rune/proc/fail_invoke()
 	visible_message(span_warning("The markings pulse with a small flash of light, then fall dark."))

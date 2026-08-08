@@ -132,8 +132,7 @@
 		return
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return TRUE
-	..()
-	user.update_inv_hands()
+	. = ..()
 
 /obj/item/spellbook/attack_self_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -145,7 +144,7 @@
 /obj/item/spellbook/attack_hand_secondary(mob/user, list/modifiers)
 	if(!picked)
 		var/the_time = world.time
-		var/design = input(user, "Select a design.", "Spellbook Design") as null|anything in designlist
+		var/design = tgui_input_list(user, "Select a design.", "Spellbook Design", designlist)
 		if(!design || world.time > (the_time + 30 SECONDS))
 			return
 		base_icon_state = "spellbook[design]"

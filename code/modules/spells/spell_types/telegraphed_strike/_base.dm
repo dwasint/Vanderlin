@@ -190,7 +190,7 @@
 		if(L in struck_mobs)
 			continue
 		struck_mobs += L
-		if(L.anti_magic_check())
+		if(L.can_block_magic())
 			on_antimagic_block(L)
 			continue
 		hit_any = TRUE

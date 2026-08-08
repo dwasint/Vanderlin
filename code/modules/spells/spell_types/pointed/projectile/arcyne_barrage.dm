@@ -132,7 +132,7 @@
 	hitsound = pick('sound/combat/hits/blunt/shovel_hit.ogg', 'sound/combat/hits/blunt/shovel_hit2.ogg', 'sound/combat/hits/blunt/shovel_hit3.ogg')
 	if(ismob(target))
 		var/mob/living/M = target
-		if(M.anti_magic_check())
+		if(M.can_block_magic())
 			visible_message(span_warning("[src] dissipates harmlessly against [target]!"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)

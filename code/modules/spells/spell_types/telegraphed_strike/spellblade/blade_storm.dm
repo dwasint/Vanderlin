@@ -220,7 +220,7 @@
 		parent_spell.handle_self_hit(caster, p_cuts, p_dmg)
 		return BULLET_ACT_BLOCK
 
-	if(victim.anti_magic_check())
+	if(victim.can_block_magic())
 		visible_message(span_warning("[victim] shatters the shadow!"))
 		playsound(get_turf(victim), 'sound/magic/magic_nulled.ogg', 100)
 		return BULLET_ACT_BLOCK

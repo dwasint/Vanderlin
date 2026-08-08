@@ -83,7 +83,7 @@
 	. = ..()
 	if(isliving(target))
 		var/mob/living/L = target
-		if(L.anti_magic_check())
+		if(L.can_block_magic())
 			visible_message(span_warning("[src] disperses on contact with [L]!"))
 			playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
 			return BULLET_ACT_BLOCK

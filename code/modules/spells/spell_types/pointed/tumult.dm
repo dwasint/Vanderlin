@@ -40,7 +40,7 @@
 /obj/projectile/magic/gravel_blast/on_hit(target)
 	if(ismob(target))
 		var/mob/living/M = target
-		if(M.anti_magic_check())
+		if(M.can_block_magic())
 			visible_message(span_warning("[src] shatters harmlessly against [target]!"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
@@ -231,7 +231,7 @@
 	for(var/mob/living/victim in T.contents)
 		if(victim == caster || victim.stat == DEAD)
 			continue
-		if(victim.anti_magic_check())
+		if(victim.can_block_magic())
 			victim.visible_message(span_warning("The erupting stone crumbles around [victim]!"))
 			playsound(get_turf(victim), 'sound/magic/magic_nulled.ogg', 100)
 			continue
@@ -250,7 +250,7 @@
 		for(var/mob/living/victim in affected)
 			if(victim == caster || victim.stat == DEAD)
 				continue
-			if(victim.anti_magic_check())
+			if(victim.can_block_magic())
 				continue
 			arcyne_strike(caster, victim, null, erupt_aoe, target_zone, BCLASS_BLUNT, \
 				spell_name = "Cairn", damage_type = BRUTE, npc_simple_damage_mult = erupt_npc_mult, skip_animation = TRUE)
@@ -396,7 +396,7 @@
 	rolling = FALSE
 
 /datum/action/cooldown/spell/tumult/proc/roll_hit(mob/living/carbon/human/H, mob/living/L, dir)
-	if(L.anti_magic_check())
+	if(L.can_block_magic())
 		return
 	if(ishuman(L))
 		arcyne_strike(H, L, null, barrel_damage, H.zone_selected || BODY_ZONE_CHEST, BCLASS_BLUNT, \

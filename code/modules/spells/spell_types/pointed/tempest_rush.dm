@@ -94,7 +94,7 @@
 	H.dir = facing
 
 	if(get_dist(H, preferred_target) <= 1)
-		if(preferred_target.anti_magic_check())
+		if(preferred_target.can_block_magic())
 			preferred_target.visible_message(span_warning("The storm dissipates on contact with [preferred_target]!"))
 			StartCooldown()
 			return TRUE
@@ -164,7 +164,7 @@
 		StartCooldown()
 		return TRUE
 
-	if(hit_target.anti_magic_check())
+	if(hit_target.can_block_magic())
 		hit_target.visible_message(span_warning("The storm dissipates on contact with [hit_target]!"))
 		StartCooldown()
 		return TRUE

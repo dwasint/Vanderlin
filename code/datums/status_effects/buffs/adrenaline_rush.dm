@@ -1,4 +1,3 @@
-
 /atom/movable/screen/alert/status_effect/buff/adrenaline_rush
 	name = "Adrenaline Rush"
 	desc = "The gambit worked! I can do anything! My heart races, the throb of my wounds wavers."

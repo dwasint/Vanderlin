@@ -127,7 +127,7 @@
 	)
 	spawned.select_equippable(player_client, selectablerobe, message = "Choose your robe of choice", title = "WIZARD")
 
-	var/list/selectable_books = list(
+	var/static/list/selectable_books = list(
 		"Blazing Tome (Fire)" = /obj/item/spellbook/legendary/starter/fire,
 		"Frostbound Tome (Ice)" = /obj/item/spellbook/legendary/starter/ice,
 		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/legendary/starter/lightning,

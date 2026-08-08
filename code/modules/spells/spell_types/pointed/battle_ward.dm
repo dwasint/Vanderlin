@@ -140,7 +140,7 @@
 		var/mob/owner = owner_ref?.resolve()
 		if(M == owner)
 			return
-		if(checks_antimagic && M.anti_magic_check())
+		if(checks_antimagic && M.can_block_magic())
 			trigger_visual()
 			qdel(src)
 			return

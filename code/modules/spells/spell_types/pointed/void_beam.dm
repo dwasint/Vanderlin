@@ -148,7 +148,7 @@
 			if(L in struck)
 				continue
 			struck += L
-			if(L.anti_magic_check())
+			if(L.can_block_magic())
 				L.visible_message(span_warning("The beam splinters against [L]!"))
 				playsound(T, 'sound/magic/magic_nulled.ogg', 100)
 				continue

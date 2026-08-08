@@ -20,6 +20,10 @@
 	/// TRUE while the animation is playing; blocks all interaction
 	var/animating = FALSE
 
+/obj/effect/decal/cleanable/ritual_rune/arcyne/recharge/Destroy()
+	abort_ritual()
+	return ..()
+
 /obj/effect/decal/cleanable/ritual_rune/arcyne/recharge/attack_hand(mob/living/user)
 	if(animating)
 		to_chat(user, span_notice("The rune is already working..."))
@@ -143,7 +147,3 @@
 	staged_book = null
 	animating = FALSE
 	rune_in_use = FALSE
-
-/obj/effect/decal/cleanable/ritual_rune/arcyne/recharge/Destroy()
-	abort_ritual()
-	return ..()

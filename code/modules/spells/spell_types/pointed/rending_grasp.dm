@@ -77,7 +77,7 @@
 	for(var/mob/living/victim in range(area_of_effect, center))
 		if(victim == H || victim.stat == DEAD)
 			continue
-		if(victim.anti_magic_check())
+		if(victim.can_block_magic())
 			victim.visible_message(span_warning("The tendrils of force can't seem to latch onto [victim]!"))
 			playsound(get_turf(victim), 'sound/magic/magic_nulled.ogg', 100)
 			continue

@@ -105,7 +105,7 @@
 
 /datum/job/migrant/magic_student/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
-	var/list/selectable_books = list(
+	var/static/list/selectable_books = list(
 		"Blazing Tome (Fire)" = /obj/item/spellbook/adept/starter/fire,
 		"Frostbound Tome (Ice)" = /obj/item/spellbook/adept/starter/ice,
 		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/adept/starter/lightning,

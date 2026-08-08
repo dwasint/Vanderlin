@@ -11,11 +11,6 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/iron_skin
 	duration = 1 MINUTES
 
-/datum/status_effect/buff/iron_skin/on_creation(mob/living/new_owner, new_duration = null)
-	if(new_duration)
-		duration = new_duration
-	. = ..()
-
 /datum/status_effect/buff/iron_skin/on_apply()
 	. = ..()
 	var/filter = owner.get_filter(IRON_SKIN_FILTER)

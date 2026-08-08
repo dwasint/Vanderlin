@@ -129,7 +129,7 @@
 		for(var/mob/living/L in affected_turf.contents)
 			if(L == user || L.stat == DEAD)
 				continue
-			if(L.anti_magic_check())
+			if(L.can_block_magic())
 				L.visible_message(span_warning("The hammer shatters around [L]!"))
 				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
 				continue

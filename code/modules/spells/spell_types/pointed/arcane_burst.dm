@@ -63,7 +63,7 @@
 		for(var/obj/structure/S in T)
 			S.take_damage(damage, BRUTE, "blunt", FALSE)
 		for(var/mob/living/L in T.contents)
-			if(L.anti_magic_check())
+			if(L.can_block_magic())
 				L.visible_message(span_warning("The arcyne force dissipates around [L]!"))
 				playsound(T, 'sound/magic/magic_nulled.ogg', 100)
 				continue

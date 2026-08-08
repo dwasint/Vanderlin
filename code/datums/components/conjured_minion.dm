@@ -9,7 +9,7 @@
 	var/recoil_stamina_only = FALSE
 	var/dismissing = FALSE
 	var/leash_range = 12
-	var/next_leash_message = 0
+	COOLDOWN_DECLARE(next_leash_message)
 	var/base_alpha = 255
 	var/untether_strain = 0
 	var/untether_max = 10
@@ -79,15 +79,15 @@
 	if(!summoner || summoner.z != source.z)
 		return
 	var/datum/ai_controller/AC = M.ai_controller
-	if(AC && AC.blackboard[BB_TRAVEL_DESTINATION])
+	if(AC?.blackboard[BB_TRAVEL_DESTINATION])
 		return
 	var/newdist = get_dist(newloc, summoner)
 	if(newdist <= leash_range)
 		return
 	if(newdist < get_dist(source, summoner))
 		return
-	if(M.ckey && world.time > next_leash_message)
-		next_leash_message = world.time + 3 SECONDS
+	if(M.client && COOLDOWN_FINISHED(src, next_leash_message))
+		COOLDOWN_START(src, next_leash_message, 3 SECONDS)
 		to_chat(M, span_warning("The tether binding you to your body stops you from moving further.."))
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 

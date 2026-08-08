@@ -73,7 +73,7 @@
 	. = ..()
 	if(ismob(mover))
 		var/mob/M = mover
-		if(M.anti_magic_check(chargecost = 0))
+		if(M.can_block_magic(charge_cost = 0))
 			return TRUE
 	return FALSE
 

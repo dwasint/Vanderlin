@@ -101,7 +101,7 @@
 
 /datum/job/advclass/archivist/chronicler/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
-	var/list/selectable_books = list(
+	var/static/list/selectable_books = list(
 		"Blazing Tome (Fire)" = /obj/item/spellbook/expert/starter/fire,
 		"Frostbound Tome (Ice)" = /obj/item/spellbook/expert/starter/ice,
 		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/expert/starter/lightning,

@@ -28,27 +28,35 @@
 /obj/item/spellbook/apprentice/starter/fire
 	themed_form = FORM_FIRE
 	designlist = list("steel")
+
 /obj/item/spellbook/apprentice/starter/ice
 	themed_form = FORM_ICE
 	designlist = list("steel")
+
 /obj/item/spellbook/apprentice/starter/lightning
 	themed_form = FORM_LIGHTNING
 	designlist = list("steel")
+
 /obj/item/spellbook/apprentice/starter/earth
 	themed_form = FORM_EARTH
 	designlist = list("steel")
+
 /obj/item/spellbook/apprentice/starter/arcane
 	themed_form = FORM_ARCANE
 	designlist = list("gem")
+
 /obj/item/spellbook/apprentice/starter/death
 	themed_form = FORM_DEATH
 	designlist = list("skin")
+
 /obj/item/spellbook/apprentice/starter/life
 	themed_form = FORM_LIFE
 	designlist = list("mimic")
+
 /obj/item/spellbook/apprentice/starter/air
 	themed_form = FORM_AIR
 	designlist = list("steel")
+
 /obj/item/spellbook/apprentice/starter/water
 	themed_form = FORM_WATER
 	designlist = list("steel")

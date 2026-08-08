@@ -66,7 +66,7 @@
 
 /atom/movable/screen/movable/action_button/examine_ui(mob/user)
 	var/list/inspec = list("----------------------")
-	inspec += "<br><span class='notice'><b>[linked_action.name]</b></span>"
+	inspec += "<br>[span_notice("<span class='notice'><b>[linked_action.name]</b>")]</span>"
 	if(linked_action.desc)
 		inspec += "<br>[linked_action.desc]"
 	inspec += "[extra_info(user)]"

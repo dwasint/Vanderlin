@@ -20,7 +20,7 @@
 	. = ..()
 	RegisterSignal(owner, COMSIG_MOB_ITEM_ATTACK, PROC_REF(on_attack))
 	RegisterSignal(owner, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, PROC_REF(on_unarmed_attack))
-	owner.add_filter(EMPOWER_FILTER, 2, list("type" = "outline", "color" = "#ff2020", "alpha" = 200, "size" = 2))
+	owner.add_filter(EMPOWER_FILTER, 2, outline_filter(2, "#ff2020"))
 	owner.balloon_alert_to_viewers("<font color='#ff2020'>empowered!</font>")
 
 /datum/status_effect/buff/empowered_strike/on_remove()
@@ -43,13 +43,10 @@
 	var/mob/living/L = target
 	if(L.stat == DEAD)
 		return
-	// Flag for the unarmed attack path to skip defense
-	ADD_TRAIT(owner, TRAIT_EMPOWERED_UNARMED, "empowered_strike")
 	// Consume on next tick after the attack resolves
 	addtimer(CALLBACK(src, PROC_REF(consume_empower), L), 0)
 
 /datum/status_effect/buff/empowered_strike/proc/consume_empower(mob/living/hit_target)
-	REMOVE_TRAIT(owner, TRAIT_EMPOWERED_UNARMED, "empowered_strike")
 	playsound(get_turf(owner), 'sound/magic/antimagic.ogg', 40, TRUE)
 	owner.visible_message(
 		span_danger("[owner]'s empowered strike blazes through!"),

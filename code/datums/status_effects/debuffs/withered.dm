@@ -1,5 +1,4 @@
-
-/datum/status_effect/buff/witherd
+/datum/status_effect/debuff/witherd
 	id = "withered"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/witherd
 	duration = 30 SECONDS
@@ -11,7 +10,7 @@
 	icon_state = "debuff"
 	color = "#b884f8" //talk about a coder sprite x2
 
-/datum/status_effect/buff/witherd/on_apply()
+/datum/status_effect/debuff/witherd/on_apply()
 	. = ..()
 	to_chat(owner, span_warning("I feel sapped of vitality!"))
 	var/mob/living/target = owner
@@ -19,6 +18,6 @@
 	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 30 SECONDS)
 
-/datum/status_effect/buff/witherd/on_remove()
+/datum/status_effect/debuff/witherd/on_remove()
 	. = ..()
 	to_chat(owner, span_warning("I feel my physical prowess returning."))

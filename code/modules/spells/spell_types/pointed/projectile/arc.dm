@@ -98,7 +98,7 @@
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target
-		if(M.anti_magic_check())
+		if(M.can_block_magic())
 			visible_message(span_warning("[src] fizzles on contact with [target]!"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
@@ -151,7 +151,7 @@
 	return best
 
 /obj/projectile/magic/arc_bolt/proc/zap_arc_target(mob/living/L, arc_damage)
-	if(L.anti_magic_check())
+	if(L.can_block_magic())
 		L.visible_message(span_warning("The arc scatters around [L]!"))
 		return
 	var/actual_damage = arc_damage

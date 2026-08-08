@@ -107,7 +107,7 @@
 	light_color = COLOR_PALE_BLUE_GRAY
 	light_outer_range = 15
 	light_power = 25
-	duration = 12
+	duration = 1.2 SECONDS
 
 /obj/effect/temp_visual/lightning/Initialize(mapload)
 	. = ..()
@@ -116,7 +116,7 @@
 
 /obj/effect/temp_visual/target/lightning
 	light_color = COLOR_PALE_BLUE_GRAY
-	duration = 12
+	duration = 1.2 SECONDS
 
 /obj/effect/temp_visual/target/lightning/fall(list/hit_atoms)
 	var/turf/T = get_turf(src)
@@ -129,7 +129,7 @@
 
 /obj/effect/temp_visual/target/lightning/sundering
 	light_color = COLOR_PALE_BLUE_GRAY
-	duration = 12
+	duration = 1.2 SECONDS
 
 /obj/effect/temp_visual/target/lightning/sundering/fall(list/hit_atoms)
 	var/turf/T = get_turf(src)

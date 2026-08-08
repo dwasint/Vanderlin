@@ -51,7 +51,7 @@
 	for(var/mob/living/simple_animal/hostile/animal in range(area_of_effect, T))
 		animal.Paralyze(hold_duration, ignore_canstun = TRUE)
 	for(var/mob/living/L in range(area_of_effect, T))
-		if(L.anti_magic_check())
+		if(L.can_block_magic())
 			L.visible_message(span_warning("The binding can't seem to latch onto [L]!"))
 			playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
 			continue

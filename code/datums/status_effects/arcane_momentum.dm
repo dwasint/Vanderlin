@@ -25,8 +25,8 @@
 	var/static/mutable_appearance/electricity_overlay
 	var/obj/item/bound_weapon
 	var/chant
-	var/last_melee_gain = 0
 	var/melee_gain_cooldown = 2 SECONDS
+	COOLDOWN_DECLARE(last_melee_gain)
 
 /datum/status_effect/buff/arcyne_momentum/on_apply()
 	. = ..()
@@ -34,7 +34,7 @@
 	RegisterSignal(owner, COMSIG_LIVING_STATUS_KNOCKDOWN, PROC_REF(on_knockdown))
 	// Flag the mind so it persists through death/revival
 	if(owner.mind)
-		owner.mind.has_arcyne_momentum = TRUE
+		ADD_TRAIT(owner.mind, TRAIT_ARCYNE_MOMENTUM, "[type]")
 	update_alert()
 
 /datum/status_effect/buff/arcyne_momentum/on_remove()
@@ -67,10 +67,10 @@
 	var/mob/living/victim = target
 	if(victim == owner || victim.stat == DEAD)
 		return
-	if(world.time < last_melee_gain + melee_gain_cooldown)
+	if(COOLDOWN_FINISHED(src, last_melee_gain))
 		return
 	add_stacks(1)
-	last_melee_gain = world.time
+	START_COOLDOWN(src, last_melee_gain, melee_gain_cooldown)
 
 // Momentum from knuckle/katar hits — only if the weapon uses unarmed skill
 /datum/status_effect/buff/arcyne_momentum/proc/on_unarmed_item_attack(mob/living/source, mob/living/target, mob/living/user)
@@ -78,12 +78,12 @@
 	if(!isliving(target) || target == owner || target.stat == DEAD)
 		return
 	var/obj/item/weapon = user?.get_active_held_item()
-	if(!weapon || weapon.associated_skill != /datum/attribute/skill/combat/unarmed)
+	if(!weapon || !ispath(weapon.associated_skill, /datum/attribute/skill/combat/unarmed))
 		return
-	if(world.time < last_melee_gain + melee_gain_cooldown)
+	if(COOLDOWN_FINISHED(src, last_melee_gain))
 		return
 	add_stacks(1)
-	last_melee_gain = world.time
+	START_COOLDOWN(src, last_melee_gain, melee_gain_cooldown)
 
 /datum/status_effect/buff/arcyne_momentum/proc/on_stunned()
 	SIGNAL_HANDLER
@@ -195,7 +195,7 @@
 	is_overcharged = FALSE
 	owner.cut_overlay(electricity_overlay)
 
-/proc/get_arcyne_momentum(mob/living/target)
+/mob/living/proc/get_arcyne_momentum()
 	if(!istype(target))
 		return 0
 	var/datum/status_effect/buff/arcyne_momentum/M = target.has_status_effect(/datum/status_effect/buff/arcyne_momentum)

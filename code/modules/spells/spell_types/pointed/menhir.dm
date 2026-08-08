@@ -164,7 +164,7 @@
 /datum/action/cooldown/spell/menhir/proc/strike_mob(mob/living/carbon/human/H, mob/living/L, dmg)
 	if(L == H || QDELETED(L))
 		return
-	if(L.anti_magic_check())
+	if(L.can_block_magic())
 		return
 	if(ishuman(L))
 		arcyne_strike(H, L, null, dmg, H.zone_selected || BODY_ZONE_CHEST, BCLASS_BLUNT, \
@@ -237,7 +237,7 @@
 /obj/projectile/magic/boulder/Bump(atom/A)
 	if(ismob(A))
 		var/mob/living/M = A
-		if(M.anti_magic_check())
+		if(M.can_block_magic())
 			visible_message(span_warning("[src] shatters harmlessly against [M]!"))
 			playsound(get_turf(M), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)

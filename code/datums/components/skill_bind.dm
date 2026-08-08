@@ -26,7 +26,7 @@
 /datum/component/skill_bind/proc/apply_glow(obj/item/I)
 	if(glow_applied || already_glows(I))
 		return
-	I.add_filter(SKILL_BIND_GLOW_FILTER, 2, list("type" = "drop_shadow", "x" = 0, "y" = 0, "size" = 1, "offset" = 2, "color" = GLOB.form_colors[FORM_ARCANE]))
+	I.add_filter(SKILL_BIND_GLOW_FILTER, 2, drop_shadow_filter(0,0,1,2,GLOB.form_colors[FORM_ARCANE]))
 	glow_applied = TRUE
 
 /datum/component/skill_bind/proc/already_glows(obj/item/I)

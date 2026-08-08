@@ -356,6 +356,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_AI_PAUSED "TRAIT_AI_PAUSED"
 ///trait that stops our ai controlled mob from moving at all due to ai planning
 #define TRAIT_AI_MOVEMENT_HALTED "ai_movement_halted"
+///do we have arcyne momentum
+#define TRAIT_ARCYNE_MOMENTUM "arcyne_momentum"
 
 /// Trait given to a living mob and any observer mobs that stem from them if they suicide.
 /// For clarity, this trait should always be associated/tied to a reference to the mob that suicided- not anything else.
@@ -645,6 +647,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CONJURED_SUMMON "conjured_summon"
 #define TRAIT_CONJURE_BACKLASH "conjure_backlash"
 
-#define TRAIT_EMPOWERED_UNARMED "empowered_unarmed"
 #define TRAIT_SORCERER "Unattuned"
 
