@@ -356,7 +356,7 @@
 			for(var/turf/T as anything in row)
 				if(!T)
 					continue
-				for(var/mob/living/L in T)
+				for(var/mob/living/L as anything in T)
 					if(L == src)
 						continue
 					knockback(L, dir_to_target, 8)

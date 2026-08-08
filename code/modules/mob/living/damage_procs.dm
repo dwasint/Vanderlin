@@ -345,11 +345,10 @@
 /mob/living/proc/checkdefense(datum/intent/intenty, mob/living/user)
 	// We check for a disruptable swingdelay first.
 	var/datum/status_effect/swingdelay/disrupt/SW = has_status_effect(/datum/status_effect/swingdelay/disrupt)
-	if(SW)
-		if(!SW.is_disrupted())
-			SW.attacked()
-			swing_state = FALSE
-			return FALSE
+	if(SW && !SW.is_disrupted())
+		SW.attacked()
+		swing_state = FALSE
+		return FALSE
 
 	if(!cmode || stat || (HAS_TRAIT(src, TRAIT_UNPARRYING) && HAS_TRAIT(src, TRAIT_UNDODGING)) || user == src || HAS_TRAIT(src, TRAIT_IMMOBILIZED))
 		return FALSE
