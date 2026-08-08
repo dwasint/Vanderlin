@@ -127,6 +127,7 @@
  * Triggered when the parent item is equipped.
  */
 /datum/spell_mastery/proc/add_spells(datum/source, mob/living/user)
+	SIGNAL_HANDLER
 	holder = user
 	if(HAS_TRAIT(holder, TRAIT_SORCERER))
 		return
@@ -172,6 +173,7 @@
  * Note: We DO NOT destroy (qdel) the spell here anymore, ensuring cooldowns persist.
  */
 /datum/spell_mastery/proc/remove_spells(datum/source, mob/living/user)
+	SIGNAL_HANDLER
 	if(!user)
 		user = holder
 	holder = null
@@ -188,6 +190,7 @@
 	spellbook_granted_actions -= AM
 
 /datum/spell_mastery/proc/on_deletion()
+	SIGNAL_HANDLER
 	remove_spells()
 	unregister_parent(parent)
 
