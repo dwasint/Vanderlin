@@ -1,4 +1,3 @@
-
 /obj/effect/temp_visual/spell_impact
 	icon = 'icons/effects/spell_cast.dmi'
 	icon_state = "particle_up"

@@ -16,6 +16,10 @@
 	///wahhhh
 	var/datum/spellcraft_session/session
 
+/obj/item/spellbook_unfinished/Destroy()
+	. = ..()
+	QDEL_NULL(session)
+
 /obj/item/spellbook_unfinished/pre_arcyne
 	name = "tome in waiting"
 	icon_state = "spellbook_unfinished"

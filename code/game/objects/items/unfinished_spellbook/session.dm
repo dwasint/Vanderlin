@@ -14,6 +14,13 @@
 	var/list/materials = list(null, null, null, null, null, null)
 	var/mob/living/user
 
+/datum/spellcraft_session/Destroy(force)
+	. = ..()
+	book_base = null
+	meld = null
+	user = null
+	materials = null
+
 /datum/spellcraft_session/proc/try_insert_meld(obj/item/item, mob/living/user)
 	if(meld)
 		to_chat(user, span_warning("The center is already occupied."))
