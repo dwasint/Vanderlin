@@ -86,6 +86,7 @@
 	UnregisterSignal(old_parent, list(COMSIG_ITEM_ATTACK_SELF, COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED, COMSIG_QDELETING,COMSIG_MASTERY_REMOVE_SPELLS, COMSIG_MASTERY_ADD_SPELLS))
 
 /datum/spell_mastery/proc/open_menu(datum/source, mob/living/user)
+	SIGNAL_HANDLER
 	var/datum/spellbook/book = new(parent, src)
 	book.ui_interact(user)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
