@@ -1,6 +1,8 @@
 /datum/noble_faction
 	var/name = "Unnamed House"
 	var/datum/weakref/head_ref
+	///ref to aspirant
+	var/datum/weakref/backing_aspirant_ref
 	var/list/mob/living/carbon/human/members = list()
 	/// One alt-appearance instance per member, keyed by member, so we can refresh the "seers" list on roster change
 	var/list/mob/living/carbon/human/member_tags = list()
@@ -14,6 +16,7 @@
 		name = faction_name
 	add_member(founder)
 	founder.add_spell(/datum/action/cooldown/offer_patronage)
+	founder.AddComponent(/datum/component/hovering_information, /datum/hover_data/noble_faction_head, TRAIT_ASPIRANT_INSIGHT)
 	LAZYADD(GLOB.current_noble_factions, src)
 
 /datum/noble_faction/Destroy(force)
@@ -22,9 +25,21 @@
 	members = null
 	member_tags = null
 	head_ref = null
+	backing_aspirant_ref = null
 	return ..()
 
-/datum/noble_faction/proc/add_member(mob/living/carbon/human/new_member)
+/datum/noble_faction/proc/set_backing_aspirant(mob/living/carbon/human/new_aspirant)
+    var/mob/living/carbon/human/old_aspirant = backing_aspirant_ref?.resolve()
+    if(old_aspirant && old_aspirant != new_aspirant)
+        remove_member(old_aspirant)
+        to_chat(old_aspirant, span_userdanger("[name] has abandoned your cause!"))
+        var/datum/antagonist/aspirant/old_datum = locate(/datum/antagonist/aspirant) in old_aspirant.mind?.antag_datums
+        old_datum?.backing_faction_ref = null
+
+    backing_aspirant_ref = WEAKREF(new_aspirant)
+    add_member(new_aspirant)
+
+/datum/noble_faction/proc/add_member(mob/living/carbon/human/new_member, aspirant = FALSE)
 	if(!new_member || (new_member in members))
 		return FALSE
 	members += new_member
@@ -44,7 +59,7 @@
 	return TRUE
 
 /datum/noble_faction/proc/apply_faction_tag(mob/living/carbon/human/member)
-	var/image/marker = image(icon = 'icons/mob/hud.dmi', icon_state = "hog-blue-2", loc = member)
+	var/image/marker = image(icon = 'icons/mob/hud.dmi', icon_state = (member == backing_aspirant_ref?.resolve()) ? "hog-red-0" : "hog-blue-2", loc = member)
 	member_tags[member] = new /datum/atom_hud/alternate_appearance/basic/people(
 		"nobleFaction_[REF(src)]_[REF(member)]",
 		marker,

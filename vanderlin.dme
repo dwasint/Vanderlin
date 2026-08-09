@@ -1405,6 +1405,7 @@
 #include "code\datums\helper_datums\teleport.dm"
 #include "code\datums\heritage\family_curse.dm"
 #include "code\datums\heritage\heritage.dm"
+#include "code\datums\hover_data\aspirant_insight.dm"
 #include "code\datums\hover_data\gnome_hover.dm"
 #include "code\datums\injury\_injury.dm"
 #include "code\datums\injury\bodypart_injury.dm"
