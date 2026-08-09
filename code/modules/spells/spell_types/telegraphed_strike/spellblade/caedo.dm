@@ -55,7 +55,7 @@
 		return FALSE
 
 	// Soft clamp: if too far or path blocked, dash as far as possible toward target
-	dest = arcyne_find_max_blink_dest(H, dest, max_range)
+	dest = find_max_walk_dest(H, dest, max_range)
 	if(!dest)
 		to_chat(H, span_warning("I can't dash there!"))
 		return FALSE

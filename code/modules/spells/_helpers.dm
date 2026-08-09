@@ -189,7 +189,7 @@ Returns null on success, or an error string. */
 
 /* Walks toward target up to max_range tiles, returning the farthest valid turf.
 Used by Caedo to clamp distance instead of failing when out of range. */
-/proc/arcyne_find_max_blink_dest(mob/user, turf/target, max_range)
+/proc/find_max_walk_dest(mob/user, turf/target, max_range)
 	var/turf/start = get_turf(user)
 	if(!start || !target)
 		return null
