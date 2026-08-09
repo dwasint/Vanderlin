@@ -796,10 +796,7 @@
 
 /datum/job/proc/add_spells(mob/living/equipped_human)
 	for(var/datum/action/cooldown/spell/spell as anything in spells)
-		var/formed = FALSE
-		if(initial(spell.required_form))
-			formed = TRUE
-		equipped_human.add_spell(spell, source = src, mastery_spell = formed)
+		equipped_human.add_spell(spell, source = src, mastery_spell = initial(spell.required_form))
 
 /datum/job/proc/remove_spells(mob/living/equipped_human)
 	equipped_human.remove_spells(source = src)
