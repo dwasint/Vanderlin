@@ -1033,7 +1033,7 @@
 		get_up(TRUE)
 
 	// Reapply arcyne momentum if this mind had it before death
-	if(HAS_MIND_TRAIT(src, TRAIT_ARCYNE_MOMENTUM)&& !has_status_effect(/datum/status_effect/buff/arcyne_momentum))
+	if(HAS_MIND_TRAIT(src, TRAIT_ARCYNE_MOMENTUM) && !has_status_effect(/datum/status_effect/buff/arcyne_momentum))
 		apply_status_effect(/datum/status_effect/buff/arcyne_momentum)
 
 	// The signal is called after everything else so components can properly check the updated values

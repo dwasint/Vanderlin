@@ -9,7 +9,7 @@
 /datum/spellbook/New(mob/living/owner, datum/spell_mastery/_mastery)
 	src.owner = owner
 	if(owner?.mana_pool)
-		mastery = owner.mana_pool?.get_mastery()
+		mastery = owner.mana_pool.get_mastery()
 	if(_mastery)
 		mastery = _mastery
 
