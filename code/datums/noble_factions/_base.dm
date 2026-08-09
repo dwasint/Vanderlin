@@ -70,7 +70,7 @@
 
 /datum/noble_faction/proc/check_aspirant_threshold()
 	if(length(members) >= aspirant_threshold)
-		SEND_SIGNAL(SSdcs, COMSIG_NOBLE_FACTION_ASPIRANT_ELIGIBLE, src)
+		SEND_GLOBAL_SIGNAL(COMSIG_NOBLE_FACTION_ASPIRANT_ELIGIBLE, src)
 
 /datum/noble_faction/vanderlin_red
 	name = "Red Faction"

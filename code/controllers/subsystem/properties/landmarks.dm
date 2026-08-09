@@ -49,6 +49,10 @@
 	required_jobs = list(/datum/job/minor_noble)
 	var/datum/noble_faction/faction_type
 
+/obj/effect/landmark/house_spot/noble/Destroy(force)
+	. = ..()
+	LAZYREMOVE(GLOB.noble_points, src)
+
 /obj/effect/landmark/house_spot/noble/Initialize(mapload)
 	. = ..()
 	if(!ispath(faction_type) && !isnull(faction_type))
