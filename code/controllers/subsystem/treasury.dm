@@ -70,7 +70,6 @@ SUBSYSTEM_DEF(treasury)
 		stockpile_datums += D
 	return ..()
 
-
 /datum/controller/subsystem/treasury/proc/initialize_job_wages()
 	for(var/datum/job/J in SSjob.joinable_occupations)
 		if(!J.starting_wage)
@@ -82,7 +81,6 @@ SUBSYSTEM_DEF(treasury)
 		return FALSE
 	job_wages[job_title] = max(0, amount)
 	return TRUE
-
 
 /*
 * Pays every human whose current job has a nonzero

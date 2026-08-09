@@ -234,8 +234,6 @@
 	. = ..()
 	if(.)
 		return
-	if(!usr.can_perform_action(src, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH) || locked())
-		return
 
 	switch(action)
 		if("set_tax")
