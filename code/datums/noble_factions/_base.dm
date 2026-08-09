@@ -29,15 +29,15 @@
 	return ..()
 
 /datum/noble_faction/proc/set_backing_aspirant(mob/living/carbon/human/new_aspirant)
-    var/mob/living/carbon/human/old_aspirant = backing_aspirant_ref?.resolve()
-    if(old_aspirant && old_aspirant != new_aspirant)
-        remove_member(old_aspirant)
-        to_chat(old_aspirant, span_userdanger("[name] has abandoned your cause!"))
-        var/datum/antagonist/aspirant/old_datum = locate(/datum/antagonist/aspirant) in old_aspirant.mind?.antag_datums
-        old_datum?.backing_faction_ref = null
+	var/mob/living/carbon/human/old_aspirant = backing_aspirant_ref?.resolve()
+	if(old_aspirant && old_aspirant != new_aspirant)
+		remove_member(old_aspirant)
+		to_chat(old_aspirant, span_userdanger("[name] has abandoned your cause!"))
+		var/datum/antagonist/aspirant/old_datum = locate(/datum/antagonist/aspirant) in old_aspirant.mind?.antag_datums
+		old_datum?.backing_faction_ref = null
 
-    backing_aspirant_ref = WEAKREF(new_aspirant)
-    add_member(new_aspirant)
+	backing_aspirant_ref = WEAKREF(new_aspirant)
+	add_member(new_aspirant)
 
 /datum/noble_faction/proc/add_member(mob/living/carbon/human/new_member, aspirant = FALSE)
 	if(!new_member || (new_member in members))
