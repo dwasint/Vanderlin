@@ -512,7 +512,8 @@
 	var/list/choices = list("None")
 	var/list/faction_by_name = list()
 	for(var/datum/noble_faction/faction as anything in available_factions)
-		var/label = "[faction.name] (led by [faction.head?.real_name || "Unknown"])"
+		var/mob/living/carbon/human/head = faction.head_ref?.resolve()
+		var/label = "[faction.name] (led by [head?.real_name || "Unknown"])"
 		choices += label
 		faction_by_name[label] = faction
 

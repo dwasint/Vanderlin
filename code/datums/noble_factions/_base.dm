@@ -1,8 +1,6 @@
-GLOBAL_LIST_EMPTY(current_noble_factions)
-
 /datum/noble_faction
 	var/name = "Unnamed House"
-	var/mob/living/carbon/human/head // the patron/founder
+	var/datum/weakref/head_ref
 	var/list/mob/living/carbon/human/members = list()
 	/// One alt-appearance instance per member, keyed by member, so we can refresh the "seers" list on roster change
 	var/list/mob/living/carbon/human/member_tags = list()
@@ -10,7 +8,7 @@ GLOBAL_LIST_EMPTY(current_noble_factions)
 
 /datum/noble_faction/New(mob/living/carbon/human/founder, faction_name)
 	. = ..()
-	head = founder
+	head_ref = WEAKREF(founder)
 	founder.mind?.noble_faction = src
 	if(faction_name)
 		name = faction_name
@@ -23,7 +21,7 @@ GLOBAL_LIST_EMPTY(current_noble_factions)
 		remove_faction_tag(member)
 	members = null
 	member_tags = null
-	head = null
+	head_ref = null
 	return ..()
 
 /datum/noble_faction/proc/add_member(mob/living/carbon/human/new_member)
@@ -72,7 +70,7 @@ GLOBAL_LIST_EMPTY(current_noble_factions)
 
 /datum/noble_faction/proc/check_aspirant_threshold()
 	if(length(members) >= aspirant_threshold)
-		SEND_SIGNAL(head, COMSIG_NOBLE_FACTION_ASPIRANT_ELIGIBLE, src)
+		SEND_SIGNAL(SSdcs, COMSIG_NOBLE_FACTION_ASPIRANT_ELIGIBLE, src)
 
 /datum/noble_faction/vanderlin_red
 	name = "Red Faction"

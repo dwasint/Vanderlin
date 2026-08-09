@@ -1,5 +1,3 @@
-GLOBAL_LIST_EMPTY(noble_points)
-
 /obj/effect/abstract/property_noop
 	invisibility = INVISIBILITY_ABSTRACT
 	var/property_id

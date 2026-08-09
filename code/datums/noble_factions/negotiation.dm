@@ -57,7 +57,6 @@
 	if(!noble?.client || !target?.client)
 		return FALSE
 
-	var/datum/job/noble_job = SSjob.GetJob(noble.job)
 	var/datum/job/target_job = SSjob.GetJob(target.job)
 
 	if(!target_job?.is_guild_head)

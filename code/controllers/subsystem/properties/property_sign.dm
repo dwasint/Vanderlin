@@ -79,10 +79,10 @@
 	for(var/slot in available_slots)
 		options["Load Design [slot]"] = slot
 
-	// Add option to create new slot
+	//create new option
 	var/next_slot = 1
-	if(available_slots.len > 0)
-		next_slot = available_slots[available_slots.len] + 1
+	if(length(available_slots) > 0)
+		next_slot = available_slots[length(available_slots)] + 1
 	options["Create New Design ([next_slot])"] = next_slot
 
 	options["Cancel"] = null

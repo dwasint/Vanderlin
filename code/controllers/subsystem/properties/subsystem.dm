@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(housing)
 
 		// Check if user has any saved designs for this template type
 		var/list/available_slots = get_player_property_slots(ckey, property.save_id)
-		if(available_slots.len > 0)
+		if(length(available_slots) > 0)
 			// Auto-claim with first available slot
 			if(claim_temporary(property, user, available_slots[1]))
 				return property
