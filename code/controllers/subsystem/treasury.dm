@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(treasury)
 */
 /datum/controller/subsystem/treasury/proc/pay_daily_wages()
 	var/list/category_totals = list()
-	for(var/mob/living/carbon/human/H in GLOB.human_list) //this might be better then bank accounts?
+	for(var/mob/living/carbon/human/H in SStreasury.bank_accounts) //this might be better then bank accounts?
 		if(!H.mind || !H.job)
 			continue
 		var/wage = job_wages[H.job]
