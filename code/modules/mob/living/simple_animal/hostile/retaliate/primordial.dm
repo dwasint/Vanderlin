@@ -44,7 +44,7 @@
 	. = ..()
 	src.adjust_skill_level(/datum/attribute/skill/combat/unarmed, 30, TRUE)
 	AddComponent(/datum/component/ai_aggro_system)
-	if(user && user.mind && user.mind.current)
+	if(user?.mind?.current)
 		befriend(user)
 	RegisterSignal(src, COMSIG_AI_BLACKBOARD_KEY_CLEARED(BB_BASIC_MOB_CURRENT_TARGET), PROC_REF(pet_passive))
 
