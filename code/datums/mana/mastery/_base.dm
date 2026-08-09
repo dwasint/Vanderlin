@@ -87,6 +87,9 @@
 
 /datum/spell_mastery/proc/open_menu(datum/source, mob/living/user)
 	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(_open_menu), source, user)
+
+/datum/spell_mastery/proc/_open_menu(datum/source, mob/living/user)
 	var/datum/spellbook/book = new(parent, src)
 	book.ui_interact(user)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
