@@ -89,7 +89,6 @@
 	ADD_TRAIT(body, TRAIT_NOBREATH, "spirit_projection")
 	ADD_TRAIT(body, TRAIT_NOHUNGER, "spirit_projection")
 	ADD_TRAIT(body, TRAIT_NOMOOD, "spirit_projection")
-	ADD_TRAIT(body, TRAIT_NOSSDINDICATOR, "spirit_projection")
 
 	apply_projection_visuals(body)
 
@@ -198,7 +197,6 @@
 		REMOVE_TRAIT(body, TRAIT_NOBREATH, "spirit_projection")
 		REMOVE_TRAIT(body, TRAIT_NOHUNGER, "spirit_projection")
 		REMOVE_TRAIT(body, TRAIT_NOMOOD, "spirit_projection")
-		REMOVE_TRAIT(body, TRAIT_NOSSDINDICATOR, "spirit_projection")
 		clear_projection_visuals(body)
 
 	if(body && vessel && vessel.key)
