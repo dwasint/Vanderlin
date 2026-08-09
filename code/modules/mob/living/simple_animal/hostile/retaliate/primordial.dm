@@ -18,6 +18,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/primordial
 	icon = 'icons/mob/primordial.dmi'
+	del_on_death = TRUE
 	faction = list()
 	var/ability_cooldown = 30 SECONDS
 	COOLDOWN_DECLARE(next_ability_use)
@@ -51,7 +52,6 @@
 /mob/living/simple_animal/hostile/retaliate/primordial/death()
 	..()
 	spill_embedded_objects()
-	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/primordial/proc/pet_passive()
 	pet_passive = TRUE
