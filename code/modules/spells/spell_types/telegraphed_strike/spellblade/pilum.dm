@@ -40,7 +40,7 @@
 	if(!istype(H))
 		return FALSE
 
-	if(!arcyne_get_weapon(H))
+	if(!H.arcyne_get_weapon())
 		to_chat(H, span_warning("I need my bound weapon in hand!"))
 		return FALSE
 

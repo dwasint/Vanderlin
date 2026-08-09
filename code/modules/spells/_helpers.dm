@@ -127,11 +127,11 @@ without going through the click pipeline, so spells can deliver weapon-style str
 	log_combat(user, target, "spell-struck ([spell_name])")
 	return max(0, damage - armor_block)
 
-/proc/arcyne_get_weapon(mob/living/carbon/human/H)
-	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+/mob/living/proc/arcyne_get_weapon()
+	var/datum/status_effect/buff/arcyne_momentum/M = has_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(!M?.bound_weapon)
 		return null
-	if(H.is_holding(M.bound_weapon))
+	if(is_holding(M.bound_weapon))
 		return M.bound_weapon
 	return null
 

@@ -28,7 +28,7 @@
 	var/empowered = FALSE
 
 /datum/action/cooldown/spell/telegraphed_strike/spellblade/get_strike_weapon(mob/living/carbon/human/H)
-	return arcyne_get_weapon(H)
+	return H.arcyne_get_weapon()
 
 /datum/action/cooldown/spell/telegraphed_strike/spellblade/get_strike_damage()
 	var/dmg = damage

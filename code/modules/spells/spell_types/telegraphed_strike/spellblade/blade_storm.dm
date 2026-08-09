@@ -62,7 +62,7 @@
 	if(!istype(H))
 		return FALSE
 
-	var/obj/item/held_weapon = arcyne_get_weapon(H)
+	var/obj/item/held_weapon = H.arcyne_get_weapon()
 	if(!held_weapon)
 		to_chat(H, span_warning("I need my bound weapon in hand!"))
 		return FALSE
@@ -103,7 +103,7 @@
 	if(QDELETED(user) || user.stat == DEAD)
 		return
 
-	var/obj/item/held_weapon = arcyne_get_weapon(user)
+	var/obj/item/held_weapon = user.arcyne_get_weapon()
 	if(!held_weapon)
 		return
 

@@ -38,7 +38,7 @@
 	if(!istype(H))
 		return FALSE
 
-	if(!arcyne_get_weapon(H))
+	if(!H.arcyne_get_weapon())
 		to_chat(H, span_warning("I need my bound weapon in hand!"))
 		return FALSE
 
@@ -68,7 +68,7 @@
 	if(QDELETED(user) || user.stat == DEAD)
 		return
 
-	var/obj/item/weapon = arcyne_get_weapon(user)
+	var/obj/item/weapon = user.arcyne_get_weapon()
 	if(!weapon)
 		return
 
@@ -166,7 +166,7 @@
 	SIGNAL_HANDLER
 	if(!isliving(target) || target == owner || target.stat == DEAD)
 		return
-	var/obj/item/bound = arcyne_get_weapon(owner)
+	var/obj/item/bound = owner.arcyne_get_weapon()
 	if(!bound || bound != weapon)
 		return
 	var/datum/action/cooldown/spell/arcane_phalanx/spell = spell_ref?.resolve()
