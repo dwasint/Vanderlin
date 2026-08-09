@@ -75,6 +75,6 @@
 
 /datum/spellcraft_contribution/gem_amethyst
 	atom_path = /obj/item/gem/amethyst
-	form_points = list(FORM_ARCANE = 2)
+	form_points = list(FORM_ARCANE = 1)
 	form_cast_speed_multipliers = list(FORM_ICE = 1.05)
 	technique_points = list(TECHNIQUE_RESTORATION = 1)
