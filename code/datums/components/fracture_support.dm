@@ -31,7 +31,7 @@
 
 	// Held in a hand - figure out which side, then re-evaluate mitigation
 	current_owner = user
-	RegisterSignal(user, COMSIG_LIVING_WOUND_GAINED, PROC_REF(recheck_mitigation)) // catch new fractures while held
+	RegisterSignal(user, COMSIG_LIVING_WOUND_GAINED, PROC_REF(recheck_mitigation), override = TRUE) // catch new fractures while held
 	recheck_mitigation()
 
 /datum/component/fracture_support/proc/on_unequipped(obj/item/source, mob/user)
