@@ -8,7 +8,7 @@
 
 	var/effective_blood_oxygenation = GET_EFFECTIVE_BLOOD_VOL(owner.get_blood_oxygenation(), owner.total_blood_req)
 	var/is_stable = owner.get_chem_effect(CE_STABLE)
-	var/cpr_active = (world.time < owner.cpr_grace_until)
+	var/cpr_active = (world.time < owner.pmup_heart_grace)
 
 	// Some effects are halved mid-combat.
 	var/determined_mod = owner.get_chem_effect(CE_STIMULANT) ? 0.5 : 1
@@ -24,7 +24,7 @@
 				else if(owner.get_stamina_loss() < 25 * determined_mod)
 					to_chat(owner, span_danger("I feel [word]. It's getting a bit hard to focus."))
 					owner.adjust_stamina(5 * determined_mod * delta_time)
-			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 10 : 30) * (cpr_active ? CPR_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
+			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 10 : 30) * (cpr_active ? PUMP_HEART_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
 				brain.applyOrganDamage(BRAIN_DAMAGE_LOW_OXYGENATION)
 		if(BLOOD_VOLUME_RISKY to BLOOD_VOLUME_OKAY)
 			if(DT_PROB(5, delta_time))
@@ -36,7 +36,7 @@
 				else if(owner.get_stamina_loss() < 40 * determined_mod)
 					to_chat(owner, span_bolddanger("I feel very [word]. It's getting hard to stay awake!"))
 					owner.adjust_stamina(7.5 * determined_mod * delta_time)
-			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 15 : 45) * (cpr_active ? CPR_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
+			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 15 : 45) * (cpr_active ? PUMP_HEART_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
 				brain.applyOrganDamage(BRAIN_DAMAGE_LOW_OXYGENATION)
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_RISKY)
 			if(DT_PROB(5, delta_time))
@@ -48,7 +48,7 @@
 				else if(owner.get_stamina_loss() < 80 * determined_mod)
 					to_chat(owner, span_userdanger("I feel extremely [word]! It's getting very hard to stay awake!"))
 					owner.adjust_stamina(10 * determined_mod * delta_time)
-			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 15 : 45) * (cpr_active ? CPR_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
+			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 15 : 45) * (cpr_active ? PUMP_HEART_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
 				brain.applyOrganDamage(BRAIN_DAMAGE_LOWER_OXYGENATION)
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 			if(DT_PROB(7.5, delta_time))
@@ -59,13 +59,13 @@
 					owner.losebreath += 1.5
 				else if(owner.get_stamina_loss() < 80)
 					owner.adjust_stamina(10 * delta_time)
-			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 25 : 75) * (cpr_active ? CPR_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
+			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 25 : 75) * (cpr_active ? PUMP_HEART_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
 				brain.applyOrganDamage(BRAIN_DAMAGE_LOWER_OXYGENATION)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
 			owner.Unconscious(rand(6,12) SECONDS)
 			if(DT_PROB(2.5, delta_time))
 				to_chat(owner, span_userdanger("<i>I feel [pick("heavy", "dehydrated", "empty")] and [word]!</i>"))
-			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 33 : 100) * (cpr_active ? CPR_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
+			if(brain.current_blood <= 0 && DT_PROB((is_stable ? 33 : 100) * (cpr_active ? PUMP_HEART_BRAIN_DAMAGE_MITIGATION : 1), delta_time))
 				brain.applyOrganDamage(BRAIN_DAMAGE_LOWEST_OXYGENATION)
 
 	owner.handle_brain_damage()

@@ -132,4 +132,4 @@
 	has_initial_mana_pool = TRUE
 
 	/// world.time until which CPR is actively mitigating oxygen-deprivation brain damage
-	var/cpr_grace_until = 0
+	var/pmup_heart_grace = 0

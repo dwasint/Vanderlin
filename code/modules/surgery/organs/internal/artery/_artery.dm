@@ -76,7 +76,7 @@
 /obj/item/organ/artery/handle_blood(delta_time, times_fired, in_bleedout)
 	var/arterial_efficiency = get_slot_efficiency(ORGAN_SLOT_ARTERY)
 	var/failer = is_failing_without_bleedout()
-	var/cpr_active = (world.time < owner?.cpr_grace_until)
+	var/cpr_active = (world.time < owner?.pmup_heart_grace)
 	if((failer || in_bleedout)  && !cpr_active)
 		return
 	if(cpr_active)
