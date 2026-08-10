@@ -5,7 +5,9 @@ GLOBAL_LIST_INIT(spellcraft_items, build_spellcraft_items())
 
 /proc/build_spellcraft_items()
 	. = list()
-	for(var/contribution_type in typesof(/datum/spellcraft_contribution))
+	for(var/datum/spellcraft_contribution/contribution_type as anything in subtypesof(/datum/spellcraft_contribution))
+		if(IS_ABSTRACT(contribution_type))
+			continue
 		var/datum/spellcraft_contribution/contribution = new contribution_type()
 		if(!contribution.holder)
 			continue
