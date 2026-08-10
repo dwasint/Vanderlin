@@ -68,7 +68,7 @@
 		for(var/mob/living/victim in affected_turf)
 			if(victim == H || victim.stat == DEAD)
 				continue
-			arcyne_strike(H, victim, null, damage, def_zone, BCLASS_BLUNT, spell_name = "Fist of Psydon")
+			arcyne_strike(H, victim, null, damage, def_zone, BCLASS_BLUNT, spell_name = "Earthshock Fist")
 			hit_count++
 
 	playsound(T, pick('sound/combat/ground_smash1.ogg', 'sound/combat/ground_smash2.ogg', 'sound/combat/ground_smash3.ogg'), 100, TRUE)
@@ -79,5 +79,5 @@
 	else
 		H.visible_message(span_notice("[H] slams [H.p_their()] fist down, sending a shockwave into empty ground!"))
 
-	log_combat(H, null, "used Fist of Psydon[empowered ? " (empowered)" : ""]")
+	log_combat(H, null, "used Earthshock Fist[empowered ? " (empowered)" : ""]")
 	return TRUE

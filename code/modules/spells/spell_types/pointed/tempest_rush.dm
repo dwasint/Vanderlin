@@ -271,7 +271,7 @@
 				combo_broken = TRUE
 				break
 			hit_num++
-			arcyne_strike(user, target, null, punch_damage, target_zone, BCLASS_BLUNT, spell_name = "Storm of Psydon (Punch [hit_num])", exact_zone = TRUE)
+			arcyne_strike(user, target, null, punch_damage, target_zone, BCLASS_BLUNT, spell_name = "Tempest Rush (Punch [hit_num])", exact_zone = TRUE)
 			playsound(get_turf(target), pick('sound/combat/hits/punch/punch_hard (1).ogg','sound/combat/hits/punch/punch_hard (2).ogg','sound/combat/hits/punch/punch_hard (3).ogg'), 80, TRUE)
 			animate(shadow_left, pixel_x = -10 + lunge_px, pixel_y = 4 + lunge_py, time = 0.5, easing = EASE_OUT)
 			animate(pixel_x = -10, pixel_y = 4, time = 0.5, easing = EASE_IN)
@@ -282,13 +282,13 @@
 	sleep(3)
 	if(!combo_broken && cling(user, target) && combo_valid(user, target))
 		user.emote("attack", forced = TRUE)
-		arcyne_strike(user, target, null, kick_damage, target_zone, BCLASS_BLUNT, spell_name = "Storm of Psydon (Kick)", exact_zone = TRUE)
+		arcyne_strike(user, target, null, kick_damage, target_zone, BCLASS_BLUNT, spell_name = "Tempest Rush (Kick)", exact_zone = TRUE)
 		playsound(get_turf(target), pick('sound/combat/hits/blunt/genblunt (1).ogg','sound/combat/hits/blunt/genblunt (2).ogg','sound/combat/hits/blunt/genblunt (3).ogg'), 100, TRUE)
 		var/atom/throw_target = get_edge_target_turf(user, get_dir(user, target))
 		target.throw_at(throw_target, 3, 4)
 
 	combo_cleanup(shadow_left, shadow_right)
-	log_combat(user, target, "used Storm of Psydon (full)")
+	log_combat(user, target, "used Tempest Rush (full)")
 
 /datum/action/cooldown/spell/tempest_rush/proc/oraora_lame(mob/living/carbon/human/user, mob/living/target)
 	user.changeNext_move(CLICK_CD_MELEE * 2)
@@ -302,15 +302,15 @@
 		if(!combo_valid(user, target))
 			combo_broken = TRUE
 			break
-		arcyne_strike(user, target, null, punch_damage, target_zone, BCLASS_BLUNT, spell_name = "Storm of Psydon (Punch [i])", exact_zone = TRUE)
+		arcyne_strike(user, target, null, punch_damage, target_zone, BCLASS_BLUNT, spell_name = "Tempest Rush (Punch [i])", exact_zone = TRUE)
 		playsound(get_turf(target), pick('sound/combat/hits/punch/punch_hard (1).ogg','sound/combat/hits/punch/punch_hard (2).ogg','sound/combat/hits/punch/punch_hard (3).ogg'), 80, TRUE)
 
 	sleep(1)
 	if(!combo_broken && cling(user, target) && combo_valid(user, target))
 		user.emote("attack", forced = TRUE)
-		arcyne_strike(user, target, null, kick_damage, target_zone, BCLASS_BLUNT, spell_name = "Storm of Psydon (Kick)", exact_zone = TRUE)
+		arcyne_strike(user, target, null, kick_damage, target_zone, BCLASS_BLUNT, spell_name = "Tempest Rush (Kick)", exact_zone = TRUE)
 		playsound(get_turf(target), pick('sound/combat/hits/blunt/genblunt (1).ogg','sound/combat/hits/blunt/genblunt (2).ogg','sound/combat/hits/blunt/genblunt (3).ogg'), 100, TRUE)
 		var/atom/throw_target = get_edge_target_turf(user, get_dir(user, target))
 		target.throw_at(throw_target, 3, 4)
 
-	log_combat(user, target, "used Storm of Psydon (lame)")
+	log_combat(user, target, "used Tempest Rush (lame)")

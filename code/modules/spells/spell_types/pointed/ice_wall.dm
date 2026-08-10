@@ -19,7 +19,7 @@
 
 /obj/structure/forcefield_weak/ice
 	name = "wall of ice"
-	desc = "A slab of conjured ice"
+	desc = "A slab of conjured ice."
 	icon = 'icons/effects/ice_wall.dmi'
 	icon_state = "ice_cube"
 	max_integrity = 120

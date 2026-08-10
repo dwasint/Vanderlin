@@ -82,9 +82,9 @@
 			playsound(get_turf(victim), 'sound/magic/magic_nulled.ogg', 100)
 			continue
 		var/def_zone = H.zone_selected || BODY_ZONE_CHEST
-		arcyne_strike(H, victim, null, base_damage, def_zone, BCLASS_BLUNT, spell_name = "Grasp of Psydon")
+		arcyne_strike(H, victim, null, base_damage, def_zone, BCLASS_BLUNT, spell_name = "Rending Grasp")
 		if(empowered)
-			arcyne_strike(H, victim, null, empowered_damage, def_zone, BCLASS_BLUNT, spell_name = "Grasp of Psydon (Empowered)")
+			arcyne_strike(H, victim, null, empowered_damage, def_zone, BCLASS_BLUNT, spell_name = "Rending Grasp (Empowered)")
 		victim.throw_at(caster_turf, pull_distance, 4)
 
 		victim.visible_message(span_warning("[victim] is yanked toward [H] by tendrils of arcyne force!"))
@@ -94,7 +94,7 @@
 	if(hit_count)
 		H.visible_message(span_danger("[H] clenches [H.p_their()] fist, pulling [hit_count > 1 ? "enemies" : "an enemy"] toward [H.p_them()]!"))
 
-	log_combat(H, null, "used Grasp of Psydon[empowered ? " (empowered)" : ""]")
+	log_combat(H, null, "used Rending Grasp[empowered ? " (empowered)" : ""]")
 
 /obj/effect/temp_visual/grasp_telegraph
 	icon = 'icons/effects/effects.dmi'
