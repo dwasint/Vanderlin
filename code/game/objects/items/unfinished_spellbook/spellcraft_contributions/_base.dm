@@ -19,9 +19,14 @@
 	var/list/technique_magnitude_modifications = list()
 
 /datum/spellcraft_contribution/proc/is_empty()
-	return !length(form_points) && !length(technique_points) \
-		&& !length(form_cost_multipliers) && !length(form_cast_speed_multipliers) && !length(form_magnitude_modifications) \
-		&& !length(technique_cost_multipliers) && !length(technique_cast_speed_multipliers) && !length(technique_magnitude_modifications)
+	return !length(form_points) \
+		&& !length(technique_points) \
+		&& !length(form_cost_multipliers) \
+		&& !length(form_cast_speed_multipliers) \
+		&& !length(form_magnitude_modifications) \
+		&& !length(technique_cost_multipliers) \
+		&& !length(technique_cast_speed_multipliers) \
+		&& !length(technique_magnitude_modifications)
 
 /datum/spellcraft_contribution/return_recipe_data(atom/source_path)
 	var/list/data = list()

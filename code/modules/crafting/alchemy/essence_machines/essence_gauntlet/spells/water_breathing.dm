@@ -35,7 +35,7 @@
 	to_chat(owner, span_notice("Your ability to breathe underwater fades."))
 
 /datum/action/cooldown/spell/essence/water_breathing/spell
-	name = "Transmogifiy: Gills"
+	name = "Transmogrify: Gills"
 	charge_required = TRUE
 	charge_time = 3 SECONDS
 	spell_cost = 50

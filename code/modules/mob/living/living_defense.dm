@@ -381,9 +381,9 @@
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_SHOCKIMMUNE))
 		return FALSE
-	if(shock_damage < 1 && !(flags & SHOCK_VISUAL_ONLY))
-		return FALSE
 	if(!(flags & SHOCK_VISUAL_ONLY))
+		if(shock_damage < 1)
+			return FALSE
 		if(!(flags & SHOCK_ILLUSION))
 			adjustFireLoss(shock_damage)
 

@@ -1068,7 +1068,7 @@
 		if(!length(remaining))
 			break
 
-		var/choice = browser_input_list(spawned, "Choose a spellbook ([i] of [amount]):", "Spellbook Selection", remaining)
+		var/choice = tgui_input_list(spawned, "Choose a spellbook ([i] of [amount]):", "Spellbook Selection", remaining)
 		if(!choice)
 			choice = pick(remaining)
 
