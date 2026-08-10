@@ -112,7 +112,7 @@
 /datum/status_effect/buff/arcyne_momentum/proc/add_stacks(amount)
 	var/old_stacks = stacks
 	stacks = min(stacks + amount, max_stacks)
-	COOLDOWN_START(src, last_stack_time, 8 MOMENTUM_DECAY_DELAY)
+	COOLDOWN_START(src, last_stack_time, MOMENTUM_DECAY_DELAY)
 	last_stack_time = world.time
 	if(stacks == old_stacks)
 		return
