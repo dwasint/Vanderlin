@@ -89,7 +89,6 @@
 
 	grant_selected_spellbooks(spawned, selectable_books, 2)
 
-
 /datum/outfit/adventurer/mage
 	name = "Mage (Adventurer)"
 	shoes = /obj/item/clothing/shoes/simpleshoes
