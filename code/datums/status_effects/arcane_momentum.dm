@@ -22,8 +22,8 @@
 	var/overcharge_threshold = 7
 	var/overcharge_damage = 4
 	var/is_overcharged = FALSE
-	var/last_stack_time = 0
-	var/last_decay_time = 0
+	COOLDOWN_DECLARE(last_stack_time)
+	COOLDOWN_DECLARE(last_decay_time)
 	var/static/mutable_appearance/electricity_overlay
 	var/obj/item/bound_weapon
 	var/chant
@@ -112,6 +112,7 @@
 /datum/status_effect/buff/arcyne_momentum/proc/add_stacks(amount)
 	var/old_stacks = stacks
 	stacks = min(stacks + amount, max_stacks)
+	COOLDOWN_START(src, last_stack_time, 8 MOMENTUM_DECAY_DELAY)
 	last_stack_time = world.time
 	if(stacks == old_stacks)
 		return
@@ -173,9 +174,9 @@
 		S.build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /datum/status_effect/buff/arcyne_momentum/tick()
-	if(stacks > 0 && world.time - last_stack_time >= MOMENTUM_DECAY_DELAY)
-		if(world.time - last_decay_time >= SECOND_PER_MOMENTUM)
-			last_decay_time = world.time
+	if(stacks > 0 && COOLDOWN_FINISHED(src, last_stack_time))
+		if(COOLDOWN_FINISHED(src, last_decay_time))
+			COOLDOWN_START(src, last_decay_time, SECOND_PER_MOMENTUM)
 			stacks = max(stacks - 1, 0)
 			owner.balloon_alert(owner, UNLINT("M: [stacks]/[max_stacks]"))
 			update_visuals()

@@ -141,7 +141,7 @@
 	do_invoke_glow()
 
 /obj/effect/decal/cleanable/ritual_rune/arcyne/recharge/proc/abort_ritual()
-	if(staged_book && !QDELETED(staged_book))
+	if(!QDELETED(staged_book))
 		staged_book.anchored = FALSE
 		animate(staged_book, pixel_x = 0, pixel_y = 0, time = 0.5 SECONDS, flags = ANIMATION_END_NOW)
 	staged_book = null
