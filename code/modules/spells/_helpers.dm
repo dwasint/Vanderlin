@@ -137,7 +137,7 @@ without going through the click pipeline, so spells can deliver weapon-style str
 
 /* Shared blink/teleport validation used by Blink, Caedo, and any future teleport spell.
 Returns null on success, or an error string describing the failure. */
-/proc/arcyne_validate_blink_dest(turf/dest, mob/user)
+/proc/validate_walk_dest(turf/dest, mob/user)
 	if(!dest)
 		return "Invalid target location!"
 	var/turf/start = get_turf(user)
@@ -164,7 +164,7 @@ Returns null on success, or an error string describing the failure. */
 /* Validates the path between start and dest for obstacles.
 Excludes dest turf from wall checks (you're landing there, not passing through).
 Returns null on success, or an error string. */
-/proc/arcyne_validate_blink_path(turf/start, turf/dest)
+/proc/validate_walk_path(turf/start, turf/dest)
 	var/list/turf_list = getline(start, dest)
 	if(length(turf_list) > 0)
 		turf_list.len--
@@ -202,10 +202,10 @@ Used by Caedo to clamp distance instead of failing when out of range. */
 		steps++
 		if(steps > max_range)
 			break
-		var/err = arcyne_validate_blink_dest(T, user)
+		var/err = validate_walk_dest(T, user)
 		if(err)
 			break
-		var/path_err = arcyne_validate_blink_path(start, T)
+		var/path_err = validate_walk_path(start, T)
 		if(path_err)
 			break
 		best = T

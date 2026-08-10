@@ -46,7 +46,7 @@
 /datum/action/cooldown/spell/misty_step/is_valid_target(atom/cast_on)
 	. = ..()
 	var/turf/T = get_turf(cast_on)
-	var/dest_err = arcyne_validate_blink_dest(T, owner)
+	var/dest_err = validate_walk_dest(T, owner)
 	if(dest_err)
 		to_chat(owner, span_warning(dest_err))
 		return FALSE
@@ -57,7 +57,7 @@
 	var/turf/T = get_turf(cast_on)
 	var/turf/start = get_turf(owner)
 
-	var/dest_err = arcyne_validate_blink_dest(T, owner)
+	var/dest_err = validate_walk_dest(T, owner)
 	if(dest_err)
 		to_chat(owner, span_warning(dest_err))
 		return FALSE
@@ -67,7 +67,7 @@
 		to_chat(owner, span_warning("That location is too far away! I can only blink up to [max_range] tiles."))
 		return FALSE
 
-	var/path_err = arcyne_validate_blink_path(start, T)
+	var/path_err = validate_walk_path(start, T)
 	if(path_err)
 		to_chat(owner, span_warning(path_err))
 		return FALSE
