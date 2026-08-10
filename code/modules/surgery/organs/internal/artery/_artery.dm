@@ -79,6 +79,8 @@
 	var/cpr_active = (world.time < owner?.cpr_grace_until)
 	if((failer || in_bleedout)  && !cpr_active)
 		return
+	if(cpr_active)
+		arterial_efficiency *= 2 //sure
 	current_blood = min(current_blood + (2.5 * delta_time) * (max(1, arterial_efficiency)/ORGAN_OPTIMAL_EFFICIENCY), max_blood_storage)
 
 /obj/item/organ/artery/tear()
