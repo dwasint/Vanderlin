@@ -1,4 +1,3 @@
-
 /obj/effect/temp_visual/pillar_warning
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "spellwarning"
