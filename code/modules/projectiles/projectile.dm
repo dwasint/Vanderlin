@@ -409,7 +409,7 @@
 	LAZYSET(impacted, target, TRUE) //hash lookup > in for performance in hit-checking
 	// 3.
 	if(damage && check_range(T))
-			damage = round(damage * dam_falloff_factor)
+		damage = round(damage * dam_falloff_factor)
 	var/mode = prehit_pierce(target)
 	if(mode == PROJECTILE_DELETE_WITHOUT_HITTING)
 		qdel(src)

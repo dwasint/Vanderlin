@@ -161,10 +161,10 @@
 		if(!id)
 			continue
 		if(!by_key[id])
-			by_key[id] = list("cost" = 1, "castSpeed" = 1, "magnitude" = 0)
-		by_key[id]["cost"] *= entry["cost"]
-		by_key[id]["castSpeed"] *= entry["castSpeed"]
-		by_key[id]["magnitude"] += entry["magnitude"]
+			by_key[id] = list(SPELLMOD_COST = 1, SPELLMOD_CASTSPEED = 1, SPELLMOD_MAGNITUDE = 0)
+		by_key[id][SPELLMOD_COST] *= entry[SPELLMOD_COST]
+		by_key[id][SPELLMOD_CASTSPEED] *= entry[SPELLMOD_CASTSPEED]
+		by_key[id][SPELLMOD_MAGNITUDE] += entry[SPELLMOD_MAGNITUDE]
 	return by_key
 
 /mob/living/proc/open_spellbook()

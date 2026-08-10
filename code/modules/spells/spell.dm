@@ -421,9 +421,9 @@
 
 /// Queries the owner for any active form/technique modifiers (from spell_modifier components)
 /// that apply to THIS spell, based on its required_form / required_technique.
-/// Returns list("cost" = mult, "castSpeed" = mult, "magnitude" = total) - defaults if nothing matches.
+/// Returns list(SPELLMOD_COST = mult, SPELLMOD_CASTSPEED = mult, SPELLMOD_MAGNITUDE = total) - defaults if nothing matches.
 /datum/action/cooldown/spell/proc/get_form_technique_modifiers()
-	var/list/result = list("cost" = 1, "castSpeed" = 1, "magnitude" = 1)
+	var/list/result = list(SPELLMOD_COST = 1, SPELLMOD_CASTSPEED = 1, SPELLMOD_MAGNITUDE = 1)
 	if(!owner)
 		return result
 
@@ -434,13 +434,13 @@
 
 	for(var/list/entry in modifiers)
 		if(required_form && entry["form"] == required_form)
-			result["cost"] *= entry["cost"]
-			result["castSpeed"] *= entry["castSpeed"]
-			result["magnitude"] += entry["magnitude"]
+			result[SPELLMOD_COST] *= entry[SPELLMOD_COST]
+			result[SPELLMOD_CASTSPEED] *= entry[SPELLMOD_CASTSPEED]
+			result[SPELLMOD_MAGNITUDE] += entry[SPELLMOD_MAGNITUDE]
 		if(required_technique && entry["technique"] == required_technique)
-			result["cost"] *= entry["cost"]
-			result["castSpeed"] *= entry["castSpeed"]
-			result["magnitude"] += entry["magnitude"]
+			result[SPELLMOD_COST] *= entry[SPELLMOD_COST]
+			result[SPELLMOD_CASTSPEED] *= entry[SPELLMOD_CASTSPEED]
+			result[SPELLMOD_MAGNITUDE] += entry[SPELLMOD_MAGNITUDE]
 
 	return result
 
@@ -462,7 +462,7 @@
 	else
 		new_cost += spell_cost * (10 - owner_stat) * 0.02
 
-	new_cost *= get_form_technique_modifiers()["cost"]
+	new_cost *= get_form_technique_modifiers()[SPELLMOD_COST]
 
 	return max(new_cost, 0)
 
@@ -482,7 +482,7 @@
 	else
 		new_time += charge_time * (10 - owner_stat) * 0.02
 
-	new_time /= get_form_technique_modifiers()["castSpeed"]
+	new_time /= get_form_technique_modifiers()[SPELLMOD_CASTSPEED]
 
 	return max(new_time, 1 DECISECONDS)
 
@@ -604,7 +604,7 @@
 		// That way stuff like teleports or shape-shifts can be invoked before ocurring
 		spell_feedback(owner)
 
-	spell_magnitude_modifier = get_form_technique_modifiers()["magnitude"]
+	spell_magnitude_modifier = get_form_technique_modifiers()[SPELLMOD_MAGNITUDE]
 
 	// Actually cast the spell. Main effects go here
 	cast(target)

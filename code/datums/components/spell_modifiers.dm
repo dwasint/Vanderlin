@@ -62,9 +62,9 @@
 		if(cost == 1 && cast_speed == 1 && magnitude == 0)
 			continue
 		var/list/entry = list(
-			"cost" = cost,
-			"castSpeed" = cast_speed,
-			"magnitude" = magnitude,
+			SPELLMOD_COST = cost,
+			SPELLMOD_CASTSPEED = cast_speed,
+			SPELLMOD_MAGNITUDE = magnitude,
 		)
 		entry[key] = entry_key
 		modifiers += list(entry)
