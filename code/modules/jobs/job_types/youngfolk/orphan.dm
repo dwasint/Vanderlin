@@ -18,6 +18,9 @@
 	outfit = /datum/outfit/orphan
 	guild_type = /datum/guild/thieves
 	knows_the_town = TRUE
+	known_by_the_town = FALSE
+	jobs_i_always_know = list(JOB_MATRON)
+	jobs_always_know_me = list(JOB_MATRON)
 
 	spells = list(
 		/datum/action/cooldown/spell/undirected/call_for_hag,
@@ -26,10 +29,6 @@
 	traits = list(
 		TRAIT_ORPHAN,
 	)
-
-/datum/job/orphan/New()
-	. = ..()
-	peopleknowme = list()
 
 /datum/outfit/orphan
 	name = JOB_ORPHAN

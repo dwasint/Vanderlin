@@ -43,6 +43,7 @@
 	is_guild_head = TRUE
 	give_bank_account = 25
 	knows_the_town = TRUE
+	known_by_the_town = TRUE
 	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
