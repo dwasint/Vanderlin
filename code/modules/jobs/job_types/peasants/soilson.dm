@@ -15,6 +15,10 @@
 		/datum/attribute/skill/labor/taming = 50,
 		/datum/attribute/skill/misc/reading = 10,
 		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/craft/cooking/brewing = 30,
+		/datum/attribute/skill/craft/cooking/winemaking = 30,
+		/datum/attribute/skill/craft/cooking/distilling = 30,
+		/datum/attribute/skill/craft/cooking/cheesemaking = 30,
 		/datum/attribute/skill/craft/carpentry = 10,
 		/datum/attribute/skill/misc/medicine = 10,
 		/datum/attribute/skill/misc/athletics = 30,
@@ -46,6 +50,7 @@
 	outfit = /datum/outfit/farmer
 	give_bank_account = 20
 	knows_the_town = TRUE
+	known_by_the_town = TRUE
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 	can_be_apprentice = TRUE
 
@@ -66,7 +71,7 @@
 	shirt = /obj/item/clothing/shirt/undershirt/sailor
 	pants = /obj/item/clothing/pants/tights/sailor
 	wrists = null
-	shoes = /obj/item/clothing/shoes/boots
+	shoes = /obj/item/clothing/shoes/boots/darkboots
 
 /datum/outfit/farmer
 	name = JOB_SOILSON
@@ -135,6 +140,7 @@
 	outfit = /datum/outfit/soilchild
 	give_bank_account = 10
 	knows_the_town = TRUE
+	known_by_the_town = TRUE
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 	job_bitflag = BITFLAG_CONSTRUCTOR
 

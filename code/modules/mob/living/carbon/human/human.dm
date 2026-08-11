@@ -114,12 +114,13 @@
 /mob/living/carbon/human/Initialize()
 	add_verb(src, /mob/living/proc/lay_down)
 
+	attribute_initialize()
+
 	status_flags |= BUILDING_ORGANS
 	physiology = new() ///this is now core for species
 	//initialize limbs first
 	create_bodyparts()
 
-	attribute_initialize() // chud shit
 	setup_human_dna()
 
 	if(dna.species)

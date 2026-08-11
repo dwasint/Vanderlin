@@ -58,8 +58,10 @@
 	bypass_lastclass = TRUE
 	give_bank_account = TRUE
 	knows_the_town = TRUE
+	known_by_the_town = TRUE
 	cmode_music = 'sound/music/cmode/towner/CombatPrisoner.ogg'
 	can_have_apprentices = FALSE
+	starting_wage = 35
 
 	allowed_ages = ALL_AGES_LIST_CHILD
 	allowed_races = RACES_PLAYER_ALL
@@ -78,7 +80,7 @@
 
 /datum/outfit/servant
 	name = JOB_SERVANT
-	neck = /obj/item/key/manor
+	neck = /obj/item/key/servant
 	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(
 		/obj/item/recipe_book/cooking = 1,
@@ -94,7 +96,7 @@
 		else
 			pants = /obj/item/clothing/pants/trou/formal/shorts
 		belt = /obj/item/storage/belt/leather/suspenders
-		shoes = /obj/item/clothing/shoes/boots
+		shoes = /obj/item/clothing/shoes/boots/darkboots
 	else
 		armor = /obj/item/clothing/shirt/dress/maid/servant
 		shoes = /obj/item/clothing/shoes/simpleshoes
@@ -142,6 +144,7 @@
 	outfit = /datum/outfit/tapster
 	give_bank_account = TRUE
 	knows_the_town = TRUE
+	known_by_the_town = TRUE
 	can_have_apprentices = FALSE
 	cmode_music = 'sound/music/cmode/towner/CombatInn.ogg'
 
@@ -208,6 +211,7 @@
 	bypass_lastclass = TRUE
 	give_bank_account = TRUE
 	knows_the_town = TRUE
+	known_by_the_town = TRUE
 	can_have_apprentices = FALSE
 
 	allowed_races = RACES_PLAYER_ALL

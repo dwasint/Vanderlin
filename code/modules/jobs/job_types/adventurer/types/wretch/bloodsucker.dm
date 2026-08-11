@@ -31,9 +31,14 @@
 	attribute_sheet = /datum/attribute_holder/sheet/job/bloodsucker
 	traits = list(
 		TRAIT_NOPAINSTUN,
-		TRAIT_DODGEEXPERT
+		TRAIT_DODGEEXPERT,
+		TRAIT_CLOSECOMBAT
 	)
 	cmode_music = 'sound/music/cmode/antag/CombatBeest.ogg'
+
+	spells = list(
+		/datum/action/innate/clench_fists
+	)
 
 /datum/job/advclass/wretch/bloodsucker/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
@@ -50,7 +55,7 @@
 	belt = /obj/item/storage/belt/leather/rope
 	beltl = /obj/item/weapon/knife/cleaver/combat
 	beltr = /obj/item/storage/belt/pouch/coins/mid
-	shoes = /obj/item/clothing/shoes/boots
+	shoes = /obj/item/clothing/shoes/boots/darkboots
 	backl = /obj/item/storage/backpack/satchel/black
 	backpack_contents = list(
 		/obj/item/clothing/face/shepherd/rag = 1

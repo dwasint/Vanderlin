@@ -213,6 +213,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"Know Gallowband Secrets" = TRAIT_GALLOWBAND_SECRETS,
 		"Virgin" = TRAIT_VIRGIN,
 		"Gatekeeper" = TRAIT_GATEKEEPER,
+		"Member of the Lunar Order" = TRAIT_LUNAR_ORDER,
+		"Close Combatant" = TRAIT_CLOSECOMBAT,
 	),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS
@@ -326,7 +328,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_TINY = "I am small, it's hard to look people in the eyes.",
 	TRAIT_FOREIGNER = span_notice("I'm not from around here."),
 	TRAIT_OLDPARTY = "In years long passed, me and a group of fellow adventurers saved this city!",
-	TRAIT_DREAM_WATCHER = span_notice("I'm blessed by Noc, my dreams tell more than the average person.."),
+	TRAIT_DREAM_WATCHER = SPAN_GOD_NOC("I'm blessed by Noc, my dreams tell more than the average person.."),
+	TRAIT_LUNAR_ORDER = SPAN_GOD_NOC("I am a member of the Lunar Order, servant of The Moon Prince, and protector of the nite."),
 	TRAIT_AMAZING_BACK = span_notice("I'm able to carry far more on my back!"),
 	TRAIT_HOLLOWBONES = span_danger("My bones are light as air, it's hard to wear armor."),
 	TRAIT_RECRUITED = "I have been recruited!",
@@ -353,7 +356,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LUCKY_COOK = span_info("Xylix smiles upon my cooking, I often end up with impossible amounts of extra goods..."),
 	TRAIT_ABOMINATION = span_info("I am an abomination, others will recognise me for what I am"),
 	TRAIT_COURTAGENT = span_info("I am an Agent of the Court, employed by the Hand. I am able to recognise my colleagues"),
-	TRAIT_GATEKEEPER = span_info("I am well practiced in the art of swiftly opening and sealing the gates, alongside levers and switches.")
+	TRAIT_GATEKEEPER = span_info("I am well practiced in the art of swiftly opening and sealing the gates, alongside levers and switches."),
+	TRAIT_CLOSECOMBAT = span_info("I am trained in unarmed combat, and am able to kick with precision.")
 ))
 
 /// value -> trait name, generated on use from trait_by_type global
@@ -387,3 +391,4 @@ GLOBAL_LIST_INIT(movement_type_removetrait_signals, set_movement_type_removetrai
 	. = list()
 	for(var/trait in GLOB.movement_type_trait_to_flag)
 		. += SIGNAL_REMOVETRAIT(trait)
+

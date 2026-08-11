@@ -11,7 +11,11 @@
 	total_positions = 3
 	spawn_positions = 3
 	bypass_lastclass = TRUE
+
 	knows_the_town = TRUE
+	known_by_the_town = TRUE
+	jobs_i_always_know = list(JOB_MONARCH, JOB_HAND, JOB_COURT_AGENT)
+	jobs_always_know_me = list(JOB_MONARCH, JOB_HAND, JOB_COURT_AGENT)
 
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_IMMORTAL)
 	allowed_races = RACES_PLAYER_ALL
@@ -52,11 +56,20 @@
 	name = "Court Agent Base"
 	belt = /obj/item/storage/belt/leather/black/courtagent
 	pants = /obj/item/clothing/pants/trou/leather
-	shoes = /obj/item/clothing/shoes/boots
-	ring = /obj/item/clothing/ring/courtagent_ring
+	shoes = /obj/item/clothing/shoes/boots/darkboots
 
 /datum/job/advclass/courtagent
 	exp_types_granted = list(EXP_TYPE_NOBLE, EXP_TYPE_COMBAT)
+
+/datum/job/advclass/courtagent/on_roundstart(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+
+	var/static/list/rings = list(
+		"Bronze Ring" = /obj/item/clothing/ring/courtagent_ring/bronze,
+		"Silver Ring" = /obj/item/clothing/ring/courtagent_ring/silver,
+		"Gold Ring" = /obj/item/clothing/ring/courtagent_ring/gold,
+	)
+	spawned.select_equippable(player_client, rings, message = "Choose Your Ring", title = "COURT AGENT")
 
 /datum/attribute_holder/sheet/job/courtagent/bruiser
 	raw_attribute_list = list(
@@ -122,6 +135,8 @@
 	switch(weapon_choice)
 		if("Bare Handed")
 			spawned.attributes?.add_sheet(/datum/attribute_holder/sheet/job/courtagent/bruiser/barehanded)
+			spawned.add_spell(/datum/action/innate/clench_fists, TRUE)
+			ADD_TRAIT(spawned, TRAIT_CLOSECOMBAT, JOB_TRAIT)
 
 /datum/attribute_holder/sheet/job/courtagent/hitman
 	raw_attribute_list = list(
