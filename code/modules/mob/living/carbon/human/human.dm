@@ -126,8 +126,6 @@
 	if(dna.species)
 		set_species(dna.species.type, initial_set = TRUE)
 
-	//initialise organs
-	create_internal_organs() //most of it is done in set_species now, this is only for parent call
 	status_flags &= ~BUILDING_ORGANS
 	culture = GLOB.culture_singletons[culture]
 
