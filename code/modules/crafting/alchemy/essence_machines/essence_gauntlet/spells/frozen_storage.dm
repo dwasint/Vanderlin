@@ -5,7 +5,7 @@
 	cast_range = 1
 	essences = list(/datum/thaumaturgical_essence/frost, /datum/thaumaturgical_essence/water)
 
-/datum/action/cooldown/spell/fridigitation/cast(atom/cast_on, mob/user = usr)
+/datum/action/cooldown/spell/essence/frozen_storage/cast(atom/cast_on, mob/user = usr)
 	. = ..()
 	if(istype(cast_on, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/F = cast_on

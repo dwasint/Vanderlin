@@ -26,7 +26,7 @@
 	form_points = 5
 	technique_points = 3
 	languages = list(/datum/language/undead)
-	faction = FACTION_CABAL
+	factions = list(FACTION_CABAL)
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/necromancer
 
