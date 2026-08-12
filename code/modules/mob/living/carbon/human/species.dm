@@ -1882,7 +1882,8 @@
 	var/list/split = list()
 	H.run_armor_check(selzone, I.damage_type, "", "", pen, damage = item_force, blade_dulling = user.used_intent.blade_class, split_output = split)
 	if(signal & COMPONENT_ITEM_NO_DEFENSE)
-		armor_block = 0
+		split[DAMAGE_TYPED] = item_force
+		split[DAMAGE_BLUNT] = 0
 	var/weakness = H.check_weakness(I, user)
 
 	var/typed_actual = 0
