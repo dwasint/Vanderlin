@@ -486,7 +486,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		var/id = href_list["chosen_job_edit"]
 		var/datum/job/custom_job/J = GLOB.custom_jobs[id]
 		if(J)
-			J.faction = href_list["new_faction"]
+			J.factions = list(href_list["new_faction"])
 			edit_job(usr, J)
 	else if(href_list["update_job_outfit"])
 		var/id = href_list["chosen_job_edit"]
@@ -880,7 +880,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	var/list/dat = list("<html><body>")
 	dat += "<h2>Job Title: [J.title]</h2>"
 	dat += "<b>Tutorial</b><br><pre style='white-space:pre-wrap;'>[J.tutorial]</pre>"
-	dat += "<h3>Faction:</h3> [J.faction]<br>"
+	dat += "<h3>Faction:</h3> [J.factions[1]]<br>"
 	dat += "<h3>Outfit:</h3> [J.outfit]<br>"
 	dat += "<h3>Custom Combat Song:</h3>"
 	if(J.cmode_music)
@@ -1241,7 +1241,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 	J.title = href_list["job_title"]
 	J.tutorial = href_list["job_tutorial"]
-	J.faction = href_list["job_faction"]
+	J.factions = list(href_list["job_faction"])
 
 
 	var/antag_enabled = text2num(href_list["job_enabled_antag"])
@@ -1364,7 +1364,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			<input type='text' id='job_title' value='[J.title]'
 				oninput='
 					var new_title = this.value;
-					window.location.href='byond://?src=[REF(src)];[HrefToken()];update_job_title=1;chosen_job_edit=[J.id];new_title=" + encodeURIComponent(new_title);
+					window.location.href=\"byond://?src=[REF(src)];[HrefToken()];update_job_title=1;chosen_job_edit=[J.id];new_title=\" + encodeURIComponent(new_title);
 				'>
 		</td></tr>
 		<tr>
@@ -1373,7 +1373,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				<textarea id='job_tutorial' style='width:400px'
 					oninput='
 						var new_tutorial = this.value;
-						window.location.href='byond://?src=[REF(src)];[HrefToken()];update_job_tutorial=1;chosen_job_edit=[J.id];new_tutorial=" + encodeURIComponent(new_tutorial);
+						window.location.href=\"byond://?src=[REF(src)];[HrefToken()];update_job_tutorial=1;chosen_job_edit=[J.id];new_tutorial=\" + encodeURIComponent(new_tutorial);
 					'>[J.tutorial]</textarea>
 			</td>
 		</tr>
@@ -1383,7 +1383,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				var new_faction = this.value;
 				window.location.href = \"byond://?src=[REF(src)];[HrefToken()];update_job_faction=1;chosen_job_edit=[J.id];new_faction=\" + encodeURIComponent(new_faction);
 			'>
-				[generate_options(factions_list, J.faction)]
+				[generate_options(factions_list, J.factions[1])]
 			</select>
 		</td></tr>
 		<tr><th>Outfit:</th>
@@ -1401,7 +1401,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				<input type='text' id='job_combat_song' value='[J.cmode_music]'
 					oninput='
 						var new_song = this.value;
-						window.location.href='byond://?src=[REF(src)];[HrefToken()];update_job_song=1;chosen_job_edit=[J.id];new_song=" + encodeURIComponent(new_song);
+						window.location.href=\"byond://?src=[REF(src)];[HrefToken()];update_job_song=1;chosen_job_edit=[J.id];new_song=" + encodeURIComponent(new_song);
 					'>
 			</td>
 		</tr>
@@ -1728,7 +1728,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				var name = document.getElementById("wave_t").value;
 				var name_g = document.getElementById("wave_g").value;
 				var name_mc = document.getElementById("wave_mc").value;
-				window.location.href='byond://?src=[REF(src)];[HrefToken()];add_jobs=1;job=" + encodeURIComponent(job) + ";name=" + encodeURIComponent(name) + ";name_g=" + encodeURIComponent(name_g) + ";name_mc=" + encodeURIComponent(name_mc) + ";slots=" + encodeURIComponent(slots);
+				window.location.href="byond://?src=[REF(src)];[HrefToken()];add_jobs=1;job=" + encodeURIComponent(job) + ";name=" + encodeURIComponent(name) + ";name_g=" + encodeURIComponent(name_g) + ";name_mc=" + encodeURIComponent(name_mc) + ";slots=" + encodeURIComponent(slots);
 			'>Add Job</button>
 	"}
 	dat+= "</td></tr>"
@@ -1831,7 +1831,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			<input type='text' id='wave_t' value='[CW.name]'
 				oninput='
 					var new_name = this.value;
-					window.location.href='byond://?src=[REF(src)];[HrefToken()];update_wave_name=1;wave_ref=[REF(CW)];new_name=" + encodeURIComponent(new_name);
+					window.location.href="byond://?src=[REF(src)];[HrefToken()];update_wave_name=1;wave_ref=[REF(CW)];new_name=" + encodeURIComponent(new_name);
 				'>
 		</td></tr>
 		<tr>
@@ -1840,7 +1840,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				<textarea id='wave_g' style='width:400px'
 					oninput='
 						var new_g = this.value;
-						window.location.href='byond://?src=[REF(src)];[HrefToken()];update_wave_greeting=1;wave_ref=[REF(CW)];new_g=" + encodeURIComponent(new_g);
+						window.location.href="byond://?src=[REF(src)];[HrefToken()];update_wave_greeting=1;wave_ref=[REF(CW)];new_g=" + encodeURIComponent(new_g);
 					'>[CW.greeting_text]</textarea>
 			</td>
 		</tr>
@@ -1850,7 +1850,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				<input type='number' id='wave_mc' style='width:40px' value='[CW.min_pop]'
 					oninput='
 						var new_mc = this.value;
-						window.location.href='byond://?src=[REF(src)];[HrefToken()];update_wave_min_pop=1;wave_ref=[REF(CW)];new_mc=" + encodeURIComponent(new_mc);
+						window.location.href="byond://?src=[REF(src)];[HrefToken()];update_wave_min_pop=1;wave_ref=[REF(CW)];new_mc=" + encodeURIComponent(new_mc);
 					'>
 			</td>
 		</tr>
