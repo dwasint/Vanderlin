@@ -1880,7 +1880,7 @@
 	var/def_zone = affecting.body_zone
 
 	var/list/split = list()
-	var/armor_block = H.run_armor_check(selzone, I.damage_type, "", "", pen, damage = item_force, blade_dulling = user.used_intent.blade_class, split_output = split)
+	H.run_armor_check(selzone, I.damage_type, "", "", pen, damage = item_force, blade_dulling = user.used_intent.blade_class, split_output = split)
 	if(signal & COMPONENT_ITEM_NO_DEFENSE)
 		armor_block = 0
 	var/weakness = H.check_weakness(I, user)
@@ -1891,7 +1891,7 @@
 	if(split[DAMAGE_TYPED] > 0)
 		typed_actual = apply_damage(split[DAMAGE_TYPED] * weakness, I.damtype, def_zone, 0, H, skip_dtype = TRUE)
 	if(split[DAMAGE_BLUNT] > 0)
-		blunt_actual = apply_damage(split[DAMAGE_BLUNT] * weakness, BRUTE, def_zone, 0, H, skip_dtype = TRUE)
+		blunt_actual = apply_damage(split[DAMAGE_BLUNT] * weakness, BRUTE, def_zone, 0, H, skip_dtype = TRUE, can_crit = FALSE)
 
 	var/actual_damage = typed_actual + blunt_actual
 	SEND_SIGNAL(I, COMSIG_ITEM_SPEC_ATTACKEDBY, H, user, affecting, actual_damage)
