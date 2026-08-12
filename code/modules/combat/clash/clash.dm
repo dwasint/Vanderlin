@@ -30,7 +30,7 @@
 		if(split[DAMAGE_TYPED] > 0)
 			typed_actual = assailant.apply_damage(split[DAMAGE_TYPED], our_item.damtype, affecting, 0)
 		if(split[DAMAGE_BLUNT] > 0)
-			blunt_actual = assailant.apply_damage(split[DAMAGE_BLUNT], BRUTE, affecting, 0)
+			blunt_actual = assailant.apply_damage(split[DAMAGE_BLUNT], BRUTE, affecting, 0, can_crit = FALSE)
 
 		var/real_damage = typed_actual + blunt_actual
 

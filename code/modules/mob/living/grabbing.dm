@@ -758,7 +758,7 @@
 		damage = damage*2
 
 	var/list/split = list()
-	var/armor_block = C.run_armor_check(sublimb_grabbed, "stab", damage = damage, split_output = split)
+	C.run_armor_check(sublimb_grabbed, "stab", damage = damage, split_output = split)
 
 	user.do_attack_animation(C, ATTACK_EFFECT_BITE, used_item = FALSE)
 	C.next_attack_msg.Cut()
@@ -768,7 +768,7 @@
 	if(split[DAMAGE_TYPED] > 0)
 		typed_actual = C.apply_damage(split[DAMAGE_TYPED], limb_grabbed, 0)
 	if(split[DAMAGE_BLUNT] > 0)
-		blunt_actual = C.apply_damage(split[DAMAGE_BLUNT], BRUTE, limb_grabbed, 0)
+		blunt_actual = C.apply_damage(split[DAMAGE_BLUNT], BRUTE, limb_grabbed, 0, can_crit = FALSE)
 
 	var/real_damage = typed_actual + blunt_actual
 

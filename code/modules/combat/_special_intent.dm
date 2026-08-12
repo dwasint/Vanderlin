@@ -301,7 +301,7 @@
 		if(split[DAMAGE_TYPED] > 0)
 			typed_actual = human_victim.apply_damage(split[DAMAGE_TYPED], damage_type, affecting, 0)
 		if(split[DAMAGE_BLUNT] > 0)
-			blunt_actual = human_victim.apply_damage(split[DAMAGE_BLUNT], BRUTE, affecting, 0)
+			blunt_actual = human_victim.apply_damage(split[DAMAGE_BLUNT], BRUTE, affecting, 0, can_crit = FALSE)
 
 		var/real_damage = typed_actual + blunt_actual
 
