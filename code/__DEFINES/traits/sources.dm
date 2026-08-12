@@ -3,6 +3,7 @@
 #define TRAIT_GENERIC "generic"
 #define UNCONSCIOUS_TRAIT "unconscious"
 #define EYE_DAMAGE "eye_damage"
+#define EAR_DAMAGE "ear_damage"
 #define OBESITY_TRAIT "obesity"
 /// Granted by spells
 #define MAGIC_TRAIT "magic"
@@ -131,3 +132,5 @@
 #define WING_TRAIT "wings"
 /// Trait from brood eggs
 #define BROODMOTHER_EGG_TRAIT "broodmother_egg"
+/// Trait from an organ being inside a bodypart
+#define ORGAN_INSIDE_BODY_TRAIT "organ_inside_body"

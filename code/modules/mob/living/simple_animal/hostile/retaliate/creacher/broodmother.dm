@@ -123,6 +123,8 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 	button_icon_state = "acidsplash"
 	sound = 'sound/magic/whiteflame.ogg'
 
+	required_form = null
+
 	charge_time = 3 SECONDS
 	charge_slowdown = 0.7
 	cooldown_time = 30 SECONDS

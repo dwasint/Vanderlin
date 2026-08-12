@@ -109,6 +109,9 @@
 	icon = 'icons/roguetown/weapons/32/patron.dmi'
 	icon_state = "moonflail"
 	sharpness = IS_SHARP
+	max_blade_int = 160
+	possible_item_intents = list(FLAIL_LNGSTRIKE, FLAIL_LNGSMASH, FLAIL_LNGCUT)
+	wlength = WLENGTH_GREAT
 
 //................ Psydon Flail ............... //
 /obj/item/weapon/flail/psydon
@@ -192,7 +195,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = null
 	anvilrepair = /datum/attribute/skill/craft/carpentry
-	dropshrink = 0.9
 	resistance_flags = FLAMMABLE
 	item_weight = 3.5 KILOGRAMS
 
