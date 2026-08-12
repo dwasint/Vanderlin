@@ -14,3 +14,7 @@
 /datum/physiology_modifier/flight
 	id = "flight"
 	stun_mod = 2
+
+/datum/physiology_modifier/adrenaline_rush
+	id = "adrenaline_rush"
+	pain_mod = 0.5
