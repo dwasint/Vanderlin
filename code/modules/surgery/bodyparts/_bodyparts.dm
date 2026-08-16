@@ -483,6 +483,8 @@
 			if(owner)
 				ADD_TRAIT(owner, TRAIT_NOBLOOD, TRAIT_GENERIC)
 				owner.change_stat(STAT_CONSTITUTION, -99)
+				owner.update_body()
+			update_icon_dropped()
 
 /// Return TRUE to get whatever mob this is in to update health.
 /obj/item/bodypart/proc/on_life(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness, passed_temp)
@@ -529,6 +531,8 @@
 	else if(can_decay() && germ_level)
 		. = TRUE
 	else if(getorganslotefficiency(ORGAN_SLOT_ARTERY) < ORGAN_FAILING_EFFICIENCY)
+		. = TRUE
+	else if(HAS_TRAIT(src, TRAIT_ROTTEN))
 		. = TRUE
 	needs_processing = .
 
