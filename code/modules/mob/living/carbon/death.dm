@@ -25,6 +25,7 @@
 	organ = new(get_turf(src))
 	if(bite)
 		organ.converts_living = TRUE
+		organ.revive_time = 1 MINUTES
 	organ.Insert(src)
 
 /mob/living/carbon/dust(just_ash, drop_items, force)
