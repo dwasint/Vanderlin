@@ -16,6 +16,8 @@
 	RegisterSignal(M, COMSIG_ENTER_AREA, PROC_REF(is_valid_starter))
 	RegisterSignal(M, COMSIG_MOB_LOGIN, PROC_REF(is_valid_starter))
 	on_rotten_state_change()
+	if(converts_living)
+		START_PROCESSING(SSobj, src)
 
 /obj/item/organ/zombie_infection/Remove(mob/living/carbon/M, special = 0)
 	. = ..()
@@ -25,6 +27,21 @@
 	if(timer_id)
 		deltimer(timer_id)
 	addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, attempt_infect)), 2 MINUTES)
+	if(converts_living)
+		STOP_PROCESSING(SSobj, src)
+
+/obj/item/organ/zombie_infection/process(delta_time, times_fired)
+	for(var/obj/item/bodypart/part as anything in owner.bodyparts)
+		if(HAS_TRAIT(part, TRAIT_ROTTEN) || !part.is_organic_limb())
+			continue
+		part.adjust_germ_level(INFECTION_LEVEL_THREE * (4 MINUTES * 0.1) * delta_time * rand(0.5, 1.2))
+
+	if(!MOBTIMER_FINISHED(owner, MT_PUKE, 2 MINUTES))
+		return
+
+	if(owner.get_blood_volume() && prob(11))
+		MOBTIMER_SET(owner, MT_PUKE)
+		owner.vomit(1, blood = TRUE, stun = FALSE)
 
 /*
 /obj/item/organ/zombie_infection/on_find(mob/living/finder)
@@ -52,12 +69,11 @@
 			deltimer(timer_id)
 		return
 
-	if(!converts_living)
-		for(var/obj/item/bodypart/part as anything in owner.bodyparts)
-			if(!HAS_TRAIT(part, TRAIT_ROTTEN) && part.is_organic_limb())
-				if(timer_id)
-					deltimer(timer_id)
-				return FALSE
+	for(var/obj/item/bodypart/part as anything in owner.bodyparts)
+		if(!HAS_TRAIT(part, TRAIT_ROTTEN) && part.is_organic_limb())
+			if(timer_id)
+				deltimer(timer_id)
+			return FALSE
 	if(timer_id)
 		return FALSE
 	timer_id = addtimer(CALLBACK(src, PROC_REF(zombify)), revive_time, TIMER_STOPPABLE)
@@ -67,4 +83,4 @@
 
 	if(!converts_living && owner.stat != DEAD)
 		return
-	owner.zombie_check()
+	owner.wake_zombie()
