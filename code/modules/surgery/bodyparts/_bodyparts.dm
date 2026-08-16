@@ -917,7 +917,7 @@
 
 /// Returns whether or not the bodypart can feel pain
 /obj/item/bodypart/proc/can_feel_pain()
-	if(CHECK_BITFIELD(limb_flags, BODYPART_CUT_AWAY|BODYPART_DEAD))
+	if(CHECK_BITFIELD(limb_flags, BODYPART_DEAD))
 		return
 	if(HAS_TRAIT(src, TRAIT_ROTTEN))
 		return FALSE
