@@ -35,7 +35,7 @@
 	for(var/obj/item/bodypart/part as anything in owner.bodyparts)
 		if(HAS_TRAIT(part, TRAIT_ROTTEN) || !part.is_organic_limb())
 			continue
-		part.adjust_germ_level((INFECTION_LEVEL_THREE / (4 MINUTES)) * (0.1 * delta_time) * rand(0.5, 1.2))
+		part.adjust_germ_level((INFECTION_LEVEL_THREE / (10 MINUTES)) * (0.1 * delta_time) * rand(0.5, 1.2))
 		valid_part = TRUE
 
 	if(!valid_part)
