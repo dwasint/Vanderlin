@@ -77,6 +77,16 @@
 	var/current_protection = protection
 	var/current_edge_protection = edge_protection
 
+	/*
+	 * If armor types supports layering, and damage pierces the current max protection we can go a layer below to add into it
+	 *
+	 * Per iteration:
+	 *   Scans 'body_parts' for the next valid, intact, and un-broken layer covering 'def_zone'.
+	 *   Selects the eligible piece with the highest armor rating for 'd_type'.
+	 *   Scales protection and edge protection using a diminishing stack formula (LAYERED_ARMOR_STACK_BONUS).
+	 *   Adds the new layer to 'damaged_layers' so it absorbs damage during execution so it can break aswell.
+	 */
+
 	while(current_layer && current_layer.get_armor().layered_defense && armor_penetration + damage > current_protection)
 		var/obj/item/clothing/next_layer
 		var/next_val = 0
