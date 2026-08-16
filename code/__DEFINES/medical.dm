@@ -91,6 +91,7 @@
 #define ORGAN_SLOT_ANTENNAS "antennas"
 #define ORGAN_SLOT_WINGS "wings"
 #define ORGAN_SLOT_SNOUT "snout"
+#define ORGAN_SLOT_ZOMBIE "zombie_organ"
 
 #define ORGAN_SLOT_NECK_FEATURE "neck_feature"
 #define ORGAN_SLOT_HEAD_FEATURE "head_feature"

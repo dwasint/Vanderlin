@@ -1,3 +1,5 @@
+#define ROT_SKELETONIZE_TIME 20 MINUTES
+#define AMBIENT_ROT_RATE (INFECTION_LEVEL_THREE / (25 MINUTES))
 
 /obj/item/bodypart
 	name = "limb"
@@ -11,6 +13,8 @@
 	layer = BELOW_MOB_LAYER //so it isn't hidden behind objects when on the floor
 	germ_level = 0
 
+	///this is our total delta time spent skeletonizing
+	var/skeletonizing_rate = 0
 	var/disinfects_in
 	/// DO NOT MODIFY DIRECTLY. Use update_owner()
 	var/mob/living/carbon/owner
@@ -447,6 +451,8 @@
 
 	germ_level = INFECTION_LEVEL_THREE
 	limb_flags |= BODYPART_DEAD
+	if(owner)
+		SEND_SIGNAL(owner, COMSIG_BODYPART_ROTTEN_CHANGE)
 	update_limb(!owner)
 	update_limb_efficiency()
 
@@ -455,8 +461,28 @@
 	SIGNAL_HANDLER
 
 	limb_flags &= ~BODYPART_DEAD
+	skeletonizing_rate = 0
+	if(owner)
+		SEND_SIGNAL(owner, COMSIG_BODYPART_ROTTEN_CHANGE)
 	update_limb(!owner)
 	update_limb_efficiency()
+
+/obj/item/bodypart/proc/on_death(delta_time, times_fired)
+	if(!is_organic_limb() || skeletonized || HAS_TRAIT(src, TRAIT_NO_ROT))
+		return
+	if(HAS_TRAIT(src, TRAIT_STASIS) || (owner && HAS_TRAIT(owner, TRAIT_STASIS)))
+		return
+
+	if(can_decay())
+		adjust_germ_level(AMBIENT_ROT_RATE * delta_time * 10) //dt is measured in seconds and MINUTES is measured in deci seconds so 10x is needed
+
+	if(HAS_TRAIT(src, TRAIT_ROTTEN))
+		skeletonizing_rate += delta_time * 10
+		if(!skeletonized && skeletonizing_rate >= ROT_SKELETONIZE_TIME)
+			skeletonize()
+			if(owner)
+				ADD_TRAIT(owner, TRAIT_NOBLOOD, TRAIT_GENERIC)
+				owner.change_stat(STAT_CONSTITUTION, -99)
 
 /// Return TRUE to get whatever mob this is in to update health.
 /obj/item/bodypart/proc/on_life(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness, passed_temp)
@@ -487,6 +513,8 @@
 			if(owner)
 				to_chat(owner, span_userdanger("My [name] has gone numb, dark, and still. It's dead."))
 		. |= BODYPART_LIFE_UPDATE_HEALTH
+	if(CHECK_BITFIELD(limb_flags, BODYPART_DEAD))
+		on_death(delta_time, times_fired)
 
 /// Check if we need to run on_life()
 /obj/item/bodypart/proc/consider_processing()
@@ -1521,6 +1549,8 @@
 		for(var/obj/item/organ/organ as anything in get_organs())
 			if(!organ.is_visible())
 				continue
+			var/list/colors = color_key_source_list_from_carbon(owner) //for 99% of mobs this ends up being quicker by a little since it saves accessing on mobs with no visible
+			organ.build_colors_for_accessory(colors)
 			var/mutable_appearance/organ_appearance = organ.get_bodypart_overlay(src)
 			if(organ_appearance)
 				. += organ_appearance
@@ -1949,3 +1979,6 @@
 		var/mob/living/carbon/human/human = owner
 		human.update_damage_overlays_real()
 	return TRUE
+
+#undef ROT_SKELETONIZE_TIME
+#undef AMBIENT_ROT_RATE
