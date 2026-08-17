@@ -31,6 +31,8 @@
 
 /obj/item/organ/zombie_infection/process(delta_time, times_fired)
 	var/valid_part = FALSE
+	if(!owner)
+		return PROCESS_KILL
 	for(var/obj/item/bodypart/part as anything in owner?.bodyparts)
 		if(HAS_TRAIT(part, TRAIT_ROTTEN) || !part.is_organic_limb())
 			continue
