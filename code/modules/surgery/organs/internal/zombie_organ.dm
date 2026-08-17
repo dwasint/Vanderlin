@@ -27,12 +27,11 @@
 	if(timer_id)
 		deltimer(timer_id)
 	addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, attempt_infect)), 2 MINUTES)
-	if(converts_living)
-		STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/organ/zombie_infection/process(delta_time, times_fired)
 	var/valid_part = FALSE
-	for(var/obj/item/bodypart/part as anything in owner.bodyparts)
+	for(var/obj/item/bodypart/part as anything in owner?.bodyparts)
 		if(HAS_TRAIT(part, TRAIT_ROTTEN) || !part.is_organic_limb())
 			continue
 		part.adjust_germ_level((INFECTION_LEVEL_THREE / (10 MINUTES)) * (0.1 * delta_time) * rand(0.5, 1.2))
