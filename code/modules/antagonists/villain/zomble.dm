@@ -2,7 +2,7 @@
 	id = "Zombification"
 	attribute_list = list(
 		STAT_STRENGTH = 2,
-		STAT_SPEED = -4,
+		STAT_SPEED = -3,
 		STAT_PERCEPTION = -5,
 		STAT_INTELLIGENCE = -9,
 		STAT_CONSTITUTION = 5,
