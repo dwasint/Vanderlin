@@ -86,6 +86,8 @@
 
 /obj/item/organ/zombie_infection/proc/zombify()
 	timer_id = null
+	if(!owner)
+		return
 
 	if(!converts_living && owner.stat != DEAD)
 		return
