@@ -39,6 +39,8 @@
 	for(var/obj/item/bodypart/part as anything in carbon_patient.bodyparts)
 		if(HAS_TRAIT(part, TRAIT_ROTTEN))
 			return TRUE
+		if(part.germ_level >= INFECTION_LEVEL_ONE*0.2)
+			return TRUE
 
 	for(var/obj/item/organ/organ as anything in carbon_patient.internal_organs)
 		if(organ.germ_level >= INFECTION_LEVEL_ONE * 0.2)
