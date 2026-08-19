@@ -23,6 +23,13 @@
 "ap" = (
 /turf/open/floor/grass,
 /area/outdoors)
+"aq" = (
+/obj/structure/fluff/railing/tall{
+	dir = 8
+	},
+/obj/structure/flora/newtree,
+/turf/open/floor/grass/cold,
+/area/outdoors)
 "ar" = (
 /obj/structure/carpet/red,
 /turf/open/openspace,
@@ -207,6 +214,18 @@
 "bU" = (
 /turf/open/floor/cobble,
 /area/outdoors/town/keep)
+"bW" = (
+/obj/structure/flora/sakura{
+	name = "manabloom tree";
+	desc = "This totally isnt pink...";
+	icon_state = "manabloomtree";
+	icon = 'icons/obj/structures/manabloomtree.dmi';
+	pixel_y = -16;
+	pixel_x = -54;
+	plane = -8
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "cd" = (
 /obj/structure/fluff/clodpile/dirt,
 /turf/open/floor/dirt/road,
@@ -689,6 +708,10 @@
 	},
 /turf/open/floor/cobble,
 /area/outdoors)
+"fV" = (
+/obj/effect/lily_petal/three,
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "fZ" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/warehouse/generic)
@@ -937,6 +960,9 @@
 	name = "Tailor Shop"
 	},
 /obj/effect/mapping_helpers/access/keyset/town/tailor,
+/obj/structure/bars/passage/shutter/open{
+	redstone_id = "tailor-room"
+	},
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors)
 "jc" = (
@@ -1140,7 +1166,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
 "lh" = (
-/obj/structure/roguetent,
+/obj/structure/tentdoor/red,
 /turf/open/floor/dirt/road,
 /area/outdoors)
 "li" = (
@@ -1253,6 +1279,10 @@
 "mF" = (
 /turf/open/floor/carpet/lord/right,
 /area/indoors/town/keep/throne)
+"mH" = (
+/obj/effect/lily_petal/three,
+/turf/open/floor/cobble,
+/area/outdoors)
 "mI" = (
 /obj/structure/chair/bench/coucha/redright,
 /turf/open/floor/ruinedwood/darker,
@@ -1459,6 +1489,9 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"pr" = (
+/turf/closed/wall/mineral/tent/brown,
+/area/outdoors)
 "pw" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /obj/structure/bed/wool,
@@ -1672,6 +1705,9 @@
 	layer = 2.81
 	},
 /obj/structure/table/wood/plain,
+/obj/structure/bars/passage/shutter/open{
+	redstone_id = "tailor-room"
+	},
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors)
 "ry" = (
@@ -1778,6 +1814,11 @@
 /obj/structure/table/wood/plain_alt,
 /obj/structure/chair/stool,
 /turf/open/floor/cobble/mossy,
+/area/outdoors)
+"sF" = (
+/obj/structure/table/wood/fancy/purple,
+/obj/structure/fluff/clutter/teapot,
+/turf/open/floor/ruinedwood/darker,
 /area/outdoors)
 "sH" = (
 /obj/structure/door/stone{
@@ -1995,7 +2036,7 @@
 /area/indoors/town/tavern)
 "uS" = (
 /obj/structure/fluff/celebration/canopy/c,
-/obj/structure/closet/crate/chest/neu_fancy,
+/obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/grass/cold,
 /area/outdoors)
 "uT" = (
@@ -2071,7 +2112,7 @@
 /turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/food)
 "wh" = (
-/obj/structure/roguetent,
+/obj/structure/tentdoor/brown,
 /turf/open/floor/grass/cold,
 /area/outdoors)
 "wj" = (
@@ -2203,7 +2244,8 @@
 	name = "manabloom tree";
 	desc = "This totally isnt pink...";
 	icon_state = "manabloomtree";
-	icon = 'icons/obj/structures/manabloomtree.dmi'
+	icon = 'icons/obj/structures/manabloomtree.dmi';
+	plane = -8
 	},
 /turf/open/floor/cobble,
 /area/outdoors/town/keep)
@@ -2991,7 +3033,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/throne)
 "Gm" = (
-/obj/structure/fluff/statue/zizo,
+/obj/structure/fluff/statue/astrata,
 /turf/open/floor/dirt/road,
 /area/outdoors)
 "Gp" = (
@@ -3208,7 +3250,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
 "Jd" = (
-/turf/closed/wall/mineral/tent,
+/turf/closed/wall/mineral/tent/red,
 /area/outdoors)
 "Jn" = (
 /obj/structure/closet/crate/drawer,
@@ -3306,6 +3348,22 @@
 "Ky" = (
 /turf/open/floor/tile,
 /area/indoors/town/keep/garrison)
+"Kz" = (
+/obj/item/candle/yellow/lit/infinite{
+	pixel_y = -17;
+	pixel_x = -7
+	},
+/obj/item/candle/yellow/lit/infinite{
+	pixel_y = -12;
+	pixel_x = 7
+	},
+/obj/item/gravedecor/headstone{
+	pixel_y = -8;
+	layer = s;
+	density = 1
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "KA" = (
 /obj/structure/chair/stool/bar,
 /turf/open/floor/ruinedwood/spiral,
@@ -3400,6 +3458,13 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors/town/keep)
+"LK" = (
+/obj/structure/lever/wall{
+	dir = 8;
+	redstone_id = "tailor-room"
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "LL" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -3639,7 +3704,7 @@
 /area/indoors/town/keep/garrison)
 "Ou" = (
 /obj/structure/fluff/celebration/canopy/r,
-/obj/structure/closet/crate/chest/neu_fancy,
+/obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/grass/cold,
 /area/outdoors)
 "Ov" = (
@@ -4224,6 +4289,10 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/throne)
+"TM" = (
+/obj/structure/wild_plant/nospread/manabloom,
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "TO" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -4415,10 +4484,6 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/lord_appt)
-"VE" = (
-/obj/structure/table/wood/fancy/purple,
-/turf/open/floor/ruinedwood/darker,
-/area/outdoors)
 "VH" = (
 /obj/structure/door/weak/bolt{
 	name = "Baths";
@@ -4721,6 +4786,10 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/grass/cold,
 /area/outdoors/town/keep)
+"YN" = (
+/obj/structure/fluff/statue/noc/tall,
+/turf/open/floor/cobble,
+/area/outdoors)
 "YQ" = (
 /obj/structure/chair/bench/coucha/r,
 /turf/open/floor/ruinedwood/darker,
@@ -65754,10 +65823,10 @@ PN
 PN
 PN
 PN
-Jd
-Jd
-Jd
-Jd
+pr
+pr
+pr
+pr
 yG
 PN
 Jd
@@ -66158,10 +66227,10 @@ Pe
 Pe
 Pe
 PN
-Jd
-Jd
-Jd
-Jd
+pr
+pr
+pr
+pr
 us
 PN
 Jd
@@ -66371,7 +66440,7 @@ kn
 kn
 kn
 kn
-PN
+eY
 kn
 kn
 kn
@@ -67377,7 +67446,7 @@ cd
 kn
 kn
 HT
-PN
+eY
 HT
 HT
 HT
@@ -68390,7 +68459,7 @@ HT
 HT
 HT
 PN
-PN
+eY
 PN
 HT
 HT
@@ -68581,7 +68650,7 @@ HT
 HT
 HT
 HT
-HT
+mH
 HT
 HT
 HT
@@ -68781,8 +68850,8 @@ kn
 HT
 HT
 HT
-kn
-kn
+TM
+fV
 HT
 HT
 HT
@@ -68985,12 +69054,12 @@ HT
 HT
 kn
 kn
+YN
+mH
 HT
 HT
 HT
-HT
-HT
-PN
+eY
 PN
 kn
 kn
@@ -69186,9 +69255,9 @@ kn
 HT
 HT
 HT
-kn
-kn
-kn
+bW
+Kz
+TM
 HT
 HT
 HT
@@ -69590,9 +69659,9 @@ kn
 HT
 HT
 HT
+mH
 HT
-HT
-HT
+mH
 HT
 HT
 HT
@@ -71610,7 +71679,7 @@ HT
 HT
 kn
 Vf
-Vf
+aq
 Vf
 Vf
 Vf
@@ -73038,7 +73107,7 @@ hr
 BN
 BN
 BN
-Qv
+LK
 Qv
 Qv
 Qv
@@ -73234,7 +73303,7 @@ kn
 kn
 PN
 cg
-dt
+sF
 Qv
 Qv
 Qv
@@ -74849,7 +74918,7 @@ kn
 PN
 kn
 BN
-VE
+dt
 KR
 ls
 Qv
@@ -106357,10 +106426,10 @@ JG
 JG
 JG
 JG
-Jd
-Jd
-Jd
-Jd
+pr
+pr
+pr
+pr
 JG
 JG
 JG
