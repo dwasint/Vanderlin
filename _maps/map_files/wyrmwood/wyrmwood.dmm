@@ -2,6 +2,10 @@
 "ap" = (
 /turf/open/floor/grass,
 /area/outdoors)
+"ar" = (
+/obj/structure/carpet/red,
+/turf/open/openspace,
+/area/outdoors)
 "aC" = (
 /obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/clothing/face/phys,
@@ -11,6 +15,14 @@
 /obj/item/clothing/gloves/leather/phys,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"aJ" = (
+/obj/machinery/light/fueled/forge,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
+"aM" = (
+/obj/machinery/anvil,
+/turf/open/floor/volcanic,
+/area)
 "aR" = (
 /obj/structure/window/stained/silver/alt,
 /turf/open/floor/ruinedwood/darker,
@@ -30,6 +42,13 @@
 	},
 /turf/open/floor/cobble/mossy,
 /area/outdoors)
+"bC" = (
+/turf/open/openspace,
+/area/indoors/town/smithy)
+"bD" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "bF" = (
 /obj/structure/table/optable,
 /obj/structure/curtain/bounty{
@@ -78,6 +97,9 @@
 "dd" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/water,
+/area/outdoors)
+"dn" = (
+/turf/open/floor/rooftop/green,
 /area/outdoors)
 "dE" = (
 /obj/structure/carpet/purple,
@@ -130,6 +152,10 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"fk" = (
+/obj/structure/window/solid,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "ft" = (
 /turf/open/water,
 /area/outdoors)
@@ -139,6 +165,9 @@
 /obj/structure/carpet/green,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"fC" = (
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "fG" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -148,6 +177,12 @@
 	},
 /obj/structure/soil,
 /turf/open/floor/dirt,
+/area/outdoors)
+"fT" = (
+/obj/structure/fluff/walldeco/sign/weaponsmithsign/left{
+	pixel_x = 4
+	},
+/turf/open/floor/cobble,
 /area/outdoors)
 "gg" = (
 /obj/structure/fluff/railing/wood{
@@ -161,6 +196,10 @@
 "gn" = (
 /turf/closed/mineral/coal/deep,
 /area)
+"gt" = (
+/obj/structure/rack/underworld,
+/turf/open/floor/naturalstone,
+/area)
 "gC" = (
 /obj/structure/fluff/railing/tall{
 	dir = 4
@@ -168,6 +207,10 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
+"gQ" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "gR" = (
 /turf/open/floor/churchrough,
 /area/outdoors)
@@ -177,6 +220,14 @@
 /area/outdoors)
 "hG" = (
 /turf/closed/basic,
+/area/outdoors)
+"hR" = (
+/obj/structure/door{
+	name = "Metal Storage"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/smith,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/cobblerock,
 /area/outdoors)
 "hT" = (
 /obj/structure/table/wood/reinf_long{
@@ -191,9 +242,25 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"ig" = (
+/obj/structure/curtain/bounty/dir{
+	dir = 1
+	},
+/turf/closed/wall/mineral/wood/window,
+/area/indoors/town/smithy)
+"il" = (
+/obj/structure/chair/wood/alt{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "iw" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/clinic_large)
+"ix" = (
+/obj/structure/curtain/bounty/dir,
+/turf/closed/wall/mineral/wood/window,
+/area/indoors/town/smithy)
 "iB" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -239,6 +306,11 @@
 /obj/structure/soil,
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
+"ji" = (
+/obj/item/bin/water/gross,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "jn" = (
 /obj/structure/fluff/railing/tall{
 	dir = 8
@@ -255,6 +327,9 @@
 "kn" = (
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"kq" = (
+/turf/open/floor/volcanic,
+/area)
 "ky" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -323,6 +398,10 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"ms" = (
+/obj/structure/carpet/purple,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "mF" = (
 /turf/open/floor/carpet/lord/right,
 /area/outdoors)
@@ -344,6 +423,14 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"nw" = (
+/obj/machinery/light/fueled/forge,
+/obj/item/mould/ingot{
+	pixel_y = 37
+	},
+/obj/structure/rack/shelf,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "nL" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/soil,
@@ -355,6 +442,10 @@
 	},
 /turf/open/floor/churchrough,
 /area/outdoors)
+"nV" = (
+/obj/structure/carpet/cyan,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "ob" = (
 /obj/structure/carpet/purple,
 /obj/structure/chair/wood/alt/chair_noble,
@@ -388,6 +479,11 @@
 "pj" = (
 /turf/open/floor/wood,
 /area/outdoors)
+"pw" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/bed/wool,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "py" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -401,6 +497,19 @@
 /obj/item/storage/backpack/satchel/surgbag/shit,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"pH" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -2
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
+"pI" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -2;
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "pN" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -439,6 +548,13 @@
 "qb" = (
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
+"qd" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "qy" = (
 /obj/structure/stairs,
 /turf/open/floor/dirt/road,
@@ -462,6 +578,14 @@
 /obj/structure/fluff/railing/tall,
 /turf/open/floor/hay,
 /area/outdoors)
+"rk" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/table/wood/plain,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
+"ry" = (
+/turf/open/lava,
+/area)
 "rS" = (
 /obj/structure/stairs{
 	dir = 4
@@ -474,6 +598,12 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
+"sp" = (
+/obj/machinery/anvil,
+/obj/item/weapon/tongs,
+/obj/item/weapon/hammer/iron,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "sH" = (
 /obj/structure/door/stone{
 	name = "Clinic"
@@ -511,6 +641,10 @@
 /obj/effect/landmark/start/feldsher,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"tS" = (
+/obj/structure/table/wood/plain,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "uk" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -518,12 +652,23 @@
 	},
 /turf/open/floor/wood,
 /area/outdoors)
+"up" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "uB" = (
 /obj/structure/stairs/stone{
 	dir = 1
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"vf" = (
+/obj/item/bin/water/gross,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "vs" = (
 /turf/open/openspace,
 /area/indoors/town/clinic_large)
@@ -551,6 +696,10 @@
 	},
 /turf/open/floor/wood,
 /area/outdoors)
+"wk" = (
+/obj/structure/stockpile_storage/metal,
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "wl" = (
 /obj/structure/fluff/statue/gargoyle/candles,
 /turf/open/floor/churchrough/pale,
@@ -561,6 +710,10 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
+"wK" = (
+/obj/structure/carpet/red,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "wW" = (
 /obj/structure/fluff/railing/tall{
 	dir = 4
@@ -579,9 +732,23 @@
 /obj/structure/stairs,
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"xc" = (
+/obj/machinery/anvil,
+/turf/open/floor/naturalstone,
+/area)
 "xf" = (
 /turf/closed/wall/mineral/stone,
 /area/outdoors)
+"xi" = (
+/obj/structure/curtain/bounty/dir{
+	dir = 4
+	},
+/turf/closed/wall/mineral/wood/window,
+/area/indoors/town/smithy)
+"xm" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "xB" = (
 /obj/structure/stairs{
 	dir = 1
@@ -611,6 +778,16 @@
 /obj/structure/soil,
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
+"yN" = (
+/obj/structure/door{
+	name = "Blacksmith"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/smith,
+/obj/structure/bars/passage/shutter/open{
+	redstone_id = "blacksmith-lock"
+	},
+/turf/open/floor/cobble,
+/area/indoors/town/smithy)
 "zf" = (
 /obj/structure/flora/grass/bush/wall,
 /turf/open/floor/dirt/road,
@@ -621,6 +798,10 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/outdoors)
+"zp" = (
+/obj/machinery/light/fueled/smelter/great,
+/turf/open/floor/naturalstone,
+/area)
 "zy" = (
 /turf/open/floor/dirt/road,
 /turf/open/floor/dirt/road,
@@ -639,6 +820,20 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
+/area/outdoors)
+"zH" = (
+/obj/structure/fermentation_keg/water,
+/turf/open/floor/cobblerock,
+/area/outdoors)
+"AE" = (
+/obj/structure/bed/wool,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
+"AI" = (
+/obj/structure/fluff/walldeco/sign/weaponsmithsign/left{
+	pixel_x = 4
+	},
+/turf/open/floor/dirt/road,
 /area/outdoors)
 "AK" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -686,6 +881,10 @@
 "BN" = (
 /turf/closed/wall/mineral/wooddark,
 /area/outdoors)
+"BO" = (
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "BQ" = (
 /obj/structure/stairs/fancy/l{
 	dir = 1
@@ -711,6 +910,9 @@
 	},
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"Cw" = (
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "CE" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 2
@@ -723,9 +925,26 @@
 "Db" = (
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
+"De" = (
+/obj/item/mould/ingot{
+	pixel_y = 37
+	},
+/obj/structure/rack/shelf,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
+"Df" = (
+/obj/structure/rack,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Dh" = (
 /turf/open/water/clean/under,
 /area)
+"Di" = (
+/obj/effect/decal/carpet/kover_black{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Dv" = (
 /obj/structure/stairs{
 	dir = 2
@@ -755,6 +974,10 @@
 /obj/structure/fluff/statue/knight/interior,
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
+"EM" = (
+/obj/structure/mannequin/male,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Fu" = (
 /obj/structure/stairs/fancy/r{
 	dir = 1
@@ -772,10 +995,26 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
+"FG" = (
+/turf/closed/wall/mineral/wooddark,
+/area/indoors/town/smithy)
+"FN" = (
+/obj/structure/door{
+	name = "Blacksmith Resting Chamber"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/smith,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Gl" = (
 /obj/structure/carpet/purple,
 /turf/open/floor/blocks/stonered/tiny,
 /area/outdoors)
+"GF" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/carpet/cyan,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "GJ" = (
 /turf/closed/wall/mineral/stone/moss/red,
 /area/outdoors)
@@ -786,8 +1025,12 @@
 /area/outdoors)
 "He" = (
 /obj/structure/table/wood/plain,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
 /turf/open/floor/ruinedwood/darker,
-/area/outdoors)
+/area/indoors/town/smithy)
 "Hf" = (
 /obj/structure/throne,
 /turf/open/floor/carpet/lord/center,
@@ -804,6 +1047,11 @@
 "Hx" = (
 /turf/open/floor/hay,
 /area/outdoors)
+"HC" = (
+/obj/structure/mannequin/male,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "HF" = (
 /obj/structure/fluff/railing/tall{
 	dir = 8
@@ -823,6 +1071,12 @@
 /obj/structure/carpet/green,
 /turf/open/floor/tile,
 /area/indoors/town/clinic_large)
+"Iu" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Ix" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -845,6 +1099,22 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"IP" = (
+/obj/structure/closet/crate/crafted_closet/dark,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/armor/leather/vest,
+/obj/item/clothing/pants/tights/colored/random,
+/obj/item/clothing/shirt/undershirt/colored/random,
+/obj/item/clothing/shirt/undershirt/colored/random,
+/obj/item/clothing/pants/tights/colored/black,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shirt/undershirt/lowcut,
+/obj/item/clothing/shirt/undershirt/lowcut,
+/obj/item/clothing/cloak/apron/brown,
+/obj/item/clothing/cloak/apron/brown,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/wood,
+/area/indoors/town/smithy)
 "Jn" = (
 /obj/structure/closet/crate/drawer,
 /obj/structure/carpet/green,
@@ -867,6 +1137,12 @@
 	},
 /turf/open/floor/naturalstone,
 /area)
+"Kp" = (
+/obj/structure/carpet/red,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/rack,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Kx" = (
 /obj/structure/chair/bench/couch/left/lord_primary{
 	dir = 4
@@ -940,6 +1216,14 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
+"Mt" = (
+/obj/structure/door{
+	name = "Blacksmith"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/smith,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Mv" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -967,6 +1251,14 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
+"Nr" = (
+/obj/structure/table/wood/reinforced_alter,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "Nx" = (
 /obj/structure/fluff/railing/tall{
 	dir = 1
@@ -977,6 +1269,21 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
+"NB" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/carpet/red,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
+"NE" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/closet/crate/drawer,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
+"NU" = (
+/obj/structure/bookcase/random_recipes,
+/obj/item/recipe_book/blacksmithing,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Oa" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt/road,
@@ -994,6 +1301,15 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"OA" = (
+/obj/structure/carpet/red,
+/obj/structure/lever/wall{
+	pixel_y = 0;
+	pixel_x = 12;
+	redstone_id = "blacksmith-lock"
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "OG" = (
 /obj/structure/stairs{
 	dir = 1
@@ -1011,6 +1327,10 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
+"OY" = (
+/obj/structure/chair/bench/coucha,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Pt" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -1050,12 +1370,22 @@
 "QO" = (
 /turf/open/floor/tile,
 /area/indoors/town/clinic_large)
+"QT" = (
+/obj/structure/carpet/purple,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Rx" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 2
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"RF" = (
+/obj/structure/mannequin/male/female,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "RP" = (
 /obj/structure/chair/wood/alt{
 	dir = 1
@@ -1134,6 +1464,11 @@
 	},
 /turf/open/floor/cobble,
 /area/outdoors)
+"Uq" = (
+/turf/open/floor/rooftop/green{
+	dir = 1
+	},
+/area/outdoors)
 "UA" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -1144,6 +1479,16 @@
 /obj/structure/carpet/green,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"UI" = (
+/obj/machinery/anvil,
+/obj/item/weapon/tongs,
+/obj/item/weapon/hammer/iron,
+/obj/item/mould/ingot{
+	pixel_y = 37
+	},
+/obj/structure/rack/shelf,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "UX" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -1157,6 +1502,21 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"Vv" = (
+/obj/structure/mannequin/male/female,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
+"Vw" = (
+/obj/machinery/light/fueled/forge,
+/turf/open/floor/naturalstone,
+/area)
+"Vz" = (
+/obj/machinery/light/fueled/smelter,
+/obj/item/storage/crucible/random{
+	pixel_y = 12
+	},
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "VB" = (
 /obj/structure/flora/grass/bush/wall,
 /obj/structure/flora/grass/bush/wall,
@@ -1182,6 +1542,12 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"Wg" = (
+/obj/structure/bookcase/random_recipes,
+/obj/item/recipe_book/blacksmithing,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Wi" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 2
@@ -1231,6 +1597,16 @@
 "Ya" = (
 /turf/open/floor/naturalstone,
 /area)
+"Yj" = (
+/obj/structure/stairs{
+	dir = 2
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
+"Yp" = (
+/obj/structure/fluff/walldeco/painting/castle,
+/turf/closed/wall/mineral/wooddark,
+/area/indoors/town/smithy)
 "Yq" = (
 /obj/structure/fluff/railing/tall{
 	dir = 4
@@ -1249,6 +1625,10 @@
 /obj/structure/fluff/railing/tall,
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"YQ" = (
+/obj/structure/chair/bench/coucha/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Zp" = (
 /turf/closed/mineral/copper/deep,
 /area)
@@ -1257,6 +1637,14 @@
 /obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
+"Zz" = (
+/obj/structure/door{
+	name = "Blacksmith"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/smith,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/cobblerock,
+/area/indoors/town/smithy)
 "ZC" = (
 /turf/closed/mineral/salt/deep,
 /area)
@@ -1266,6 +1654,16 @@
 	},
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
+"ZI" = (
+/obj/structure/closet/crate/drawer,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
+"ZK" = (
+/obj/structure/curtain/bounty/dir{
+	dir = 8
+	},
+/turf/closed/wall/mineral/wood/window,
+/area/indoors/town/smithy)
 
 (1,1,1) = {"
 ZC
@@ -2827,8 +3225,8 @@ Hn
 Hn
 Zp
 Zp
-Zp
-Hn
+ry
+ry
 Hn
 Hn
 Hn
@@ -3028,10 +3426,10 @@ Hn
 Hn
 ci
 Hn
-Hn
-Zp
-Hn
-Hn
+ry
+ry
+ry
+ry
 Hn
 Hn
 Zp
@@ -3230,9 +3628,9 @@ Hn
 Hn
 Hn
 Hn
-ci
-Hn
-Hn
+ry
+ry
+ry
 Hn
 Zp
 Hn
@@ -3433,8 +3831,8 @@ Hn
 Zp
 Hn
 Zp
-ci
-Hn
+ry
+ry
 ZC
 Hn
 Hn
@@ -3635,7 +4033,7 @@ Hn
 Zp
 Hn
 ci
-Hn
+ry
 Hn
 Hn
 Zp
@@ -3836,8 +4234,8 @@ Hn
 Hn
 Hn
 Hn
-Hn
-Hn
+ry
+ry
 ZC
 ZC
 Hn
@@ -4038,7 +4436,7 @@ Hn
 Hn
 Hn
 Hn
-Hn
+ry
 Hn
 Hn
 Zp
@@ -4239,8 +4637,8 @@ Hn
 Zp
 Zp
 ci
-Hn
-ZC
+ry
+ry
 Hn
 ZC
 Hn
@@ -4441,7 +4839,7 @@ ZC
 ZC
 Hn
 Hn
-Ya
+ry
 Zp
 Hn
 Hn
@@ -4637,14 +5035,14 @@ Hn
 Hn
 Hn
 Hn
-Ya
-Ya
+xc
+Vw
 Hn
 Hn
 Hn
-Ya
-Ya
-Ya
+kq
+ry
+kq
 Zp
 Hn
 Hn
@@ -4841,12 +5239,12 @@ Ya
 Ya
 Ya
 Ya
-Ya
-Ya
-Ya
-Ya
-Ya
-Ya
+kq
+kq
+kq
+ry
+ry
+kq
 Ya
 Hn
 Hn
@@ -5040,14 +5438,14 @@ Hn
 Hn
 Hn
 Ya
+zp
 Ya
 Ya
 Ya
-Ya
-Ya
-Ya
-Ya
-Ya
+kq
+kq
+ry
+kq
 Ya
 Ya
 Ya
@@ -5246,14 +5644,14 @@ Ya
 Ya
 Ya
 Ya
-Ya
+aM
 Hn
-Tv
+ry
+kq
+kq
 Ya
 Ya
-Ya
-Ya
-Ya
+kq
 Hn
 Hn
 Hn
@@ -5445,15 +5843,15 @@ Hn
 Hn
 Hn
 ZC
-Ya
-Ya
-Ya
+gt
+gt
+Vw
 Hn
 ZC
 Hn
-Ya
-Ya
-Ya
+ry
+kq
+kq
 Hn
 Hn
 Tv
@@ -5652,10 +6050,10 @@ Hn
 Hn
 Hn
 ZC
-Ya
-Ya
-Ya
-Hn
+kq
+kq
+ry
+ry
 Hn
 Hn
 Hn
@@ -5855,11 +6253,11 @@ Hn
 Zp
 Ya
 Ya
-Ya
-Ya
-Hn
-Hn
-Hn
+kq
+kq
+ry
+ry
+ry
 ZC
 Zp
 Hn
@@ -64447,10 +64845,10 @@ kn
 kn
 kn
 PN
+pH
 Bd
 Bd
-Bd
-Bd
+zH
 BN
 kn
 DU
@@ -64652,7 +65050,7 @@ kn
 Bd
 Bd
 Bd
-Bd
+zH
 BN
 kn
 DU
@@ -64849,12 +65247,12 @@ kn
 kn
 kn
 kn
+AI
 kn
-kn
 Bd
 Bd
 Bd
-Bd
+zH
 BN
 kn
 DU
@@ -65043,12 +65441,12 @@ HT
 kn
 PN
 PN
-BN
-BN
-BN
-BN
-BN
-BN
+FG
+FG
+FG
+FG
+FG
+FG
 WK
 WK
 BN
@@ -65056,7 +65454,7 @@ kn
 Bd
 Bd
 Bd
-Bd
+zH
 BN
 kn
 kn
@@ -65244,21 +65642,21 @@ HT
 HT
 PN
 PN
-BN
-BN
-or
-or
-or
-BN
+FG
+FG
+aJ
+sp
+ji
+FG
 Bd
 Bd
 Bd
-KT
+qd
 kn
 Bd
 Bd
 Bd
-Bd
+zH
 BN
 PN
 kn
@@ -65442,25 +65840,25 @@ kn
 kn
 kn
 kn
-HT
+fT
 HT
 HT
 PN
-BN
-or
-or
-or
-or
-Bd
+FG
+ji
+Cw
+Cw
+Cw
+Zz
 Bd
 Bd
 Bd
 KT
 kn
+pI
 Bd
 Bd
-Bd
-Bd
+zH
 BN
 PN
 kn
@@ -65642,19 +66040,19 @@ kn
 kn
 kn
 kn
-BN
-BN
-BN
-HT
-BN
-BN
-BN
-or
-or
-or
-or
-BN
-BN
+FG
+FG
+FG
+yN
+FG
+FG
+FG
+nw
+Cw
+Vz
+Vz
+FG
+FG
 Bd
 Bd
 KT
@@ -65844,19 +66242,19 @@ xf
 kn
 kn
 kn
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
-or
-or
-or
-or
-or
-BN
+FG
+BO
+QT
+fC
+HC
+EM
+FG
+UI
+Cw
+Cw
+Cw
+Cw
+Nr
 Bd
 Bd
 KT
@@ -66046,19 +66444,19 @@ xf
 xf
 kn
 kn
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
-or
-or
-or
-or
-or
-BN
+FG
+BO
+ms
+fC
+ms
+Df
+FG
+De
+Cw
+sp
+Cw
+Cw
+Nr
 Bd
 Bd
 KT
@@ -66248,22 +66646,22 @@ or
 xf
 kn
 kn
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
-or
-or
-or
-or
-or
-BN
-BN
-BN
-BN
+FG
+fC
+ms
+fC
+ms
+Df
+FG
+De
+gQ
+aJ
+Cw
+vf
+FG
+FG
+FG
+FG
 kn
 kn
 BN
@@ -66450,22 +66848,22 @@ or
 xf
 kn
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
-or
-BN
-BN
-BN
-BN
-BN
-Qv
-Qv
-BN
+FG
+fC
+fC
+fC
+RF
+Vv
+FG
+Cw
+FG
+FG
+FG
+FG
+FG
+rk
+tS
+FG
 kn
 kn
 BN
@@ -66652,25 +67050,25 @@ or
 xf
 kn
 kn
-BN
+FG
+Mt
 He
 He
-He
-BN
-BN
-BN
-SV
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+FG
+FG
+FG
+up
+FG
+OY
+fC
+fC
+fC
+il
+il
+fk
 kn
 kn
-Bd
+hR
 Bd
 Bd
 Bd
@@ -66854,22 +67252,22 @@ or
 xf
 PN
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
-SV
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+FG
+wK
+wK
+wK
+wK
+Df
+FG
+up
+FG
+YQ
+Di
+bD
+fC
+fC
+fC
+FG
 kn
 BN
 BN
@@ -67056,22 +67454,22 @@ or
 xf
 kn
 kn
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
-BN
-Qv
-BN
-Qv
-Qv
-Qv
-BN
+FG
+Kp
+OA
+wK
+wK
+bD
+fC
+fC
+FG
+FG
+FN
+FG
+fC
+fC
+fC
+FG
 kn
 BN
 Bd
@@ -67258,22 +67656,22 @@ xf
 xf
 PN
 kn
-BN
-BN
-BN
-BN
-BN
-BN
-BN
-Qv
-Qj
-Qj
-Qv
-BN
-Qv
-Qv
-Qv
-BN
+FG
+FG
+FG
+FG
+FG
+FG
+FG
+fC
+Iu
+Iu
+fC
+FG
+fC
+fC
+bD
+fk
 cD
 BN
 Bd
@@ -67466,21 +67864,21 @@ PN
 PN
 PN
 PN
+FG
 BN
 BN
 BN
 BN
 BN
-BN
-Qv
-Qv
-Qv
-BN
+fC
+Yj
+FG
+FG
 cD
 BN
 Bd
 Bd
-Bd
+wk
 Bd
 Bd
 BN
@@ -67674,10 +68072,10 @@ Qv
 Qv
 Qv
 BN
-BN
-BN
-BN
-BN
+FG
+FG
+FG
+FG
 kn
 BN
 Bd
@@ -104646,11 +105044,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -104848,11 +105246,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -105036,6 +105434,7 @@ JG
 JG
 JG
 JG
+ar
 JG
 JG
 JG
@@ -105049,12 +105448,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -105252,11 +105650,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -105444,21 +105842,21 @@ JG
 JG
 JG
 JG
+FG
+xi
+FG
+FG
+FG
+dn
+dn
+dn
+dn
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -105645,22 +106043,22 @@ JG
 JG
 JG
 JG
+FG
+FG
+fC
+fC
+pw
+FG
+dn
+dn
+dn
+dn
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -105847,22 +106245,22 @@ JG
 JG
 JG
 JG
+FG
+wK
+wK
+fC
+ZI
+FG
+dn
+dn
+dn
+dn
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -106043,28 +106441,28 @@ JG
 JG
 JG
 JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+FG
+FN
+FG
+FG
+FG
+FG
+FG
+dn
+dn
+dn
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -106245,22 +106643,22 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+FG
+fC
+Wg
+FG
+NE
+AE
+FG
+dn
+dn
+dn
 JG
 JG
 JG
@@ -106447,22 +106845,22 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+ix
+fC
+NU
+FG
+fC
+fC
+FG
+dn
+dn
+dn
 JG
 JG
 JG
@@ -106649,22 +107047,22 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+ix
+fC
+NU
+FG
+wK
+wK
+FG
+FG
+FG
+FG
 JG
 JG
 JG
@@ -106851,22 +107249,22 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+ix
+fC
+fC
+FG
+FG
+FN
+Yp
+nV
+GF
+FG
 JG
 JG
 JG
@@ -107053,22 +107451,22 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+FG
+fC
+fC
+fC
+xm
+fC
+fC
+nV
+nV
+ig
 JG
 JG
 JG
@@ -107255,22 +107653,22 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+FG
+FG
+FN
+FG
+FG
+FG
+FG
+nV
+nV
+ig
 JG
 JG
 JG
@@ -107457,22 +107855,22 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+FG
+NB
+wK
+wK
+ZI
+FG
+IP
+fC
+fC
+FG
 JG
 JG
 JG
@@ -107659,22 +108057,22 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Uq
+Uq
+Uq
+Uq
+Uq
+Uq
+FG
+fC
+fC
+fC
+AE
+FG
+fC
+fC
+fC
+FG
 JG
 JG
 JG
@@ -107867,16 +108265,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+FG
+FG
+ZK
+ZK
+FG
+FG
+fC
+bC
+Yj
+FG
 JG
 JG
 JG
@@ -108074,11 +108472,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
+FG
+ZK
+FG
+FG
+FG
 JG
 JG
 JG
