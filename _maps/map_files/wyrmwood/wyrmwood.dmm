@@ -2,20 +2,49 @@
 "ap" = (
 /turf/open/floor/grass,
 /area/outdoors)
+"aC" = (
+/obj/structure/closet/crate/crafted_closet/dark,
+/obj/item/clothing/face/phys,
+/obj/item/clothing/head/roguehood/phys,
+/obj/item/clothing/neck/phys,
+/obj/item/clothing/shirt/robe/phys,
+/obj/item/clothing/gloves/leather/phys,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
+"aR" = (
+/obj/structure/window/stained/silver/alt,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "aW" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/cobble/mossy,
 /area/outdoors)
+"be" = (
+/obj/structure/fermentation_keg/random/water,
+/obj/machinery/light/fueled/wallfire/candle/blue,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "bs" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
 	},
 /turf/open/floor/cobble/mossy,
 /area/outdoors)
+"bF" = (
+/obj/structure/table/optable,
+/obj/structure/curtain/bounty{
+	color = "grey"
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "bK" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/wood,
 /area/outdoors)
+"cf" = (
+/obj/structure/window/stained/silver/alt,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "ci" = (
 /turf/closed/mineral/tin/deep,
 /area)
@@ -39,6 +68,13 @@
 	},
 /turf/open/floor/hay,
 /area/outdoors)
+"cW" = (
+/obj/structure/table/wood/reinf_long{
+	dir = 1
+	},
+/obj/machinery/light/fueled/wallfire/candle/blue/l,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "dd" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/water,
@@ -53,6 +89,10 @@
 "dH" = (
 /turf/closed/wall/mineral/stonebrick,
 /area/outdoors)
+"dS" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/closed/wall/mineral/wooddark,
+/area/indoors/town/clinic_large)
 "dU" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 8
@@ -63,6 +103,12 @@
 /obj/structure/fluff/railing/tall,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"eb" = (
+/obj/structure/chair/wood/alt{
+	dir = 2
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "eu" = (
 /obj/structure/chair/bench/couch/middle/lord_secondary{
 	dir = 8
@@ -87,6 +133,12 @@
 "ft" = (
 /turf/open/water,
 /area/outdoors)
+"fy" = (
+/obj/structure/bed/wool,
+/obj/item/bedsheet/pelt,
+/obj/structure/carpet/green,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "fG" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -126,12 +178,41 @@
 "hG" = (
 /turf/closed/basic,
 /area/outdoors)
+"hT" = (
+/obj/structure/table/wood/reinf_long{
+	dir = 4
+	},
+/obj/item/storage/backpack/satchel/surgbag/shit,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
+"id" = (
+/obj/structure/table/wood/reinf_long,
+/obj/structure/fluff/walldeco/feldshersign,
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
+"iw" = (
+/turf/closed/wall/mineral/stone,
+/area/indoors/town/clinic_large)
 "iB" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
 	},
 /turf/open/floor/wood,
 /area/outdoors)
+"iV" = (
+/obj/structure/closet/crate/crafted_closet/inn/chest,
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/turf/open/floor/tile,
+/area/indoors/town/clinic_large)
 "iW" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -195,6 +276,9 @@
 	},
 /turf/open/water,
 /area/outdoors)
+"la" = (
+/turf/closed/wall/mineral/wooddark,
+/area/indoors/town/clinic_large)
 "lj" = (
 /obj/structure/fluff/railing/tall,
 /obj/structure/soil,
@@ -212,6 +296,30 @@
 	},
 /obj/structure/fluff/railing/wood{
 	dir = 2
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors)
+"lF" = (
+/obj/structure/bed/shit{
+	pixel_y = -1
+	},
+/obj/structure/bed/shit{
+	pixel_y = 15
+	},
+/obj/structure/rack/shelf/notdense,
+/obj/effect/landmark/start/clinicapprentice{
+	dir = 8
+	},
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
+"mc" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
+"me" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -2
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
@@ -265,6 +373,14 @@
 "or" = (
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
+"oY" = (
+/obj/structure/door/stone{
+	name = "Supplies"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/doctor,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "pc" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/naturalstone,
@@ -278,6 +394,13 @@
 	},
 /turf/open/floor/cobble,
 /area/outdoors)
+"pA" = (
+/obj/structure/table/wood/reinf_long{
+	dir = 8
+	},
+/obj/item/storage/backpack/satchel/surgbag/shit,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "pN" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -302,6 +425,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"pV" = (
+/obj/structure/bed/mediocre,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "pW" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -341,6 +468,19 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"sf" = (
+/obj/structure/table/wood/reinf_long{
+	dir = 1
+	},
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
+"sH" = (
+/obj/structure/door/stone{
+	name = "Clinic"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/clinic,
+/turf/open/floor/dirt/road,
+/area/indoors/town/clinic_large)
 "sM" = (
 /obj/structure/carpet/purple,
 /obj/structure/table/stone_small,
@@ -367,6 +507,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"tQ" = (
+/obj/effect/landmark/start/feldsher,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "uk" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -380,6 +524,9 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"vs" = (
+/turf/open/openspace,
+/area/indoors/town/clinic_large)
 "vv" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -421,6 +568,13 @@
 /obj/structure/soil,
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
+"wY" = (
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "wZ" = (
 /obj/structure/stairs,
 /turf/open/floor/cobblerock,
@@ -486,6 +640,11 @@
 	},
 /turf/open/floor/wood,
 /area/outdoors)
+"AK" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/carpet/green,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "AN" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 2
@@ -513,6 +672,16 @@
 "Bd" = (
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"Bq" = (
+/obj/effect/decal/carpet{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
+"BA" = (
+/obj/effect/landmark/observer_start,
+/turf/open/floor/cobble,
+/area/outdoors)
 "BN" = (
 /turf/closed/wall/mineral/wooddark,
 /area/outdoors)
@@ -529,6 +698,12 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"Cc" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/floor/tile,
+/area/indoors/town/clinic_large)
 "Cl" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -544,9 +719,18 @@
 	},
 /turf/closed/basic,
 /area/outdoors)
+"Db" = (
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "Dh" = (
 /turf/open/water/clean/under,
 /area)
+"Dv" = (
+/obj/structure/stairs{
+	dir = 2
+	},
+/turf/open/openspace,
+/area/indoors/town/clinic_large)
 "Dz" = (
 /obj/structure/fluff/railing/tall{
 	dir = 8
@@ -634,6 +818,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors)
+"It" = (
+/obj/structure/carpet/green,
+/turf/open/floor/tile,
+/area/indoors/town/clinic_large)
 "Ix" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -641,6 +829,26 @@
 /obj/structure/fluff/statue/knight/interior,
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
+"IF" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/natural/bundle/cloth{
+	amount = 3;
+	pixel_y = 7
+	},
+/obj/item/natural/bundle/cloth{
+	amount = 3
+	},
+/obj/item/natural/bundle/cloth{
+	amount = 3;
+	pixel_y = -7
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
+"Jn" = (
+/obj/structure/closet/crate/drawer,
+/obj/structure/carpet/green,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "Ju" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -684,6 +892,9 @@
 /obj/structure/soil,
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
+"La" = (
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "Lg" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -769,11 +980,36 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"Os" = (
+/obj/structure/bed/shit{
+	pixel_y = -1
+	},
+/obj/structure/bed/shit{
+	pixel_y = 15
+	},
+/obj/structure/rack/shelf/notdense,
+/obj/effect/landmark/start/clinicapprentice{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
+"OG" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "OI" = (
 /obj/structure/carpet/purple,
 /obj/structure/table/vtable,
 /turf/open/floor/blocks/stonered/tiny,
 /area/outdoors)
+"OX" = (
+/obj/structure/stairs{
+	dir = 2
+	},
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "Pt" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -781,24 +1017,50 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
+"PL" = (
+/obj/structure/chair/stool,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "PN" = (
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"PU" = (
+/obj/structure/bookcase/random/eoratica{
+	name = "bookcase (The Dangers of Holding Hands)"
+	},
+/turf/open/floor/tile,
+/area/indoors/town/clinic_large)
 "Qj" = (
 /obj/structure/stairs{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors)
+"Qm" = (
+/obj/structure/table/wood/plain_alt,
+/obj/item/reagent_containers/glass/bottle/water,
+/obj/item/reagent_containers/glass/bottle/water,
+/obj/item/reagent_containers/glass/bottle/water,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "Qv" = (
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors)
+"QO" = (
+/turf/open/floor/tile,
+/area/indoors/town/clinic_large)
 "Rx" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 2
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"RP" = (
+/obj/structure/chair/wood/alt{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "RX" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -814,6 +1076,11 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/outdoors)
+"SK" = (
+/obj/structure/carpet/green,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/tile,
+/area/indoors/town/clinic_large)
 "SO" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 8
@@ -872,6 +1139,10 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"UC" = (
+/obj/structure/carpet/green,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "UX" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -900,6 +1171,10 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
+"Wb" = (
+/obj/structure/table/wood/reinf_long,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "Wf" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 8
@@ -912,6 +1187,15 @@
 	},
 /turf/closed/basic,
 /area/outdoors)
+"Wn" = (
+/obj/structure/table/wood/plain_alt,
+/obj/item/reagent_containers/glass/carafe/redwine,
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "WE" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -952,6 +1236,14 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
+"Yv" = (
+/obj/structure/door/stone{
+	name = "Clinic"
+	},
+/obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/town/doctor,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/clinic_large)
 "Yz" = (
 /obj/structure/fluff/railing/tall,
 /turf/open/floor/grass/cold,
@@ -959,6 +1251,11 @@
 "Zp" = (
 /turf/closed/mineral/copper/deep,
 /area)
+"Zu" = (
+/obj/structure/chair/stool,
+/obj/machinery/light/fueled/wallfire/candle/blue,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "ZC" = (
 /turf/closed/mineral/salt/deep,
 /area)
@@ -65935,7 +66232,7 @@ HT
 HT
 HT
 HT
-HT
+BA
 HT
 HT
 HT
@@ -67534,7 +67831,7 @@ kn
 kn
 kn
 kn
-PN
+me
 kn
 kn
 HT
@@ -67935,11 +68232,11 @@ kn
 kn
 kn
 kn
-xf
-xf
-kn
-xf
-xf
+iw
+iw
+sH
+iw
+iw
 PN
 PN
 PN
@@ -68134,16 +68431,16 @@ hA
 Nh
 Hu
 PN
-xf
-xf
-xf
-xf
-or
-or
-or
-xf
-xf
-xf
+iw
+iw
+iw
+iw
+Zu
+Db
+Db
+iw
+iw
+iw
 PN
 PN
 PN
@@ -68336,16 +68633,16 @@ hA
 Nh
 Hu
 PN
-xf
-Qv
-Qv
-rc
-or
-or
-or
-or
-or
-xf
+iw
+Os
+IF
+iw
+PL
+Db
+Db
+cW
+Wb
+iw
 PN
 PN
 PN
@@ -68538,16 +68835,16 @@ hA
 Nh
 Hu
 PN
-xf
-Qv
-Qv
-rc
-or
-or
-or
-or
-or
-xf
+iw
+La
+La
+iw
+PL
+Db
+Db
+Db
+pV
+iw
 PN
 PN
 PN
@@ -68740,16 +69037,16 @@ hA
 Nh
 Hu
 PN
-xf
-Qv
-Qv
-rc
-or
-or
-or
-or
-or
-xf
+iw
+lF
+La
+iw
+PL
+Db
+Db
+sf
+Wb
+iw
 PN
 PN
 HT
@@ -68942,16 +69239,16 @@ hA
 Nh
 Hu
 PN
-xf
-Qv
-Qv
-xf
-or
-or
-or
-or
-or
-xf
+iw
+iw
+Yv
+iw
+be
+Db
+Db
+Db
+pV
+iw
 PN
 PN
 HT
@@ -69144,16 +69441,16 @@ hA
 Nh
 Hu
 PN
-xf
-Qv
-Qv
-rc
-or
-or
-or
-or
-or
-xf
+iw
+bF
+La
+OG
+Db
+Db
+Db
+sf
+Wb
+iw
 PN
 PN
 HT
@@ -69346,16 +69643,16 @@ hA
 Nh
 Hu
 PN
-xf
-Qv
-Qv
-rc
-or
-or
-or
-or
-or
-xf
+iw
+bF
+La
+OG
+Db
+Db
+Db
+Db
+pV
+iw
 PN
 PN
 HT
@@ -69548,16 +69845,16 @@ hA
 Nh
 PN
 PN
-xf
-xf
-Qv
-rc
-or
-or
-or
-or
-xf
-xf
+iw
+iw
+id
+OG
+Db
+Db
+OX
+dS
+iw
+iw
 PN
 PN
 PN
@@ -69751,14 +70048,14 @@ PN
 PN
 PN
 PN
-xf
-xf
-xf
-xf
-xf
-xf
-xf
-xf
+iw
+iw
+iw
+cf
+cf
+iw
+iw
+iw
 PN
 PN
 PN
@@ -108336,11 +108633,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
+iw
+iw
+iw
+iw
+iw
 JG
 JG
 JG
@@ -108535,16 +108832,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+aR
+aR
+iw
+aC
+aC
+aC
+iw
+iw
+iw
 JG
 JG
 JG
@@ -108737,16 +109034,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+PU
+It
+SK
+La
+La
+La
+mc
+Qm
+iw
 JG
 JG
 JG
@@ -108939,16 +109236,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+PU
+It
+It
+La
+La
+La
+La
+pA
+iw
 JG
 JG
 JG
@@ -109141,16 +109438,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+QO
+It
+It
+tQ
+wY
+Bq
+La
+hT
+iw
 JG
 JG
 JG
@@ -109343,16 +109640,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+iV
+Cc
+Cc
+La
+la
+oY
+la
+la
+iw
 JG
 JG
 JG
@@ -109545,16 +109842,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+Jn
+UC
+La
+La
+la
+UC
+AK
+UC
+iw
 JG
 JG
 JG
@@ -109747,16 +110044,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+fy
+UC
+La
+La
+la
+La
+La
+La
+iw
 JG
 JG
 JG
@@ -109949,16 +110246,16 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+iw
+eb
+Wn
+RP
+la
+vs
+Dv
+iw
+iw
 JG
 JG
 JG
@@ -110152,14 +110449,14 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+iw
+iw
+iw
+iw
+iw
+iw
+iw
+iw
 JG
 JG
 JG
