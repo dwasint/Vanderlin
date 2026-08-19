@@ -374,11 +374,11 @@
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
 "oY" = (
+/obj/effect/mapping_helpers/access/locker,
 /obj/structure/door/stone{
-	name = "Supplies"
+	name = "Feldsher Office"
 	},
 /obj/effect/mapping_helpers/access/keyset/town/doctor,
-/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
 "pc" = (
@@ -680,6 +680,7 @@
 /area/indoors/town/clinic_large)
 "BA" = (
 /obj/effect/landmark/observer_start,
+/obj/effect/landmark/backup_join,
 /turf/open/floor/cobble,
 /area/outdoors)
 "BN" = (
@@ -1237,11 +1238,11 @@
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
 "Yv" = (
-/obj/structure/door/stone{
-	name = "Clinic"
-	},
 /obj/effect/mapping_helpers/access/locker,
 /obj/effect/mapping_helpers/access/keyset/town/doctor,
+/obj/structure/door/stone{
+	name = "Apprentice's Room"
+	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
 "Yz" = (
