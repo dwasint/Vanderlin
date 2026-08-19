@@ -215,6 +215,10 @@
 /obj/structure/window/stained/silver/alt,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
+"cg" = (
+/obj/structure/window/solid,
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "ci" = (
 /turf/closed/mineral/tin/deep,
 /area/indoors/cave)
@@ -331,6 +335,11 @@
 "dq" = (
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/tavern)
+"dt" = (
+/obj/structure/table/wood/fancy/purple,
+/obj/item/bouquet/salvia,
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "du" = (
 /obj/structure/table/wood/plain_alt,
 /obj/machinery/light/fueled/wallfire/candle{
@@ -795,6 +804,15 @@
 	},
 /turf/open/floor/wood,
 /area/indoors/town/keep/garrison)
+"hr" = (
+/obj/effect/mapping_helpers/access/locker,
+/obj/structure/door/viewport{
+	dir = 4;
+	name = "Tailor Shop"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/tailor,
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "hA" = (
 /obj/structure/soil,
 /turf/open/floor/grass/mixyel,
@@ -913,6 +931,14 @@
 	},
 /turf/open/floor/herringbone,
 /area/indoors/town/keep/lord_appt)
+"ja" = (
+/obj/structure/door/viewport{
+	dir = 4;
+	name = "Tailor Shop"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/tailor,
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "jc" = (
 /obj/structure/door/window{
 	name = "The Drunken Saiga Inn"
@@ -954,6 +980,9 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
+"jw" = (
+/turf/open/floor/dirt/road,
+/area/indoors/town)
 "jy" = (
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/churchrough/pale,
@@ -1145,6 +1174,10 @@
 /obj/structure/carpet/green,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"ls" = (
+/obj/structure/mannequin/male/female,
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "lw" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -1632,6 +1665,14 @@
 "rt" = (
 /obj/structure/table/wood/counter,
 /turf/open/floor/dirt/road,
+/area/outdoors)
+"ru" = (
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/table/wood/plain,
+/turf/open/floor/ruinedwood/darker,
 /area/outdoors)
 "ry" = (
 /turf/open/lava,
@@ -2590,9 +2631,39 @@
 	},
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"Co" = (
+/obj/structure/chair/wood/alt{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "Cw" = (
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
+"Cx" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/clothing/head/bardhat{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/clothing/head/chaperon/colored/greyscale/random{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/clothing/head/chaperon/colored/greyscale/random{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/fancyhat{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/hennin{
+	pixel_x = -9;
+	pixel_y = -4
+	},
+/turf/open/floor/ruinedwood/two,
+/area/outdoors)
 "CC" = (
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/servanthead)
@@ -2609,6 +2680,12 @@
 	dir = 8
 	},
 /turf/closed/basic,
+/area/outdoors)
+"CL" = (
+/obj/structure/door/window{
+	name = "Tailor's Quarters"
+	},
+/turf/open/floor/cobblerock,
 /area/outdoors)
 "CT" = (
 /obj/structure/chair/stool{
@@ -3233,6 +3310,10 @@
 /obj/structure/chair/stool/bar,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/tavern)
+"KR" = (
+/obj/structure/mannequin/male,
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "KT" = (
 /obj/structure/stairs{
 	dir = 1
@@ -4005,6 +4086,27 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/tile,
 /area/indoors/town/clinic_large)
+"SN" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/clothing/pants/skirt/colored/random{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/obj/item/clothing/pants/tights/colored/random{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/item/clothing/pants/tights/colored/random{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/item/clothing/pants/trou{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/clothing/pants/trou/leather,
+/turf/open/floor/ruinedwood/two,
+/area/outdoors)
 "SO" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 8
@@ -4164,6 +4266,26 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"Um" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/clothing/head/roguehood/colored/red{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/roguehood/colored/random{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/obj/item/clothing/head/roguehood/colored/green{
+	pixel_x = 8;
+	pixel_y = -7
+	},
+/obj/item/clothing/head/roguehood/colored{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/ruinedwood/two,
+/area/outdoors)
 "Un" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/churchrough/pale,
@@ -4293,6 +4415,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/lord_appt)
+"VE" = (
+/obj/structure/table/wood/fancy/purple,
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "VH" = (
 /obj/structure/door/weak/bolt{
 	name = "Baths";
@@ -4408,6 +4534,25 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
+"Wy" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/natural/bundle/curred_hide{
+	amount = 6;
+	pixel_x = -1;
+	pixel_y = 13
+	},
+/obj/item/natural/bundle/cloth{
+	amount = 8;
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/item/natural/bundle/cloth{
+	amount = 10;
+	pixel_x = -1;
+	pixel_y = -9
+	},
+/turf/open/floor/ruinedwood/two,
+/area/outdoors)
 "WE" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -62394,10 +62539,10 @@ ft
 pj
 pj
 ft
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 PN
 PN
 PN
@@ -62595,11 +62740,11 @@ ft
 ft
 pj
 pj
-BN
-BN
-Qv
-Qv
-BN
+Pe
+Pe
+Ez
+Ez
+Pe
 PN
 PN
 PN
@@ -62797,13 +62942,13 @@ dd
 pj
 pj
 pj
-BN
-Qv
-Qv
-Qv
-BN
-BN
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
+Pe
+Pe
 PN
 PN
 PN
@@ -62999,14 +63144,14 @@ vH
 pj
 pj
 pj
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
+Pe
 PN
 PN
 kn
@@ -63201,14 +63346,14 @@ vH
 Xc
 pj
 wj
-BN
-BN
-BN
-BN
-BN
-Qv
-Qv
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
+Ez
+Ez
+Pe
 PN
 PN
 kn
@@ -63405,12 +63550,12 @@ xP
 kn
 kn
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 PN
@@ -63607,12 +63752,12 @@ PN
 PN
 kn
 kn
-kn
-Qv
-Qv
-Qv
-Qv
-BN
+jw
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 PN
@@ -63809,12 +63954,12 @@ PN
 PN
 PN
 kn
-BN
-BN
-Qv
-Qv
-BN
-BN
+Pe
+Pe
+Ez
+Ez
+Pe
+Pe
 PN
 PN
 PN
@@ -64012,10 +64157,10 @@ PN
 PN
 kn
 PN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 PN
 PN
 kn
@@ -64612,10 +64757,10 @@ OD
 PN
 PN
 PN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 PN
 kn
 kn
@@ -64813,11 +64958,11 @@ OD
 OD
 PN
 PN
-BN
-BN
-Qv
-Qv
-BN
+Pe
+Pe
+Ez
+Ez
+Pe
 PN
 kn
 kn
@@ -65015,12 +65160,12 @@ wq
 OD
 PN
 PN
-BN
-Qv
-Qv
-Qv
-BN
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
+Pe
 PN
 kn
 kn
@@ -65217,12 +65362,12 @@ ax
 OD
 PN
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 kn
 kn
 kn
@@ -65419,12 +65564,12 @@ OD
 OD
 PN
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-kn
+Pe
+Ez
+Ez
+Ez
+Ez
+jw
 kn
 kn
 kn
@@ -65621,12 +65766,12 @@ Jd
 zl
 iR
 kn
-BN
-Qv
-Qv
-Qv
-BN
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
+Pe
 PN
 kn
 kn
@@ -65823,11 +65968,11 @@ Jd
 GC
 kn
 PN
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
 yT
 PN
 PN
@@ -67042,11 +67187,11 @@ HT
 HT
 yT
 PN
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
 kn
 hA
 Nh
@@ -67242,13 +67387,13 @@ HT
 HT
 PN
 PN
-BN
-BN
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Pe
+Pe
+Ez
+Ez
+Ez
+Pe
 kn
 PN
 Nh
@@ -67444,13 +67589,13 @@ HT
 HT
 PN
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 kn
 kn
 Nh
@@ -67646,13 +67791,13 @@ HT
 HT
 kn
 kn
-BN
-Qv
-Qv
-BN
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Pe
+Ez
+Ez
+Pe
 kn
 kn
 kn
@@ -67848,13 +67993,13 @@ HT
 kn
 kn
 kn
-kn
-Qv
-Qv
-BN
-BN
-BN
-BN
+jw
+Ez
+Ez
+Pe
+Pe
+Pe
+Pe
 kn
 kn
 kn
@@ -68050,10 +68195,10 @@ HT
 HT
 HT
 kn
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 kn
 kn
 kn
@@ -70882,11 +71027,11 @@ PN
 PN
 PN
 FG
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
 fC
 Yj
 FG
@@ -71084,11 +71229,11 @@ kn
 kn
 PN
 PN
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
 FG
 FG
 FG
@@ -71286,11 +71431,11 @@ kn
 kn
 kn
 PN
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
 kn
 kn
 kn
@@ -71488,11 +71633,11 @@ PN
 kn
 kn
 kn
-BN
-Qv
-Qv
-BN
-BN
+Pe
+Ez
+Ez
+Pe
+Pe
 kn
 kn
 Mv
@@ -71690,10 +71835,10 @@ BN
 BN
 kn
 kn
-BN
-Qv
-Qv
-kn
+Pe
+Ez
+Ez
+jw
 kn
 kn
 Oa
@@ -71892,10 +72037,10 @@ Qv
 BN
 kn
 PN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 kn
 kn
 Oa
@@ -72286,7 +72431,7 @@ Bd
 Bd
 Bd
 Bd
-Bd
+CL
 Qv
 Qv
 Qv
@@ -72700,10 +72845,10 @@ BN
 BN
 kn
 kn
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 kn
 uB
 JG
@@ -72888,8 +73033,8 @@ PN
 PN
 BN
 BN
-BN
-Bd
+cg
+hr
 BN
 BN
 BN
@@ -72902,10 +73047,10 @@ BN
 kn
 PN
 kn
-BN
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Pe
 kn
 kn
 XX
@@ -73088,13 +73233,13 @@ PN
 kn
 kn
 PN
-BN
+cg
+dt
 Qv
 Qv
 Qv
 Qv
-Qv
-BN
+ru
 Qv
 Qv
 Qv
@@ -73104,10 +73249,10 @@ BN
 kn
 kn
 kn
-BN
-Qv
-Qv
-kn
+Pe
+Ez
+Ez
+jw
 kn
 kn
 kn
@@ -73291,12 +73436,12 @@ kn
 kn
 PN
 BN
+Co
 Qv
 Qv
 Qv
 Qv
-Qv
-BN
+ru
 Qv
 Qv
 Qv
@@ -73306,12 +73451,12 @@ BN
 kn
 kn
 kn
-BN
-Qv
-Qv
-BN
-BN
-BN
+Pe
+Ez
+Ez
+Pe
+Pe
+Pe
 kn
 fZ
 fZ
@@ -73493,10 +73638,10 @@ kn
 PN
 BN
 BN
-Qv
-Qv
-Qv
-Qv
+BN
+ja
+ja
+BN
 BN
 BN
 Qv
@@ -73508,12 +73653,12 @@ BN
 kn
 kn
 kn
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 kn
 fZ
 Vc
@@ -73709,13 +73854,13 @@ Qv
 BN
 BN
 kn
-BN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 kn
 fZ
 qh
@@ -73897,8 +74042,8 @@ kn
 PN
 BN
 Qv
-Qv
-Qv
+SN
+Um
 Qv
 Qv
 BN
@@ -73911,13 +74056,13 @@ Qv
 Qv
 BN
 kn
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 rS
 fZ
 YA
@@ -74097,10 +74242,10 @@ PN
 kn
 zy
 PN
-BN
+cg
 Qv
-Qv
-Qv
+Cx
+Wy
 Qv
 Qv
 BN
@@ -74113,13 +74258,13 @@ Qv
 Qv
 BN
 kn
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 rS
 fZ
 kj
@@ -74299,8 +74444,8 @@ PN
 kn
 zy
 PN
-BN
-Qv
+cg
+KR
 Qv
 Qv
 Qv
@@ -74315,13 +74460,13 @@ Qv
 Qv
 BN
 kn
-BN
-Qv
-Qv
-Qv
-BN
-BN
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
+Pe
+Pe
 kn
 fZ
 fZ
@@ -74501,13 +74646,13 @@ PN
 PN
 PN
 PN
+cg
+ls
+Qv
+Qv
+Qv
+Qv
 BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
 Qv
 Qv
 Qv
@@ -74517,11 +74662,11 @@ Qv
 Qv
 BN
 kn
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 kn
@@ -74704,9 +74849,9 @@ kn
 PN
 kn
 BN
-Qv
-Qv
-Qv
+VE
+KR
+ls
 Qv
 Qv
 BN
@@ -74719,11 +74864,11 @@ BN
 BN
 BN
 kn
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
 PN
 kn
 kn
@@ -74907,9 +75052,9 @@ PN
 kn
 BN
 BN
-BN
-BN
-BN
+cg
+cg
+cg
 BN
 BN
 PN
@@ -75125,12 +75270,12 @@ PN
 kn
 kn
 PN
-BN
-BN
-BN
-kn
-BN
-BN
+Pe
+Pe
+Pe
+jw
+Pe
+Pe
 PN
 PN
 PN
@@ -75326,13 +75471,13 @@ pW
 KV
 pW
 KV
-BN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 PN
@@ -75528,13 +75673,13 @@ hA
 Nh
 hA
 Nh
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 PN
@@ -75730,13 +75875,13 @@ hA
 Nh
 hA
 Nh
-BN
-Qv
-Qv
-Qv
-Qv
-BN
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
+Pe
 PN
 PN
 PN
@@ -75932,12 +76077,12 @@ hA
 Nh
 hA
 Nh
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 PN
@@ -76134,12 +76279,12 @@ hA
 Nh
 hA
 Nh
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 PN
@@ -76336,12 +76481,12 @@ hA
 Nh
 hA
 Nh
-BN
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
 PN
 PN
 PN
@@ -78141,11 +78286,11 @@ kn
 kn
 kn
 PN
-BN
-BN
-kn
-BN
-BN
+Pe
+Pe
+jw
+Pe
+Pe
 hA
 Nh
 hA
@@ -78343,11 +78488,11 @@ kn
 PN
 kn
 PN
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
 hA
 Nh
 hA
@@ -78545,11 +78690,11 @@ PN
 PN
 kn
 PN
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
 hA
 Nh
 hA
@@ -78743,15 +78888,15 @@ PN
 kn
 kn
 kn
-BN
-BN
-kn
-BN
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Pe
+jw
+Pe
+Pe
+Ez
+Ez
+Ez
+Pe
 hA
 Nh
 hA
@@ -78945,15 +79090,15 @@ PN
 kn
 kn
 PN
-BN
-Qv
-Qv
-Qv
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
+Ez
+Ez
+Ez
+Pe
 hA
 Nh
 hA
@@ -79147,15 +79292,15 @@ PN
 kn
 PN
 kn
-BN
-Qv
-Qv
-Qv
-BN
-BN
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Pe
+Pe
+Ez
+Ez
+Pe
 hA
 Nh
 KY
@@ -79349,15 +79494,15 @@ PN
 kn
 kn
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
+Ez
+Ez
+Pe
 KY
 AX
 PN
@@ -79551,15 +79696,15 @@ PN
 kn
 kn
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
-BN
-BN
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
+Pe
+Pe
+Pe
 PN
 PN
 PN
@@ -79753,12 +79898,12 @@ kn
 kn
 kn
 PN
-BN
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
 PN
 PN
 PN
