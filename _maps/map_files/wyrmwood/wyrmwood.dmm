@@ -15,7 +15,7 @@
 "an" = (
 /obj/structure/statue/bone/rib,
 /turf/open/floor/volcanic,
-/area)
+/area/indoors/cave)
 "ao" = (
 /obj/structure/ladder,
 /turf/open/floor/churchrough,
@@ -70,7 +70,7 @@
 "aM" = (
 /obj/machinery/anvil,
 /turf/open/floor/volcanic,
-/area)
+/area/indoors/cave)
 "aR" = (
 /obj/structure/window/stained/silver/alt,
 /turf/open/floor/ruinedwood/darker,
@@ -217,7 +217,7 @@
 /area/indoors/town/clinic_large)
 "ci" = (
 /turf/closed/mineral/tin/deep,
-/area)
+/area/indoors/cave)
 "ck" = (
 /obj/structure/handcart{
 	dir = 2
@@ -637,7 +637,7 @@
 	dir = 1
 	},
 /turf/open/floor/volcanic,
-/area)
+/area/indoors/cave)
 "fG" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -700,7 +700,7 @@
 /area/indoors/town/keep/garrison)
 "gn" = (
 /turf/closed/mineral/coal/deep,
-/area)
+/area/indoors/cave)
 "gp" = (
 /turf/open/openspace,
 /area/indoors/town/tavern)
@@ -714,7 +714,7 @@
 "gt" = (
 /obj/structure/rack/underworld,
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "gu" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
@@ -1062,7 +1062,7 @@
 /area/outdoors)
 "kq" = (
 /turf/open/floor/volcanic,
-/area)
+/area/indoors/cave)
 "kx" = (
 /turf/open/floor/rooftop/green{
 	dir = 8
@@ -1398,7 +1398,7 @@
 "pc" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "pe" = (
 /obj/structure/fermentation_keg/whitewine,
 /turf/open/floor/ruinedwood/darker,
@@ -1635,7 +1635,7 @@
 /area/outdoors)
 "ry" = (
 /turf/open/lava,
-/area)
+/area/indoors/cave)
 "rD" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -1987,7 +1987,7 @@
 	dir = 4
 	},
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "vz" = (
 /obj/structure/table/wood/large_new{
 	dir = 8;
@@ -2128,7 +2128,7 @@
 "xc" = (
 /obj/machinery/anvil,
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "xf" = (
 /turf/closed/wall/mineral/stone,
 /area/outdoors)
@@ -2327,7 +2327,7 @@
 "zp" = (
 /obj/machinery/light/fueled/smelter/great,
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "zs" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
@@ -2651,7 +2651,7 @@
 /area/indoors/town/tavern)
 "Dh" = (
 /turf/open/water/clean/under,
-/area)
+/area/indoors/cave)
 "Di" = (
 /obj/effect/decal/carpet/kover_black{
 	dir = 4
@@ -3002,7 +3002,7 @@
 /area/indoors/town/keep/garrison)
 "Hn" = (
 /turf/closed/mineral/random/deep,
-/area)
+/area/indoors/cave)
 "Hu" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -3186,7 +3186,7 @@
 	dir = 1
 	},
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "Kp" = (
 /obj/structure/carpet/red,
 /obj/machinery/light/fueled/wallfire/candle/r,
@@ -3504,7 +3504,7 @@
 	dir = 1
 	},
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "Oq" = (
 /obj/structure/stairs{
 	dir = 2
@@ -3620,7 +3620,7 @@
 "Oy" = (
 /obj/structure/statue/bone/rib,
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "OA" = (
 /obj/structure/carpet/red,
 /obj/structure/lever/wall{
@@ -4084,7 +4084,7 @@
 /area/indoors/town/keep/throne)
 "Tv" = (
 /turf/closed/mineral/iron/deep,
-/area)
+/area/indoors/cave)
 "Tw" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -4263,7 +4263,7 @@
 "Vw" = (
 /obj/machinery/light/fueled/forge,
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "Vx" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -4525,7 +4525,7 @@
 /area/outdoors)
 "Ya" = (
 /turf/open/floor/naturalstone,
-/area)
+/area/indoors/cave)
 "Yj" = (
 /obj/structure/stairs{
 	dir = 2
@@ -4614,7 +4614,7 @@
 /area/indoors/town/tavern)
 "Zp" = (
 /turf/closed/mineral/copper/deep,
-/area)
+/area/indoors/cave)
 "Zq" = (
 /obj/structure/pottery_lathe,
 /turf/open/floor/ruinedwood/darker,
@@ -4643,7 +4643,7 @@
 /area/indoors/town/tavern)
 "ZC" = (
 /turf/closed/mineral/salt/deep,
-/area)
+/area/indoors/cave)
 "ZD" = (
 /turf/open/floor/grass/cold,
 /area/outdoors/town/keep)
