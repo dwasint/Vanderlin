@@ -3748,6 +3748,12 @@
 /obj/structure/carpet/purple,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"Ci" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -7
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Cl" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -3945,6 +3951,14 @@
 /obj/structure/table/wood/plain,
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"DS" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = 3;
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "DT" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
@@ -4327,6 +4341,14 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"GW" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = 1;
+	dir = 1;
+	pixel_y = 15
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Hb" = (
 /obj/structure/fluff/walldeco/painting,
 /turf/closed/wall/mineral/wooddark,
@@ -5537,6 +5559,14 @@
 /obj/effect/mapping_helpers/access/keyset/town/inn,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"QA" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = 5;
+	dir = 1;
+	pixel_y = 0
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "QD" = (
 /obj/structure/fluff/railing/stonehedge,
 /obj/structure/fluff/railing/stonehedge{
@@ -5765,6 +5795,14 @@
 /obj/effect/landmark/start/farmer,
 /turf/open/floor/woodturned,
 /area/indoors/soilsons)
+"Sl" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = 1;
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Sn" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
@@ -5859,6 +5897,14 @@
 /obj/effect/lily_petal/three,
 /turf/open/floor/grass/cold,
 /area/outdoors/town/keep)
+"ST" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -2;
+	dir = 1;
+	pixel_y = 19
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "SU" = (
 /turf/open/floor/cobble,
 /area/indoors/town/keep/garrison)
@@ -6573,6 +6619,13 @@
 	dir = 1
 	},
 /area/outdoors)
+"XV" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -4;
+	pixel_y = 22
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "XX" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -6712,6 +6765,14 @@
 /obj/structure/fluff/walldeco/sign/saiga/left,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"YV" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = 4;
+	dir = 1;
+	pixel_y = 22
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "YZ" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -6768,6 +6829,14 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors/town/keep)
+"Zw" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -2;
+	dir = 1;
+	pixel_y = 17
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Zz" = (
 /obj/structure/door{
 	name = "Blacksmith"
@@ -58853,7 +58922,7 @@ Nh
 hA
 Nh
 zE
-Hg
+YV
 HT
 HT
 PN
@@ -60875,7 +60944,7 @@ hA
 Nh
 hA
 nL
-Hg
+YV
 HT
 HT
 PN
@@ -62089,7 +62158,7 @@ hA
 Nh
 hA
 nL
-Hg
+YV
 HT
 HT
 PN
@@ -63908,7 +63977,7 @@ Pt
 vF
 PN
 PN
-Hg
+XV
 HT
 HT
 PN
@@ -68157,7 +68226,7 @@ HT
 HT
 PN
 PN
-Hg
+DS
 HT
 HT
 HT
@@ -68305,7 +68374,7 @@ kn
 kn
 PN
 PN
-Hg
+Sl
 HT
 HT
 HT
@@ -68720,14 +68789,14 @@ HT
 PN
 HT
 HT
-Hg
+QA
 HT
 HT
 HT
 HT
 HT
 HT
-Yy
+Ci
 oV
 oV
 oh
@@ -69375,7 +69444,7 @@ PN
 PN
 PN
 PN
-Hg
+GW
 HT
 HT
 PN
@@ -70195,7 +70264,7 @@ HT
 HT
 HT
 kn
-HT
+uw
 HT
 HT
 HT
@@ -78663,7 +78732,7 @@ BN
 eV
 eV
 eV
-Hg
+ST
 HT
 HT
 PN
@@ -81087,7 +81156,7 @@ PN
 PN
 PN
 PN
-Hg
+Zw
 HT
 HT
 om
