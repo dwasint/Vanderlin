@@ -180,6 +180,12 @@
 "bf" = (
 /turf/open/openspace,
 /area/indoors/town/keep/throne)
+"bg" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "bm" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/clothing/head/bardhat{
@@ -492,6 +498,13 @@
 "cP" = (
 /obj/structure/fluff/clodpile/sand,
 /turf/open/floor/grass/cold,
+/area/outdoors)
+"cR" = (
+/obj/structure/lootable_structure/stockpile/fish_barrel{
+	pixel_y = -1;
+	pixel_x = 5
+	},
+/turf/open/floor/wood,
 /area/outdoors)
 "cW" = (
 /obj/structure/table/wood/reinf_long{
@@ -1306,6 +1319,11 @@
 "hG" = (
 /turf/closed/basic,
 /area/outdoors)
+"hO" = (
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/wool,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "hP" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/weapon/sickle,
@@ -1313,6 +1331,11 @@
 /obj/item/weapon/pitchfork,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"hQ" = (
+/turf/open/floor/rooftop{
+	dir = 8
+	},
+/area/outdoors)
 "hR" = (
 /obj/structure/door{
 	name = "Metal Storage"
@@ -1821,6 +1844,15 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"kM" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "kO" = (
 /obj/structure/table/wood/crafted,
 /obj/item/plate,
@@ -1847,6 +1879,12 @@
 	},
 /turf/open/water,
 /area/outdoors)
+"kX" = (
+/obj/machinery/light/fueled/wallfire{
+	pixel_y = 32
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "kZ" = (
 /obj/structure/stairs{
 	dir = 1
@@ -1994,6 +2032,11 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors)
+"lP" = (
+/obj/structure/table/wood/plain_alt,
+/obj/structure/fluff/clutter/books,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "lR" = (
 /obj/structure/chair/wood/alt,
 /obj/machinery/light/fueled/wallfire/candle{
@@ -2012,6 +2055,10 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"mh" = (
+/obj/effect/landmark/start/fisher,
+/turf/open/floor/wood,
+/area/outdoors)
 "mk" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -2020,6 +2067,11 @@
 /obj/item/dice,
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/keep/garrison)
+"mn" = (
+/obj/structure/closet/crate/drawer,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "mo" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/fluff/clutter/shrub/tundra,
@@ -2184,6 +2236,14 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"mY" = (
+/obj/structure/closet/crate/chest/neu,
+/obj/item/fishing/lure/gray,
+/obj/effect/spawner/map_spawner/random_lure,
+/obj/effect/spawner/map_spawner/random_lure,
+/obj/effect/spawner/map_spawner/random_lure,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "mZ" = (
 /turf/open/floor/cobble/mossy,
 /area/outdoors)
@@ -2578,6 +2638,11 @@
 	},
 /turf/open/floor/cobble,
 /area/outdoors)
+"pC" = (
+/obj/structure/closet/crate/chest/neu,
+/obj/item/fishing/lure/gray,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "pF" = (
 /turf/open/openspace,
 /area/indoors/town/keep/lord_appt)
@@ -2649,6 +2714,9 @@
 /obj/structure/soil,
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
+"pX" = (
+/turf/closed/wall/mineral/wooddark/window,
+/area/indoors/town)
 "qb" = (
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
@@ -2682,6 +2750,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobblerock,
 /area/indoors/town/clinic_large/apothecary)
+"qt" = (
+/obj/structure/closet/crate/chest/crate,
+/obj/item/fishing/line/sinker,
+/turf/open/floor/wood,
+/area/outdoors)
 "qw" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -2883,6 +2956,12 @@
 /obj/item/reagent_containers/glass/bowl/iron,
 /turf/open/floor/churchrough,
 /area/indoors/town/keep/kitchen)
+"rQ" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "rR" = (
 /obj/structure/closet/crate/drawer,
 /obj/structure/fluff/clutter/shrub/tundra{
@@ -3043,6 +3122,13 @@
 "sN" = (
 /turf/closed/wall/mineral/wooddark,
 /area/indoors/town/warehouse/metal)
+"sP" = (
+/obj/effect/decal/carpet/kover_darkred{
+	dir = 4;
+	pixel_y = 16
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "sQ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -3174,6 +3260,15 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors/town/keep)
+"tC" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "tE" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/irrigation_channel,
@@ -3462,6 +3557,14 @@
 	},
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"vw" = (
+/obj/structure/closet/crate/chest/crate,
+/obj/item/fishing/lure/deluxe,
+/obj/effect/spawner/map_spawner/random_lure,
+/obj/effect/spawner/map_spawner/random_lure,
+/obj/effect/spawner/map_spawner/random_lure,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "vx" = (
 /obj/structure/carpet/purple,
 /turf/open/floor/ruinedwood/darker,
@@ -3496,6 +3599,11 @@
 "vL" = (
 /turf/open/floor/churchrough/pale,
 /area/outdoors/town/keep)
+"vO" = (
+/obj/structure/closet/crate/chest/crate,
+/obj/item/fishing/line/sinker,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "vP" = (
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/garrison)
@@ -3618,6 +3726,13 @@
 /obj/structure/carpet/blue,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"wC" = (
+/obj/structure/lootable_structure/stockpile/fish_barrel{
+	pixel_y = -2;
+	pixel_x = -8
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "wF" = (
 /obj/structure/table/wood/reinf_long{
 	dir = 1
@@ -3969,6 +4084,10 @@
 /obj/structure/fermentation_keg/beer,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
+"zw" = (
+/obj/structure/fluff/clutter/shrub/red,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "zy" = (
 /turf/open/floor/dirt/road,
 /turf/open/floor/dirt/road,
@@ -4377,6 +4496,10 @@
 /obj/structure/fluff/walldeco/psybanner,
 /turf/closed/wall/mineral/stone/moss/red,
 /area/indoors/town/church/chapel)
+"CI" = (
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "CK" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/pelt,
@@ -4445,6 +4568,13 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/keep/garrison)
+"Da" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/fishingrod{
+	pixel_x = 7
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "Db" = (
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
@@ -4938,6 +5068,13 @@
 	},
 /turf/open/floor/herringbone,
 /area/indoors/town/keep/lord_appt)
+"GA" = (
+/obj/machinery/light/fueled/wallfire{
+	pixel_y = 32
+	},
+/obj/structure/table/wood/plain_alt,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "GB" = (
 /obj/structure/closet/dirthole/grave,
 /turf/open/floor/dirt,
@@ -5226,6 +5363,11 @@
 /obj/structure/fluff/statue/knight/interior,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/throne)
+"ID" = (
+/obj/structure/closet/crate/chest/wicker,
+/obj/item/fishing/lure/meat,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "IF" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/natural/bundle/cloth{
@@ -5848,6 +5990,12 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large/apothecary)
+"Mp" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/outdoors)
 "Mq" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/soap{
@@ -6036,6 +6184,11 @@
 /obj/structure/closet/crate/drawer,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
+"NK" = (
+/obj/structure/closet/crate/chest/crate,
+/obj/item/fishing/lure/deluxe,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "NL" = (
 /obj/structure/bed/inn/double,
 /obj/item/bedsheet/fabric_double,
@@ -6082,6 +6235,12 @@
 	},
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"Om" = (
+/obj/structure/door/violet{
+	name = "Fishing Hut"
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "Oo" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/structure/mirror,
@@ -6719,6 +6878,12 @@
 /obj/structure/door/green,
 /turf/open/floor/dirt/road,
 /area/indoors/town)
+"Sb" = (
+/obj/structure/closet/crate/chest/crate,
+/obj/item/fishing/line/sinker,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "Se" = (
 /obj/structure/chair/bench/church{
 	dir = 1
@@ -7135,6 +7300,14 @@
 /obj/structure/rack/shelf,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
+"UJ" = (
+/obj/structure/closet/crate/chest/wicker,
+/obj/item/fishing/lure/meat,
+/obj/structure/fluff/railing/tall{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/outdoors)
 "UL" = (
 /obj/structure/fluff/railing/tall{
 	dir = 1
@@ -7144,6 +7317,12 @@
 "UN" = (
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/heir/heir1)
+"UQ" = (
+/obj/structure/door/violet{
+	name = "Fishing Hut"
+	},
+/turf/open/floor/dirt/road,
+/area/indoors/town)
 "UW" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/ruinedwood/darker,
@@ -7514,6 +7693,9 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"Xb" = (
+/turf/open/openspace,
+/area/indoors/town)
 "Xc" = (
 /obj/structure/lootable_structure/fish_barrel,
 /turf/open/floor/wood,
@@ -7577,6 +7759,17 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"Xt" = (
+/obj/structure/rack,
+/obj/item/fishingrod{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/fishingrod{
+	pixel_x = 7
+	},
+/turf/open/floor/wood,
+/area/outdoors)
 "Xu" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -60813,7 +61006,7 @@ PN
 Yz
 zF
 zF
-zF
+UJ
 ft
 ft
 ft
@@ -61013,7 +61206,7 @@ PN
 PN
 PN
 Yz
-pj
+Xt
 pj
 pj
 ft
@@ -61619,15 +61812,15 @@ PN
 PN
 kn
 dX
+cR
 pj
-pj
-pj
+qt
 ft
 ft
 ft
 ft
 pj
-pj
+mh
 ft
 ft
 ft
@@ -61820,10 +62013,10 @@ PN
 PN
 PN
 kn
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 ft
 ft
 ft
@@ -62022,10 +62215,10 @@ PN
 me
 kn
 kn
-BN
-Qv
-Qv
-BN
+Pe
+Da
+wC
+Pe
 ft
 ft
 ft
@@ -62223,11 +62416,11 @@ PN
 kn
 kn
 kn
-BN
-BN
-Qv
-Qv
-BN
+Pe
+Pe
+mY
+Ez
+pX
 ft
 ft
 ft
@@ -62425,11 +62618,11 @@ kn
 kn
 PN
 kn
-kn
-Qv
-Qv
-Qv
-BN
+UQ
+zs
+Ez
+Ez
+pX
 ft
 ft
 ft
@@ -62626,13 +62819,13 @@ HT
 HT
 PN
 PN
-BN
-BN
-BN
-BN
-Qv
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Om
+Pe
+Pe
 ft
 ft
 ft
@@ -62828,13 +63021,13 @@ HT
 HT
 PN
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+kX
+zs
+Ez
+sP
+Pe
+Pe
 ft
 ft
 ft
@@ -63030,13 +63223,13 @@ HT
 HT
 HT
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+hO
+gF
+Ez
+vt
+rQ
+Pe
 ft
 ft
 ft
@@ -63232,13 +63425,13 @@ YV
 HT
 HT
 PN
-BN
-BN
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
 ft
 ft
 ft
@@ -64683,7 +64876,7 @@ ft
 pj
 pj
 pj
-pj
+mh
 ft
 ft
 ft
@@ -65896,8 +66089,8 @@ pj
 pj
 Pe
 Pe
-Ez
-Ez
+hO
+mn
 Pe
 PN
 PN
@@ -66097,7 +66290,7 @@ pj
 pj
 pj
 Pe
-Ez
+lP
 Ez
 Ez
 Pe
@@ -66295,14 +66488,14 @@ BN
 PN
 PN
 vH
-pj
+Xt
 pj
 pj
 Pe
+GA
 Ez
-Ez
-Ez
-Ez
+vt
+Om
 Ez
 Pe
 Pe
@@ -66506,7 +66699,7 @@ Pe
 Pe
 Pe
 Ez
-Ez
+vw
 Pe
 PN
 PN
@@ -66705,10 +66898,10 @@ kn
 kn
 PN
 Pe
+zw
 Ez
 Ez
-Ez
-Ez
+Da
 Pe
 PN
 PN
@@ -66906,11 +67099,11 @@ PN
 PN
 kn
 kn
-jw
+UQ
+vt
 Ez
 Ez
-Ez
-Ez
+pC
 Pe
 PN
 PN
@@ -67110,8 +67303,8 @@ PN
 kn
 Pe
 Pe
-Ez
-Ez
+ID
+vO
 Pe
 Pe
 PN
@@ -101211,10 +101404,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+hQ
+hQ
+hQ
+hQ
 JG
 JG
 JG
@@ -101413,10 +101606,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+hQ
+hQ
+hQ
+hQ
 JG
 JG
 JG
@@ -101615,10 +101808,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+hQ
+hQ
+hQ
+hQ
 JG
 JG
 JG
@@ -101817,10 +102010,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+hQ
+hQ
+hQ
+hQ
 JG
 JG
 JG
@@ -102019,10 +102212,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+hQ
+hQ
+hQ
+hQ
 JG
 JG
 JG
@@ -102221,10 +102414,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+Pe
+Pe
+Pe
+Pe
 JG
 JG
 JG
@@ -102423,10 +102616,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+Pe
+zs
+NK
+Pe
 JG
 JG
 JG
@@ -102624,11 +102817,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
+Pe
+Pe
+Ez
+Ez
+pX
 JG
 JG
 JG
@@ -102826,11 +103019,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
+Pe
+Sb
+Ez
+Ez
+pX
 JG
 JG
 JG
@@ -103027,13 +103220,13 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+tC
+Pe
+Pe
+Ez
+Ez
+Pe
+Pe
 JG
 JG
 JG
@@ -103229,13 +103422,13 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+bg
+Qv
+Pe
+Ez
+Ez
+rQ
+Pe
 JG
 JG
 JG
@@ -103431,13 +103624,13 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+bg
+Qv
+Om
+vt
+CI
+Xb
+Pe
 JG
 JG
 JG
@@ -103633,13 +103826,13 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+kM
+Mp
+Pe
+Pe
+Pe
+Pe
+Pe
 JG
 JG
 JG
@@ -106094,10 +106287,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -106295,11 +106488,11 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -106497,13 +106690,13 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -106699,14 +106892,14 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -106901,14 +107094,14 @@ JG
 JG
 JG
 JG
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
-JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
 JG
 JG
 JG
@@ -107105,12 +107298,12 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -107307,12 +107500,12 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -107509,12 +107702,12 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
@@ -107712,10 +107905,10 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
-JG
+Qv
+Qv
+Qv
+Qv
 JG
 JG
 JG
