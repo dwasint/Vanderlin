@@ -709,6 +709,12 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"ed" = (
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_y = -32
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "ei" = (
 /obj/structure/door/stone,
 /obj/effect/mapping_helpers/access/keyset/church/general,
@@ -724,6 +730,7 @@
 /obj/item/storage/belt/pouch,
 /obj/item/natural/bundle/cloth/roll,
 /obj/item/key/soilson,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
 "eu" = (
@@ -944,6 +951,10 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
+"fM" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/floor/sand,
+/area/outdoors)
 "fS" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -1261,6 +1272,14 @@
 	dir = 2
 	},
 /turf/open/floor/wood,
+/area/outdoors)
+"iC" = (
+/obj/structure/table/wood/reinforced_alter,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/turf/open/floor/sand,
 /area/outdoors)
 "iD" = (
 /turf/open/floor/ruinedwood/darker,
@@ -1994,6 +2013,11 @@
 /obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/throne)
+"ol" = (
+/obj/structure/carpet/green,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/soilsons)
 "om" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -2043,6 +2067,7 @@
 /obj/effect/landmark/start/farmer{
 	dir = 8
 	},
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
 "oP" = (
@@ -2083,6 +2108,16 @@
 /obj/effect/mapping_helpers/access/keyset/town/doctor,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"oZ" = (
+/obj/structure/closet/crate/drawer{
+	pixel_y = 4
+	},
+/obj/item/storage/belt/pouch,
+/obj/item/natural/bundle/cloth/roll,
+/obj/item/key/soilson,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/soilsons)
 "pa" = (
 /obj/structure/stairs{
 	dir = 2
@@ -2154,6 +2189,12 @@
 /obj/item/storage/backpack/satchel/surgbag/shit,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"pB" = (
+/obj/structure/gate/bars{
+	redstone_id = "gate_bottom-inner"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "pF" = (
 /turf/open/openspace,
 /area/indoors/town/keep/lord_appt)
@@ -2412,6 +2453,9 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/churchrough,
 /area/indoors/town/keep/kitchen)
+"rH" = (
+/turf/closed/wall/mineral/stone/window,
+/area/outdoors)
 "rO" = (
 /turf/open/floor/churchrough,
 /area/indoors/town/keep/kitchen)
@@ -3882,6 +3926,12 @@
 "DD" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/keep/garrison)
+"DE" = (
+/obj/machinery/light/fueled/torchholder{
+	dir = 1
+	},
+/turf/open/floor/sand,
+/area/outdoors)
 "DK" = (
 /obj/effect/landmark/start/farmer{
 	dir = 1
@@ -4308,6 +4358,13 @@
 /obj/structure/throne,
 /turf/open/floor/carpet/lord/center,
 /area/indoors/town/keep/throne)
+"Hg" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -2;
+	dir = 1
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Hi" = (
 /obj/structure/chair/wood/alt/chair3{
 	dir = 8
@@ -4382,6 +4439,10 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/woodturned,
 /area/indoors)
+"Ie" = (
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/sand,
+/area/outdoors)
 "If" = (
 /obj/structure/stairs{
 	dir = 2
@@ -4438,6 +4499,23 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"IG" = (
+/obj/structure/lever/wall{
+	dir = 2;
+	pixel_x = 11;
+	pixel_y = 6;
+	name = "inner gate lever";
+	redstone_id = "gate_top-inner"
+	},
+/obj/structure/lever/wall{
+	dir = 2;
+	pixel_y = -8;
+	pixel_x = 11;
+	redstone_id = "gate_top-outer";
+	name = "outer gate lever"
+	},
+/turf/open/floor/sand,
+/area/outdoors)
 "IN" = (
 /obj/structure/fermentation_keg/redwine,
 /turf/open/floor/ruinedwood/darker,
@@ -4768,6 +4846,23 @@
 /obj/structure/fluff/statue/topiary/stack,
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"Lm" = (
+/obj/structure/lever/wall{
+	dir = 2;
+	pixel_x = 11;
+	pixel_y = 6;
+	name = "inner gate lever";
+	redstone_id = "gate_bottom-inner"
+	},
+/obj/structure/lever/wall{
+	dir = 2;
+	pixel_y = -8;
+	pixel_x = 11;
+	redstone_id = "gate_bottom-outer";
+	name = "outer gate lever"
+	},
+/turf/open/floor/sand,
+/area/outdoors)
 "Lt" = (
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/halls/w)
@@ -4778,6 +4873,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"Lw" = (
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "Ly" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_x = 32;
@@ -4997,6 +5096,10 @@
 "Nh" = (
 /obj/structure/soil,
 /turf/open/floor/dirt,
+/area/outdoors)
+"Nl" = (
+/obj/machinery/light/fueled/torchholder/l,
+/turf/open/floor/sand,
 /area/outdoors)
 "No" = (
 /obj/structure/flora/shells,
@@ -5367,6 +5470,12 @@
 	dir = 8
 	},
 /turf/open/floor/dirt/road,
+/area/outdoors)
+"Qa" = (
+/obj/structure/gate/bars/preopen{
+	redstone_id = "gate_top-outer"
+	},
+/turf/open/floor/cobble,
 /area/outdoors)
 "Qc" = (
 /turf/open/floor/rooftop/green{
@@ -5927,6 +6036,12 @@
 /obj/effect/mapping_helpers/access/keyset/manor/servant,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/halls/n)
+"Ux" = (
+/obj/structure/gate/bars/preopen{
+	redstone_id = "gate_bottom-outer"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "UA" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -6105,6 +6220,12 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"VJ" = (
+/obj/structure/gate/bars{
+	redstone_id = "gate_top-inner"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "VK" = (
 /obj/effect/landmark/start/priest,
 /turf/open/floor/churchmarble/violet,
@@ -6510,6 +6631,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"Yy" = (
+/obj/machinery/light/fueled/lanternpost/fixed,
+/turf/open/floor/cobble,
+/area/outdoors)
 "Yz" = (
 /obj/structure/fluff/railing/tall,
 /turf/open/floor/grass/cold,
@@ -53471,9 +53596,9 @@ kn
 kn
 dH
 dH
+fM
 TR
-TR
-TR
+fM
 dH
 dH
 HT
@@ -53481,9 +53606,9 @@ HT
 HT
 dH
 dH
+fM
 TR
-TR
-TR
+fM
 dH
 dH
 kn
@@ -53681,7 +53806,7 @@ kn
 HT
 HT
 HT
-kn
+WD
 dH
 dH
 TR
@@ -54892,7 +55017,7 @@ hA
 Nh
 HT
 HT
-HT
+Hg
 kn
 PN
 PN
@@ -57111,7 +57236,7 @@ hA
 Nh
 hA
 Nh
-PN
+me
 HT
 HT
 HT
@@ -57722,7 +57847,7 @@ HT
 HT
 HT
 kn
-kn
+WD
 BN
 Qv
 Qv
@@ -58728,7 +58853,7 @@ Nh
 hA
 Nh
 zE
-HT
+Hg
 HT
 HT
 PN
@@ -59741,7 +59866,7 @@ hA
 Nh
 cv
 HT
-HT
+uw
 PN
 PN
 PN
@@ -60750,12 +60875,12 @@ hA
 Nh
 hA
 nL
-HT
+Hg
 HT
 HT
 PN
 PN
-PN
+me
 kn
 kn
 BN
@@ -60934,7 +61059,7 @@ Xp
 gd
 Bb
 iD
-et
+oZ
 Xp
 kn
 kn
@@ -61538,7 +61663,7 @@ kn
 Xp
 hP
 xO
-xO
+ol
 iD
 Xp
 Gf
@@ -61964,7 +62089,7 @@ hA
 Nh
 hA
 nL
-HT
+Hg
 HT
 HT
 PN
@@ -63783,7 +63908,7 @@ Pt
 vF
 PN
 PN
-HT
+Hg
 HT
 HT
 PN
@@ -64039,7 +64164,7 @@ kn
 DU
 dH
 dH
-dH
+rH
 dH
 dH
 hG
@@ -64441,7 +64566,7 @@ PN
 kn
 kn
 dH
-TR
+Ie
 TR
 TR
 TR
@@ -64648,7 +64773,7 @@ TR
 TR
 TR
 TR
-dH
+rH
 hG
 hG
 hG
@@ -64845,7 +64970,7 @@ PN
 kn
 kn
 dH
-TR
+Ie
 TR
 TR
 TR
@@ -65048,7 +65173,7 @@ kn
 kn
 dH
 dH
-TR
+Lm
 TR
 TR
 dH
@@ -65251,8 +65376,8 @@ kn
 kn
 dH
 dH
-dH
-dH
+iC
+iC
 dH
 hG
 hG
@@ -65451,11 +65576,11 @@ PN
 PN
 kn
 kn
+uw
+pB
 HT
 HT
-HT
-HT
-HT
+Ux
 HT
 hG
 hG
@@ -65546,7 +65671,7 @@ hG
 hG
 dH
 dH
-dH
+rH
 dH
 dH
 kn
@@ -65607,7 +65732,7 @@ PN
 HT
 HT
 HT
-HT
+uw
 PN
 PN
 OD
@@ -65952,7 +66077,7 @@ TR
 TR
 TR
 TR
-TR
+DE
 dH
 kn
 PN
@@ -66062,7 +66187,7 @@ dH
 dH
 dH
 dH
-dH
+rH
 dH
 dH
 hG
@@ -66149,7 +66274,7 @@ hG
 hG
 hG
 hG
-dH
+rH
 TR
 TR
 TR
@@ -66356,7 +66481,7 @@ TR
 TR
 TR
 TR
-TR
+DE
 dH
 kn
 kn
@@ -66464,7 +66589,7 @@ kn
 kn
 kn
 dH
-TR
+Ie
 TR
 TR
 TR
@@ -66557,7 +66682,7 @@ dH
 dH
 TR
 TR
-TR
+IG
 dH
 dH
 kn
@@ -66661,7 +66786,7 @@ HT
 HT
 HT
 HT
-HT
+Hg
 kn
 kn
 kn
@@ -66671,7 +66796,7 @@ TR
 TR
 TR
 TR
-dH
+rH
 hG
 hG
 hG
@@ -66757,8 +66882,8 @@ hG
 hG
 hG
 dH
-dH
-dH
+iC
+iC
 dH
 dH
 PN
@@ -66868,7 +66993,7 @@ LZ
 PN
 kn
 dH
-TR
+Ie
 TR
 TR
 TR
@@ -66958,11 +67083,11 @@ hG
 hG
 hG
 hG
+Qa
 HT
 HT
-HT
-HT
-HT
+VJ
+uw
 HT
 PN
 kn
@@ -67274,7 +67399,7 @@ PN
 kn
 dH
 dH
-dH
+rH
 dH
 dH
 hG
@@ -67566,7 +67691,7 @@ hG
 hG
 dH
 dH
-dH
+rH
 dH
 dH
 PN
@@ -67667,7 +67792,7 @@ kn
 kn
 HT
 HT
-HT
+Hg
 Hu
 hA
 Nh
@@ -67837,7 +67962,7 @@ PN
 PN
 Bj
 HT
-PN
+me
 PN
 PN
 PN
@@ -67972,7 +68097,7 @@ TR
 TR
 TR
 TR
-TR
+DE
 dH
 kn
 kn
@@ -68027,12 +68152,12 @@ Or
 Or
 PN
 PN
-HT
+Yy
 HT
 HT
 PN
 PN
-HT
+Hg
 HT
 HT
 HT
@@ -68066,7 +68191,7 @@ PN
 kn
 PN
 yT
-HT
+uw
 HT
 HT
 HT
@@ -68169,7 +68294,7 @@ hG
 hG
 hG
 hG
-dH
+rH
 TR
 TR
 TR
@@ -68180,12 +68305,12 @@ kn
 kn
 PN
 PN
+Hg
 HT
 HT
 HT
 HT
-HT
-HT
+Yy
 PN
 HT
 HT
@@ -68376,7 +68501,7 @@ TR
 TR
 TR
 TR
-TR
+DE
 dH
 kn
 kn
@@ -68595,14 +68720,14 @@ HT
 PN
 HT
 HT
+Hg
 HT
 HT
 HT
 HT
 HT
 HT
-HT
-HT
+Yy
 oV
 oV
 oh
@@ -68778,7 +68903,7 @@ hG
 hG
 dH
 dH
-dH
+rH
 dH
 dH
 kn
@@ -68828,7 +68953,7 @@ PN
 PN
 HT
 PN
-PN
+me
 HT
 HT
 HT
@@ -69036,7 +69161,7 @@ HT
 HT
 HT
 HT
-HT
+Hg
 PN
 PN
 PN
@@ -69074,7 +69199,7 @@ HT
 HT
 HT
 HT
-HT
+Hg
 yT
 PN
 Pe
@@ -69250,7 +69375,7 @@ PN
 PN
 PN
 PN
-HT
+Hg
 HT
 HT
 PN
@@ -69416,7 +69541,7 @@ Nh
 hA
 Nh
 hA
-HT
+Hg
 HT
 HT
 HT
@@ -69428,7 +69553,7 @@ da
 HT
 HT
 PN
-PN
+AL
 zf
 zf
 zf
@@ -69625,7 +69750,7 @@ HT
 HT
 HT
 HT
-HT
+Hg
 yT
 PN
 PN
@@ -69659,7 +69784,7 @@ HT
 HT
 HT
 HT
-HT
+uw
 kn
 kn
 pJ
@@ -69880,7 +70005,7 @@ HT
 HT
 HT
 HT
-kn
+WD
 kn
 kn
 jw
@@ -70278,7 +70403,7 @@ HT
 HT
 HT
 HT
-HT
+Hg
 PN
 eY
 PN
@@ -70689,7 +70814,7 @@ PN
 kn
 kn
 kn
-kn
+iu
 HT
 HT
 PN
@@ -71686,7 +71811,7 @@ HT
 BA
 HT
 HT
-HT
+ed
 xf
 WK
 WK
@@ -71878,7 +72003,7 @@ Qv
 Qv
 Qv
 BN
-kn
+Lw
 kn
 HT
 HT
@@ -72895,7 +73020,7 @@ HT
 HT
 HT
 HT
-HT
+Hg
 HT
 HT
 xf
@@ -75308,7 +75433,7 @@ iw
 iw
 PN
 PN
-PN
+me
 HT
 HT
 PN
@@ -77328,7 +77453,7 @@ PN
 PN
 HT
 HT
-HT
+uw
 kn
 kn
 PN
@@ -78538,7 +78663,7 @@ BN
 eV
 eV
 eV
-HT
+Hg
 HT
 HT
 PN
@@ -79955,7 +80080,7 @@ PN
 HT
 HT
 HT
-HT
+uw
 PN
 BN
 Qv
@@ -80962,7 +81087,7 @@ PN
 PN
 PN
 PN
-HT
+Hg
 HT
 HT
 om
@@ -81974,7 +82099,7 @@ dH
 kn
 HT
 HT
-HT
+uw
 om
 dH
 dH
@@ -82169,9 +82294,9 @@ kn
 kn
 dH
 dH
+Nl
 TR
-TR
-TR
+Nl
 dH
 dH
 HT
@@ -82179,9 +82304,9 @@ HT
 HT
 dH
 dH
+Nl
 TR
-TR
-TR
+Nl
 dH
 dH
 kn
