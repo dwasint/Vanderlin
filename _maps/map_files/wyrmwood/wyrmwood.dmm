@@ -700,6 +700,15 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
+"dk" = (
+/obj/structure/chair/wood/alt/chair3{
+	dir = 4
+	},
+/obj/effect/decal/cobblerockedge{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "dn" = (
 /turf/open/floor/rooftop/green,
 /area/outdoors)
@@ -977,6 +986,10 @@
 	},
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"en" = (
+/obj/structure/bookcase/random_recipes,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "eo" = (
 /turf/open/floor/ruinedwood/darker,
 /area/indoors)
@@ -4659,6 +4672,13 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/soilsons)
+"uP" = (
+/obj/structure/chair/wood/alt/chair3{
+	dir = 8
+	},
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "uQ" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -5331,6 +5351,12 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/keep/servanthead)
+"yt" = (
+/obj/structure/chair/wood/alt/chair3{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "yu" = (
 /obj/structure/bed/wool,
 /obj/item/bedsheet/cloth,
@@ -8168,6 +8194,24 @@
 /obj/structure/table/wood/plain_alt,
 /turf/open/floor/cobble/mossy,
 /area/outdoors)
+"Mn" = (
+/obj/structure/table/wood/crafted,
+/obj/item/kitchen/spoon{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/item/kitchen/spoon{
+	pixel_y = -5;
+	pixel_x = 7
+	},
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/weapon/knife/cleaver,
+/turf/open/floor/cobblerock,
+/area/indoors/town)
 "Mo" = (
 /obj/item/reagent_containers/glass/mortar{
 	pixel_x = -4;
@@ -8272,6 +8316,19 @@
 /obj/item/natural/feather,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large/apothecary)
+"MF" = (
+/obj/structure/table/wood/crafted,
+/obj/item/plate,
+/obj/item/plate{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/plate{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/floor/cobble,
+/area/indoors/town)
 "MK" = (
 /obj/structure/rack,
 /obj/item/rope,
@@ -8725,6 +8782,31 @@
 /obj/structure/table/vtable,
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/throne)
+"OK" = (
+/obj/structure/table/wood/crafted,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl{
+	pixel_x = 7;
+	pixel_y = -7
+	},
+/obj/item/reagent_containers/glass/bowl{
+	pixel_y = -26;
+	pixel_x = -3
+	},
+/obj/item/kitchen/spoon{
+	pixel_y = 1;
+	pixel_x = -12
+	},
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_x = -1;
+	pixel_y = 13
+	},
+/obj/item/candle/yellow/lit/infinite{
+	pixel_x = -3;
+	pixel_y = -10
+	},
+/turf/open/floor/ruinedwood/turned/darker,
+/area/indoors/town)
 "OL" = (
 /obj/structure/fluff/railing/tall{
 	dir = 8
@@ -69740,8 +69822,8 @@ kn
 kn
 dH
 dH
-iC
-iC
+rH
+dH
 dH
 PN
 hG
@@ -78957,11 +79039,11 @@ qb
 Pe
 Pe
 Pe
-Ez
-Ez
-Ez
-Ez
-Ez
+en
+Ze
+uv
+JA
+MF
 Ez
 Pe
 hX
@@ -79160,10 +79242,10 @@ Pe
 do
 Nw
 Xn
-Ez
-Ez
-Ez
-Ez
+TX
+Rf
+jv
+Mn
 Ez
 jw
 kn
@@ -79363,8 +79445,8 @@ Ut
 xj
 tl
 Ez
-Ez
-Ez
+dk
+dk
 Ez
 Ez
 Pe
@@ -79565,10 +79647,10 @@ op
 xj
 lG
 Ez
+OK
+xa
 Ez
-Ez
-Ez
-Ez
+bL
 Pe
 PN
 PN
@@ -79763,12 +79845,12 @@ qb
 qb
 qb
 Pe
-kH
+dw
 jD
 FR
 Ez
-Ez
-Ez
+uP
+yt
 Ez
 Ez
 Pe
@@ -79971,8 +80053,8 @@ Pe
 Pe
 Ez
 Ez
-Ez
-Ez
+bn
+bn
 Pe
 PN
 PN
