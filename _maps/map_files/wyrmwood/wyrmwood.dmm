@@ -1713,6 +1713,13 @@
 /obj/item/storage/keyring,
 /turf/open/floor/metal/barograte,
 /area/indoors/town/shop)
+"hM" = (
+/obj/effect/decal/carpet/kover_darkred{
+	pixel_y = 16;
+	pixel_x = 16
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "hO" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/wool,
@@ -2400,6 +2407,13 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
+"kJ" = (
+/obj/structure/mirror,
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town)
 "kK" = (
 /obj/structure/carpet/purple,
 /obj/structure/table/vtable,
@@ -2527,13 +2541,6 @@
 /obj/structure/soil,
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
-"lk" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8
-	},
-/obj/structure/fluff/railing/wood,
-/turf/open/floor/ruinedwood/spiral,
-/area/indoors/town/dwarfin)
 "lm" = (
 /obj/structure/closet/crate/drawer,
 /obj/structure/fluff/clutter/shrub/red{
@@ -3721,6 +3728,12 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobblerock,
 /area/indoors/town/clinic_large/apothecary)
+"qr" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/wool,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town)
 "qt" = (
 /obj/structure/closet/crate/chest/crate,
 /obj/item/fishing/line/sinker,
@@ -3899,6 +3912,17 @@
 /obj/structure/bars,
 /turf/open/floor/cobble,
 /area/indoors/town/keep/garrison)
+"rs" = (
+/obj/effect/decal/borderfall{
+	dir = 1
+	},
+/obj/structure/fluff/clutter/shrub/red{
+	pixel_y = 3;
+	pixel_x = 7;
+	density = 0
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "rt" = (
 /obj/structure/table/wood/counter,
 /turf/open/floor/dirt/road,
@@ -4051,6 +4075,14 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
+"sh" = (
+/obj/structure/closet/crate/chest/wickertrunk/blue,
+/obj/effect/decal/carpet/kover_darkred{
+	pixel_y = 16;
+	pixel_x = 16
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "si" = (
 /obj/structure/chair/stool,
 /turf/open/floor/ruinedwood/darker,
@@ -5482,6 +5514,12 @@
 /obj/structure/lootable_structure/grain_barrel,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"zo" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town)
 "zp" = (
 /obj/machinery/light/fueled/smelter/great,
 /turf/open/floor/naturalstone,
@@ -6878,6 +6916,15 @@
 /obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"GQ" = (
+/obj/machinery/light/fueled/wallfire/big_fireplace{
+	pixel_y = 3
+	},
+/obj/effect/decal/borderfall{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "GR" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/churchrough/pale,
@@ -8152,10 +8199,6 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
-"Mu" = (
-/obj/structure/door/weak,
-/turf/open/floor/dirt/road,
-/area/outdoors)
 "Mv" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -73652,11 +73695,11 @@ HT
 PN
 PN
 PN
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
 PN
 PN
 PN
@@ -73851,14 +73894,14 @@ zf
 zf
 zf
 zf
-BN
-BN
-BN
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Pe
+Pe
+Pe
+Ez
+Ez
+Ez
+Pe
 En
 En
 En
@@ -74053,14 +74096,14 @@ jr
 Yf
 kn
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 kn
 kn
@@ -74255,14 +74298,14 @@ Ll
 PN
 kn
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Mu
+Pe
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+jw
 PN
 PN
 Nh
@@ -74457,14 +74500,14 @@ fV
 kn
 iE
 PN
-BN
-Qv
-Qv
-BN
-BN
-BN
-BN
-BN
+Pe
+Ez
+Ez
+Pe
+Pe
+Pe
+Pe
+Pe
 Nh
 hA
 Nh
@@ -74659,10 +74702,10 @@ kn
 kn
 PN
 EP
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 Nh
 hA
 Nh
@@ -75068,10 +75111,10 @@ PN
 PN
 PN
 xP
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
 hA
 Nh
 hA
@@ -75270,12 +75313,12 @@ PN
 PN
 PN
 PN
-BN
-Qv
-Qv
-BN
-BN
-BN
+Pe
+Ez
+Ez
+Pe
+Pe
+Pe
 hA
 Nh
 zE
@@ -75472,12 +75515,12 @@ PN
 PN
 PN
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 hA
 Nh
 zE
@@ -75674,12 +75717,12 @@ EP
 PN
 PN
 PN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 hA
 Nh
 zE
@@ -75876,15 +75919,15 @@ HT
 HT
 PN
 PN
-BN
-BN
-Qv
-BN
-Qv
-BN
-BN
-BN
-BN
+Pe
+Pe
+Ez
+Pe
+Ez
+Pe
+Pe
+Pe
+Pe
 kp
 kn
 kn
@@ -76079,14 +76122,14 @@ HT
 HT
 PN
 kn
-BN
-BN
-BN
-Qv
-BN
-Qv
-Qv
-BN
+Pe
+Pe
+Pe
+Ez
+Pe
+Ez
+Ez
+Pe
 pJ
 kn
 kn
@@ -76283,12 +76326,12 @@ HT
 PN
 kn
 kn
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 Lw
 kn
 HT
@@ -76485,12 +76528,12 @@ HT
 HT
 kn
 kn
-Mu
-Qv
-Qv
-Qv
-Qv
-BN
+jw
+Ez
+Ez
+Ez
+Ez
+Pe
 ih
 kn
 HT
@@ -76687,12 +76730,12 @@ HT
 HT
 HT
 kn
-BN
-BN
-Qv
-Qv
-Qv
-BN
+Pe
+Pe
+Ez
+Ez
+Ez
+Pe
 ih
 kn
 kn
@@ -76890,11 +76933,11 @@ PN
 HT
 HT
 EP
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
 ih
 kn
 iR
@@ -78676,14 +78719,14 @@ qb
 TA
 Hu
 PN
-BN
-BN
-BN
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
 PN
 kn
 Oa
@@ -78876,16 +78919,16 @@ qb
 qb
 qb
 qb
-BN
-BN
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Pe
+Pe
+Ez
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 hX
 kn
 vH
@@ -79078,16 +79121,16 @@ qb
 qb
 qb
 qb
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Mu
+Pe
+do
+Nw
+Xn
+Ez
+Ez
+Ez
+Ez
+Ez
+jw
 kn
 kn
 vH
@@ -79280,16 +79323,16 @@ qb
 qb
 qb
 qb
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Ut
+xj
+tl
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 kn
 Oa
@@ -79482,16 +79525,16 @@ qb
 qb
 qb
 qb
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+op
+xj
+lG
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 kn
@@ -79684,16 +79727,16 @@ qb
 qb
 qb
 qb
-BN
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+kH
+jD
+FR
+Ez
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 kn
@@ -79886,16 +79929,16 @@ qb
 qb
 qb
 qb
-BN
-BN
-BN
-BN
-BN
-Qv
-Qv
-Qv
-Qv
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
+Ez
+Ez
+Ez
+Ez
+Pe
 PN
 PN
 kn
@@ -80092,12 +80135,12 @@ qb
 qb
 qb
 qb
-BN
-BN
-BN
-BN
-BN
-BN
+Pe
+Pe
+Pe
+Pe
+Pe
+Pe
 PN
 PN
 kn
@@ -80717,8 +80760,8 @@ BN
 TA
 Pe
 Pe
-Ez
-Ez
+Ut
+Xn
 Ez
 Pe
 ba
@@ -80918,9 +80961,9 @@ BN
 BN
 qb
 Pe
-Ez
-Ez
-Ez
+Je
+xj
+rs
 Ez
 jw
 kn
@@ -81120,10 +81163,10 @@ qb
 qb
 qb
 Pe
-Ez
-Ez
-Ez
-Ez
+dw
+xj
+GQ
+hM
 Pe
 PN
 kn
@@ -81323,8 +81366,8 @@ qb
 qb
 Pe
 Pe
-Ez
-Ez
+xj
+tl
 Ez
 Pe
 PN
@@ -82335,10 +82378,10 @@ qb
 qb
 qb
 Pe
-Ez
-Ez
-Ez
-Ez
+qr
+xj
+tl
+sh
 Pe
 PN
 PN
@@ -82537,9 +82580,9 @@ qb
 qb
 qb
 Pe
-Ez
-Ez
-Ez
+Ii
+VG
+tl
 Ez
 Pe
 PN
@@ -82739,9 +82782,9 @@ qb
 qb
 qb
 Pe
-Ez
-Ez
-Ez
+kJ
+zo
+Xn
 Ez
 Pe
 PN
@@ -82942,7 +82985,7 @@ qb
 qb
 Pe
 Pe
-Ez
+bn
 Ez
 Pe
 Pe
@@ -84370,7 +84413,7 @@ uw
 PN
 Rp
 Tt
-lk
+mb
 mB
 nK
 Rp

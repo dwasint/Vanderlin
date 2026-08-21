@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(mob_stock)
 /// happen, but a resolve()-null weakref costing us population forever is
 /// worse than an extra pass here). I HATE BYOND I HATE BYOND I HATE BYOND
 /datum/controller/subsystem/mob_stock/proc/prune_dead_refs(list/refs)
-	for(/datum/weakref/wr as anything in refs)
+	for(var/datum/weakref/wr as anything in refs)
 		if(!wr || !wr.resolve())
 			refs.Cut(i, i + 1)
 
