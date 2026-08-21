@@ -837,7 +837,6 @@
 #include "code\datums\ai\controllers\warden.dm"
 #include "code\datums\ai\controllers\watcher.dm"
 #include "code\datums\ai\controllers\zizoid.dm"
-#include "code\datums\ai\controllers\zombie.dm"
 #include "code\datums\ai\controllers\basic_controllers\chicken.dm"
 #include "code\datums\ai\controllers\basic_controllers\cow.dm"
 #include "code\datums\ai\hostile\testing_orc.dm"

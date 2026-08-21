@@ -37,6 +37,8 @@
 	for(var/datum/intent/intent as anything in pawn.possible_a_intents)
 		if(istype(intent, /datum/intent/unarmed/help) || istype(intent, /datum/intent/unarmed/shove) || istype(intent, /datum/intent/unarmed/grab))
 			continue
+		if(IS_DEADITE(pawn) && !istype(intent, /datum/intent/unarmed/claw))
+			continue
 		possible_intents |= intent
 	if(length(possible_intents))
 		pawn.a_intent = pick(possible_intents)

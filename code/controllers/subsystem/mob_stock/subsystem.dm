@@ -10,7 +10,6 @@ SUBSYSTEM_DEF(mob_stock)
 
 	/// assoc list: mob typepath -> list of /datum/weakref so waves can pull the chuds into it
 	var/list/tracked_mobs = list()
-
 	///next wave cooldown
 	COOLDOWN_DECLARE(next_wave_time)
 
@@ -54,8 +53,8 @@ SUBSYSTEM_DEF(mob_stock)
 /// worse than an extra pass here). I HATE BYOND I HATE BYOND I HATE BYOND
 /datum/controller/subsystem/mob_stock/proc/prune_dead_refs(list/refs)
 	for(var/datum/weakref/wr as anything in refs)
-		if(!wr || !wr.resolve())
-			refs.Cut(i, i + 1)
+		if(!wr.resolve())
+			refs -= wr
 
 ///this just shuffle pick_n_takes from the viable spots to find one thats not occupied
 /datum/controller/subsystem/mob_stock/proc/find_valid_starter()
@@ -122,19 +121,15 @@ SUBSYSTEM_DEF(mob_stock)
 		schedule_next_wave()
 		return
 
-	var/list/points = get_wave_defense_points(chosen_set_id)
-
 	var/list/mob/living/wave_mobs = list()
 	for(var/path in stock.pick_wave_mobs())
-		var/turf/spawn_turf = pick(points)
-		wave_mobs += new path(spawn_turf)
+		var/mob/living/pulled = pull_stock_mob(path)
+		if(pulled)
+			wave_mobs += pulled
 
 	if(!length(wave_mobs))
 		schedule_next_wave()
 		return
-
-	//done so no duplicate waves
-	next_wave_time = 0
 
 	new /datum/wave_defense_coordinator(
 		chosen_set_id,
@@ -143,7 +138,24 @@ SUBSYSTEM_DEF(mob_stock)
 		on_failed = CALLBACK(src, PROC_REF(on_wave_failed)),
 	)
 
+	schedule_next_wave()
 	message_admins("SSmob_stock launched an automatic wave ([chosen_set_id]) with [length(wave_mobs)] mob(s).")
+
+/// Pulls a live mob of the given path out of tracked_mobs for use in a wave.
+/datum/controller/subsystem/mob_stock/proc/pull_stock_mob(path)
+	var/list/refs = tracked_mobs[path]
+	if(!refs)
+		return null
+
+	prune_dead_refs(refs)
+	for(var/i = 1 to length(refs))
+		var/datum/weakref/wr = pick(refs)
+		var/mob/living/candidate = wr.resolve()
+		if(!candidate)
+			continue
+		return candidate
+
+	return null
 
 /// Picks a random set_id from the map's configured list, restricted to ones
 /// that currently have at least one landmark placed. Returns null if none do.

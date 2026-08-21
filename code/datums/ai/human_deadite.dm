@@ -30,7 +30,6 @@
 		/datum/ai_planning_subtree/flee_target,
 		/datum/ai_planning_subtree/tree_climb,
 		/datum/ai_planning_subtree/aggro_find_target,
-		/datum/ai_planning_subtree/squad_flank,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/human_npc,
 	)
 	idle_behavior = /datum/idle_behavior/idle_random_walk

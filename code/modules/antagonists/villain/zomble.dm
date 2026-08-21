@@ -187,6 +187,8 @@
 
 	zombie.base_intents = list(INTENT_DISARM, INTENT_GRAB, INTENT_HARM, /datum/intent/unarmed/claw)
 	zombie.update_a_intents()
+	zombie.rog_intent_change(4)
+	zombie.rog_intent_change(4, 1)
 
 	zombie.remove_all_languages()
 	zombie.grant_language(/datum/language/undead)
@@ -207,7 +209,7 @@
 	zombie.update_eyes()
 
 	zombie.add_client_colour(/datum/client_colour/monochrome)
-	zombie.ai_controller = new /datum/ai_controller/zombie(zombie)
+	zombie.ai_controller = new /datum/ai_controller/human_deadite(zombie)
 	zombie.AddComponent(/datum/component/ai_aggro_system)
 	zombie.attributes?.add_attribute_modifier(/datum/attribute_modifier/zombie)
 

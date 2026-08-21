@@ -3107,6 +3107,13 @@
 /obj/structure/rack/shelf,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
+"nx" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "south-wyrm";
+	order = 4
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "ny" = (
 /obj/structure/mirror,
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -5374,6 +5381,12 @@
 	},
 /turf/open/openspace,
 /area/indoors/town/keep/halls/e)
+"yE" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "south-wyrm"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "yF" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -5524,6 +5537,13 @@
 /obj/machinery/light/fueled/smelter/great,
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"zr" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "south-wyrm";
+	order = 2
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "zs" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
@@ -5940,6 +5960,13 @@
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/food)
+"BK" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "south-wyrm";
+	order = 3
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "BL" = (
 /obj/structure/rack/shelf/biggest,
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -10019,6 +10046,14 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
+"UU" = (
+/obj/structure/wild_plant/nospread/manabloom,
+/obj/effect/landmark/wave_defense{
+	set_id = "south-wyrm";
+	order = 5
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "UW" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/ruinedwood/darker,
@@ -69708,7 +69743,7 @@ dH
 iC
 iC
 dH
-hG
+PN
 hG
 hG
 hG
@@ -70109,10 +70144,10 @@ kn
 HT
 HT
 HT
+zr
 HT
 HT
-HT
-HT
+yE
 hG
 hG
 hG
@@ -72523,7 +72558,7 @@ yT
 uw
 HT
 HT
-HT
+BK
 HT
 kn
 fI
@@ -74127,7 +74162,7 @@ HT
 HT
 HT
 HT
-HT
+nx
 HT
 HT
 HT
@@ -75532,7 +75567,7 @@ HT
 HT
 bW
 Kz
-TM
+UU
 HT
 HT
 HT

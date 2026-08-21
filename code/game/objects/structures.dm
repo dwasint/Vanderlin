@@ -16,6 +16,8 @@
 
 	var/last_redstone_state = 0
 	var/bonus_pressure = 0
+	///do claw attacks work?
+	var/clawable = TRUE
 //	move_resist = MOVE_FORCE_STRONG
 
 /obj/structure/Initialize()
@@ -31,6 +33,14 @@
 	if(redstone_id)
 		GLOB.redstone_objs += src
 		. = INITIALIZE_HINT_LATELOAD
+
+/obj/structure/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(clawable && user.used_intent.type == /datum/intent/unarmed/claw)
+		user.changeNext_move(CLICK_CD_MELEE)
+		to_chat(user, span_warning("I claw at [src]"))
+		take_damage(25, BRUTE, BCLASS_CUT, TRUE)
+		return
 
 /obj/structure/Bumped(atom/movable/AM)
 	..()
