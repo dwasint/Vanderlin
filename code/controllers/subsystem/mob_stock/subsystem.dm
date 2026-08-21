@@ -80,6 +80,8 @@ SUBSYSTEM_DEF(mob_stock)
 		return
 	var/list/viable_turfs = list()
 	for(var/turf/open/turf in range(4, start))
+		if(isopenspace(turf) || iswaterturf(turf) || islava(turf))
+			continue
 		var/dense = FALSE
 		for(var/atom/atom in turf)
 			if(atom.density)
@@ -121,9 +123,11 @@ SUBSYSTEM_DEF(mob_stock)
 		schedule_next_wave()
 		return
 
+	var/list/points = get_wave_defense_points(chosen_set_id)
+	var/atom/point_one = points[1]
 	var/list/mob/living/wave_mobs = list()
 	for(var/path in stock.pick_wave_mobs())
-		var/mob/living/pulled = pull_stock_mob(path)
+		var/mob/living/pulled = pull_stock_mob(path, point_one)
 		if(pulled)
 			wave_mobs += pulled
 
@@ -142,7 +146,7 @@ SUBSYSTEM_DEF(mob_stock)
 	message_admins("SSmob_stock launched an automatic wave ([chosen_set_id]) with [length(wave_mobs)] mob(s).")
 
 /// Pulls a live mob of the given path out of tracked_mobs for use in a wave.
-/datum/controller/subsystem/mob_stock/proc/pull_stock_mob(path)
+/datum/controller/subsystem/mob_stock/proc/pull_stock_mob(path, atom/point)
 	var/list/refs = tracked_mobs[path]
 	if(!refs)
 		return null
@@ -152,6 +156,8 @@ SUBSYSTEM_DEF(mob_stock)
 		var/datum/weakref/wr = pick(refs)
 		var/mob/living/candidate = wr.resolve()
 		if(!candidate)
+			continue
+		if(get_dist_3d(candidate, point) > 80)
 			continue
 		return candidate
 

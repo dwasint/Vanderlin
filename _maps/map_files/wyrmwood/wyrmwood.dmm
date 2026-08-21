@@ -4048,6 +4048,10 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors/town/keep)
+"pQ" = (
+/obj/effect/landmark/mob_stock_point,
+/turf/open/floor/grass/cold,
+/area/outdoors/wilderness)
 "pT" = (
 /obj/structure/curtain/bounty/dir{
 	dir = 8
@@ -58567,7 +58571,7 @@ eX
 pK
 pK
 pK
-rF
+pQ
 rF
 rF
 zW
@@ -59365,7 +59369,7 @@ zW
 rF
 rF
 rF
-rF
+pQ
 eX
 eX
 Au
@@ -59553,7 +59557,7 @@ Au
 Au
 Bt
 rF
-rF
+pQ
 rF
 Im
 Dk
@@ -59978,7 +59982,7 @@ Rt
 Uc
 eX
 rF
-rF
+pQ
 rF
 pK
 rF
@@ -60764,7 +60768,7 @@ xH
 xH
 rF
 rF
-rF
+pQ
 rF
 xH
 rF
@@ -61373,7 +61377,7 @@ rF
 zW
 rF
 xH
-rF
+pQ
 rF
 Am
 Im
@@ -61987,7 +61991,7 @@ rF
 rF
 xH
 rF
-rF
+pQ
 rF
 xH
 rF
@@ -62001,7 +62005,7 @@ rF
 rF
 rF
 rF
-rF
+pQ
 rF
 TU
 TU
@@ -63191,10 +63195,10 @@ rF
 rF
 rF
 rF
-rF
+pQ
 rF
 Dk
-rF
+pQ
 pK
 rF
 rF
@@ -64420,7 +64424,7 @@ zW
 rF
 rF
 rF
-rF
+pQ
 rF
 rF
 rF
@@ -65014,7 +65018,7 @@ rF
 pK
 es
 rF
-rF
+pQ
 rF
 eX
 Au
@@ -65412,7 +65416,7 @@ rF
 rF
 rF
 rF
-rF
+pQ
 xH
 rF
 xH
@@ -66436,7 +66440,7 @@ Au
 Au
 eX
 rF
-rF
+pQ
 rF
 rF
 zW
@@ -67026,7 +67030,7 @@ rF
 rF
 rF
 zW
-rF
+pQ
 rF
 rF
 zW
@@ -67642,7 +67646,7 @@ Am
 rF
 rF
 Dk
-rF
+pQ
 rF
 rF
 hq
@@ -68029,7 +68033,7 @@ xH
 rF
 rF
 rF
-rF
+pQ
 xH
 rF
 rF
@@ -68849,7 +68853,7 @@ es
 es
 Dk
 Dk
-rF
+pQ
 rF
 rF
 eX
@@ -68861,7 +68865,7 @@ TU
 TU
 eX
 rF
-rF
+pQ
 rF
 rF
 eX
@@ -69677,7 +69681,7 @@ TU
 eX
 rF
 rF
-rF
+pQ
 rF
 eX
 eX
