@@ -117,6 +117,12 @@
 /obj/item/bedsheet/pelt,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"az" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "north-wyrm"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "aB" = (
 /obj/effect/waterfall{
 	pixel_y = 0
@@ -4458,6 +4464,13 @@
 /obj/item/fishing/line/sinker,
 /turf/open/floor/wood,
 /area/outdoors)
+"qv" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "north-wyrm";
+	order = 4
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "qw" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -7873,6 +7886,13 @@
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/hay,
 /area/indoors/dungeon)
+"Eh" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "north-wyrm";
+	order = 5
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Ej" = (
 /obj/structure/table/wood/plain,
 /obj/item/weapon/hammer/copper,
@@ -10227,6 +10247,13 @@
 	},
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"Nk" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "north-wyrm";
+	order = 2
+	},
+/turf/open/floor/cobble,
+/area/outdoors/wilderness)
 "Nl" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/sand,
@@ -10247,6 +10274,13 @@
 /obj/structure/closet/crate/crafted_closet/inn,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
+"Nq" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "north-wyrm";
+	order = 3
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Nr" = (
 /obj/structure/table/wood/reinforced_alter,
 /obj/structure/bars{
@@ -10742,6 +10776,13 @@
 	pixel_x = -11
 	},
 /turf/open/floor/dirt/road,
+/area/outdoors)
+"Po" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "north-wyrm";
+	order = 6
+	},
+/turf/open/floor/cobble,
 /area/outdoors)
 "Pr" = (
 /turf/open/water/bath,
@@ -12214,6 +12255,10 @@
 /obj/effect/landmark/wave_defense{
 	set_id = "south-wyrm";
 	order = 5
+	},
+/obj/effect/landmark/wave_defense{
+	set_id = "north-wyrm";
+	order = 7
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
@@ -73983,12 +74028,12 @@ Dk
 Dk
 rF
 ox
-ox
+Nk
 HT
 HT
 HT
 HT
-HT
+az
 HT
 HT
 PN
@@ -75214,7 +75259,7 @@ HT
 HT
 HT
 HT
-HT
+Nq
 HT
 HT
 HT
@@ -75670,7 +75715,7 @@ PN
 PN
 PN
 PN
-HT
+Po
 HT
 PN
 Pe
@@ -75857,7 +75902,7 @@ HT
 HT
 HT
 HT
-HT
+Eh
 HT
 HT
 Hg
@@ -76035,7 +76080,7 @@ hA
 Nh
 hA
 HT
-HT
+qv
 HT
 HT
 HT
