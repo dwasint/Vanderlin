@@ -762,12 +762,6 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
-"cG" = (
-/obj/structure/industrial_lift/tram,
-/obj/structure/industrial_lift/tram,
-/obj/structure/fluff/railing/wood,
-/turf/open/floor/dirt/road,
-/area/outdoors/wilderness)
 "cH" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -833,11 +827,11 @@
 /turf/open/floor/wood,
 /area/outdoors)
 "cS" = (
-/obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/statue/pillar{
 	pixel_y = 14
 	},
+/obj/structure/industrial_lift/tram,
 /turf/open/openspace,
 /area/outdoors/wilderness)
 "cU" = (
@@ -1162,11 +1156,6 @@
 	dir = 4
 	},
 /area/outdoors/town/keep)
-"dL" = (
-/obj/structure/industrial_lift/tram,
-/obj/structure/industrial_lift/tram,
-/turf/open/floor/dirt/road,
-/area/outdoors/wilderness)
 "dO" = (
 /obj/machinery/light/fueled/wallfire/candle/weak/l,
 /turf/open/floor/naturalstone,
@@ -1376,6 +1365,15 @@
 /obj/structure/table/wood/plain_alt,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
+"eH" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/obj/structure/industrial_lift/tram{
+	fake = 1
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/wilderness)
 "eJ" = (
 /obj/structure/fluff/railing/stonehedge{
 	dir = 4
@@ -2067,11 +2065,11 @@
 /turf/open/floor/cobblerock,
 /area/outdoors/wilderness)
 "hp" = (
-/obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/statue/pillar{
 	pixel_y = 14
 	},
+/obj/structure/industrial_lift/tram,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "hq" = (
@@ -3877,7 +3875,6 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/lord_appt)
 "nE" = (
-/obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -3885,6 +3882,7 @@
 	dir = 4;
 	pixel_x = 1
 	},
+/obj/structure/industrial_lift/tram,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "nF" = (
@@ -5395,6 +5393,11 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
+"tx" = (
+/obj/structure/fluff/railing/wood,
+/obj/structure/industrial_lift/tram,
+/turf/open/floor/dirt/road,
+/area/outdoors/wilderness)
 "ty" = (
 /obj/structure/fluff/statue/musician,
 /turf/open/floor/grass/cold,
@@ -6604,7 +6607,6 @@
 /turf/open/openspace,
 /area/outdoors)
 "xX" = (
-/obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -6613,6 +6615,7 @@
 	pixel_x = 1
 	},
 /obj/structure/fluff/statue/pillar,
+/obj/structure/industrial_lift/tram,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "xY" = (
@@ -9877,10 +9880,10 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
 "KH" = (
-/obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
+/obj/structure/industrial_lift/tram,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "KI" = (
@@ -10818,16 +10821,6 @@
 /obj/item/weapon/whip,
 /turf/open/floor/blocks,
 /area/indoors/dungeon)
-"Of" = (
-/obj/structure/industrial_lift/tram{
-	icon_state = "corner";
-	icon = 'icons/turf/walls.dmi';
-	density = 1;
-	opacity = 1
-	},
-/obj/structure/industrial_lift/tram,
-/turf/open/floor/dirt/road,
-/area/outdoors/wilderness)
 "Og" = (
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/naturalstone,
@@ -11863,9 +11856,11 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
 "RQ" = (
-/obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood{
 	dir = 8
+	},
+/obj/structure/industrial_lift/tram{
+	fake = 1
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
@@ -12146,11 +12141,11 @@
 /turf/open/floor/grass/cold,
 /area/outdoors)
 "SP" = (
-/obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
 /obj/structure/fluff/statue/pillar,
+/obj/structure/industrial_lift/tram,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "SQ" = (
@@ -12384,6 +12379,13 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/throne)
+"TE" = (
+/obj/structure/fluff/railing/wood,
+/obj/structure/industrial_lift/tram{
+	fake = 1
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/wilderness)
 "TF" = (
 /obj/structure/chair/stool/bar,
 /turf/open/floor/ruinedwood/darker,
@@ -12774,12 +12776,12 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "Vn" = (
-/obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 4;
 	pixel_x = 1
 	},
+/obj/structure/industrial_lift/tram,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "Vo" = (
@@ -95394,9 +95396,9 @@ rF
 rF
 Dk
 hk
-Oz
-Oz
-Oz
+zB
+zB
+zB
 hk
 Dk
 rF
@@ -95595,11 +95597,11 @@ rF
 rF
 Dk
 Dk
-KH
-Oz
-Oz
-Oz
-tt
+eH
+zB
+zB
+zB
+TE
 Dk
 Dk
 Dk
@@ -95798,9 +95800,9 @@ Dk
 Dk
 Dk
 hk
-Of
-dL
-Of
+zB
+zB
+zB
 hk
 Dk
 Dk
@@ -96407,7 +96409,7 @@ KH
 Oz
 Oz
 Oz
-tt
+tx
 Dk
 Dk
 rF
@@ -96609,7 +96611,7 @@ Oz
 Oz
 Oz
 Oz
-tt
+tx
 Dk
 rF
 rF
@@ -96811,7 +96813,7 @@ Oz
 Oz
 ue
 Oz
-tt
+tx
 Dk
 eX
 eX
@@ -97013,7 +97015,7 @@ Oz
 Oz
 Oz
 Oz
-tt
+tx
 eX
 PJ
 PJ
@@ -97212,10 +97214,10 @@ rF
 rF
 Dk
 KH
-dL
-dL
-dL
-cG
+Oz
+Oz
+Oz
+tt
 PJ
 PJ
 PJ
@@ -97415,7 +97417,7 @@ rF
 Dk
 xX
 Oz
-dL
+Oz
 Oz
 cS
 PJ
@@ -97618,7 +97620,7 @@ rF
 Dk
 KH
 Oz
-tt
+tx
 PJ
 PJ
 PJ
