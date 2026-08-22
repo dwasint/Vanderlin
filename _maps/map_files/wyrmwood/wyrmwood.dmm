@@ -823,6 +823,9 @@
 "cS" = (
 /obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood,
+/obj/structure/fluff/statue/pillar{
+	pixel_y = 14
+	},
 /turf/open/openspace,
 /area/outdoors/wilderness)
 "cU" = (
@@ -2046,6 +2049,14 @@
 	pixel_y = -8
 	},
 /turf/open/floor/cobblerock,
+/area/outdoors/wilderness)
+"hp" = (
+/obj/structure/industrial_lift/tram,
+/obj/structure/fluff/railing/wood,
+/obj/structure/fluff/statue/pillar{
+	pixel_y = 14
+	},
+/turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "hq" = (
 /turf/open/water/river,
@@ -6536,6 +6547,18 @@
 	},
 /turf/open/openspace,
 /area/outdoors)
+"xX" = (
+/obj/structure/industrial_lift/tram,
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	pixel_x = 1
+	},
+/obj/structure/fluff/statue/pillar,
+/turf/open/floor/dirt/road,
+/area/outdoors/wilderness)
 "xY" = (
 /obj/effect/landmark/start/consort{
 	dir = 8
@@ -12040,6 +12063,14 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"SP" = (
+/obj/structure/industrial_lift/tram,
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/obj/structure/fluff/statue/pillar,
+/turf/open/floor/dirt/road,
+/area/outdoors/wilderness)
 "SQ" = (
 /obj/effect/lily_petal/three,
 /turf/open/floor/grass/cold,
@@ -96074,11 +96105,11 @@ rF
 rF
 Dk
 Dk
-KH
+SP
 Oz
 Oz
 Oz
-tt
+hp
 Dk
 rF
 rF
@@ -97286,7 +97317,7 @@ rF
 rF
 rF
 Dk
-nE
+xX
 Oz
 dL
 Oz
