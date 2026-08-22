@@ -39,6 +39,12 @@
 /obj/item/chalk,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/keep/magician)
+"ah" = (
+/obj/structure/chair/wood/alt/chair_noble{
+	dir = 8
+	},
+/turf/open/floor/church,
+/area/indoors/cave)
 "ai" = (
 /obj/machinery/light/fueled/torchholder{
 	dir = 8
@@ -584,6 +590,12 @@
 /obj/structure/table/wood/plain,
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/naturalstone,
+/area/indoors/cave)
+"co" = (
+/obj/machinery/light/fueled/wallfire/candle/blue{
+	pixel_y = -32
+	},
+/turf/open/floor/church,
 /area/indoors/cave)
 "cr" = (
 /turf/open/floor/wood,
@@ -1825,6 +1837,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"ha" = (
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/church,
+/area/indoors/cave)
 "hc" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -2232,6 +2248,22 @@
 /obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"iF" = (
+/obj/structure/chair/wood/alt/chair_noble{
+	dir = 4
+	},
+/turf/open/floor/church,
+/area/indoors/cave)
+"iG" = (
+/obj/machinery/light/fueled/wallfire/big_fireplace{
+	pixel_y = 24
+	},
+/obj/effect/decal/carpet/square/black{
+	pixel_x = 16;
+	pixel_y = 4
+	},
+/turf/open/floor/church,
+/area/indoors/cave)
 "iH" = (
 /obj/structure/bars/pipe{
 	dir = 1;
@@ -2595,6 +2627,10 @@
 /obj/effect/mapping_helpers/access/keyset/town/merchant,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
+"jY" = (
+/obj/structure/table/wood/nice/decorated_alt,
+/turf/open/floor/church,
+/area/indoors/cave)
 "jZ" = (
 /obj/structure/closet/crate/crafted_closet/inn/south,
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -3199,6 +3235,13 @@
 /obj/item/dice,
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/keep/garrison)
+"ml" = (
+/obj/structure/chair/wood/alt/chair_noble{
+	dir = 8
+	},
+/obj/structure/carpet/purple,
+/turf/open/floor/church,
+/area/indoors/cave)
 "mm" = (
 /obj/structure/table/wood/plain,
 /obj/item/reagent_containers/glass/carafe/water{
@@ -3851,6 +3894,11 @@
 /obj/structure/fluff/walldeco/skullspike,
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
+"oE" = (
+/obj/structure/carpet/purple,
+/obj/structure/table/vtable/v2,
+/turf/open/floor/church,
+/area/indoors/cave)
 "oF" = (
 /obj/structure/lever/wall{
 	pixel_y = 0;
@@ -3902,6 +3950,10 @@
 /obj/structure/closet/crate/chest/wickertrunk/blue,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/keep/magician)
+"oR" = (
+/obj/structure/carpet/blue,
+/turf/open/floor/church,
+/area/indoors/cave)
 "oS" = (
 /turf/open/openspace,
 /area/indoors/soilsons)
@@ -4165,6 +4217,11 @@
 /obj/effect/landmark/mob_stock_point,
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
+"pR" = (
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/pelt,
+/turf/open/floor/church,
+/area/indoors/cave)
 "pS" = (
 /turf/open/water/clean/dirt,
 /area/outdoors/wilderness)
@@ -4348,6 +4405,10 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/servant)
+"qJ" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/church,
+/area/indoors/cave)
 "qL" = (
 /obj/structure/fluff/railing/tall{
 	dir = 8
@@ -4855,6 +4916,16 @@
 /obj/structure/soil,
 /turf/open/floor/grass/mixyel,
 /area/outdoors)
+"sR" = (
+/obj/machinery/light/fueled/wallfire/big_fireplace{
+	pixel_y = 25
+	},
+/obj/effect/decal/carpet/square/black{
+	pixel_x = 16;
+	pixel_y = 4
+	},
+/turf/open/floor/church,
+/area/indoors/cave)
 "sU" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/bookcase/fancy/random_recipes,
@@ -6449,6 +6520,11 @@
 /obj/structure/lootable_structure/grain_barrel,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"zm" = (
+/obj/structure/carpet/blue,
+/obj/structure/closet/crate/chest/shippingcrate,
+/turf/open/floor/church,
+/area/indoors/cave)
 "zn" = (
 /obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/blocks/stonered/tiny,
@@ -6548,6 +6624,13 @@
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"zJ" = (
+/obj/machinery/light/fueled/wallfire/candle/blue{
+	pixel_y = -32
+	},
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/church,
+/area/indoors/cave)
 "zK" = (
 /obj/structure/door/weak,
 /obj/effect/mapping_helpers/access/keyset/town/miner,
@@ -8914,6 +8997,11 @@
 	},
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"Kd" = (
+/obj/structure/carpet/purple,
+/obj/structure/table/vtable,
+/turf/open/floor/church,
+/area/indoors/cave)
 "Ke" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -9453,6 +9541,10 @@
 /obj/item/clothing/shirt/undershirt/sailor/red,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
+"Md" = (
+/obj/structure/closet/crate/drawer,
+/turf/open/floor/church,
+/area/indoors/cave)
 "Me" = (
 /obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/naturalstone,
@@ -11426,6 +11518,13 @@
 /obj/structure/fluff/statue/small,
 /turf/open/floor/grass/cold,
 /area/outdoors/town/keep)
+"TI" = (
+/obj/structure/chair/wood/alt/chair_noble{
+	dir = 4
+	},
+/obj/structure/carpet/purple,
+/turf/open/floor/church,
+/area/indoors/cave)
 "TM" = (
 /obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/dirt/road,
@@ -12370,6 +12469,10 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors)
+"XA" = (
+/obj/structure/closet/crate/chest/shippingcrate,
+/turf/open/floor/church,
+/area/indoors/cave)
 "XB" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/cup{
@@ -12605,6 +12708,13 @@
 /obj/item/bin,
 /turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/generic)
+"YD" = (
+/obj/machinery/light/fueled/wallfire/candle/blue{
+	pixel_y = -32
+	},
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/church,
+/area/indoors/cave)
 "YE" = (
 /obj/item/bin,
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -29889,7 +29999,7 @@ Hn
 sv
 sv
 qG
-qG
+iF
 sv
 kw
 MC
@@ -30089,9 +30199,9 @@ ZC
 Hn
 Hn
 sv
+sR
 qG
-qG
-qG
+jY
 sv
 sv
 MC
@@ -30293,19 +30403,19 @@ Hn
 sv
 qG
 qG
-qG
-qG
+ah
+oR
 sv
 cK
 MC
 MC
 MC
 sv
+sR
 qG
+qJ
 qG
-qG
-qG
-qG
+co
 sv
 Hn
 Hn
@@ -30496,7 +30606,7 @@ sv
 qG
 qG
 qG
-qG
+oR
 Kb
 MC
 MC
@@ -30506,8 +30616,8 @@ sv
 qG
 qG
 sv
-qG
-qG
+pR
+Md
 sv
 Hn
 Hn
@@ -30695,9 +30805,9 @@ wz
 MC
 ci
 sv
+pR
 qG
-qG
-qG
+YD
 sv
 sv
 MC
@@ -31706,9 +31816,9 @@ MC
 MC
 hn
 sv
+TI
 qG
-qG
-qG
+ha
 sv
 cK
 MC
@@ -31908,9 +32018,9 @@ wz
 MC
 CS
 sv
+Kd
 qG
-qG
-qG
+XA
 sv
 MC
 We
@@ -32110,9 +32220,9 @@ sv
 Kb
 sv
 sv
+oE
 qG
-qG
-qG
+zJ
 sv
 MC
 MC
@@ -32308,13 +32418,13 @@ Hn
 Hn
 Hn
 sv
-qG
-qG
-qG
+zm
+oR
+oR
 sv
+ml
 qG
-qG
-qG
+ha
 sv
 MC
 MC
@@ -32510,9 +32620,9 @@ ZC
 Hn
 Hn
 sv
+iG
 qG
-qG
-qG
+co
 sv
 sv
 qG
@@ -32715,9 +32825,9 @@ sv
 qG
 qG
 qG
-qG
+ha
 sv
-qG
+pR
 qG
 sv
 Hn
@@ -32914,10 +33024,10 @@ Hn
 Hn
 Hn
 sv
+pR
+qJ
 qG
-qG
-qG
-qG
+ha
 sv
 sv
 sv
