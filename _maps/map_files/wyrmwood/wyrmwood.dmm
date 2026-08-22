@@ -119,7 +119,8 @@
 /area/indoors/town/tavern)
 "az" = (
 /obj/effect/landmark/wave_defense{
-	set_id = "north-wyrm"
+	set_id = "north-wyrm";
+	order = 2
 	},
 /turf/open/floor/cobble,
 /area/outdoors)
@@ -460,6 +461,13 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
+"bE" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "east-wyrm";
+	order = 5
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "bF" = (
 /obj/structure/table/optable,
 /obj/structure/curtain/bounty{
@@ -5411,6 +5419,12 @@
 /obj/effect/landmark/backup_join,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"ua" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "west-wyrm"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/wilderness)
 "ub" = (
 /obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/reagent_containers/glass/bottle/healthpot,
@@ -7620,6 +7634,13 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/food)
+"CE" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "east-wyrm";
+	order = 4
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "CF" = (
 /obj/structure/fluff/walldeco/psybanner,
 /turf/closed/wall/mineral/stone/moss/red,
@@ -7853,6 +7874,13 @@
 /obj/structure/fluff/walldeco/skullspike,
 /turf/open/floor/dirt,
 /area/outdoors/wilderness)
+"DH" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "east-wyrm";
+	order = 2
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "DK" = (
 /obj/effect/landmark/start/farmer{
 	dir = 1
@@ -8133,6 +8161,13 @@
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt/road,
 /area/indoors/cave)
+"EZ" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "west-wyrm";
+	order = 2
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Fa" = (
 /obj/structure/rack,
 /obj/item/weapon/mace{
@@ -8423,6 +8458,13 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
+"Gd" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "west-wyrm";
+	order = 3
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Ge" = (
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/flesh,
@@ -9012,6 +9054,13 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"IC" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "east-wyrm";
+	order = 3
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "ID" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/fishing/lure/meat,
@@ -9221,6 +9270,13 @@
 	},
 /turf/open/floor/cobblerock,
 /area/indoors/cave)
+"Jk" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "west-wyrm";
+	order = 4
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Jl" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -9881,6 +9937,12 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"LE" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "east-wyrm"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/wilderness)
 "LG" = (
 /obj/structure/water_pipe,
 /turf/open/floor/naturalstone,
@@ -10307,8 +10369,7 @@
 /area/indoors/cave)
 "Nk" = (
 /obj/effect/landmark/wave_defense{
-	set_id = "north-wyrm";
-	order = 2
+	set_id = "north-wyrm"
 	},
 /turf/open/floor/cobble,
 /area/outdoors/wilderness)
@@ -11505,6 +11566,13 @@
 /obj/structure/carpet/navy,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"RL" = (
+/obj/effect/landmark/wave_defense{
+	set_id = "west-wyrm";
+	order = 5
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "RM" = (
 /obj/structure/rotation_piece/cog{
 	dir = 4
@@ -12317,6 +12385,14 @@
 /obj/effect/landmark/wave_defense{
 	set_id = "north-wyrm";
 	order = 7
+	},
+/obj/effect/landmark/wave_defense{
+	set_id = "west-wyrm";
+	order = 6
+	},
+/obj/effect/landmark/wave_defense{
+	set_id = "east-wyrm";
+	order = 6
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
@@ -59394,7 +59470,7 @@ dH
 dH
 Im
 Im
-Dk
+ua
 ox
 rF
 dH
@@ -60404,7 +60480,7 @@ fM
 dH
 dH
 HT
-HT
+EZ
 HT
 dH
 dH
@@ -65050,7 +65126,7 @@ kn
 kn
 kn
 HT
-HT
+Gd
 HT
 kn
 kn
@@ -70104,7 +70180,7 @@ Tp
 hA
 Nh
 zE
-HT
+Jk
 HT
 PN
 PN
@@ -74757,7 +74833,7 @@ HT
 HT
 PN
 HT
-HT
+RL
 HT
 HT
 PN
@@ -79617,7 +79693,7 @@ kn
 kn
 kn
 kn
-HT
+bE
 HT
 HT
 HT
@@ -82236,7 +82312,7 @@ iw
 PN
 PN
 me
-HT
+CE
 HT
 PN
 Pe
@@ -85466,7 +85542,7 @@ eV
 eV
 eV
 ST
-HT
+IC
 HT
 PN
 PN
@@ -89102,7 +89178,7 @@ Nl
 dH
 dH
 HT
-HT
+DH
 HT
 dH
 dH
@@ -90112,7 +90188,7 @@ dH
 dH
 Dk
 sI
-Dk
+LE
 ox
 Im
 dH
