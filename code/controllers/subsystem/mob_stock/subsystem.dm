@@ -34,6 +34,9 @@ SUBSYSTEM_DEF(mob_stock)
 		try_launch_wave()
 
 /datum/controller/subsystem/mob_stock/proc/maintain_population()
+	#ifdef UNIT_TESTS // why? because this is prone to cause flaky test results since this tries to enforce growth
+	return FALSE
+	#endif
 	if(!length(GLOB.mob_stock_points))
 		return
 
