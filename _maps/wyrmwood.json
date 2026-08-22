@@ -2,9 +2,9 @@
     "map_name": "Wyrmwood",
     "map_path": "map_files/wyrmwood",
     "map_file": "wyrmwood.dmm",
-	"immigrant_origin": "Vanderlin",
-	"monarch_title": "Count",
-	"monarch_title_f": "Countess",
+	"immigrant_origin": "Wyrmwood",
+	"monarch_title": "Burgomaster",
+	"monarch_title_f": "Burgomaster",
 	"traits": [
 		{
 			"Up": true,
@@ -26,6 +26,5 @@
 	"other_z": [],
 	"minetype": null,
 	"space_empty_levels": 0,
-	"space_ruin_levels": 0,
-	"exclude_from_ci": true
+	"space_ruin_levels": 0
 }
