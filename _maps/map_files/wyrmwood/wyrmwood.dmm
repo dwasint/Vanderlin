@@ -3042,6 +3042,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 8
 	},
+/obj/effect/landmark/stall,
 /turf/open/floor/ruinedwood/spiral,
 /area/outdoors)
 "kU" = (
@@ -3641,6 +3642,13 @@
 /obj/structure/carpet/navy,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/magician)
+"mO" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/obj/effect/landmark/stall,
+/turf/open/floor/ruinedwood/spiral,
+/area/outdoors)
 "mP" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -4657,6 +4665,11 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/church,
 /area/indoors/cave)
+"qK" = (
+/obj/structure/fluff/railing/wood,
+/obj/effect/landmark/stall,
+/turf/open/floor/ruinedwood/spiral,
+/area/outdoors)
 "qL" = (
 /obj/structure/fluff/railing/tall{
 	dir = 8
@@ -7338,6 +7351,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 8
 	},
+/obj/effect/landmark/stall,
 /turf/open/floor/ruinedwood/spiral,
 /area/outdoors)
 "AW" = (
@@ -10194,6 +10208,10 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"LY" = (
+/obj/effect/landmark/stall,
+/turf/open/floor/ruinedwood/spiral,
+/area/outdoors)
 "LZ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -12347,6 +12365,13 @@
 /area/indoors/town)
 "TU" = (
 /turf/closed/mineral/moss,
+/area/outdoors/wilderness)
+"TV" = (
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/roguetown/misc/structure.dmi';
+	icon_state = "floorhatch1"
+	},
+/turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "TW" = (
 /obj/structure/stairs{
@@ -96508,7 +96533,7 @@ xq
 rF
 Dk
 Dk
-Dk
+TV
 Oz
 Oz
 Oz
@@ -96710,7 +96735,7 @@ rF
 rF
 Dk
 Dk
-Dk
+TV
 Oz
 Oz
 ue
@@ -96912,7 +96937,7 @@ xq
 rF
 Dk
 Dk
-Dk
+TV
 Oz
 Oz
 Oz
@@ -119327,14 +119352,14 @@ JG
 Uq
 Uq
 Uq
-Ke
+mO
 AP
 AP
 tO
 AP
 AP
 dB
-dB
+JG
 Uq
 Uq
 Uq
@@ -119529,14 +119554,14 @@ JG
 Uq
 Uq
 Uq
-Ke
+mO
 AP
 AP
 AP
 AP
 AP
 dB
-dB
+JG
 Uq
 Uq
 Cr
@@ -119738,7 +119763,7 @@ AP
 AP
 AP
 dB
-dB
+JG
 Uq
 Uq
 Uq
@@ -120138,9 +120163,9 @@ Uq
 Ke
 QJ
 Ke
+LY
 AP
-AP
-Zl
+qK
 JG
 JG
 Uq
