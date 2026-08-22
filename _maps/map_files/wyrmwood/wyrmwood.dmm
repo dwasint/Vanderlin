@@ -123,6 +123,23 @@
 	},
 /turf/open/floor/cobble,
 /area/outdoors)
+"aA" = (
+/obj/structure/lever/wall{
+	dir = 2;
+	pixel_x = 11;
+	pixel_y = 6;
+	name = "inner gate lever";
+	redstone_id = "gate_right-inner"
+	},
+/obj/structure/lever/wall{
+	dir = 2;
+	pixel_y = -8;
+	pixel_x = 11;
+	redstone_id = "gate_right-outer";
+	name = "outer gate lever"
+	},
+/turf/open/floor/sand,
+/area/outdoors)
 "aB" = (
 /obj/effect/waterfall{
 	pixel_y = 0
@@ -483,6 +500,23 @@
 /obj/structure/fluff/statue/gargoyle/moss,
 /turf/open/floor/grass,
 /area/outdoors/exposed/church/graveyard)
+"bR" = (
+/obj/structure/lever/wall{
+	dir = 2;
+	pixel_x = 11;
+	pixel_y = 6;
+	name = "inner gate lever";
+	redstone_id = "gate_left-inner"
+	},
+/obj/structure/lever/wall{
+	dir = 2;
+	pixel_y = -8;
+	pixel_x = 11;
+	redstone_id = "gate_left-outer";
+	name = "outer gate lever"
+	},
+/turf/open/floor/sand,
+/area/outdoors)
 "bS" = (
 /obj/structure/chair/stool,
 /obj/structure/carpet/purple,
@@ -1632,6 +1666,12 @@
 /obj/structure/fluff/walldeco/skullspike,
 /turf/open/floor/grass/eora,
 /area/outdoors/wilderness)
+"gc" = (
+/obj/structure/gate/vertical/bars/preopen{
+	redstone_id = "gate_right-outer"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "gd" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/weapon/shovel,
@@ -3807,6 +3847,12 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/halls/w)
+"nU" = (
+/obj/structure/gate/vertical/bars/preopen{
+	redstone_id = "gate_left-outer"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "nV" = (
 /obj/structure/carpet/cyan,
 /turf/open/floor/ruinedwood/darker,
@@ -7312,6 +7358,12 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"Bv" = (
+/obj/structure/gate/vertical/bars{
+	redstone_id = "gate_right-inner"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "BA" = (
 /obj/effect/landmark/observer_start,
 /turf/open/floor/cobble,
@@ -8641,6 +8693,12 @@
 "Hk" = (
 /turf/closed/wall/mineral/stone/window,
 /area/indoors/town/shop)
+"Hl" = (
+/obj/structure/gate/vertical/bars{
+	redstone_id = "gate_left-inner"
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "Hm" = (
 /obj/structure/chair/wood/alt/chair_noble/red,
 /obj/effect/landmark/start/watchman,
@@ -59331,7 +59389,7 @@ rF
 Dk
 dH
 dH
-dH
+rH
 dH
 dH
 Im
@@ -59341,7 +59399,7 @@ ox
 rF
 dH
 dH
-dH
+rH
 dH
 dH
 rF
@@ -59539,7 +59597,7 @@ dH
 dH
 HT
 HT
-HT
+nU
 dH
 dH
 TR
@@ -59934,23 +59992,23 @@ Dk
 Dk
 Dk
 Dk
-dH
+rH
 TR
 TR
 SR
 TR
 TR
-dH
+rH
 HT
 HT
 HT
-dH
+rH
 TR
 TR
 SR
 TR
 TR
-dH
+rH
 rF
 rF
 rF
@@ -60141,11 +60199,11 @@ TR
 TR
 TR
 TR
-TR
+bR
 dH
 HT
 HT
-HT
+Hl
 dH
 TR
 TR
@@ -89247,7 +89305,7 @@ TR
 dH
 HT
 HT
-HT
+Bv
 dH
 TR
 TR
@@ -89440,23 +89498,23 @@ kn
 kn
 kn
 kn
-dH
+rH
 TR
 TR
 SR
 TR
 TR
-dH
+rH
 HT
 HT
 HT
-dH
+rH
 TR
 TR
 SR
 TR
 TR
-dH
+rH
 kn
 kn
 kn
@@ -89647,7 +89705,7 @@ TR
 TR
 TR
 TR
-TR
+aA
 dH
 HT
 HT
@@ -89853,7 +89911,7 @@ dH
 dH
 HT
 HT
-HT
+gc
 dH
 dH
 TR
@@ -90049,7 +90107,7 @@ rF
 Dk
 dH
 dH
-dH
+rH
 dH
 dH
 Dk
@@ -90059,7 +90117,7 @@ ox
 Im
 dH
 dH
-dH
+rH
 dH
 dH
 rF
