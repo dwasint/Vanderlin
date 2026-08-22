@@ -10,7 +10,7 @@
 		/datum/job/tomb_warden,
 		/datum/job/matron,
 		/datum/job/grabber,
-		/datum/job/captain
+		/datum/job/captain,
 		/datum/job/courtphys,
 		/datum/job/hand,
 		/datum/job/forestwarden,
