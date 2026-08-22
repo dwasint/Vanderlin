@@ -9629,7 +9629,6 @@
 	},
 /obj/item/gravedecor/headstone{
 	pixel_y = -8;
-	layer = s;
 	density = 1
 	},
 /turf/open/floor/dirt/road,
