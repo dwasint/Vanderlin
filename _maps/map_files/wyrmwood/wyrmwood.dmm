@@ -9274,16 +9274,6 @@
 /obj/item/fishing/lure/meat,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
-"IE" = (
-/obj/structure/industrial_lift/tram,
-/obj/structure/industrial_lift/tram{
-	icon_state = "corner";
-	icon = 'icons/turf/walls.dmi';
-	density = 1;
-	opacity = 1
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/wilderness)
 "IF" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/natural/bundle/cloth{
@@ -96009,11 +95999,11 @@ xq
 rF
 Dk
 Dk
-IE
-IE
+hk
+hk
 HG
-IE
-IE
+hk
+hk
 Dk
 rF
 Dk
