@@ -689,6 +689,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"cE" = (
+/obj/structure/stairs/stone,
+/turf/open/floor/sand,
+/area/outdoors/wilderness)
 "cF" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -1941,6 +1945,13 @@
 	},
 /turf/open/floor/abyss_sand,
 /area/indoors/cave)
+"ho" = (
+/obj/item/candle/floorcandle1/lit{
+	pixel_x = -22;
+	pixel_y = -8
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors/wilderness)
 "hq" = (
 /turf/open/water/river,
 /area/outdoors/wilderness)
@@ -2278,6 +2289,9 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
+"iA" = (
+/turf/open/floor/cobble/mossy,
+/area/outdoors/wilderness)
 "iB" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -3329,6 +3343,13 @@
 /obj/structure/fluff/clutter/shrub/tundra,
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"mp" = (
+/obj/machinery/light/fueled/hearth,
+/obj/item/reagent_containers/glass/bucket/pot{
+	pixel_y = 7
+	},
+/turf/open/floor/cobblerock,
+/area/indoors/cave)
 "mr" = (
 /obj/item/reagent_containers/food/snacks/produce/swampweed_dried,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
@@ -3660,6 +3681,8 @@
 /area/indoors/town/keep/throne)
 "ns" = (
 /obj/structure/table/wood/plain,
+/obj/item/weapon/knife/cleaver,
+/obj/item/kitchen/rollingpin,
 /turf/open/floor/dirt/road,
 /area/indoors/cave)
 "nt" = (
@@ -4671,6 +4694,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
+"rv" = (
+/obj/structure/stairs/stone,
+/turf/open/floor/naturalstone,
+/area/outdoors/wilderness)
 "rw" = (
 /obj/structure/fluff/statue/noc,
 /obj/structure/carpet/purple,
@@ -4955,6 +4982,11 @@
 "sD" = (
 /turf/open/floor/woodturned,
 /area/indoors/soilsons)
+"sE" = (
+/obj/structure/table/wood/plain,
+/obj/item/cooking/pan,
+/turf/open/floor/dirt/road,
+/area/indoors/cave)
 "sF" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/item/bouquet/rosa,
@@ -6216,6 +6248,21 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"xu" = (
+/obj/structure/flora/grass/bush/wall/tall{
+	pixel_x = -8
+	},
+/obj/structure/flora/grass/bush_meagre{
+	pixel_x = 20;
+	pixel_y = -5
+	},
+/obj/structure/flora/grass/bush{
+	layer = 4.4;
+	pixel_x = 25;
+	pixel_y = 7
+	},
+/turf/open/floor/cobble/mossy,
+/area/outdoors/wilderness)
 "xv" = (
 /obj/structure/fluff/railing/stonehedge,
 /obj/structure/fluff/railing/stonehedge{
@@ -6701,6 +6748,22 @@
 /obj/machinery/light/fueled/smelter/great,
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"zq" = (
+/obj/structure/flora/grass/bush/wall/tall{
+	pixel_x = -24;
+	pixel_y = -4
+	},
+/obj/structure/flora/grass/bush_meagre{
+	pixel_x = -23;
+	pixel_y = -7
+	},
+/obj/structure/flora/grass/bush{
+	layer = 4.4;
+	pixel_x = -28;
+	pixel_y = 7
+	},
+/turf/open/floor/cobble/mossy,
+/area/outdoors/wilderness)
 "zr" = (
 /obj/effect/landmark/wave_defense{
 	set_id = "south-wyrm";
@@ -6859,6 +6922,13 @@
 /obj/effect/decal/carpet/kover_darkred,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/indoors/town/keep/heir/heir1)
+"Ab" = (
+/obj/item/candle/floorcandle1/lit{
+	pixel_x = 4;
+	pixel_y = -31
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors/wilderness)
 "Ac" = (
 /obj/structure/table/church/m,
 /obj/effect/mob_spawn/corpse/human/damaged/elf/dark{
@@ -7805,6 +7875,11 @@
 /area/indoors/dungeon)
 "Ej" = (
 /obj/structure/table/wood/plain,
+/obj/item/weapon/hammer/copper,
+/obj/item/weapon/tongs/stone{
+	pixel_y = 5;
+	pixel_x = -9
+	},
 /turf/open/floor/cobblerock,
 /area/indoors/cave)
 "Ek" = (
@@ -8269,6 +8344,13 @@
 	},
 /turf/open/floor/herringbone,
 /area/indoors/town/keep/garrison)
+"Gc" = (
+/obj/item/candle/floorcandle1/lit{
+	pixel_x = 4;
+	pixel_y = -31
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/wilderness)
 "Ge" = (
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/flesh,
@@ -9831,6 +9913,10 @@
 /obj/item/clothing/shirt/undershirt/sailor/red,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
+"Mb" = (
+/obj/machinery/tanningrack,
+/turf/open/floor/cobblerock,
+/area/indoors/cave)
 "Md" = (
 /obj/structure/closet/crate/drawer,
 /turf/open/floor/church,
@@ -11066,6 +11152,13 @@
 /obj/effect/mapping_helpers/access/keyset/manor/atarms,
 /turf/open/floor/blocks,
 /area/indoors/town/keep/garrison)
+"QY" = (
+/obj/item/candle/floorcandle1/lit{
+	pixel_x = -22;
+	pixel_y = -8
+	},
+/turf/open/floor/naturalstone,
+/area/outdoors/wilderness)
 "QZ" = (
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/clothing/face/cigarette/rollie/nicotine,
@@ -13374,6 +13467,10 @@
 "ZL" = (
 /obj/structure/hotspring/border/fourteen,
 /turf/open/floor/sand/desert,
+/area/outdoors/wilderness)
+"ZN" = (
+/obj/structure/dungeon_entry/center/vanderlin,
+/turf/open/floor/cobble/mossy,
 /area/outdoors/wilderness)
 "ZO" = (
 /obj/structure/table/wood/plain,
@@ -18336,7 +18433,7 @@ vW
 Yn
 mV
 ta
-mV
+mp
 SG
 SG
 Ya
@@ -18735,7 +18832,7 @@ Tv
 Tv
 Hn
 SG
-mV
+mp
 mV
 mV
 ta
@@ -18943,7 +19040,7 @@ mV
 mV
 mV
 mV
-ns
+sE
 SG
 Ya
 EG
@@ -19143,7 +19240,7 @@ SG
 Yn
 mV
 Yn
-mV
+Mb
 ta
 ta
 cQ
@@ -54264,10 +54361,10 @@ TU
 TU
 TU
 TU
-fR
-fR
-sI
-fR
+pS
+pS
+pS
+pS
 TU
 TU
 TU
@@ -54465,13 +54562,13 @@ TU
 TU
 TU
 TU
-Dk
-Im
-fR
-Im
-fR
-Dk
-Dk
+pS
+pS
+pS
+pS
+pS
+pS
+pS
 TU
 TU
 TU
@@ -54667,13 +54764,13 @@ TU
 TU
 TU
 TU
-Dk
-Im
-sI
-Im
-Im
-Im
-fR
+pS
+pS
+pS
+pS
+pS
+pS
+pS
 Im
 TU
 TU
@@ -54869,12 +54966,12 @@ TU
 TU
 TU
 TU
-Dk
-Im
-Dk
-fR
-Dk
-Im
+pS
+pS
+pS
+pS
+pS
+pS
 fR
 Im
 Im
@@ -55072,10 +55169,10 @@ TU
 TU
 TU
 TU
-fR
-fR
-fR
-fR
+pS
+pS
+pS
+pS
 fR
 fR
 fR
@@ -55478,8 +55575,8 @@ TU
 TU
 TU
 fR
-fR
-fR
+rv
+QY
 fR
 fR
 fR
@@ -55679,9 +55776,9 @@ TU
 TU
 fR
 fR
-Im
+Ab
 sI
-sI
+cE
 fR
 fR
 fR
@@ -55880,11 +55977,11 @@ TU
 Dk
 fR
 Im
+iA
 Im
-Im
 fR
-fR
-fR
+iA
+rv
 fR
 fR
 fR
@@ -56078,15 +56175,15 @@ TU
 TU
 TU
 TU
-Dk
-Dk
+xu
+Gc
 fR
 fR
 fR
 fR
 sI
 sI
-fR
+rv
 TU
 TU
 TU
@@ -56280,13 +56377,13 @@ TU
 TU
 TU
 sI
-Dk
+iA
 sI
 Im
-fR
+iA
 sI
-fR
-Dk
+iA
+Gc
 Dk
 TU
 TU
@@ -56482,10 +56579,10 @@ TU
 TU
 TU
 sI
-Dk
+ZN
 fR
 Im
-Im
+Ab
 Im
 Dk
 TU
@@ -56684,12 +56781,12 @@ TU
 TU
 TU
 sI
+iA
+ho
 Im
-Im
-Im
-sI
-Im
-Dk
+pS
+pS
+pS
 TU
 TU
 TU
@@ -56886,11 +56983,11 @@ TU
 TU
 TU
 TU
+zq
 Dk
-Dk
-Dk
-Dk
-Dk
+pS
+pS
+pS
 TU
 TU
 TU
@@ -57089,9 +57186,9 @@ TU
 TU
 TU
 TU
-sI
-Dk
-sI
+pS
+pS
+pS
 TU
 TU
 TU
