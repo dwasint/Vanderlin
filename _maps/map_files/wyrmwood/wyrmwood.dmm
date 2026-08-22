@@ -428,6 +428,10 @@
 /obj/structure/closet/crate/chest/wicker,
 /turf/open/floor/cobblerock,
 /area/indoors/soilsons)
+"by" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/cobble,
+/area/indoors/butchershop)
 "bz" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -939,7 +943,7 @@
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/butchershop)
 "dn" = (
 /turf/open/floor/rooftop/green,
 /area/outdoors)
@@ -1273,7 +1277,7 @@
 "en" = (
 /obj/structure/bookcase/random_recipes,
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/butchershop)
 "eo" = (
 /turf/open/floor/ruinedwood/darker,
 /area/indoors)
@@ -1844,6 +1848,12 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
+"gz" = (
+/obj/structure/door/weak,
+/obj/effect/mapping_helpers/access/keyset/town/butcher,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/dirt/road,
+/area/indoors/butchershop)
 "gA" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -2174,6 +2184,10 @@
 /obj/structure/bed/mediocre,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
+"hE" = (
+/obj/structure/closet/crate/chest/wickertrunk/blue,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/butchershop)
 "hF" = (
 /turf/open/floor/dirt,
 /area/outdoors/exposed/church/graveyard)
@@ -3281,6 +3295,10 @@
 /obj/structure/table/wood/plain,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"lE" = (
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/butchershop)
 "lF" = (
 /obj/structure/bed/shit{
 	pixel_y = -1
@@ -4606,6 +4624,12 @@
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/hay,
 /area/indoors/dungeon)
+"qo" = (
+/obj/effect/decal/carpet/kover_black{
+	pixel_x = 18
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/butchershop)
 "qp" = (
 /turf/open/water/river{
 	dir = 4
@@ -4932,6 +4956,9 @@
 /obj/structure/carpet/cyan,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/tavern)
+"rE" = (
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/butchershop)
 "rF" = (
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
@@ -5776,6 +5803,14 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/soilsons)
+"uN" = (
+/obj/effect/decal/borderfall{
+	dir = 1
+	},
+/obj/structure/table/wood/plain,
+/obj/structure/fluff/clutter/books,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/butchershop)
 "uO" = (
 /obj/structure/flora/grass/mushroom,
 /turf/open/floor/mushroom/green,
@@ -6678,6 +6713,23 @@
 	},
 /turf/open/floor/herringbone,
 /area/indoors/town/keep/lord_appt)
+"ya" = (
+/obj/machinery/light/fueled/oven{
+	pixel_x = -31
+	},
+/obj/item/reagent_containers/food/snacks/produce/grain/wheat,
+/obj/item/reagent_containers/food/snacks/produce/grain/wheat,
+/obj/item/reagent_containers/food/snacks/produce/grain/wheat,
+/obj/item/reagent_containers/food/snacks/produce/grain/wheat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/item/reagent_containers/food/snacks/produce/grain/oat,
+/obj/structure/closet/crate/chest/wicker,
+/turf/open/floor/cobblerock,
+/area/indoors/butchershop)
 "yb" = (
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
@@ -6781,7 +6833,7 @@
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/butchershop)
 "yu" = (
 /obj/structure/bed/wool,
 /obj/item/bedsheet/cloth,
@@ -7179,6 +7231,9 @@
 /obj/structure/hotspring/border/thirteen,
 /turf/open/floor/sand/sandstone,
 /area/outdoors/wilderness)
+"zQ" = (
+/turf/open/floor/cobblerock,
+/area/indoors/butchershop)
 "zR" = (
 /obj/structure/door{
 	name = "Material Stockpile"
@@ -7360,6 +7415,13 @@
 	},
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"Ay" = (
+/obj/structure/closet/crate/drawer,
+/obj/structure/fluff/railing/wood,
+/obj/item/key/butcher,
+/obj/item/key/butcher,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/butchershop)
 "AA" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -8240,6 +8302,11 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/churchrough,
 /area/indoors/town/keep/kitchen)
+"Eb" = (
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/wool,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/butchershop)
 "Ec" = (
 /obj/structure/table/wood{
 	dir = 8;
@@ -8504,6 +8571,14 @@
 /obj/structure/wild_plant/nospread/mushroom/merkel,
 /turf/open/floor/grass/eora,
 /area/outdoors/wilderness)
+"Fg" = (
+/obj/structure/mirror,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/butchershop)
 "Fi" = (
 /obj/structure/stairs{
 	dir = 8
@@ -8951,6 +9026,12 @@
 /obj/structure/table/vtable/v2,
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/throne)
+"GN" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/butchershop)
 "GO" = (
 /obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/ruinedwood/darker,
@@ -9065,6 +9146,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"Hj" = (
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/butchershop)
 "Hk" = (
 /turf/closed/wall/mineral/stone/window,
 /area/indoors/town/shop)
@@ -10186,6 +10271,11 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
+"Lk" = (
+/obj/machinery/light/fueled/hearth,
+/obj/item/reagent_containers/glass/bucket/pot/stone,
+/turf/open/floor/cobble,
+/area/indoors/butchershop)
 "Ll" = (
 /obj/structure/fluff/statue/topiary/stack,
 /turf/open/floor/grass/cold,
@@ -10313,6 +10403,9 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors/town/keep)
+"LC" = (
+/turf/closed/wall/mineral/wooddark,
+/area/indoors/butchershop)
 "LD" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/effect/decal/borderfall{
@@ -10519,7 +10612,7 @@
 	},
 /obj/item/weapon/knife/cleaver,
 /turf/open/floor/cobblerock,
-/area/indoors/town)
+/area/indoors/butchershop)
 "Mo" = (
 /obj/item/reagent_containers/glass/mortar{
 	pixel_x = -4;
@@ -10636,7 +10729,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/cobble,
-/area/indoors/town)
+/area/indoors/butchershop)
 "MK" = (
 /obj/structure/rack,
 /obj/item/rope,
@@ -10959,6 +11052,12 @@
 /obj/structure/carpet/navy,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/magician)
+"NZ" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/butchershop)
 "Oa" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt/road,
@@ -11221,7 +11320,7 @@
 	pixel_y = -10
 	},
 /turf/open/floor/ruinedwood/turned/darker,
-/area/indoors/town)
+/area/indoors/butchershop)
 "OL" = (
 /obj/structure/fluff/railing/tall{
 	dir = 8
@@ -11685,6 +11784,9 @@
 /obj/structure/carpet/blue,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
+"QH" = (
+/turf/open/floor/cobble,
+/area/indoors/butchershop)
 "QI" = (
 /obj/structure/dye_bin/luxury,
 /turf/open/floor/ruinedwood/spiral,
@@ -11695,6 +11797,11 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/outdoors)
+"QK" = (
+/obj/machinery/light/fueled/hearth,
+/obj/item/cooking/pan,
+/turf/open/floor/cobblerock,
+/area/indoors/butchershop)
 "QL" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
@@ -11719,6 +11826,10 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/throne)
+"QR" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/butchershop)
 "QT" = (
 /obj/structure/carpet/purple,
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -11864,6 +11975,12 @@
 /obj/structure/carpet/blue,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large/apothecary)
+"Rn" = (
+/obj/effect/decal/borderfall{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/butchershop)
 "Ro" = (
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
 	pixel_y = 19;
@@ -12025,6 +12142,18 @@
 /obj/structure/giantfur/small,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"RO" = (
+/obj/structure/table/wood/crafted,
+/obj/item/kitchen/spoon{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/turf/open/floor/ruinedwood/turned/darker,
+/area/indoors/butchershop)
 "RP" = (
 /obj/structure/chair/wood/alt{
 	dir = 1
@@ -12566,6 +12695,9 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/throne)
+"TD" = (
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/butchershop)
 "TE" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/industrial_lift/tram{
@@ -13374,6 +13506,18 @@
 /obj/structure/fluff/statue/topiary/spear,
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"WI" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/obj/effect/decal/borderfall{
+	dir = 1
+	},
+/obj/structure/table/wood/plain,
+/obj/structure/fluff/clutter/shrub/tundra{
+	pixel_y = 1;
+	pixel_x = 3
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/butchershop)
 "WJ" = (
 /obj/structure/carpet/purple,
 /turf/open/floor/churchrough/pale,
@@ -81812,14 +81956,14 @@ Ub
 TA
 Hu
 PN
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
+LC
+LC
+LC
+LC
+LC
+LC
+LC
+LC
 PN
 kn
 Oa
@@ -82012,16 +82156,16 @@ qb
 qb
 qb
 qb
-Pe
-Pe
-Pe
+LC
+LC
+LC
 en
-Ze
-uv
-JA
+QK
+ya
+Lk
 MF
-Ez
-Pe
+rE
+LC
 hX
 kn
 vH
@@ -82214,16 +82358,16 @@ qb
 qb
 qb
 qb
-Pe
-do
-Nw
-Xn
-TX
-Rf
-jv
+LC
+Fg
+NZ
+GN
+zQ
+by
+QH
 Mn
-Ez
-Be
+rE
+gz
 kn
 kn
 vH
@@ -82416,16 +82560,16 @@ qb
 BI
 qb
 qb
-Pe
-Ut
-xj
-tl
-Ez
+LC
+TD
+lE
+Rn
+rE
 dk
 dk
-Ez
-Ez
-Pe
+rE
+rE
+LC
 PN
 kn
 Oa
@@ -82618,16 +82762,16 @@ qb
 qb
 qb
 qb
-Pe
-op
-xj
-lG
-Ez
+LC
+qo
+lE
+uN
+rE
 OK
-xa
-Ez
-bL
-Pe
+RO
+rE
+hE
+LC
 PN
 PN
 kn
@@ -82820,16 +82964,16 @@ qb
 qb
 qb
 qb
-Pe
-dw
-jD
-FR
-Ez
+LC
+Eb
+Ay
+WI
+rE
 yt
 yt
-Ez
-Ez
-Pe
+rE
+rE
+LC
 PN
 PN
 kn
@@ -83022,16 +83166,16 @@ qb
 qb
 qb
 qb
-Pe
-Pe
-Pe
-Pe
-Pe
-vt
-Ez
-bn
-bn
-Pe
+LC
+LC
+LC
+LC
+LC
+QR
+rE
+Hj
+Hj
+LC
 PN
 PN
 kn
@@ -83228,12 +83372,12 @@ qb
 qb
 qb
 qb
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
+LC
+LC
+LC
+LC
+LC
+LC
 PN
 PN
 kn
