@@ -15,6 +15,23 @@
 	)
 	neck = null
 
+/datum/outfit/forestwarden_classic/deadite
+	r_hand = null
+	l_hand = null
+	beltl = null
+	beltr = null
+	backr = null
+	backpack_contents = list(
+		/obj/item/weapon/knife/hunting = 1,
+		/obj/item/rope/chain = 1,
+	)
+
+/datum/outfit/adventurer/sfighter/deadite
+	backpack_contents = null
+
+/datum/outfit/adventurer/cleric/deadite
+	backpack_contents = null
+
 /mob/living/carbon/human/species/deadite
 	ai_controller = /datum/ai_controller/human_deadite
 	dodgetime = 30
@@ -23,6 +40,9 @@
 		/datum/outfit/vagrant/deadite,
 		/datum/outfit/prisoner,
 		/datum/outfit/hunter/deadite,
+		/datum/outfit/forestwarden_classic/deadite,
+		/datum/outfit/adventurer/sfighter/deadite,
+		/datum/outfit/adventurer/cleric/deadite,
 	)
 
 /mob/living/carbon/human/species/deadite/Initialize()
