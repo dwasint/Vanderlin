@@ -1163,6 +1163,9 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/throne)
+"ev" = (
+/turf/open/floor/grass/yel,
+/area/outdoors/wilderness)
 "ew" = (
 /obj/structure/stairs{
 	dir = 1
@@ -2790,6 +2793,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors)
+"kN" = (
+/obj/structure/flora/tree/pine/dead,
+/turf/open/floor/grass/yel,
+/area/outdoors/wilderness)
 "kO" = (
 /obj/structure/table/wood/crafted,
 /obj/item/plate,
@@ -2967,6 +2974,10 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors/town/keep)
+"lx" = (
+/obj/structure/flora/tree/pine/dead,
+/turf/open/floor/grass/cold,
+/area/outdoors/wilderness)
 "ly" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/keep/halls/w)
@@ -3104,7 +3115,7 @@
 /area/indoors/dungeon)
 "lW" = (
 /obj/effect/mob_spawn/corpse/human/tiefling,
-/turf/open/floor/grass/cold,
+/turf/open/floor/grass/yel,
 /area/outdoors/wilderness)
 "lX" = (
 /obj/item/reagent_containers/glass/bottle/black/komuchisake,
@@ -3826,6 +3837,10 @@
 /obj/structure/handcart,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
+"oC" = (
+/obj/structure/fluff/walldeco/skullspike,
+/turf/open/floor/grass/red,
+/area/outdoors/wilderness)
 "oD" = (
 /obj/structure/fluff/walldeco/skullspike,
 /turf/open/floor/grass/cold,
@@ -4781,6 +4796,10 @@
 /area/indoors/town/clinic_large)
 "sI" = (
 /turf/open/floor/sand,
+/area/outdoors/wilderness)
+"sJ" = (
+/obj/structure/fluff/walldeco/skullspike,
+/turf/open/floor/grass/yel,
 /area/outdoors/wilderness)
 "sK" = (
 /obj/item/ingot/copper,
@@ -6426,6 +6445,10 @@
 	},
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"zu" = (
+/obj/structure/fluff/psycross/zizocross,
+/turf/open/floor/grass/yel,
+/area/outdoors/wilderness)
 "zv" = (
 /obj/structure/fermentation_keg/beer,
 /turf/open/floor/churchrough/pale,
@@ -7614,6 +7637,9 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/naturalstone,
 /area/indoors/dungeon)
+"ET" = (
+/turf/open/floor/grass/red,
+/area/outdoors/wilderness)
 "EV" = (
 /obj/item/reagent_containers/glass/bottle/manapot,
 /obj/item/reagent_containers/glass/bottle/healthpot,
@@ -11828,6 +11854,10 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
+"VF" = (
+/obj/structure/flora/tree/pine,
+/turf/open/floor/grass/red,
+/area/outdoors/wilderness)
 "VG" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/carpet/blue,
@@ -12059,6 +12089,10 @@
 /obj/effect/mapping_helpers/access/keyset/manor/general,
 /turf/open/floor/cobble,
 /area/outdoors/town/keep)
+"Wz" = (
+/obj/structure/flora/tree/pine/dead,
+/turf/open/floor/grass/red,
+/area/outdoors/wilderness)
 "WD" = (
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -2
@@ -124810,7 +124844,8 @@ rF
 rF
 rF
 rF
-oD
+sJ
+kN
 rF
 rF
 rF
@@ -124820,9 +124855,8 @@ rF
 rF
 rF
 rF
+lx
 rF
-rF
-xq
 eX
 PJ
 PJ
@@ -125011,10 +125045,10 @@ rF
 rF
 rF
 rF
-gK
-rF
-rF
-rF
+zu
+ev
+ev
+ev
 rF
 rF
 rF
@@ -125213,11 +125247,11 @@ rF
 rF
 xq
 rF
-rF
-rF
-rF
+ev
+ET
+ET
 TN
-rF
+ev
 oD
 Fr
 rF
@@ -125414,14 +125448,14 @@ rF
 rF
 rF
 rF
-rF
-rF
-rF
+ev
+ET
+ET
 eX
-rF
+ET
 eX
-rF
-rF
+ET
+ev
 rF
 rF
 rF
@@ -125615,17 +125649,17 @@ PJ
 rF
 rF
 rF
-rF
-rF
+ev
+ev
 BF
 eX
 Ff
 Ff
 aw
-rF
-rF
-rF
-rF
+ET
+ET
+ET
+ev
 rF
 rF
 rF
@@ -125816,19 +125850,19 @@ PJ
 (160,1,3) = {"
 rF
 rF
-xq
-rF
-rF
+Wz
+ET
+ET
 eX
 BF
 xw
 BF
 BF
 ux
+ET
 rF
 rF
-rF
-rF
+ev
 rF
 rF
 xq
@@ -126018,8 +126052,8 @@ PJ
 (161,1,3) = {"
 rF
 rF
-rF
-rF
+ev
+ET
 eX
 Ff
 BF
@@ -126028,10 +126062,10 @@ BF
 vC
 BF
 Ff
-rF
+ET
 lW
-rF
-rF
+ev
+ev
 rF
 rF
 rF
@@ -126220,8 +126254,8 @@ PJ
 (162,1,3) = {"
 rF
 rF
-xq
 rF
+ev
 gb
 BF
 BF
@@ -126231,8 +126265,8 @@ Ac
 vS
 BF
 BF
-rF
-rF
+ev
+ev
 rF
 rF
 rF
@@ -126421,9 +126455,9 @@ PJ
 "}
 (163,1,3) = {"
 rF
+lx
 rF
-rF
-rF
+ET
 BF
 Ff
 BF
@@ -126433,9 +126467,9 @@ zA
 BF
 Ff
 BF
-rF
-rF
-rF
+ev
+ev
+ev
 rF
 rF
 rF
@@ -126626,7 +126660,7 @@ rF
 rF
 rF
 rF
-rF
+ET
 BF
 Ff
 BF
@@ -126634,13 +126668,13 @@ gb
 BF
 BF
 BF
+eX
+ev
+ev
 rF
 rF
 rF
-rF
-rF
-rF
-xq
+lx
 rF
 rF
 rF
@@ -126828,16 +126862,16 @@ rF
 rF
 rF
 rF
-xq
+VF
 BF
-rF
+ET
 BF
 Ff
 Ff
 aw
-rF
-oD
-rF
+eX
+oC
+ev
 eX
 rF
 rF
@@ -127029,17 +127063,17 @@ PJ
 xq
 rF
 rF
-rF
-rF
-rF
+ev
+ev
+ET
 BF
-rF
+eX
 BF
-rF
-rF
+eX
+ET
 BF
-rF
-rF
+eX
+ev
 NG
 DG
 rF
@@ -127232,15 +127266,15 @@ rF
 rF
 rF
 rF
-rF
-rF
-rF
+ev
+ET
+ET
 eX
-rF
+ET
 lW
-rF
-rF
-rF
+ev
+eX
+ev
 oD
 rF
 eX
@@ -127435,13 +127469,13 @@ rF
 rF
 gK
 rF
-rF
-rF
+ev
+ev
 SA
 eX
 rF
-rF
-rF
+ev
+ev
 rF
 rF
 rF
@@ -128043,7 +128077,7 @@ rF
 rF
 rF
 rF
-xq
+lx
 rF
 rF
 rF
@@ -128051,7 +128085,7 @@ rF
 rF
 rF
 rF
-xq
+lx
 rF
 rF
 rF
