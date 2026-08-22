@@ -1423,10 +1423,6 @@
 /obj/structure/fluff/clutter/books,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors)
-"eS" = (
-/obj/structure/closet/crate/crafted_closet/dark,
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
 "eU" = (
 /obj/structure/flora/grass,
 /turf/open/floor/grass,
@@ -2684,9 +2680,9 @@
 /area/indoors/town/shop)
 "jB" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
-/obj/structure/table/wood/plain,
+/obj/structure/bookcase/random_recipes,
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/town/keep/archivist)
 "jC" = (
 /obj/structure/carpet/navy,
 /obj/structure/fake_machine/scomm/r,
@@ -3874,6 +3870,10 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/lord_appt)
+"nD" = (
+/obj/structure/bookcase/random/archive,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "nE" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -4457,12 +4457,6 @@
 /obj/structure/flora/grass/bush_meagre/tundra,
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
-"pM" = (
-/obj/structure/chair/wood{
-	dir = 8
-	},
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
 "pN" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -5795,6 +5789,12 @@
 "uX" = (
 /turf/open/floor/wood,
 /area/indoors/town/clinic_large/apothecary)
+"uZ" = (
+/obj/machinery/printingpress,
+/obj/effect/mapping_helpers/access/locker,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "vb" = (
 /obj/structure/chair/wood/alt/chair_noble/red{
 	dir = 4
@@ -6171,8 +6171,9 @@
 "ws" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/pelt,
+/obj/effect/landmark/start/archivist,
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/town/keep/archivist)
 "wt" = (
 /obj/structure/fluff/railing/wood{
 	dir = 2
@@ -6540,8 +6541,11 @@
 /area/indoors/town/dwarfin)
 "xJ" = (
 /obj/structure/door/green,
+/obj/effect/mapping_helpers/access/keyset/manor/archive{
+	difficulty = 1
+	},
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/town/keep/archivist)
 "xL" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/dye_bin/luxury,
@@ -7218,8 +7222,24 @@
 	pixel_y = 0;
 	pixel_x = -21
 	},
+/obj/structure/closet/crate/crafted_closet/inn/south{
+	density = 0
+	},
+/obj/item/paper/scroll/keep_plans,
+/obj/item/paper/scroll/keep_plans,
+/obj/item/paper/scroll/keep_plans,
+/obj/item/paper/scroll/keep_plans,
+/obj/item/paper/scroll/keep_plans,
+/obj/item/textbook/expert,
+/obj/item/textbook/apprentice,
+/obj/item/textbook/journeyman,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/effect/mapping_helpers/access/keyset/manor/archive{
+	difficulty = 1
+	},
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/town/keep/archivist)
 "Al" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/storage/belt/pouch/coins/mid,
@@ -7825,6 +7845,13 @@
 "Cw" = (
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
+"CA" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/obj/machinery/light/fueled/oven{
+	pixel_y = 32
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "CC" = (
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/servanthead)
@@ -7995,8 +8022,9 @@
 /area/indoors/cave)
 "Ds" = (
 /obj/structure/carpet,
+/obj/structure/bookcase/random/legends,
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/town/keep/archivist)
 "Dt" = (
 /turf/open/floor/churchmarble/violet,
 /area/indoors/town/church/chapel)
@@ -8614,7 +8642,22 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/carpet,
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
+/area/indoors/town/keep/archivist)
+"FV" = (
+/obj/structure/closet/keyrack{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/manor/archive{
+	difficulty = 1
+	},
+/obj/item/key/archive,
+/obj/item/key/archive,
+/obj/item/key/archive,
+/obj/item/key/archive,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "FW" = (
 /obj/structure/chair/bench/coucha/r,
 /obj/structure/carpet/purple,
@@ -9895,6 +9938,10 @@
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobblerock,
 /area/indoors/cave)
+"KM" = (
+/obj/structure/carpet,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "KO" = (
 /obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood{
@@ -10594,6 +10641,9 @@
 /obj/structure/table/wood/plain,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"Ne" = (
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "Nf" = (
 /obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/dirt/road,
@@ -10848,6 +10898,18 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"On" = (
+/obj/structure/table/wood/plain_alt,
+/obj/item/chalk{
+	pixel_x = -9;
+	pixel_y = -4
+	},
+/obj/item/candle/scandle/lit{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "Oo" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/structure/mirror,
@@ -10993,6 +11055,10 @@
 /obj/structure/carpet/purple,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"OC" = (
+/obj/structure/closet/crate/drawer,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "OD" = (
 /turf/closed/wall/mineral/wooddark,
 /area/indoors/town/tavern)
@@ -11291,12 +11357,6 @@
 /obj/structure/hotspring/border/two,
 /turf/open/floor/naturalstone,
 /area/outdoors/wilderness)
-"PS" = (
-/obj/machinery/light/fueled/oven{
-	pixel_y = 32
-	},
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town)
 "PT" = (
 /obj/structure/closet/crate/chest/shippingcrate,
 /obj/structure/fluff/walldeco/painting/seraphina{
@@ -11902,10 +11962,14 @@
 /turf/open/floor/grass/cold,
 /area/outdoors/town/keep)
 "RY" = (
-/obj/structure/door/green,
-/obj/effect/mapping_helpers/access/keyset/town/tower,
+/obj/structure/door/green{
+	name = "Library"
+	},
+/obj/effect/mapping_helpers/access/keyset/manor/archive{
+	difficulty = 1
+	},
 /turf/open/floor/dirt/road,
-/area/indoors/town)
+/area/indoors/town/keep/archivist)
 "RZ" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -12416,6 +12480,10 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors)
+"TQ" = (
+/obj/structure/bookcase/random_recipes,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "TR" = (
 /turf/open/floor/sand,
 /area/outdoors)
@@ -12768,6 +12836,9 @@
 /obj/structure/flora/grass/herb/random,
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
+"Vj" = (
+/turf/closed/wall/mineral/wooddark,
+/area/indoors/town/keep/archivist)
 "Vk" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -13978,6 +14049,11 @@
 /obj/structure/hotspring/border/fourteen,
 /turf/open/floor/sand/desert,
 /area/outdoors/wilderness)
+"ZM" = (
+/obj/structure/carpet,
+/obj/structure/bookcase/random/myths,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/archivist)
 "ZN" = (
 /obj/structure/dungeon_entry/center/vanderlin,
 /turf/open/floor/cobble/mossy,
@@ -75377,10 +75453,10 @@ PN
 PN
 PN
 PN
-Pe
-Pe
-Pe
-Pe
+Vj
+Vj
+Vj
+Vj
 PN
 pr
 pr
@@ -75578,14 +75654,14 @@ HT
 PN
 PN
 PN
-Pe
-Pe
+Vj
+Vj
 jB
-lD
-Pe
-Pe
-Pe
-Pe
+TQ
+Vj
+Vj
+Vj
+Vj
 PN
 PN
 ck
@@ -75779,17 +75855,17 @@ HT
 HT
 PN
 PN
-Pe
-Pe
-Ez
-pM
-Ez
+Vj
+Vj
+Ne
+Ne
+Ne
 xJ
-Ez
-Ez
-Pe
-Pe
-Pe
+Ne
+uZ
+Vj
+Vj
+Vj
 uS
 kn
 GG
@@ -75981,17 +76057,17 @@ HT
 HT
 HT
 PN
-Pe
-PS
-Ez
-Ez
-Ez
-Pe
+Vj
+nD
+Ne
+nD
+nD
+Vj
 Ak
-Ez
-zs
-gF
-Pe
+Ne
+FV
+OC
+Vj
 Ou
 kn
 kn
@@ -76183,17 +76259,17 @@ PN
 Po
 HT
 PN
-Pe
-eS
+Vj
+nD
+KM
+ZM
 Ds
-Ds
-Ds
-Pe
-vt
-Ez
-Ez
+Vj
+CA
+On
+Ne
 ws
-Pe
+Vj
 cd
 kn
 kn
@@ -76385,17 +76461,17 @@ PN
 HT
 HT
 HT
-Pe
-Pe
+Vj
+Vj
 FU
-Ds
-Ds
-Pe
-Pe
-Pe
-Pe
-Pe
-Pe
+KM
+KM
+Vj
+Vj
+Vj
+Vj
+Vj
+Vj
 lp
 kn
 kn
@@ -76588,11 +76664,11 @@ GW
 HT
 HT
 PN
-Pe
-Pe
+Vj
+Vj
 RY
-Pe
-Pe
+Vj
+Vj
 HA
 rt
 PY

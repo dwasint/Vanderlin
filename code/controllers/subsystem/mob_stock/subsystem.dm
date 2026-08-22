@@ -120,6 +120,11 @@ SUBSYSTEM_DEF(mob_stock)
 	COOLDOWN_START(src, next_wave_time, rand(stock.wave_time_min, stock.wave_time_max))
 
 /datum/controller/subsystem/mob_stock/proc/try_launch_wave()
+	var/pop_scalar = get_wave_pop_scalar()
+	if(pop_scalar <= 0)
+		schedule_next_wave()
+		return
+
 	var/chosen_set_id = pick_viable_set_id()
 	if(!chosen_set_id)
 		message_admins("SSmob_stock: tried to launch a wave but none of [stock.wave_defense_set_ids.Join(", ")] have landmarks placed.")
@@ -129,7 +134,7 @@ SUBSYSTEM_DEF(mob_stock)
 	var/list/points = get_wave_defense_points(chosen_set_id)
 	var/atom/point_one = points[1]
 	var/list/mob/living/wave_mobs = list()
-	for(var/path in stock.pick_wave_mobs())
+	for(var/path in stock.pick_wave_mobs(pop_scalar))
 		var/mob/living/pulled = pull_stock_mob(path, point_one)
 		if(pulled)
 			wave_mobs += pulled
@@ -146,7 +151,21 @@ SUBSYSTEM_DEF(mob_stock)
 	)
 
 	schedule_next_wave()
-	message_admins("SSmob_stock launched an automatic wave ([chosen_set_id]) with [length(wave_mobs)] mob(s).")
+	message_admins("SSmob_stock launched an automatic wave ([chosen_set_id]) with [length(wave_mobs)] mob(s) at [round(pop_scalar * 100)]% pop scaling.")
+
+/// Returns 0..1. 0 means waves are outright disabled (pop below half of lowpop).
+/// 1 means full-size waves (pop at or above highpop). Linear ramp in between,
+/// anchored at half-lowpop (0) and highpop (1).
+/datum/controller/subsystem/mob_stock/proc/get_wave_pop_scalar()
+	var/player_count = length(GLOB.player_list)
+	var/disable_floor = 0.5 * LOWPOP_THRESHOLD
+
+	if(player_count < disable_floor)
+		return 0
+	if(player_count >= HIGHPOP_THRESHOLD)
+		return 1
+
+	return (player_count - disable_floor) / (HIGHPOP_THRESHOLD - disable_floor)
 
 /// Pulls a live mob of the given path out of tracked_mobs for use in a wave.
 /datum/controller/subsystem/mob_stock/proc/pull_stock_mob(path, atom/point)

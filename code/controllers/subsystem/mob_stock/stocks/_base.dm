@@ -27,10 +27,12 @@
 
 /// Waves are drawn from the same pool as the standing population, anything
 /// in `stock` is fair game to show up in an attack.
-/datum/map_mob_stock/proc/pick_wave_mobs()
+/// scalar (0..1) shrinks the wave size for low pop; 1 = full configured size.
+/datum/map_mob_stock/proc/pick_wave_mobs(scalar = 1)
 	if(!length(stock))
 		return list()
-	var/count = rand(wave_mob_count_low, wave_mob_count_high)
+	var/count = round(rand(wave_mob_count_low, wave_mob_count_high) * scalar)
+	count = max(count, 1)
 	var/list/picked = list()
 	for(var/i in 1 to count)
 		picked += pick(stock)
