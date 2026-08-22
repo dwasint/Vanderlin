@@ -117,6 +117,12 @@
 /obj/item/bedsheet/pelt,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"ay" = (
+/obj/structure/fake_machine/atm{
+	pixel_y = -32
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "az" = (
 /obj/effect/landmark/wave_defense{
 	set_id = "north-wyrm";
@@ -2266,6 +2272,10 @@
 	dir = 1
 	},
 /turf/open/floor/dirt/road,
+/area/outdoors)
+"ic" = (
+/obj/structure/fake_machine/atm,
+/turf/open/floor/cobblerock,
 /area/outdoors)
 "id" = (
 /obj/structure/table/wood/reinf_long,
@@ -4699,6 +4709,12 @@
 /obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/grass/cold,
 /area/outdoors/town/keep)
+"qR" = (
+/obj/structure/fake_machine/atm{
+	pixel_y = -32
+	},
+/turf/open/floor/cobble,
+/area/outdoors)
 "qS" = (
 /obj/structure/rack/shelf/biggest,
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -6205,6 +6221,13 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"wD" = (
+/obj/structure/fake_machine/atm{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "wE" = (
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
@@ -8736,6 +8759,13 @@
 /obj/structure/hotspring/border,
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
+"GE" = (
+/obj/structure/fake_machine/atm{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors)
 "GF" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /obj/structure/carpet/cyan,
@@ -11559,6 +11589,14 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
+"Ra" = (
+/obj/structure/flora/grass,
+/obj/structure/fake_machine/atm{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/grass,
+/area/outdoors/exposed/church/graveyard)
 "Rc" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/dress/silkdress/colored/random,
@@ -13002,6 +13040,13 @@
 	},
 /turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/food)
+"Wq" = (
+/obj/structure/fake_machine/atm{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "Wr" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -65387,7 +65432,7 @@ HT
 Gd
 HT
 kn
-kn
+ay
 nk
 Fe
 UW
@@ -71860,7 +71905,7 @@ PN
 PN
 PN
 kn
-kn
+Wq
 ri
 uq
 uq
@@ -72821,7 +72866,7 @@ qi
 Wr
 Sf
 Hp
-eU
+Ra
 aZ
 ot
 zh
@@ -78156,7 +78201,7 @@ kn
 fT
 HT
 HT
-PN
+GE
 FG
 ji
 Cw
@@ -78366,7 +78411,7 @@ Vz
 Vz
 FG
 FG
-Bd
+ic
 Bd
 KT
 kn
@@ -79755,7 +79800,7 @@ kn
 HT
 HT
 HT
-HT
+qR
 xf
 Bd
 Bd
@@ -80745,7 +80790,7 @@ kn
 kn
 kn
 kn
-kn
+Wq
 kn
 kn
 kn
@@ -81984,7 +82029,7 @@ Yz
 mo
 Bd
 Bd
-Bd
+wD
 VD
 ld
 ld
