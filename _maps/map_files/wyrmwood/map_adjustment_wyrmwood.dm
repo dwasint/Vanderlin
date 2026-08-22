@@ -23,7 +23,6 @@
 		/datum/job/bandit,
 		/datum/job/minor_noble,
 		/datum/job/courtagent,
-		/datum/job/archivist,
 		/datum/job/templar,
 		/datum/job/inquisitor,
 		/datum/job/absolver,
