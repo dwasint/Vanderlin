@@ -201,7 +201,7 @@
 	zombie.fully_heal(HEAL_OXY|HEAL_TOX) //zombles dont breathe and are immune to poison
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
 		if(!HAS_TRAIT(zombie_part, TRAIT_ROTTEN) && !zombie_part.skeletonized)
-			zombie_part.kill_limb()
+			zombie_part.kill_limb(TRUE)
 		if(zombie_part.can_be_disabled)
 			zombie_part.update_disabled()
 	zombie.update_body()
