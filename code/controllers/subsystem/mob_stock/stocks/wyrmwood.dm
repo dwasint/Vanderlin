@@ -4,6 +4,7 @@
 		/mob/living/carbon/human/species/deadite = 10
 	)
 	wave_defense_set_ids = list(
-		"south-wyrm"
+		"south-wyrm",
+		"north-wyrm"
 	)
 	wave_defense_enabled = TRUE
