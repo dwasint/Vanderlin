@@ -728,6 +728,10 @@
 	},
 /turf/open/floor/church,
 /area/indoors/cave)
+"cq" = (
+/obj/structure/fake_machine/scomm/l,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/keep/throne)
 "cr" = (
 /turf/open/floor/wood,
 /area/indoors/town/keep/halls/e)
@@ -7084,6 +7088,10 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/archivist)
+"xK" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/blocks,
+/area/indoors/town/keep/garrison)
 "xL" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/dye_bin/luxury,
@@ -15094,6 +15102,10 @@
 	},
 /turf/open/openspace,
 /area/outdoors/town/keep)
+"YG" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/blocks,
+/area/indoors/town/keep/garrison)
 "YH" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/structure/closet/crate/chest/neu_fancy{
@@ -34185,7 +34197,7 @@ DD
 Zp
 DD
 HL
-HL
+YG
 fd
 HL
 HL
@@ -35197,7 +35209,7 @@ DD
 km
 HL
 FL
-HL
+xK
 HL
 DD
 Ya
@@ -76183,7 +76195,7 @@ oV
 oV
 oh
 Er
-OT
+cq
 Ix
 QQ
 Li
