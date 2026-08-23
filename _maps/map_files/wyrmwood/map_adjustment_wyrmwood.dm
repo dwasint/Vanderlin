@@ -20,6 +20,7 @@
 		/datum/job/gatemaster,
 		/datum/job/town_elder,
 		/datum/job/bandit,
+		/datum/job/gmtemplar,
 		/datum/job/minor_noble,
 		/datum/job/courtagent,
 		/datum/job/templar,
@@ -27,4 +28,5 @@
 		/datum/job/absolver,
 		/datum/job/adept,
 		/datum/job/orthodoxist,
+		/datum/job/mercenary,
 	)

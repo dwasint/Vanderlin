@@ -9901,6 +9901,12 @@
 /obj/structure/chair/stool,
 /turf/open/floor/ruinedwood/spiral,
 /area/outdoors)
+"Id" = (
+/obj/structure/door/red,
+/obj/effect/mapping_helpers/access/keyset/church/general,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/dirt/road,
+/area/indoors/soilsons)
 "Ie" = (
 /obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/sand,
@@ -11603,6 +11609,14 @@
 /obj/machinery/light/fueled/cauldron,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/magician)
+"ND" = (
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/wool,
+/obj/effect/landmark/start/monk{
+	dir = 2
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/soilsons)
 "NE" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /obj/structure/closet/crate/drawer,
@@ -65510,7 +65524,7 @@ Xp
 iD
 iD
 lS
-HJ
+Id
 kn
 PN
 PN
@@ -66112,7 +66126,7 @@ PN
 PN
 PN
 Xp
-SW
+ND
 zU
 Nc
 Vt
