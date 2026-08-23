@@ -15,6 +15,7 @@
 		/datum/mapGeneratorModule/wyrmwood_forestgrass,
 		/datum/mapGeneratorModule/wyrmwood_forestswampwaterturf,
 		/datum/mapGeneratorModule/wyrmwood_forestwaterturf,
+		/datum/mapGeneratorModule/wyrmwood_towngrass,
 	)
 
 /datum/mapGeneratorModule/wyrmwood_forest
@@ -93,4 +94,19 @@
 		/obj/structure/flora/grass/water = 20,
 		/obj/structure/flora/grass/water/reeds = 30,
 		/obj/structure/kneestingers = 30,
+	)
+
+/datum/mapGeneratorModule/wyrmwood_towngrass
+	clusterCheckFlags = CLUSTER_CHECK_SAME_ATOMS
+	allowed_turfs = list(/turf/open/floor/grass)
+	allowed_areas = list(/area/outdoors/town)
+	spawnableAtoms = list(
+		/obj/structure/flora/grass = 80,
+		/obj/structure/flora/grass/tundra = 40,
+		/obj/structure/flora/grass/bush_meagre = 7,
+		/obj/structure/flora/grass/herb/random = 0.2,
+		/obj/item/grown/log/tree/stick = 5,
+		/obj/item/natural/stone = 3,
+		/obj/structure/wild_plant/nospread/mushroom/waddle = 0.2,
+		/obj/structure/wild_plant/nospread/mushroom/merkel = 0.1,
 	)
