@@ -179,7 +179,7 @@ SUBSYSTEM_DEF(mob_stock)
 		var/mob/living/candidate = wr.resolve()
 		if(!candidate)
 			continue
-		if(get_dist_3d(candidate, point) > 80)
+		if(get_dist(candidate, point) > 40)
 			continue
 		return candidate
 
