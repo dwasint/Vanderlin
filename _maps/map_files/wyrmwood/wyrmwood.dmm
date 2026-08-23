@@ -8403,9 +8403,9 @@
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
 "Ch" = (
-/obj/structure/door/weak,
 /obj/effect/mapping_helpers/access/keyset/manor/steward,
 /obj/effect/mapping_helpers/access/locker,
+/obj/structure/door/red,
 /turf/open/floor/dirt/road,
 /area/indoors/town)
 "Ci" = (
