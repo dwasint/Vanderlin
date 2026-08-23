@@ -237,6 +237,14 @@
 "aQ" = (
 /obj/structure/table/wood/plain,
 /obj/machinery/light/fueled/wallfire/candle/l,
+/obj/item/statue/gold/bust{
+	pixel_y = 4;
+	pixel_x = -7
+	},
+/obj/item/carvedgem/onyxa/vase{
+	pixel_x = 8;
+	pixel_y = 14
+	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
 "aR" = (
@@ -7206,6 +7214,10 @@
 /obj/structure/fluff/clutter/shrub/red{
 	pixel_y = 11
 	},
+/obj/item/carvedgem/turq/ka{
+	pixel_y = 6;
+	pixel_x = -5
+	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "yi" = (
@@ -13236,6 +13248,10 @@
 "Ss" = (
 /obj/structure/rack/shelf/biggest,
 /obj/machinery/light/fueled/wallfire/candle/r,
+/obj/item/clothing/face/spectacles/golden,
+/obj/item/clothing/head/fancyhat,
+/obj/item/clothing/face/spectacles/monocle,
+/obj/item/clothing/head/fancyhat,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
 "St" = (
@@ -14460,6 +14476,25 @@
 /obj/structure/flora/tree/pine/dead,
 /turf/open/floor/grass/red,
 /area/outdoors/wilderness)
+"WC" = (
+/obj/effect/decal/carpet/kover_black{
+	pixel_x = 18
+	},
+/obj/item/clothing/head/stewardtophat{
+	pixel_x = -11;
+	pixel_y = 7
+	},
+/obj/item/clothing/armor/gambeson/steward{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/weapon/mace/cane/noble,
+/obj/item/clothing/shoes/nobleboot/duelboots{
+	pixel_x = 5
+	},
+/obj/item/clothing/shoes/nobleboot/thighboots,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town)
 "WD" = (
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -2
@@ -80827,7 +80862,7 @@ kn
 Ch
 Oc
 Np
-op
+WC
 JE
 Pe
 ih
