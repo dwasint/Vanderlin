@@ -4058,6 +4058,10 @@
 	},
 /turf/open/floor/wood,
 /area/indoors/town/clinic_large/apothecary)
+"ne" = (
+/obj/structure/fake_machine/stockpile,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "nf" = (
 /obj/structure/flora/grass/herb/random,
 /turf/open/floor/grass/cold,
@@ -6762,6 +6766,11 @@
 /obj/machinery/light/fueled/campfire,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"wy" = (
+/obj/structure/fermentation_keg/water,
+/obj/structure/fake_machine/stockpile,
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "wz" = (
 /obj/structure/flora/ocean_plants,
 /turf/open/floor/abyss_sand,
@@ -9344,6 +9353,12 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
+"FF" = (
+/obj/structure/fake_machine/stockpile{
+	pixel_y = -32
+	},
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "FG" = (
 /turf/closed/wall/mineral/wooddark,
 /area/indoors/town/smithy)
@@ -9671,6 +9686,11 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
+"GI" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/fake_machine/stockpile,
+/turf/open/floor/churchrough,
+/area/indoors/town/keep/kitchen)
 "GJ" = (
 /turf/closed/wall/mineral/stone/moss/red,
 /area/indoors/town/church/chapel)
@@ -10852,6 +10872,10 @@
 /obj/structure/carpet,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/archivist)
+"KN" = (
+/obj/structure/fake_machine/stockpile,
+/turf/open/floor/blocks/stonered/tiny,
+/area/indoors/town/keep/magician)
 "KO" = (
 /obj/structure/industrial_lift/tram,
 /obj/structure/fluff/railing/wood{
@@ -75082,7 +75106,7 @@ kn
 kn
 yv
 yv
-My
+GI
 rO
 rO
 rO
@@ -79741,7 +79765,7 @@ PF
 Rj
 Na
 PF
-lv
+KN
 io
 FI
 FI
@@ -80793,7 +80817,7 @@ HT
 HT
 wZ
 Bd
-Bd
+FF
 Hk
 Qk
 ad
@@ -81386,7 +81410,7 @@ Pe
 Pe
 Pe
 Pe
-ih
+wy
 kn
 iR
 HT
@@ -85445,7 +85469,7 @@ NM
 Ed
 eD
 ld
-Ed
+ne
 NM
 GT
 ld
