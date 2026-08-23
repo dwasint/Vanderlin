@@ -9692,6 +9692,9 @@
 /area/indoors/town/smithy)
 "Hf" = (
 /obj/structure/throne,
+/obj/structure/fake_machine/titan{
+	pixel_y = 32
+	},
 /turf/open/floor/carpet/lord/center,
 /area/indoors/town/keep/throne)
 "Hg" = (
