@@ -1818,6 +1818,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
+/obj/structure/fireaxecabinet/south,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
 "fK" = (
