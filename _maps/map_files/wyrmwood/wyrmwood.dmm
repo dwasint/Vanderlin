@@ -4152,6 +4152,9 @@
 "nz" = (
 /turf/open/floor/metal/alt,
 /area/indoors/town/garrison)
+"nA" = (
+/turf/open/floor/rooftop/green,
+/area/outdoors/town/keep)
 "nB" = (
 /obj/structure/door/window{
 	name = "Diving Board"
@@ -114969,10 +114972,10 @@ Ku
 MS
 MS
 qf
-IX
-IX
-IX
-IX
+dK
+dK
+dK
+dK
 wP
 pT
 wP
@@ -116389,7 +116392,7 @@ bf
 bf
 oV
 oV
-IX
+nA
 IX
 IX
 IX
@@ -116591,7 +116594,7 @@ bf
 bf
 bf
 oV
-IX
+nA
 IX
 IX
 IX
@@ -116793,7 +116796,7 @@ bf
 bf
 bf
 oV
-IX
+nA
 IX
 IX
 IX
@@ -116995,7 +116998,7 @@ bf
 bf
 bf
 oV
-IX
+nA
 IX
 IX
 IX
