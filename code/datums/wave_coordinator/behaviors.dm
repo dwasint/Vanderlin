@@ -4,6 +4,7 @@
 
 /datum/ai_behavior/wave_attack_point/setup(datum/ai_controller/controller, target_key)
 	. = ..()
+	controller.change_ai_movement_type(/datum/ai_movement/hybrid_pathing/wave_defense)
 	controller.set_movement_target(type, controller.blackboard[target_key])
 	return TRUE
 
@@ -14,6 +15,7 @@
 
 	var/atom/destructible = locate_destructible_near(controller, controller.pawn, WAVE_DEFENSE_POINT_RADIUS, target_point)
 	if(destructible)
+		controller.change_ai_movement_type(/datum/ai_movement/hybrid_pathing)
 		if(isliving(destructible))
 			feed_threat(controller, destructible)
 		else
@@ -62,6 +64,7 @@
 
 /datum/ai_behavior/wave_occupy_point/setup(datum/ai_controller/controller, target_key)
 	. = ..()
+	controller.change_ai_movement_type(/datum/ai_movement/hybrid_pathing/wave_defense)
 	controller.set_movement_target(type, controller.blackboard[target_key])
 	return TRUE
 
