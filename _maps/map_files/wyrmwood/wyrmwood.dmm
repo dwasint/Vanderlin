@@ -3378,6 +3378,7 @@
 /area/outdoors)
 "lk" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/fake_machine/steward,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "lm" = (
@@ -3486,7 +3487,7 @@
 /turf/closed/wall/mineral/wooddark,
 /area/indoors/town/keep/magician)
 "lD" = (
-/obj/structure/table/wood/plain,
+/obj/structure/closet/crate/chest/wickertrunk/red,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
 "lE" = (
@@ -4476,7 +4477,7 @@
 "oF" = (
 /obj/structure/lever/wall{
 	pixel_y = 0;
-	redstone_id = "merchant-shop";
+	redstone_id = "steward";
 	dir = 8
 	},
 /turf/open/floor/churchrough/pale,
@@ -5846,8 +5847,13 @@
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors)
 "tD" = (
-/obj/structure/mirror,
 /obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/lever/wall{
+	pixel_y = 0;
+	redstone_id = "merchant-shop";
+	dir = 8
+	},
+/obj/item/fake_machine/mastermail,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "tE" = (
@@ -8381,6 +8387,12 @@
 	},
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"Ch" = (
+/obj/structure/door/weak,
+/obj/effect/mapping_helpers/access/keyset/manor/steward,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/dirt/road,
+/area/indoors/town)
 "Ci" = (
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -7
@@ -8392,6 +8404,17 @@
 	dir = 8
 	},
 /area/outdoors/wilderness)
+"Ck" = (
+/obj/structure/table/wood/plain,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/bars/passage/shutter/open{
+	redstone_id = "steward"
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town)
 "Cl" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -8462,6 +8485,12 @@
 "Cx" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/cell)
+"Cy" = (
+/obj/structure/chair/wood/alt/chair_noble/purple{
+	dir = 2
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town)
 "Cz" = (
 /turf/open/floor/herringbone,
 /area/indoors/town/garrison)
@@ -10411,6 +10440,12 @@
 	},
 /turf/open/floor/blocks/stonered,
 /area/indoors/town/keep/magician)
+"JE" = (
+/obj/structure/fake_machine/submission{
+	pixel_y = -32
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town)
 "JG" = (
 /turf/open/openspace,
 /area/outdoors)
@@ -10991,7 +11026,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/dwarfin)
 "Lw" = (
-/obj/machinery/light/fueled/torchholder/c,
+/obj/structure/fluff/celebration/canopy/r,
 /turf/open/floor/dirt/road,
 /area/outdoors)
 "Lx" = (
@@ -11213,6 +11248,11 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/clinic_large/apothecary)
+"Mh" = (
+/obj/structure/fermentation_keg/water,
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "Mi" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -11377,6 +11417,49 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/metal/barograte,
 /area/indoors/town/cell)
+"MH" = (
+/obj/effect/mapping_helpers/access/keyset/manor/steward,
+/obj/item/key/shops/shop2{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/key/custom{
+	pixel_x = 3;
+	pixel_y = 1
+	},
+/obj/item/key/warehouse{
+	pixel_x = 10;
+	pixel_y = 6
+	},
+/obj/item/key/custom{
+	pixel_x = 3;
+	pixel_y = 1
+	},
+/obj/item/key/warehouse,
+/obj/item/key/apartments/apartment5,
+/obj/item/key/shops/shop3{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/key/shops/shop4{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/obj/item/key/apartments/apartment4,
+/obj/item/key/shops/shop1{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/key/apartments/apartment3,
+/obj/item/key/apartments/apartment2,
+/obj/item/key/apartments/apartment1,
+/obj/effect/mapping_helpers/access/locker,
+/obj/structure/closet/keyrack{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/turf/open/floor/ruinedwood/chevron,
+/area/indoors/town)
 "MK" = (
 /obj/structure/rack,
 /obj/item/rope,
@@ -11682,6 +11765,10 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/servanthead)
+"NP" = (
+/obj/structure/fluff/celebration/canopy/c,
+/turf/open/floor/dirt/road,
+/area/outdoors)
 "NQ" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/hexstone,
@@ -13553,6 +13640,12 @@
 /obj/structure/carpet/purple,
 /turf/open/floor/church,
 /area/indoors/cave)
+"TJ" = (
+/obj/item/bedsheet/wool,
+/obj/structure/bed/mediocre,
+/obj/effect/landmark/start/steward,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "TM" = (
 /obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/dirt/road,
@@ -13854,7 +13947,10 @@
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
 "UT" = (
-/obj/structure/closet/crate/chest/wickertrunk/red,
+/obj/structure/fake_machine/atm{
+	pixel_y = 0;
+	pixel_x = -32
+	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "UU" = (
@@ -14086,7 +14182,7 @@
 	},
 /obj/effect/mapping_helpers/access/locker,
 /obj/structure/bars/passage/shutter/open{
-	redstone_id = "merchant-shop"
+	redstone_id = "steward"
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
@@ -14713,6 +14809,11 @@
 /obj/structure/window/stained/yellow,
 /turf/open/floor/churchmarble/violet,
 /area/indoors/town/church/chapel)
+"XN" = (
+/obj/structure/carpet/green,
+/obj/structure/mirror,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town)
 "XO" = (
 /obj/structure/hotspring/border/eight,
 /obj/effect/landmark/mob_stock_point,
@@ -79913,7 +80014,7 @@ PN
 PN
 PN
 Pe
-Ga
+TJ
 Ez
 Ez
 Ez
@@ -80118,7 +80219,7 @@ Pe
 Pe
 Ss
 Pe
-JK
+XN
 Pe
 Pe
 Pe
@@ -80324,8 +80425,8 @@ JK
 Pe
 tD
 UT
-Pe
-pJ
+Ck
+NP
 kn
 kn
 HT
@@ -80525,8 +80626,8 @@ Pe
 JK
 re
 Ut
-Ut
-Pe
+Cy
+Ck
 Lw
 kn
 HT
@@ -80723,11 +80824,11 @@ HT
 HT
 kn
 kn
-Be
+Ch
 Oc
 Np
 op
-Ut
+JE
 Pe
 ih
 kn
@@ -80928,10 +81029,10 @@ kn
 Pe
 Pe
 yg
-hD
+MH
 lk
 Pe
-ih
+Mh
 kn
 kn
 HT

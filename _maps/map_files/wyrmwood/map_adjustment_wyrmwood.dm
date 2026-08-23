@@ -29,5 +29,4 @@
 		/datum/job/adept,
 		/datum/job/orthodoxist,
 		/datum/job/mercenary,
-		/datum/job/steward, //too small to have a dedicated steward I think
 	)
