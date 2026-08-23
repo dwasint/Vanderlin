@@ -584,15 +584,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/tile/bfloorz,
 /area/indoors/town/garrison)
-"bQ" = (
-/obj/structure/fluff/railing/tall/palisade{
-	dir = 1
-	},
-/obj/structure/fluff/railing/tall/palisade{
-	dir = 8
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/wilderness)
 "bR" = (
 /obj/structure/lever/wall{
 	dir = 2;
@@ -4680,11 +4671,11 @@
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/keep/throne)
 "oW" = (
-/obj/effect/mapping_helpers/access/keyset/manor/mage,
 /obj/effect/mapping_helpers/access/locker,
 /obj/structure/door/violet{
 	name = "Alchemy Lab"
 	},
+/obj/effect/mapping_helpers/access/keyset/town/tower,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/magician)
 "oX" = (
@@ -5261,15 +5252,6 @@
 /obj/structure/carpet/blue,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
-"qY" = (
-/obj/structure/fluff/railing/tall/palisade{
-	dir = 1
-	},
-/obj/structure/fluff/railing/tall/palisade{
-	dir = 8
-	},
-/turf/open/floor/grass/cold,
-/area/outdoors/wilderness)
 "qZ" = (
 /obj/structure/bars,
 /turf/open/floor/blocks,
@@ -6625,10 +6607,13 @@
 /area/outdoors/wilderness)
 "vD" = (
 /obj/structure/fluff/railing/tall/palisade{
-	dir = 2
+	dir = 1
+	},
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 8
 	},
 /turf/open/floor/dirt/road,
-/area/outdoors/wilderness)
+/area/outdoors/town)
 "vE" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -6671,6 +6656,15 @@
 "vL" = (
 /turf/open/floor/churchrough/pale,
 /area/outdoors/town/keep)
+"vN" = (
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 1
+	},
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 8
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "vO" = (
 /obj/structure/closet/crate/chest/crate,
 /obj/item/fishing/line/sinker,
@@ -7639,6 +7633,12 @@
 /obj/item/gem,
 /turf/open/floor/tile/checker,
 /area/indoors/town/vault)
+"yR" = (
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 1
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "yT" = (
 /obj/structure/fluff/celebration/flags,
 /turf/open/floor/grass/cold,
@@ -8246,11 +8246,11 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/outdoors/town)
 "AW" = (
-/obj/effect/mapping_helpers/access/keyset/manor/mage,
 /obj/effect/mapping_helpers/access/locker,
 /obj/structure/door/violet{
 	name = "Wizard's Guild"
 	},
+/obj/effect/mapping_helpers/access/keyset/town/tower,
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/magician)
 "AX" = (
@@ -9686,6 +9686,12 @@
 /turf/open/floor/rooftop/green{
 	dir = 4
 	},
+/area/outdoors/town)
+"FZ" = (
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 1
+	},
+/turf/open/floor/dirt/road,
 /area/outdoors/town)
 "Ga" = (
 /obj/structure/chair/wood/alt/chair_noble/purple{
@@ -12760,7 +12766,7 @@
 	dir = 8
 	},
 /turf/open/floor/grass/cold,
-/area/outdoors/wilderness)
+/area/outdoors/town)
 "PQ" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 10
@@ -62474,7 +62480,7 @@ rF
 rF
 Dk
 rF
-Jw
+vN
 Wf
 Wf
 Wf
@@ -62674,9 +62680,9 @@ rF
 rF
 rF
 Dk
-Jw
+vN
 Wf
-Wf
+kn
 kn
 PN
 PN
@@ -62874,9 +62880,9 @@ rF
 rF
 Dk
 rF
-Jw
+vN
 Wf
-Wf
+kn
 kn
 PN
 PN
@@ -63074,9 +63080,9 @@ Dk
 Dk
 Dk
 rF
-Jw
+vN
 Wf
-Wf
+kn
 kn
 PN
 PN
@@ -63274,9 +63280,9 @@ rF
 rF
 rF
 rF
-Jw
+vN
 Wf
-Wf
+kn
 kn
 PN
 PN
@@ -63475,8 +63481,8 @@ rF
 rF
 rF
 Dk
-Jw
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -63676,8 +63682,8 @@ Dk
 rF
 rF
 rF
-Jw
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -63878,7 +63884,7 @@ Dk
 Dk
 Dk
 vD
-Wf
+kn
 kn
 PN
 PN
@@ -64078,8 +64084,8 @@ rF
 rF
 rF
 Dk
-Jw
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -64280,7 +64286,7 @@ rF
 rF
 rF
 rF
-Jw
+yR
 kn
 PN
 PN
@@ -64481,8 +64487,8 @@ rF
 rF
 rF
 rF
-Jw
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -64682,8 +64688,8 @@ rF
 rF
 Dk
 Dk
-Jw
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -64883,8 +64889,8 @@ rF
 rF
 rF
 rF
-Jw
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -65085,7 +65091,7 @@ rF
 rF
 Dk
 rF
-Jw
+yR
 kn
 PN
 PN
@@ -65286,8 +65292,8 @@ rF
 rF
 rF
 Dk
-Jw
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -65488,7 +65494,7 @@ rF
 rF
 rF
 rF
-Jw
+yR
 kn
 PN
 PN
@@ -65689,8 +65695,8 @@ rF
 rF
 rF
 Dk
-Jw
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -65890,8 +65896,8 @@ rF
 Dk
 Dk
 Dk
-qY
-Wf
+vN
+kn
 kn
 PN
 PN
@@ -66092,7 +66098,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -66294,7 +66300,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -66697,7 +66703,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -66899,7 +66905,7 @@ rF
 rF
 rF
 Dk
-sj
+FZ
 kn
 kn
 kn
@@ -67101,7 +67107,7 @@ rF
 rF
 rF
 rF
-sj
+FZ
 kn
 kn
 kn
@@ -67303,7 +67309,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 sk
 kn
@@ -67505,7 +67511,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 kn
@@ -67707,7 +67713,7 @@ rF
 Dk
 Dk
 Dk
-Ei
+yR
 kn
 kn
 kn
@@ -67909,7 +67915,7 @@ rF
 Dk
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -68111,7 +68117,7 @@ rF
 Dk
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -68313,7 +68319,7 @@ Dk
 rF
 Dk
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -68515,7 +68521,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -68717,7 +68723,7 @@ rF
 Dk
 Dk
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -68918,7 +68924,7 @@ rF
 rF
 Dk
 Dk
-bQ
+vD
 kn
 kn
 PN
@@ -69120,7 +69126,7 @@ rF
 rF
 rF
 rF
-sj
+FZ
 kn
 PN
 PN
@@ -69322,7 +69328,7 @@ rF
 Dk
 rF
 rF
-sj
+FZ
 kn
 PN
 PN
@@ -69524,7 +69530,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -69726,7 +69732,7 @@ rF
 rF
 Dk
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -69928,7 +69934,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -70130,7 +70136,7 @@ rF
 Dk
 rF
 rF
-sj
+FZ
 kn
 PN
 PN
@@ -70332,7 +70338,7 @@ rF
 rF
 rF
 Dk
-sj
+FZ
 kn
 PN
 PN
@@ -70534,7 +70540,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -70736,7 +70742,7 @@ rF
 rF
 rF
 rF
-sj
+FZ
 kn
 PN
 PN
@@ -70938,7 +70944,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -71140,7 +71146,7 @@ rF
 Dk
 Dk
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -71342,7 +71348,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -71544,7 +71550,7 @@ rF
 rF
 Dk
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -71746,7 +71752,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -71948,7 +71954,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -72150,7 +72156,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -72352,7 +72358,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -72554,7 +72560,7 @@ rF
 rF
 rF
 rF
-sj
+FZ
 kn
 PN
 PN
@@ -72756,7 +72762,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -72958,7 +72964,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -73160,7 +73166,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 PN
 PN
@@ -73362,7 +73368,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -73564,7 +73570,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -73766,7 +73772,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 PN
 PN
@@ -73968,7 +73974,7 @@ rF
 rF
 rF
 rF
-Ei
+yR
 kn
 kn
 PN
@@ -74170,7 +74176,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 kn
 kn
@@ -74372,7 +74378,7 @@ rF
 rF
 rF
 Dk
-Ei
+yR
 kn
 kn
 kn
@@ -74574,7 +74580,7 @@ rF
 Dk
 rF
 Dk
-sj
+FZ
 kn
 kn
 kn
