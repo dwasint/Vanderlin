@@ -4477,7 +4477,7 @@
 "oF" = (
 /obj/structure/lever/wall{
 	pixel_y = 0;
-	redstone_id = "steward";
+	redstone_id = "merchant-shop";
 	dir = 8
 	},
 /turf/open/floor/churchrough/pale,
@@ -5850,7 +5850,7 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /obj/structure/lever/wall{
 	pixel_y = 0;
-	redstone_id = "merchant-shop";
+	redstone_id = "steward";
 	dir = 8
 	},
 /obj/item/fake_machine/mastermail,
@@ -14182,7 +14182,7 @@
 	},
 /obj/effect/mapping_helpers/access/locker,
 /obj/structure/bars/passage/shutter/open{
-	redstone_id = "steward"
+	redstone_id = "merchant-shop"
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
