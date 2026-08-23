@@ -4435,6 +4435,14 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"on" = (
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/wool,
+/obj/effect/landmark/start/gravedigger{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/soilsons)
 "oo" = (
 /obj/structure/ladder,
 /turf/open/floor/churchrough/pale,
@@ -9929,7 +9937,8 @@
 /area/indoors/soilsons)
 "HJ" = (
 /obj/structure/door/red,
-/obj/effect/mapping_helpers/access/keyset/town/tower,
+/obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/church/grave,
 /turf/open/floor/dirt/road,
 /area/indoors/soilsons)
 "HK" = (
@@ -64555,7 +64564,7 @@ PN
 PN
 PN
 Xp
-SW
+on
 DR
 LD
 xO
