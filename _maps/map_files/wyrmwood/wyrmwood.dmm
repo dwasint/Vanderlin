@@ -936,6 +936,7 @@
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
 	},
+/obj/item/kitchen/rollingpin,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
 "cY" = (
@@ -1496,6 +1497,7 @@
 /area/indoors/town/dwarfin)
 "eF" = (
 /obj/structure/table/wood/plain_alt,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
 "eH" = (
@@ -7536,6 +7538,11 @@
 	},
 /turf/open/floor/dirt,
 /area/outdoors/wilderness)
+"zc" = (
+/obj/structure/table/wood/plain_alt,
+/obj/item/tray,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/tavern)
 "zd" = (
 /obj/structure/hotspring/border/two,
 /turf/open/floor/dirt/road,
@@ -14363,6 +14370,42 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
+"Wd" = (
+/obj/structure/closet/crate/chest/neu_iron,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/plate,
+/obj/item/plate,
+/obj/item/plate,
+/obj/item/plate,
+/obj/item/plate,
+/obj/item/plate,
+/obj/item/plate,
+/obj/item/plate,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/tavern)
 "We" = (
 /obj/structure/flora/shells,
 /turf/open/floor/abyss_sand,
@@ -72640,7 +72683,7 @@ PM
 PM
 Ov
 Yt
-eF
+zc
 Yt
 YZ
 OD
@@ -73042,7 +73085,7 @@ PM
 PM
 uq
 OD
-Yt
+Wd
 Yt
 yP
 Yt
