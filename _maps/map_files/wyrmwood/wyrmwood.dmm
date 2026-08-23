@@ -14603,7 +14603,6 @@
 	name = "Baths";
 	dir = 2
 	},
-/obj/effect/mapping_helpers/access/keyset/town/inn,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
 "VI" = (
