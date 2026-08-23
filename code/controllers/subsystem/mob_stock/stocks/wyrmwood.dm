@@ -1,7 +1,7 @@
 /datum/map_mob_stock/wyrmwood
 	map_name = "Wyrmwood"
 	stock = list(
-		/mob/living/carbon/human/species/deadite = 200
+		/mob/living/carbon/human/species/deadite = 120 //this can be raised in the future pathfinding costs fuck this hard
 	)
 	wave_defense_set_ids = list(
 		"south-wyrm",
