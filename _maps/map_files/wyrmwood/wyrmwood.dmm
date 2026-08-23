@@ -3725,6 +3725,7 @@
 "mo" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/fluff/clutter/shrub/tundra,
+/obj/structure/fluff/walldeco/sign/tailorsign/left,
 /turf/open/floor/cobblerock,
 /area/outdoors)
 "mp" = (
@@ -3734,6 +3735,13 @@
 	},
 /turf/open/floor/cobblerock,
 /area/indoors/cave)
+"mq" = (
+/obj/structure/fluff/walldeco/sign/apothecarysign{
+	pixel_y = 26;
+	pixel_x = 1
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors)
 "mr" = (
 /obj/item/reagent_containers/food/snacks/produce/swampweed_dried,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
@@ -13794,6 +13802,10 @@
 	},
 /turf/open/openspace,
 /area/indoors/town/keep/halls/w)
+"UM" = (
+/obj/structure/fluff/walldeco/sign/merchantsign,
+/turf/open/floor/cobble,
+/area/outdoors)
 "UN" = (
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/heir/heir1)
@@ -66140,7 +66152,7 @@ HT
 HT
 HT
 PN
-PN
+mq
 nk
 MM
 eq
@@ -80106,7 +80118,7 @@ mH
 HT
 HT
 HT
-HT
+UM
 kn
 cy
 cy
