@@ -2788,7 +2788,8 @@
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors)
 "jk" = (
-/obj/structure/ladder,
+/obj/structure/ladder/earth,
+/obj/structure/fluff/clock,
 /turf/open/floor/blocks/newstone/alt,
 /area/indoors/town/keep/heir/heir1)
 "jl" = (
@@ -9069,9 +9070,7 @@
 "Fc" = (
 /obj/effect/mapping_helpers/access/keyset/manor/vault,
 /obj/effect/mapping_helpers/access/locker,
-/obj/structure/door/iron/bars{
-	name = "Noble Access"
-	},
+/obj/structure/door/iron/bars,
 /turf/open/floor/cobble/alt,
 /area/indoors/town/vault)
 "Fd" = (
@@ -11489,7 +11488,7 @@
 /turf/open/floor/dirt,
 /area/outdoors)
 "Ni" = (
-/obj/structure/ladder,
+/obj/structure/ladder/earth,
 /turf/open/floor/blocks,
 /area/indoors/town/vault)
 "Nj" = (
@@ -11575,10 +11574,6 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors)
-"Nz" = (
-/obj/structure/fluff/clock,
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/keep/heir/heir1)
 "NA" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/structure/carpet/purple,
@@ -74004,7 +73999,7 @@ rO
 rG
 yv
 In
-Nz
+UN
 Ly
 TZ
 NL
