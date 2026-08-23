@@ -1649,6 +1649,10 @@
 /obj/structure/window/solid,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
+"fl" = (
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/churchrough/pale,
+/area/outdoors)
 "fm" = (
 /turf/closed/wall/mineral/decorstone,
 /area/indoors/town/keep/garrison)
@@ -2572,6 +2576,10 @@
 /obj/structure/carpet/navy,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"it" = (
+/obj/machinery/light/fueled/torchholder/l,
+/turf/open/floor/churchrough/pale,
+/area/outdoors)
 "iu" = (
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -2;
@@ -6552,6 +6560,13 @@
 /obj/effect/mob_spawn/corpse/human/damaged/half_elf,
 /turf/open/floor/dirt,
 /area/indoors/cave)
+"vY" = (
+/obj/machinery/light/fueled/torchholder/c{
+	dir = 1;
+	pixel_y = -3
+	},
+/turf/open/floor/churchrough/pale,
+/area/outdoors)
 "vZ" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/clothing/head/roguehood/colored/red{
@@ -7229,6 +7244,7 @@
 	pixel_y = 6;
 	pixel_x = -5
 	},
+/obj/structure/fake_machine/scomm/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "yi" = (
@@ -9528,6 +9544,15 @@
 /obj/structure/fluff/statue/astrata,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"Gn" = (
+/obj/structure/bed/hay,
+/obj/structure/bed/hay{
+	pixel_y = 19
+	},
+/obj/machinery/light/fueled/wallfire/candle,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/herringbone,
+/area/outdoors)
 "Go" = (
 /obj/structure/carpet/green,
 /turf/open/floor/ruinedwood/darker,
@@ -10581,6 +10606,10 @@
 /obj/structure/wild_plant/nospread/mushroom/borowiki,
 /turf/open/floor/mushroom/green,
 /area/indoors/cave)
+"JX" = (
+/obj/structure/fake_machine/scomm/l,
+/turf/open/floor/blocks,
+/area/indoors/town/keep/garrison)
 "JY" = (
 /obj/structure/flora/newtree,
 /obj/structure/flora/grass,
@@ -12827,6 +12856,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/herringbone,
 /area/indoors/town/garrison)
+"Rh" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fake_machine/scomm/r,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/garrison)
 "Ri" = (
 /obj/effect/mob_spawn/corpse/human/damaged/kobold,
 /obj/structure/fluff/walldeco/skullspike,
@@ -14558,6 +14592,10 @@
 	},
 /turf/open/openspace,
 /area/outdoors/wilderness)
+"WM" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/floor/churchrough/pale,
+/area/outdoors)
 "WO" = (
 /obj/structure/dye_bin/luxury{
 	pixel_x = 5;
@@ -14851,6 +14889,11 @@
 /obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
+"XL" = (
+/obj/structure/door/stone,
+/obj/effect/mapping_helpers/access/keyset/garrison/general,
+/turf/open/floor/sand,
+/area/outdoors)
 "XM" = (
 /obj/structure/window/stained/yellow,
 /turf/open/floor/churchmarble/violet,
@@ -34199,7 +34242,7 @@ DD
 HL
 YG
 fd
-HL
+JX
 HL
 DD
 Zp
@@ -37785,7 +37828,7 @@ iI
 uE
 uE
 uE
-dp
+Rh
 gx
 NQ
 Ij
@@ -37987,7 +38030,7 @@ Sq
 uE
 dp
 nH
-rX
+iI
 gr
 Zn
 Ij
@@ -61664,7 +61707,7 @@ Dk
 rF
 rF
 dH
-TR
+Gn
 TR
 TR
 TR
@@ -61674,7 +61717,7 @@ HT
 HT
 HT
 dH
-TR
+Gn
 TR
 TR
 TR
@@ -62474,7 +62517,7 @@ kn
 kn
 dH
 dH
-TR
+XL
 dH
 dH
 kn
@@ -62484,7 +62527,7 @@ HT
 WD
 dH
 dH
-TR
+XL
 dH
 dH
 kn
@@ -63489,7 +63532,7 @@ Nh
 hA
 Nh
 HT
-HT
+Gd
 HT
 kn
 PN
@@ -66923,7 +66966,7 @@ kn
 kn
 kn
 HT
-Gd
+HT
 HT
 kn
 ay
@@ -73040,7 +73083,7 @@ PN
 kn
 dH
 dH
-TR
+Gn
 TR
 TR
 dH
@@ -73442,7 +73485,7 @@ PN
 PN
 kn
 kn
-TR
+XL
 TR
 TR
 SR
@@ -74748,7 +74791,7 @@ rF
 Dk
 Dk
 dH
-TR
+Gn
 TR
 TR
 TR
@@ -74955,7 +74998,7 @@ TR
 SR
 TR
 TR
-TR
+XL
 kn
 kn
 PN
@@ -75257,7 +75300,7 @@ PN
 PN
 PN
 HT
-HT
+BK
 HT
 HT
 kn
@@ -75465,7 +75508,7 @@ Hg
 kn
 kn
 kn
-TR
+XL
 TR
 TR
 SR
@@ -75871,7 +75914,7 @@ qb
 kn
 dH
 dH
-TR
+Gn
 TR
 TR
 dH
@@ -76576,7 +76619,7 @@ kn
 HT
 HT
 HT
-HT
+Nq
 PN
 PN
 PN
@@ -76869,7 +76912,7 @@ yT
 uw
 HT
 HT
-BK
+HT
 HT
 kn
 fI
@@ -76975,7 +77018,7 @@ TR
 SR
 TR
 TR
-TR
+XL
 kn
 kn
 PN
@@ -77172,7 +77215,7 @@ rF
 Dk
 rF
 dH
-TR
+Gn
 TR
 TR
 TR
@@ -77190,7 +77233,7 @@ HT
 HT
 HT
 HT
-Nq
+HT
 HT
 HT
 HT
@@ -87339,7 +87382,7 @@ eV
 eV
 eV
 ST
-IC
+HT
 HT
 PN
 PN
@@ -89561,7 +89604,7 @@ PN
 PN
 PN
 HT
-HT
+IC
 HT
 om
 kn
@@ -90768,7 +90811,7 @@ kn
 kn
 dH
 dH
-TR
+XL
 dH
 dH
 kn
@@ -90778,7 +90821,7 @@ uw
 om
 dH
 dH
-TR
+XL
 dH
 dH
 sm
@@ -91170,7 +91213,7 @@ kn
 PN
 kn
 dH
-TR
+Gn
 TR
 TR
 TR
@@ -91180,7 +91223,7 @@ HT
 HT
 Bv
 dH
-TR
+Gn
 TR
 TR
 TR
@@ -102065,21 +102108,21 @@ PJ
 PJ
 PJ
 Xz
+it
 or
 or
 or
-or
-or
+it
 or
 um
 um
 um
 or
+it
 or
 or
 or
-or
-or
+it
 WX
 PJ
 PJ
@@ -113443,7 +113486,7 @@ dH
 dH
 or
 or
-or
+vY
 dH
 dH
 PJ
@@ -114251,7 +114294,7 @@ dH
 dH
 or
 or
-or
+vY
 dH
 dH
 PJ
@@ -114948,7 +114991,7 @@ PJ
 PJ
 dH
 dH
-or
+fl
 or
 or
 dH
@@ -115466,7 +115509,7 @@ dH
 dH
 or
 or
-or
+vY
 dH
 dH
 PJ
@@ -115756,7 +115799,7 @@ PJ
 PJ
 dH
 dH
-or
+fl
 or
 or
 dH
@@ -116274,7 +116317,7 @@ dH
 dH
 or
 or
-or
+vY
 dH
 dH
 PJ
@@ -116968,7 +117011,7 @@ PJ
 PJ
 dH
 dH
-or
+fl
 or
 or
 dH
@@ -117776,7 +117819,7 @@ PJ
 PJ
 dH
 dH
-or
+fl
 or
 or
 dH
@@ -131975,21 +132018,21 @@ PJ
 PJ
 PJ
 Xz
+WM
 or
 or
 or
-or
-or
+WM
 or
 eJ
 eJ
 eJ
 or
+WM
 or
 or
 or
-or
-or
+WM
 WX
 PJ
 JG
