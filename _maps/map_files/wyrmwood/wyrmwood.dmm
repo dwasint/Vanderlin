@@ -887,6 +887,14 @@
 "cN" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/cave)
+"cO" = (
+/obj/structure/table/wood/plain,
+/obj/structure/fluff/clutter/shrub/tundra{
+	pixel_y = 14;
+	pixel_x = -4
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/heir/heir1)
 "cP" = (
 /obj/structure/fluff/clodpile/sand,
 /turf/open/floor/grass/cold,
@@ -1377,7 +1385,7 @@
 /obj/structure/fluff/clutter/books,
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/blocks/stonered/tiny,
-/area/indoors/town)
+/area/indoors/town/keep/heir/heir1)
 "em" = (
 /obj/structure/handcart{
 	dir = 4
@@ -1402,6 +1410,14 @@
 	},
 /turf/open/floor/hexstone,
 /area/indoors/town/clinic_large/apothecary)
+"er" = (
+/obj/machinery/light/fueled/wallfire{
+	pixel_y = 32
+	},
+/obj/effect/decal/carpet/kover_darkred,
+/obj/structure/table/vtable,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/indoors/town/keep/heir/heir1)
 "es" = (
 /obj/effect/decal/woodpath,
 /turf/open/floor/dirt/road,
@@ -2561,6 +2577,15 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
+"im" = (
+/obj/structure/table/wood/plain,
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_y = 9
+	},
+/obj/structure/carpet/navy,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/magician)
 "in" = (
 /obj/structure/closet/crate/chest/wickertrunk/blue,
 /turf/open/floor/ruinedwood/spiral,
@@ -4929,6 +4954,15 @@
 /obj/structure/flora/grass/bush_meagre/tundra,
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
+"pM" = (
+/obj/structure/closet/crate/drawer,
+/obj/structure/fluff/clutter/shrub/tundra{
+	pixel_y = 11;
+	pixel_x = -1
+	},
+/obj/structure/carpet/navy,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/heir/heir1)
 "pN" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -6739,6 +6773,11 @@
 /obj/structure/water_pipe,
 /turf/open/floor/cobblerock,
 /area/indoors/cave)
+"wd" = (
+/obj/structure/table/wood/plain,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/magician)
 "we" = (
 /obj/structure/closet/crate/chest/wicker,
 /turf/open/floor/cobblerock,
@@ -7013,6 +7052,12 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/dwarfin)
+"wT" = (
+/obj/structure/closet/crate/crafted_closet/inn/chest,
+/obj/item/clothing/head/crown/circlet/opal,
+/obj/item/clothing/neck/opalamulet,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/indoors/town/keep/heir/heir1)
 "wU" = (
 /obj/effect/decal/cleanable/ritual_rune/arcyne/crafting,
 /turf/open/floor/churchrough/purple,
@@ -7335,6 +7380,11 @@
 	},
 /turf/open/floor/herringbone,
 /area/indoors/town/keep/lord_appt)
+"xZ" = (
+/obj/structure/table/wood/plain,
+/obj/structure/fluff/clutter/books,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/heir/heir1)
 "ya" = (
 /obj/machinery/light/fueled/oven{
 	pixel_x = -31
@@ -8376,6 +8426,14 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"Br" = (
+/obj/structure/bed/inn/double,
+/obj/item/bedsheet/fabric_double,
+/obj/effect/landmark/start/prince{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/spiralfade,
+/area/indoors/town/keep/heir/heir1)
 "Bs" = (
 /mob/living/simple_animal/hostile/retaliate/goat,
 /turf/open/floor/grass/mixyel,
@@ -8885,6 +8943,12 @@
 /obj/structure/fluff/railing/tall/palisade,
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"CY" = (
+/obj/structure/closet/crate/drawer,
+/obj/item/storage/belt/pouch/coins/mid,
+/obj/item/servant_bell/lord,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/indoors/town/keep/heir/heir1)
 "CZ" = (
 /obj/structure/chair/wood/alt/chair_noble/red{
 	dir = 1
@@ -9565,6 +9629,11 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors/town)
+"FE" = (
+/obj/structure/fake_machine/scomm/r,
+/obj/structure/chair/stool/bar,
+/turf/open/floor/ruinedwood/spiralfade,
+/area/indoors/town/keep/heir/heir1)
 "FF" = (
 /obj/structure/fake_machine/stockpile{
 	pixel_y = -32
@@ -10314,6 +10383,12 @@
 "In" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/keep/heir/heir1)
+"Io" = (
+/obj/structure/table/vtable/v2,
+/obj/structure/fluff/clutter/books,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/blocks/stonered/tiny,
+/area/indoors/town/keep/heir/heir1)
 "Ip" = (
 /obj/structure/fluff/moonrug{
 	pixel_y = -16;
@@ -10499,6 +10574,10 @@
 	},
 /turf/open/floor/carpet/red,
 /area/indoors/town/garrison)
+"IL" = (
+/obj/effect/lily_petal/two,
+/turf/closed/wall/mineral/wooddark,
+/area/outdoors/town/keep)
 "IM" = (
 /obj/structure/table/vtable,
 /obj/structure/carpet/navy,
@@ -11721,6 +11800,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
+"Mx" = (
+/obj/structure/carpet/navy,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/heir/heir1)
 "My" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/churchrough,
@@ -13780,6 +13863,10 @@
 /obj/structure/ladder,
 /turf/open/floor/sand,
 /area/outdoors/town)
+"SS" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/magician)
 "ST" = (
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -2;
@@ -14055,6 +14142,9 @@
 /obj/effect/landmark/start/steward,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"TL" = (
+/turf/closed/wall/mineral/wooddark,
+/area/outdoors/town/keep)
 "TM" = (
 /obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/dirt/road,
@@ -14120,6 +14210,15 @@
 "TZ" = (
 /obj/structure/fake_machine/scomm/r,
 /turf/open/floor/ruinedwood/spiralfade,
+/area/indoors/town/keep/heir/heir1)
+"Ua" = (
+/obj/structure/carpet/purple,
+/obj/structure/table/vtable,
+/obj/structure/fluff/clutter/shrub/tundra{
+	pixel_y = 14;
+	pixel_x = -4
+	},
+/turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/heir/heir1)
 "Ub" = (
 /mob/living/simple_animal/hostile/retaliate/trufflepig/male,
@@ -14393,6 +14492,10 @@
 	},
 /turf/open/floor/cobble/mossy,
 /area/outdoors/town)
+"UY" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/keep/magician)
 "UZ" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -75429,11 +75532,11 @@ ZD
 ZD
 ZD
 ZD
+TL
 bU
 bU
 bU
-bU
-Jt
+IL
 ZD
 bU
 ZD
@@ -82760,7 +82863,7 @@ sm
 kn
 kn
 Pe
-hB
+cO
 Ez
 Pe
 Pe
@@ -82962,7 +83065,7 @@ ld
 kn
 kn
 Pe
-fO
+xZ
 vt
 Ty
 kn
@@ -88399,7 +88502,7 @@ Pe
 bn
 Ez
 Pe
-kK
+Ua
 Ez
 Pe
 PN
@@ -114620,9 +114723,9 @@ wP
 lc
 tY
 wP
-Bp
-Bp
-Bp
+ZV
+ZV
+ZV
 Bp
 Bp
 Bp
@@ -114822,9 +114925,9 @@ wP
 LO
 wP
 wP
-dK
-dK
-dK
+Tm
+CY
+ZV
 dK
 IX
 IX
@@ -115023,10 +115126,10 @@ tT
 wP
 lc
 wP
-dK
-dK
-dK
-dK
+wT
+nj
+nj
+ZV
 dK
 IX
 IX
@@ -115224,11 +115327,11 @@ wP
 wP
 Hb
 lc
-wP
-dK
-dK
-dK
-dK
+qz
+nj
+nj
+pM
+ZV
 dK
 IX
 IX
@@ -115427,10 +115530,10 @@ dK
 wP
 pT
 wP
-dK
-dK
-dK
-dK
+er
+nj
+Mx
+ZV
 IX
 IX
 IX
@@ -115628,11 +115731,11 @@ IX
 IX
 IX
 IX
-IX
-IX
-IX
-IX
-IX
+ZV
+Io
+FE
+Br
+ZV
 IX
 IX
 IX
@@ -115830,11 +115933,11 @@ IX
 IX
 IX
 IX
-IX
-IX
-IX
-IX
-IX
+ZV
+ZV
+ZV
+ZV
+ZV
 IX
 IX
 IX
@@ -120874,15 +120977,15 @@ JG
 JG
 PF
 PF
-PX
+UY
 lC
 dc
 PX
-PX
+SS
 lC
 PX
 PX
-PX
+UY
 PX
 PF
 ur
@@ -121280,7 +121383,7 @@ PF
 ur
 Wk
 yX
-su
+im
 yX
 PX
 PX
@@ -121683,12 +121786,12 @@ JG
 PF
 KR
 PX
-PX
+SS
 PX
 PX
 PX
 TY
-TY
+wd
 lC
 TF
 PX
@@ -121893,7 +121996,7 @@ lC
 lC
 lC
 TY
-PX
+SS
 dc
 PF
 PF
@@ -122289,11 +122392,11 @@ JG
 PF
 PF
 dc
-PX
+SS
 TY
 lC
 TY
-PX
+SS
 dc
 PF
 JG
