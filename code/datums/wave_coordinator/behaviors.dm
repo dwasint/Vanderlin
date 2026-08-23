@@ -12,7 +12,7 @@
 	var/atom/target_point = controller.blackboard[target_key]
 	var/datum/wave_defense_coordinator/coordinator = controller.blackboard[BB_WAVE_COORDINATOR]
 
-	var/atom/destructible = locate_destructible_near(controller, controller.pawn, target_point)
+	var/atom/destructible = locate_destructible_near(controller, controller.pawn, WAVE_DEFENSE_POINT_RADIUS, target_point)
 	if(destructible)
 		if(isliving(destructible))
 			feed_threat(controller, destructible)
@@ -34,16 +34,19 @@
 /datum/ai_behavior/wave_attack_point/proc/locate_destructible_near(datum/ai_controller/controller, atom/point, radius = WAVE_DEFENSE_POINT_RADIUS, atom/target_point)
 	if(get_dist(controller.pawn, target_point) > 15)
 		return
-	if(!point)
-		return
-	var/atom/movable/pawn = controller.pawn
-	for(var/atom/movable/thing in view(radius, point))
-		if(thing.density && !ismob(thing))
-			return thing
-	for(var/mob/living/enemy in oview(radius, point))
-		if(!pawn.faction_check_atom(enemy))
-			return enemy
+	if(point)
+		var/atom/movable/pawn = controller.pawn
+		for(var/atom/movable/thing in view(radius, point))
+			if(istype(thing, /obj/structure/flora/newtree))
+				continue
+			if(thing.density && !ismob(thing))
+				return thing
+		for(var/mob/living/enemy in oview(radius, point))
+			if(!pawn.faction_check_atom(enemy))
+				return enemy
 	for(var/atom/movable/thing in view(radius, target_point))
+		if(istype(thing, /obj/structure/flora/newtree))
+			continue
 		if(thing.density && !ismob(thing))
 			return thing
 	return null
