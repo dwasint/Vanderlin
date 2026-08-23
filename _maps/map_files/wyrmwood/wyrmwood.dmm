@@ -10000,6 +10000,10 @@
 /obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"GP" = (
+/obj/structure/fake_machine/scomm/r,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "GQ" = (
 /obj/machinery/light/fueled/wallfire/big_fireplace{
 	pixel_y = 3
@@ -11012,6 +11016,10 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/outdoors/town)
+"Kf" = (
+/obj/structure/fake_machine/scomm/r,
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "Kg" = (
 /obj/structure/hotspring/border/eight,
 /turf/open/floor/grass/cold,
@@ -11405,6 +11413,10 @@
 /obj/item/chalk,
 /turf/open/floor/blocks/stonered,
 /area/indoors/town/keep/magician)
+"Lp" = (
+/obj/structure/fake_machine/scomm/l,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "Lq" = (
 /mob/living/simple_animal/hostile/retaliate/chicken,
 /turf/open/floor/grass/mixyel,
@@ -14759,6 +14771,13 @@
 /obj/effect/mob_spawn/corpse/human/damaged/tiefling,
 /turf/open/floor/dirt,
 /area/indoors/cave)
+"VS" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -2
+	},
+/obj/structure/fake_machine/scomm/l,
+/turf/open/floor/cobble,
+/area/outdoors/town)
 "VT" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/natural/bundle/curred_hide{
@@ -63223,7 +63242,7 @@ HT
 HT
 HT
 kn
-kn
+Lp
 kn
 kn
 kn
@@ -74790,7 +74809,7 @@ PN
 PN
 kn
 kn
-uw
+VS
 pB
 HT
 HT
@@ -76908,7 +76927,7 @@ dH
 rH
 dH
 dH
-PN
+Kf
 HT
 HT
 HT
@@ -91310,7 +91329,7 @@ dH
 XL
 dH
 dH
-kn
+GP
 HT
 HT
 uw
