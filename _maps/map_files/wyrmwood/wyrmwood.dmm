@@ -3211,6 +3211,13 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/abyss_sand,
 /area/indoors/cave)
+"kB" = (
+/obj/structure/fake_machine/atm{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/tavern)
 "kC" = (
 /obj/effect/mapping_helpers/access/keyset/town/inn_room{
 	room_id = "medroomiii"
@@ -74302,7 +74309,7 @@ Ig
 HE
 HE
 HE
-uq
+kB
 RR
 UZ
 uQ

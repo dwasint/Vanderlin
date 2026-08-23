@@ -32,7 +32,9 @@
 	controller.set_blackboard_key(BB_HIGHEST_THREAT_MOB, target)
 
 /datum/ai_behavior/wave_attack_point/proc/locate_destructible_near(datum/ai_controller/controller, atom/point, radius = WAVE_DEFENSE_POINT_RADIUS, atom/target_point)
-	if(get_dist_3d(controller.pawn, target_point) > 15)
+	if(get_dist(controller.pawn, target_point) > 15)
+		return
+	if(!point)
 		return
 	var/atom/movable/pawn = controller.pawn
 	for(var/atom/movable/thing in view(radius, point))
