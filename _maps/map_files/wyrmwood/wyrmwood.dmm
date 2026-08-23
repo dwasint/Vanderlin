@@ -6260,7 +6260,6 @@
 /area/indoors/town/garrison)
 "uZ" = (
 /obj/machinery/printingpress,
-/obj/effect/mapping_helpers/access/locker,
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/archivist)
@@ -7057,6 +7056,7 @@
 /obj/effect/mapping_helpers/access/keyset/manor/archive{
 	difficulty = 1
 	},
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/archivist)
 "xL" = (
