@@ -6278,6 +6278,7 @@
 "ut" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /obj/item/bin/water/gross,
+/obj/structure/fake_machine/scomm,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
 "uu" = (
