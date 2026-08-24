@@ -1,3 +1,10 @@
+/datum/attribute_holder/sheet/job/generic_deadite
+	raw_attribute_list = list(
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 40,
+		/datum/attribute/skill/misc/athletics = 30,
+	)
+
 /datum/outfit/vagrant/deadite/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	r_hand = null
@@ -8,6 +15,7 @@
 	l_hand = null
 	beltl = null
 	backl = null
+	backr = /obj/item/storage/backpack/satchel/deadite_hunter
 	backpack_contents = list(
 		/obj/item/reagent_containers/powder/salt = 1,
 		/obj/item/flint = 1,
@@ -32,6 +40,13 @@
 /datum/outfit/adventurer/cleric/deadite
 	backpack_contents = null
 
+/datum/outfit/miner/deadite
+	backpack_contents = null
+	beltr = null
+	backl = /obj/item/storage/backpack/satchel/cloth/undead_miner
+	backr = null
+	beltl = null
+
 /mob/living/carbon/human/species/deadite
 	ai_controller = /datum/ai_controller/human_deadite
 	dodgetime = 30
@@ -43,6 +58,7 @@
 		/datum/outfit/forestwarden_classic/deadite,
 		/datum/outfit/adventurer/sfighter/deadite,
 		/datum/outfit/adventurer/cleric/deadite,
+		/datum/outfit/miner/deadite,
 	)
 
 /mob/living/carbon/human/species/deadite/Initialize()
@@ -57,3 +73,4 @@
 
 	if(length(possible_outfits))
 		equipOutfit(pick(possible_outfits))
+	attributes?.add_sheet(/datum/attribute_holder/sheet/job/generic_deadite)

@@ -455,7 +455,7 @@
 	animname = "claw"
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
-	penfactor = 20
+	penfactor = 35
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "claws the air!"
