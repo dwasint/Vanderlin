@@ -2279,6 +2279,18 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
+"hl" = (
+/obj/structure/table/wood/plain,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/bars/passage/shutter/open{
+	redstone_id = "steward"
+	},
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town)
 "hm" = (
 /obj/structure/bed/wool,
 /obj/item/bedsheet/cloth,
@@ -6025,13 +6037,13 @@
 /turf/open/floor/ruinedwood/darker,
 /area/outdoors/town)
 "tD" = (
-/obj/machinery/light/fueled/wallfire/candle/l,
 /obj/structure/lever/wall{
 	pixel_y = 0;
 	redstone_id = "steward";
 	dir = 8
 	},
 /obj/item/fake_machine/mastermail,
+/obj/structure/fake_machine/scomm/l,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "tE" = (
@@ -7452,7 +7464,6 @@
 	pixel_y = 6;
 	pixel_x = -5
 	},
-/obj/structure/fake_machine/scomm/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
 "yi" = (
@@ -81148,7 +81159,7 @@ JK
 Pe
 tD
 UT
-Ck
+hl
 NP
 kn
 kn
