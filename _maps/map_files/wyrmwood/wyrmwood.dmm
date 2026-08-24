@@ -5660,6 +5660,7 @@
 /obj/machinery/anvil,
 /obj/item/weapon/tongs,
 /obj/item/weapon/hammer/iron,
+/obj/item/flint,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
 "sq" = (
@@ -6274,6 +6275,14 @@
 /obj/structure/fluff/celebration/canopy/r,
 /turf/open/floor/grass/cold,
 /area/outdoors/town)
+"ut" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/machinery/anvil,
+/obj/item/weapon/hammer/iron,
+/obj/item/flint,
+/obj/item/weapon/tongs,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "uu" = (
 /obj/effect/landmark/tram/queued_path/cargo_exit{
 	next_path_id = "cargo_map_exit"
@@ -6497,8 +6506,8 @@
 /turf/open/floor/wood,
 /area/indoors/town/keep/garrison)
 "vf" = (
-/obj/item/bin/water/gross,
 /obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/grindwheel,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
 "vg" = (
@@ -6856,6 +6865,9 @@
 	pixel_x = 4;
 	pixel_y = -4
 	},
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
 /turf/open/floor/ruinedwood/two,
 /area/indoors/town/shop)
 "wp" = (
@@ -6971,13 +6983,6 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
-"wD" = (
-/obj/structure/fake_machine/atm{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/cobblerock,
-/area/outdoors/town)
 "wE" = (
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
@@ -9053,6 +9058,21 @@
 "Dt" = (
 /turf/open/floor/churchmarble/violet,
 /area/indoors/town/church/chapel)
+"Du" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/clothing/shoes/boots/leather{
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/obj/item/clothing/shoes/boots/darkboots{
+	pixel_x = -7;
+	pixel_y = -3
+	},
+/obj/item/clothing/shoes/shortboots{
+	pixel_x = 10
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "Dv" = (
 /obj/structure/stairs{
 	dir = 2
@@ -10693,10 +10713,6 @@
 "IX" = (
 /turf/open/openspace,
 /area/outdoors/town/keep)
-"IY" = (
-/obj/structure/grindwheel,
-/turf/open/floor/churchrough/pale,
-/area/indoors/town/smithy)
 "IZ" = (
 /obj/structure/door/stone{
 	name = "Acolytes' Quarters"
@@ -12956,6 +12972,10 @@
 	dir = 8
 	},
 /area/outdoors/town)
+"Qd" = (
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "Qe" = (
 /obj/structure/chair/wood/alt/fancy{
 	dir = 4
@@ -13600,6 +13620,17 @@
 /area/outdoors/town)
 "RV" = (
 /obj/structure/closet/crate/chest/wickertrunk/red,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
 "RW" = (
@@ -14437,13 +14468,11 @@
 /turf/open/floor/churchrough,
 /area/indoors/town/keep/kitchen)
 "UI" = (
-/obj/machinery/anvil,
-/obj/item/weapon/tongs,
-/obj/item/weapon/hammer/iron,
 /obj/item/mould/ingot{
 	pixel_y = 37
 	},
 /obj/structure/rack/shelf,
+/obj/item/bin/water/gross,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
 "UJ" = (
@@ -14816,6 +14845,8 @@
 	pixel_x = -1;
 	pixel_y = 13
 	},
+/obj/item/natural/feather,
+/obj/item/natural/feather,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
 "VW" = (
@@ -80286,7 +80317,7 @@ HT
 HT
 GE
 FG
-ji
+ut
 Cw
 Cw
 Cw
@@ -80490,8 +80521,8 @@ FG
 FG
 nw
 Cw
-Vz
-Vz
+Cw
+Qd
 FG
 FG
 ic
@@ -80894,7 +80925,7 @@ Df
 FG
 De
 Cw
-sp
+Cw
 Cw
 Cw
 Nr
@@ -81096,8 +81127,8 @@ Df
 FG
 De
 gQ
-aJ
-IY
+Vz
+Vz
 vf
 FG
 FG
@@ -84112,7 +84143,7 @@ Yz
 mo
 Bd
 Bd
-wD
+Bd
 VD
 ld
 ld
@@ -85322,7 +85353,7 @@ PN
 ld
 vZ
 Ed
-Um
+Du
 Ed
 Ma
 ld
