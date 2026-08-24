@@ -1998,6 +1998,15 @@
 "gp" = (
 /turf/open/openspace,
 /area/indoors/town/tavern)
+"gq" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/natural/bundle/cloth{
+	amount = 10;
+	pixel_x = -1;
+	pixel_y = -9
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "gr" = (
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /turf/closed/wall/mineral/stone,
@@ -2671,14 +2680,14 @@
 /turf/open/floor/wood,
 /area/outdoors/town)
 "iz" = (
-/obj/machinery/loom{
-	pixel_x = 6;
-	pixel_y = 4
+/obj/structure/rack/shelf/biggest,
+/obj/item/natural/bundle/curred_hide{
+	amount = 6;
+	pixel_x = -1;
+	pixel_y = 13
 	},
-/obj/machinery/tanningrack{
-	pixel_x = -9;
-	pixel_y = -8
-	},
+/obj/item/natural/feather,
+/obj/item/natural/feather,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
 "iA" = (
@@ -2969,15 +2978,6 @@
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
-"jz" = (
-/obj/structure/door/viewport{
-	dir = 2;
-	name = "Tailor Shop"
-	},
-/obj/effect/mapping_helpers/access/keyset/town/tailor,
-/obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/shop)
 "jA" = (
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/ruinedwood/darker,
@@ -3160,15 +3160,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/ruinedwood/spiral,
-/area/indoors/town/shop)
-"kb" = (
-/obj/structure/rack/shelf/biggest,
-/obj/item/natural/bundle/cloth{
-	amount = 10;
-	pixel_x = -1;
-	pixel_y = -9
-	},
-/turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
 "kc" = (
 /obj/effect/decal/carpet/kover_darkred{
@@ -3536,15 +3527,6 @@
 /obj/structure/bookcase/fancy/random,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
-"lu" = (
-/obj/structure/table/wood/reinforced_alt{
-	dir = 8
-	},
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_y = -32
-	},
-/turf/open/floor/ruinedwood/spiral,
-/area/indoors/town/shop)
 "lv" = (
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/magician)
@@ -4150,10 +4132,6 @@
 	},
 /turf/open/floor/wood,
 /area/indoors/town/clinic_large/apothecary)
-"ne" = (
-/obj/structure/fake_machine/stockpile,
-/turf/open/floor/ruinedwood/spiral,
-/area/indoors/town/shop)
 "nf" = (
 /obj/structure/flora/grass/herb/random,
 /turf/open/floor/grass/cold,
@@ -6210,6 +6188,15 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
+"uf" = (
+/obj/structure/door/viewport{
+	dir = 1;
+	name = "Tailor Shop"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/tailor,
+/obj/effect/mapping_helpers/access/locker,
+/turf/closed/wall/mineral/wooddark,
+/area/indoors/town/shop)
 "ug" = (
 /obj/structure/carpet/red,
 /turf/open/floor/ruinedwood/darker,
@@ -6857,18 +6844,6 @@
 	},
 /obj/structure/carpet/purple,
 /turf/open/floor/ruinedwood/darker,
-/area/indoors/town/shop)
-"wo" = (
-/obj/structure/rack/shelf/biggest,
-/obj/item/natural/bundle/cloth{
-	amount = 8;
-	pixel_x = 4;
-	pixel_y = -4
-	},
-/obj/item/natural/feather,
-/obj/item/natural/feather,
-/obj/item/natural/feather,
-/turf/open/floor/ruinedwood/two,
 /area/indoors/town/shop)
 "wp" = (
 /obj/structure/rack,
@@ -7883,6 +7858,15 @@
 /obj/structure/fluff/clutter/shrub/red,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"zy" = (
+/obj/structure/chair/wood/alt/chair_noble/purple{
+	dir = 1
+	},
+/obj/machinery/light/fueled/wallfire/candle{
+	pixel_y = -32
+	},
+/turf/open/floor/tile/diamond/purple,
+/area/indoors/town/shop)
 "zz" = (
 /obj/structure/fluff/statue/knight/interior/r,
 /turf/open/floor/churchrough/pale,
@@ -8279,6 +8263,12 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors/town)
+"AM" = (
+/obj/structure/table/wood/reinforced_alt{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "AN" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 2
@@ -8402,6 +8392,17 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large/apothecary)
+"Bi" = (
+/obj/machinery/loom{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/machinery/tanningrack{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "Bj" = (
 /obj/structure/fluff/walldeco/sign/saiga/left,
 /turf/open/floor/cobble,
@@ -8888,6 +8889,10 @@
 /obj/structure/carpet/red,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"CH" = (
+/obj/structure/dye_bin,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "CI" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/ruinedwood/darker,
@@ -10265,6 +10270,15 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
+"HB" = (
+/obj/structure/door/viewport{
+	dir = 4;
+	name = "Tailor Shop"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/tailor,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "HC" = (
 /obj/structure/mannequin/male,
 /obj/machinery/light/fueled/wallfire/candle/l,
@@ -10344,6 +10358,18 @@
 "HT" = (
 /turf/open/floor/cobble,
 /area/outdoors/town)
+"HV" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/natural/bundle/cloth{
+	amount = 8;
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "HW" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/woodturned,
@@ -11595,7 +11621,7 @@
 	dir = 8;
 	redstone_id = "tailor-room"
 	},
-/obj/machinery/light/fueled/wallfire/candle,
+/obj/structure/fake_machine/stockpile,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
 "LL" = (
@@ -13631,6 +13657,7 @@
 /obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
 "RW" = (
@@ -13907,6 +13934,20 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/tile,
 /area/indoors/town/clinic_large)
+"SL" = (
+/obj/structure/rack/shelf/biggest,
+/obj/item/natural/bundle/cloth{
+	amount = 8;
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/item/natural/bundle/cloth{
+	amount = 8;
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "SN" = (
 /obj/structure/door/window{
 	name = "Apothecary"
@@ -14807,11 +14848,16 @@
 /turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/food)
 "VN" = (
-/obj/structure/dye_bin,
-/obj/machinery/light/fueled/wallfire/candle{
-	pixel_x = 32;
-	pixel_y = 0
+/obj/structure/rack/shelf/biggest,
+/obj/item/natural/bundle/cloth{
+	amount = 8;
+	pixel_x = 4;
+	pixel_y = -4
 	},
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
 "VO" = (
@@ -14838,17 +14884,6 @@
 /obj/structure/fake_machine/scomm/l,
 /turf/open/floor/cobble,
 /area/outdoors/town)
-"VT" = (
-/obj/structure/rack/shelf/biggest,
-/obj/item/natural/bundle/curred_hide{
-	amount = 6;
-	pixel_x = -1;
-	pixel_y = 13
-	},
-/obj/item/natural/feather,
-/obj/item/natural/feather,
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/shop)
 "VW" = (
 /obj/structure/fluff/railing/tall{
 	dir = 1
@@ -15206,12 +15241,6 @@
 /obj/structure/fluff/statue/topiary/sphere,
 /turf/open/floor/grass/cold,
 /area/outdoors/town)
-"WW" = (
-/obj/structure/chair/wood/alt/chair_noble/purple{
-	dir = 1
-	},
-/turf/open/floor/tile/diamond/purple,
-/area/indoors/town/shop)
 "WX" = (
 /obj/structure/fluff/railing/stonehedge,
 /turf/open/floor/churchrough/pale,
@@ -83945,7 +83974,7 @@ Bd
 Bd
 ld
 RV
-jb
+Ed
 YM
 yo
 ce
@@ -84147,7 +84176,7 @@ Bd
 VD
 ld
 ld
-ld
+HB
 ld
 ld
 ld
@@ -84350,9 +84379,9 @@ ld
 ld
 LK
 Ed
-ld
-Ce
-mK
+Ed
+Ed
+AM
 ld
 kn
 PN
@@ -84552,9 +84581,9 @@ yo
 ru
 KC
 Ed
-ld
-Oo
-WW
+Ed
+Ed
+Yg
 ld
 kn
 kn
@@ -84752,11 +84781,11 @@ bG
 jC
 yo
 ru
+jb
 Ed
 Ed
-ld
-YH
-mK
+Ed
+Ed
 ld
 kn
 kn
@@ -84954,11 +84983,11 @@ ja
 ld
 ld
 ld
+ld
+ld
 av
+Ed
 Xu
-ld
-ld
-to
 ld
 Fl
 kn
@@ -85155,12 +85184,12 @@ Ed
 Ed
 ka
 ld
-kb
+Ce
+mK
+ld
 Ed
-Ed
-Ed
-Ed
-Ed
+HV
+SL
 ld
 ld
 kn
@@ -85357,13 +85386,13 @@ Du
 Ed
 Ma
 ld
-VT
-Ed
-Xu
+Oo
+zy
 ld
-Pu
 Ed
-lu
+CH
+Bi
+QI
 ld
 kn
 Pe
@@ -85559,13 +85588,13 @@ NM
 Ed
 bm
 ld
-wo
-Ed
-Ed
+YH
+mK
 ld
-vc
 Ed
-Yg
+Ed
+Ed
+Pu
 ld
 kn
 Pe
@@ -85760,14 +85789,14 @@ Ed
 Um
 Ed
 Ed
-jz
+to
+Ed
+Ed
+uf
 Ed
 Ed
 Ed
-ld
-Ed
-Ed
-Ed
+vc
 ld
 kn
 Pe
@@ -85963,13 +85992,13 @@ NM
 Ed
 eD
 ld
-ne
 NM
 GT
 ld
+Ed
 VN
 iz
-QI
+gq
 ld
 kn
 Pe
