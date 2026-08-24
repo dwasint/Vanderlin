@@ -5035,14 +5035,6 @@
 	dir = 8
 	},
 /area/indoors/cave)
-"qa" = (
-/obj/structure/train/carriage/not_train{
-	name = "Evergreen";
-	pixel_y = 0;
-	pixel_x = -5
-	},
-/turf/open/floor/grass/cold,
-/area/outdoors/town)
 "qb" = (
 /turf/open/floor/grass/mixyel,
 /area/outdoors/town)
@@ -9071,6 +9063,14 @@
 /obj/effect/mob_spawn/corpse/human/damaged/elf,
 /turf/open/floor/naturalstone,
 /area/indoors/cave)
+"Dr" = (
+/obj/structure/train/carriage/not_train{
+	name = "Evergreen";
+	pixel_y = 0;
+	pixel_x = -64
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "Ds" = (
 /obj/structure/carpet,
 /obj/structure/bookcase/random/legends,
@@ -89641,7 +89641,7 @@ AC
 Rp
 PN
 kn
-qa
+PN
 PN
 kn
 kn
@@ -90044,7 +90044,7 @@ nK
 xI
 Rp
 PN
-PN
+Dr
 kn
 kn
 kn
