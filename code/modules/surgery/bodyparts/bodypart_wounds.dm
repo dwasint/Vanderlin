@@ -409,8 +409,6 @@
 	if(!bandage)
 		return FALSE
 	var/bleed_rate = get_bleed_rate(TRUE)
-	if(!bleed_rate)
-		return FALSE
 
 	var/bandage_health = 1
 	if(istype(bandage, /obj/item/natural/cloth))
@@ -428,6 +426,8 @@
 						else
 							cloth.reagents.remove_reagent(reagent.type, amount_to_transfer)
 
+		if(!bleed_rate)
+			return FALSE
 		if(owner)
 			owner.transfer_blood_to(cloth, bleed_rate * 0.1)
 
