@@ -2809,6 +2809,13 @@
 /obj/structure/fluff/statue/knight/interior/r,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/throne)
+"iX" = (
+/obj/structure/fake_machine/atm{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/shop)
 "iY" = (
 /obj/structure/fluff/walldeco/painting/castle{
 	pixel_x = -32
@@ -84795,7 +84802,7 @@ Co
 bG
 bG
 jC
-yo
+iX
 ru
 jb
 Ed
