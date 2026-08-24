@@ -6209,7 +6209,7 @@
 	},
 /obj/effect/mapping_helpers/access/keyset/town/tailor,
 /obj/effect/mapping_helpers/access/locker,
-/turf/closed/wall/mineral/wooddark,
+/turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
 "ug" = (
 /obj/structure/carpet/red,
