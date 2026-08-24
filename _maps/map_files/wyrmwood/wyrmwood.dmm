@@ -9965,6 +9965,16 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/cell)
+"Gv" = (
+/obj/machinery/light/fueled/smelter{
+	max_crucible_temperature = 1750;
+	name = "improved stone furnace"
+	},
+/obj/item/storage/crucible/random{
+	pixel_y = 12
+	},
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "Gx" = (
 /turf/open/water/river,
 /area/indoors/cave)
@@ -14779,9 +14789,12 @@
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/garrison)
 "Vz" = (
-/obj/machinery/light/fueled/smelter,
 /obj/item/storage/crucible/random{
 	pixel_y = 12
+	},
+/obj/machinery/light/fueled/smelter{
+	max_crucible_temperature = 1750;
+	name = "improved stone furnace"
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
@@ -81156,7 +81169,7 @@ Df
 FG
 De
 gQ
-Vz
+Gv
 Vz
 vf
 FG
