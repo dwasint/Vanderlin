@@ -9471,6 +9471,15 @@
 "ET" = (
 /turf/open/floor/grass/red,
 /area/outdoors/wilderness)
+"EU" = (
+/obj/structure/lever/wall{
+	pixel_y = 0;
+	pixel_x = -12;
+	redstone_id = "blacksmith-lock";
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "EV" = (
 /obj/item/reagent_containers/glass/bottle/manapot,
 /obj/item/reagent_containers/glass/bottle/healthpot,
@@ -14613,16 +14622,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
-"UV" = (
-/obj/structure/carpet/red,
-/obj/structure/lever/wall{
-	pixel_y = 0;
-	pixel_x = -12;
-	redstone_id = "blacksmith-lock";
-	dir = 1
-	},
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/smithy)
 "UW" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/ruinedwood/darker,
@@ -81774,8 +81773,8 @@ FG
 wK
 wK
 wK
-UV
-fC
+wK
+EU
 FG
 up
 FG
