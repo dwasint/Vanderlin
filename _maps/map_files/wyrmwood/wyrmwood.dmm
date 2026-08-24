@@ -2580,12 +2580,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
-"il" = (
-/obj/structure/chair/wood/alt{
-	dir = 8
-	},
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/smithy)
 "im" = (
 /obj/structure/table/wood/plain,
 /obj/item/reagent_containers/glass/cup/wooden{
@@ -3744,6 +3738,11 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"md" = (
+/obj/structure/carpet/cyan,
+/obj/structure/chair/bench/couch/left,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "me" = (
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -2
@@ -4182,6 +4181,11 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/naturalstone,
 /area/indoors/dungeon)
+"no" = (
+/obj/structure/mannequin/male,
+/obj/structure/carpet/red,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "np" = (
 /obj/structure/fluff/railing/tall{
 	dir = 1
@@ -4545,6 +4549,17 @@
 /obj/structure/wild_plant/nospread/poppy,
 /turf/open/floor/grass,
 /area/outdoors/exposed/church/graveyard)
+"ov" = (
+/obj/machinery/anvil,
+/obj/item/weapon/hammer/iron,
+/obj/item/flint,
+/obj/item/weapon/tongs,
+/obj/item/mould/ingot{
+	pixel_y = 37
+	},
+/obj/structure/rack/shelf,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "ow" = (
 /turf/open/floor/blocks,
 /area/indoors/town/vault)
@@ -4596,6 +4611,10 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
+"oG" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/closed/wall/mineral/wooddark,
+/area/indoors/town/smithy)
 "oH" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
@@ -5330,8 +5349,7 @@
 /area/outdoors/town)
 "rk" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
-/obj/structure/table/wood/plain,
-/turf/open/floor/ruinedwood/darker,
+/turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
 "rl" = (
 /obj/effect/decal/carpet/kover_darkred,
@@ -6095,10 +6113,6 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/outdoors/town/keep)
-"tS" = (
-/obj/structure/table/wood/plain,
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/smithy)
 "tT" = (
 /obj/structure/bed/inn/double,
 /obj/item/bedsheet/fabric_double,
@@ -6264,10 +6278,7 @@
 /area/outdoors/town)
 "ut" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
-/obj/machinery/anvil,
-/obj/item/weapon/hammer/iron,
-/obj/item/flint,
-/obj/item/weapon/tongs,
+/obj/item/bin/water/gross,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
 "uu" = (
@@ -6493,7 +6504,6 @@
 /turf/open/floor/wood,
 /area/indoors/town/keep/garrison)
 "vf" = (
-/obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/grindwheel,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
@@ -8282,6 +8292,11 @@
 "AP" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/outdoors/town)
+"AQ" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/obj/item/bin/water/gross,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/smithy)
 "AR" = (
 /mob/living/simple_animal/hostile/retaliate/bull,
 /turf/open/floor/grass/mixyel,
@@ -9024,12 +9039,6 @@
 "Dh" = (
 /turf/open/water/clean/under,
 /area/indoors/cave)
-"Di" = (
-/obj/effect/decal/carpet/kover_black{
-	dir = 4
-	},
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/smithy)
 "Dj" = (
 /obj/structure/table/wood/plain_alt,
 /obj/machinery/essence/combiner,
@@ -9425,7 +9434,9 @@
 /turf/open/floor/abyss_sand,
 /area/indoors/cave)
 "EM" = (
-/obj/structure/mannequin/male,
+/obj/structure/mannequin/male/female{
+	anchored = 1
+	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
 "EO" = (
@@ -10016,13 +10027,6 @@
 /obj/structure/hotspring/border,
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
-"GE" = (
-/obj/structure/fake_machine/atm{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/grass/cold,
-/area/outdoors/town)
 "GF" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /obj/structure/carpet/cyan,
@@ -10270,6 +10274,11 @@
 "Hx" = (
 /turf/open/floor/hay,
 /area/outdoors/town)
+"Hy" = (
+/obj/structure/mannequin/male/female,
+/obj/structure/carpet/red,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Hz" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/cobble,
@@ -10290,7 +10299,9 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
 "HC" = (
-/obj/structure/mannequin/male,
+/obj/structure/mannequin/male{
+	anchored = 1
+	},
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
@@ -11146,9 +11157,9 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
 "Kp" = (
-/obj/structure/carpet/red,
 /obj/machinery/light/fueled/wallfire/candle/r,
-/obj/structure/rack,
+/obj/structure/carpet/red,
+/obj/structure/mannequin/male,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
 "Kq" = (
@@ -11279,8 +11290,11 @@
 /turf/open/floor/grass/cold,
 /area/outdoors/wilderness)
 "KL" = (
-/obj/machinery/light/fueled/smelter,
 /obj/machinery/light/fueled/torchholder/r,
+/obj/machinery/light/fueled/smelter{
+	max_crucible_temperature = 1750;
+	name = "improved stone furnace"
+	},
 /turf/open/floor/cobblerock,
 /area/indoors/cave)
 "KM" = (
@@ -11779,6 +11793,10 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/clinic_large/apothecary)
+"Mg" = (
+/obj/structure/chair/bench/couch/right,
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "Mh" = (
 /obj/structure/fermentation_keg/water,
 /obj/machinery/light/fueled/torchholder/c,
@@ -12575,11 +12593,7 @@
 /area/outdoors/wilderness)
 "OA" = (
 /obj/structure/carpet/red,
-/obj/structure/lever/wall{
-	pixel_y = 0;
-	pixel_x = 12;
-	redstone_id = "blacksmith-lock"
-	},
+/obj/structure/rack/shelf/biggest,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
 "OB" = (
@@ -12703,8 +12717,8 @@
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
 "OY" = (
-/obj/structure/chair/bench/coucha,
-/turf/open/floor/ruinedwood/darker,
+/obj/structure/rack/shelf,
+/turf/open/floor/churchrough/pale,
 /area/indoors/town/smithy)
 "OZ" = (
 /obj/structure/carpet/green,
@@ -13542,8 +13556,11 @@
 /turf/closed/wall/mineral/craftstone,
 /area/under/town/basement)
 "RF" = (
-/obj/structure/mannequin/male/female,
-/obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/fake_machine/atm{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/structure/carpet/purple,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
 "RH" = (
@@ -14518,14 +14535,6 @@
 	},
 /turf/open/floor/churchrough,
 /area/indoors/town/keep/kitchen)
-"UI" = (
-/obj/item/mould/ingot{
-	pixel_y = 37
-	},
-/obj/structure/rack/shelf,
-/obj/item/bin/water/gross,
-/turf/open/floor/churchrough/pale,
-/area/indoors/town/smithy)
 "UJ" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/fishing/lure/meat,
@@ -14604,6 +14613,16 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
+"UV" = (
+/obj/structure/carpet/red,
+/obj/structure/lever/wall{
+	pixel_y = 0;
+	pixel_x = -12;
+	redstone_id = "blacksmith-lock";
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/darker,
+/area/indoors/town/smithy)
 "UW" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/ruinedwood/darker,
@@ -14763,10 +14782,6 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/dwarfin)
-"Vv" = (
-/obj/structure/mannequin/male/female,
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/smithy)
 "Vw" = (
 /obj/machinery/light/fueled/forge,
 /turf/open/floor/naturalstone,
@@ -14788,16 +14803,6 @@
 	},
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/garrison)
-"Vz" = (
-/obj/item/storage/crucible/random{
-	pixel_y = 12
-	},
-/obj/machinery/light/fueled/smelter{
-	max_crucible_temperature = 1750;
-	name = "improved stone furnace"
-	},
-/turf/open/floor/churchrough/pale,
-/area/indoors/town/smithy)
 "VB" = (
 /obj/structure/flora/grass/bush/wall,
 /obj/structure/flora/grass/bush/wall,
@@ -15125,7 +15130,10 @@
 /turf/open/floor/cobblerock,
 /area/indoors/cave)
 "Wx" = (
-/obj/machinery/light/fueled/smelter,
+/obj/machinery/light/fueled/smelter{
+	max_crucible_temperature = 1750;
+	name = "improved stone furnace"
+	},
 /turf/open/floor/cobblerock,
 /area/indoors/cave)
 "Wy" = (
@@ -15855,10 +15863,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
-"YQ" = (
-/obj/structure/chair/bench/coucha/r,
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/smithy)
 "YR" = (
 /obj/machinery/light/fueled/torchholder/l{
 	dir = 8
@@ -80357,7 +80361,7 @@ kn
 fT
 HT
 HT
-GE
+PN
 FG
 ut
 Cw
@@ -80561,10 +80565,10 @@ yN
 FG
 FG
 FG
-nw
+ov
 Cw
 Cw
-Qd
+Cw
 FG
 FG
 ic
@@ -80763,7 +80767,7 @@ fC
 HC
 EM
 FG
-UI
+nw
 Cw
 Cw
 Cw
@@ -81169,8 +81173,8 @@ Df
 FG
 De
 gQ
-Gv
-Vz
+Cw
+Cw
 vf
 FG
 FG
@@ -81367,16 +81371,16 @@ fC
 fC
 fC
 RF
-Vv
+ms
 FG
 Cw
 FG
-FG
-FG
-FG
-FG
+Cw
+Cw
+Cw
+Cw
 rk
-tS
+Qd
 FG
 kn
 rI
@@ -81574,11 +81578,11 @@ FG
 up
 FG
 OY
-fC
-fC
-fC
-il
-il
+Cw
+Cw
+Cw
+Cw
+Qd
 fk
 kn
 kn
@@ -81770,17 +81774,17 @@ FG
 wK
 wK
 wK
-wK
-Df
+UV
+fC
 FG
 up
 FG
-YQ
-Di
-bD
-fC
-fC
-fC
+Gv
+Gv
+AQ
+Gv
+Cw
+Qd
 FG
 kn
 sN
@@ -81971,18 +81975,18 @@ kn
 FG
 Kp
 OA
-wK
-wK
+no
+Hy
 bD
 fC
 fC
 FG
 FG
-FN
 FG
-fC
-fC
-fC
+FG
+FG
+FG
+FG
 FG
 kn
 sN
@@ -82180,12 +82184,12 @@ FG
 fC
 Iu
 Iu
+bD
+FN
 fC
 FG
-fC
-fC
-bD
-fk
+oG
+FG
 cD
 sN
 zL
@@ -82384,7 +82388,7 @@ Pe
 Pe
 Pe
 Pe
-fC
+bD
 Yj
 FG
 FG
@@ -122180,7 +122184,7 @@ FG
 FG
 FG
 FG
-nV
+md
 nV
 ig
 JG
@@ -122382,7 +122386,7 @@ wK
 ZI
 FG
 IP
-fC
+Mg
 fC
 FG
 JG
