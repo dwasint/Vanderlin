@@ -1,7 +1,7 @@
 /datum/attribute_holder/sheet/job/generic_deadite
 	raw_attribute_list = list(
 		/datum/attribute/skill/combat/wrestling = 20,
-		/datum/attribute/skill/combat/unarmed = 40,
+		/datum/attribute/skill/combat/unarmed = 30,
 		/datum/attribute/skill/misc/athletics = 30,
 	)
 
