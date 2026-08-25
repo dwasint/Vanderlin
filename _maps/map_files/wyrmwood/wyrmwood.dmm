@@ -617,6 +617,14 @@
 "bU" = (
 /turf/open/floor/cobble,
 /area/outdoors/town/keep)
+"bV" = (
+/obj/machinery/light/fueled/torchholder/hotspring/standing{
+	pixel_y = 0;
+	pixel_x = -11
+	},
+/obj/structure/closet/crate/chest/shippingcrate,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "bW" = (
 /obj/structure/flora/sakura{
 	name = "manabloom tree";
@@ -3225,6 +3233,7 @@
 /area/indoors/town/tavern)
 "kj" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
+/obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/generic)
 "kk" = (
@@ -84468,7 +84477,7 @@ XX
 XX
 kn
 kn
-Pn
+bV
 jM
 pf
 pf
