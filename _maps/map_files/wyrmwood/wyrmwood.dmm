@@ -251,6 +251,10 @@
 /obj/structure/window/stained/silver/alt,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"aS" = (
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/cobblerock,
+/area/indoors/town/warehouse)
 "aT" = (
 /obj/structure/carpet/blue,
 /obj/structure/table/wood/reinf_long{
@@ -1528,6 +1532,11 @@
 /obj/item/natural/feather,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
+"eI" = (
+/obj/structure/rack/shelf/biggest,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/cobblerock,
+/area/indoors/town/warehouse)
 "eJ" = (
 /obj/structure/fluff/railing/stonehedge{
 	dir = 4
@@ -1624,6 +1633,10 @@
 /obj/structure/fluff/statue/scare,
 /turf/open/floor/grass/mixyel,
 /area/outdoors/town)
+"fb" = (
+/obj/item/bin,
+/turf/open/floor/cobblerock,
+/area/indoors/town/warehouse)
 "fc" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/undershirt/formal,
@@ -3053,6 +3066,9 @@
 /obj/effect/mapping_helpers/access/keyset/town/clinic,
 /turf/open/floor/dirt/road,
 /area/indoors/town/clinic_large/apothecary)
+"jM" = (
+/turf/closed/wall/mineral/stone,
+/area/indoors/town/warehouse)
 "jN" = (
 /obj/machinery/light/fueled/oven/south{
 	pixel_y = -32
@@ -4771,6 +4787,9 @@
 /obj/structure/fermentation_keg/whitewine,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"pf" = (
+/turf/open/floor/cobblerock,
+/area/indoors/town/warehouse)
 "pg" = (
 /obj/structure/window/openclose/reinforced{
 	dir = 4
@@ -7999,10 +8018,12 @@
 /area/indoors/butchershop)
 "zR" = (
 /obj/structure/door{
-	name = "Material Stockpile"
+	name = "Warehouse"
 	},
+/obj/effect/mapping_helpers/access/keyset/manor/steward,
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/dirt/road,
-/area/indoors/town/warehouse/generic)
+/area/indoors/town/warehouse)
 "zS" = (
 /obj/structure/bed/shit,
 /turf/open/floor/hay,
@@ -8666,6 +8687,14 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/keep/garrison)
+"BT" = (
+/obj/effect/mapping_helpers/access/keyset/manor/steward,
+/obj/effect/mapping_helpers/access/locker,
+/obj/structure/door{
+	name = "Warehouse"
+	},
+/turf/open/floor/cobblerock,
+/area/indoors/town/warehouse)
 "BU" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -11187,6 +11216,12 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"Ko" = (
+/obj/structure/door{
+	name = "Material Stockpile"
+	},
+/turf/closed/wall/mineral/stone,
+/area/indoors/town/warehouse/generic)
 "Kp" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/carpet/red,
@@ -83626,12 +83661,12 @@ JG
 JG
 JG
 om
-fZ
-fZ
-fZ
-fZ
-kn
-kn
+jM
+jM
+jM
+jM
+jM
+sm
 kn
 DU
 rF
@@ -83828,11 +83863,11 @@ JG
 JG
 gg
 kn
-fZ
-Ta
-Vc
-fZ
-kn
+jM
+aS
+eI
+fb
+jM
 kn
 kn
 DU
@@ -84031,10 +84066,10 @@ JG
 om
 kn
 zR
-qh
-qh
-fZ
-sm
+pf
+pf
+pf
+jM
 kn
 kn
 DU
@@ -84232,11 +84267,11 @@ JG
 SY
 kn
 kn
-fZ
-qh
-Ta
-fZ
-kn
+jM
+pf
+pf
+pf
+jM
 kn
 kn
 ik
@@ -84434,11 +84469,11 @@ XX
 kn
 kn
 Pn
-fZ
-qh
-Ta
-fZ
-kn
+jM
+pf
+pf
+aS
+jM
 kn
 DU
 rF
@@ -84634,13 +84669,13 @@ kn
 kn
 kn
 kn
-Nf
-Nf
-fZ
-qh
-Ta
-fZ
 kn
+Nf
+jM
+pf
+pf
+aS
+jM
 kn
 DU
 Dk
@@ -84836,13 +84871,13 @@ Pe
 kn
 fZ
 fZ
+Ko
 fZ
-fZ
-fZ
-qh
-Ta
-fZ
-PN
+jM
+BT
+jM
+jM
+jM
 kn
 DU
 rF
@@ -85038,7 +85073,7 @@ Pe
 kn
 fZ
 Vc
-Ta
+qh
 Ta
 rq
 qh
@@ -124031,7 +124066,7 @@ Kr
 Qv
 bu
 cz
-JG
+dn
 JG
 JG
 JG
@@ -124233,7 +124268,7 @@ Kr
 Qv
 Qv
 NS
-JG
+dn
 JG
 JG
 JG
@@ -124435,7 +124470,7 @@ Kr
 Qv
 Qv
 NS
-JG
+dn
 JG
 JG
 JG
@@ -124637,7 +124672,7 @@ Kr
 Qv
 Qv
 NS
-JG
+dn
 JG
 JG
 JG
@@ -124839,7 +124874,7 @@ Kr
 Qv
 Qv
 NS
-JG
+dn
 JG
 JG
 PJ
@@ -125041,7 +125076,7 @@ Kr
 Qv
 Px
 NS
-JG
+dn
 JG
 JG
 PJ
@@ -125243,7 +125278,7 @@ YY
 rd
 YX
 gH
-JG
+dn
 JG
 JG
 PJ
