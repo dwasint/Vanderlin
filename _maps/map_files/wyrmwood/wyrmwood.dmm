@@ -1528,15 +1528,6 @@
 /obj/item/natural/feather,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/tavern)
-"eH" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1
-	},
-/obj/structure/industrial_lift/tram{
-	fake = 1
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/wilderness)
 "eJ" = (
 /obj/structure/fluff/railing/stonehedge{
 	dir = 4
@@ -13679,9 +13670,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 8
 	},
-/obj/structure/industrial_lift/tram{
-	fake = 1
-	},
+/obj/structure/industrial_lift/tram,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
 "RR" = (
@@ -14290,13 +14279,6 @@
 "TD" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/butchershop)
-"TE" = (
-/obj/structure/fluff/railing/wood,
-/obj/structure/industrial_lift/tram{
-	fake = 1
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/wilderness)
 "TF" = (
 /obj/structure/chair/stool/bar,
 /turf/open/floor/ruinedwood/darker,
@@ -97566,9 +97548,9 @@ rF
 rF
 Dk
 hk
-zB
-zB
-zB
+Oz
+Oz
+Oz
 hk
 Dk
 rF
@@ -97767,11 +97749,11 @@ rF
 rF
 Dk
 Dk
-eH
-zB
-zB
-zB
-TE
+KH
+Oz
+Oz
+Oz
+tx
 Dk
 Dk
 Dk
@@ -97970,9 +97952,9 @@ Dk
 Dk
 Dk
 hk
-zB
-zB
-zB
+Oz
+Oz
+Oz
 hk
 Dk
 Dk
