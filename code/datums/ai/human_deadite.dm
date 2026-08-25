@@ -48,6 +48,9 @@
 	UnregisterSignal(pawn, list(
 		COMSIG_MOB_MOVESPEED_UPDATED,
 	))
+	pawn.RemoveElement(/datum/element/interrupt_on_damage)
+	qdel(pawn.GetComponent(/datum/component/ai_inventory_manager))
+	qdel(pawn.GetComponent(/datum/component/combat_vocalizer))
 	return ..()
 
 /datum/ai_controller/human_deadite/proc/update_movespeed(mob/living/pawn)
