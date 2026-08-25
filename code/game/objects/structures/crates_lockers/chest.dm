@@ -117,7 +117,7 @@
 	open_sound = 'sound/foley/doors/windowup.ogg'
 	open_sound = 'sound/foley/doors/windowup.ogg'
 	close_sound = 'sound/foley/doors/shittyclose.ogg'
-	sellprice = 0
+	sellprice = 1
 
 /obj/structure/closet/crate/chest/shippingcrate/merchant
 	lock = /datum/lock/key/merchant
