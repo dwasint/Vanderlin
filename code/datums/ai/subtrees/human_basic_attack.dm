@@ -194,6 +194,8 @@
 /datum/ai_behavior/basic_melee_attack/human_npc/proc/_try_bite_attack(datum/ai_controller/controller, mob/living/carbon/human/pawn, mob/living/target)
 	if(!prob(HUMAN_NPC_DEADITE_BITE_CHANCE))
 		return FALSE
+	if(pawn.next_move > world.time)
+		return FALSE
 	if(!target.Adjacent(pawn))
 		return FALSE
 	if(pawn.incapacitated(IGNORE_GRAB))

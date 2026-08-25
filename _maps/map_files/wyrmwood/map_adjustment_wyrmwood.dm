@@ -29,5 +29,5 @@
 		/datum/job/adept,
 		/datum/job/orthodoxist,
 		/datum/job/mercenary,
-		/datum/job/tapster
+		/datum/job/tapster,
 	)
