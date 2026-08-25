@@ -212,7 +212,7 @@
 			return FALSE
 
 	pawn.face_atom(target)
-	pawn.changeNext_move(CLICK_CD_MELEE)
+	pawn.changeNext_move(CLICK_CD_FAST)
 	pawn.bite(target)
 
 	var/obj/item/grabbing/bite/bite_grab = pawn.get_item_by_slot(ITEM_SLOT_MOUTH)
@@ -224,7 +224,7 @@
 		qdel(bite_grab)
 
 	if(pawn.next_click < world.time)
-		pawn.next_click = world.time + (CLICK_CD_MELEE * (1 + rand(0.2, 0.4)))
+		pawn.next_click = world.time + (CLICK_CD_FAST * (1 + rand(0.2, 0.4)))
 		SEND_SIGNAL(pawn, COMSIG_MOB_BREAK_SNEAK)
 
 	return TRUE
