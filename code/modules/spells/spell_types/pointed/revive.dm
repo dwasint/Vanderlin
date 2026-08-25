@@ -55,11 +55,12 @@
 			reset_spell_cooldown()
 			return . | SPELL_CANCEL_CAST
 
-	if(has_world_trait(/datum/world_trait/wyrmwood))
-		return .
 	for(var/obj/structure/fluff/psycross/S in view(5, owner))
 		target_cross = S
 		break
+
+	if(has_world_trait(/datum/world_trait/wyrmwood))
+		return .
 
 	if(!target_cross)
 		to_chat(owner, span_warning("I need a holy cross."))
