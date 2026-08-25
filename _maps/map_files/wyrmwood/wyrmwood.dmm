@@ -11229,7 +11229,7 @@
 /obj/structure/door{
 	name = "Material Stockpile"
 	},
-/turf/closed/wall/mineral/stone,
+/turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/generic)
 "Kp" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
