@@ -13789,6 +13789,15 @@
 	dir = 4
 	},
 /obj/structure/carpet/navy,
+/obj/structure/closet/keyrack{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/manor/mage,
+/obj/item/key/mage,
+/obj/item/key/mage,
+/obj/item/key/mage,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/keep/magician)
 "Sa" = (
