@@ -166,6 +166,14 @@
 /obj/item/clothing/gloves/leather/phys,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large)
+"aD" = (
+/obj/structure/fake_machine/atm{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/effect/landmark/waypoint_target/inn,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "aE" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -846,6 +854,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/shop)
+"cG" = (
+/obj/effect/landmark/waypoint_target/merchant,
+/turf/open/floor/cobblerock,
+/area/outdoors/town)
 "cH" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -1322,6 +1334,14 @@
 /obj/structure/fluff/railing/tall,
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
+"dY" = (
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 8;
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "dZ" = (
 /obj/structure/door/red,
 /obj/effect/mapping_helpers/access/keyset/town/tower,
@@ -1747,6 +1767,12 @@
 "fv" = (
 /turf/open/floor/cobblerock,
 /area/indoors/town/warehouse/food)
+"fw" = (
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 2
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "fx" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -1930,6 +1956,18 @@
 "fZ" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/warehouse/generic)
+"ga" = (
+/obj/machinery/light/fueled/lanternpost/fixed{
+	pixel_x = -2;
+	dir = 2
+	},
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 2;
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "gb" = (
 /obj/structure/fluff/walldeco/skullspike,
 /turf/open/floor/grass/eora,
@@ -2608,6 +2646,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
+"il" = (
+/obj/effect/landmark/waypoint_target/tailor,
+/turf/open/floor/cobblerock,
+/area/outdoors/town)
 "im" = (
 /obj/structure/table/wood/plain,
 /obj/item/reagent_containers/glass/cup/wooden{
@@ -3239,6 +3281,10 @@
 "kk" = (
 /turf/closed/wall/mineral/wooddark,
 /area/indoors)
+"kl" = (
+/obj/effect/landmark/waypoint_target/mage,
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "km" = (
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/blocks,
@@ -5074,6 +5120,14 @@
 	dir = 8
 	},
 /area/indoors/cave)
+"qa" = (
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 1;
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "qb" = (
 /turf/open/floor/grass/mixyel,
 /area/outdoors/town)
@@ -6774,6 +6828,10 @@
 "vP" = (
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/garrison)
+"vQ" = (
+/obj/effect/landmark/waypoint_target/apoth,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "vS" = (
 /mob/living/carbon/human/species/human/northern/deranged_knight/zizo,
 /turf/open/floor/grass/eora,
@@ -8675,6 +8733,10 @@
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/smithy)
+"BP" = (
+/obj/effect/landmark/waypoint_target/smithy,
+/turf/open/floor/cobblerock,
+/area/outdoors/town)
 "BQ" = (
 /obj/structure/stairs/fancy/l{
 	dir = 1
@@ -9291,6 +9353,14 @@
 /obj/structure/hotspring/border/eight,
 /turf/open/floor/sand/sandstone,
 /area/outdoors/wilderness)
+"DW" = (
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 2;
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "DY" = (
 /obj/structure/rack/shelf/biggest,
 /turf/open/floor/churchrough/pale,
@@ -10140,6 +10210,9 @@
 /area/indoors/town)
 "GP" = (
 /obj/structure/fake_machine/scomm/r,
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 1
+	},
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
 "GQ" = (
@@ -10432,6 +10505,10 @@
 	dir = 8
 	},
 /area/indoors/cave)
+"HQ" = (
+/obj/effect/landmark/waypoint_target/clinic,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "HR" = (
 /obj/structure/fluff/railing/tall/palisade{
 	dir = 4
@@ -10686,6 +10763,14 @@
 /obj/item/fishing/lure/meat,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"IE" = (
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 2;
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "IF" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/natural/bundle/cloth{
@@ -11180,6 +11265,9 @@
 /area/outdoors/town)
 "Kf" = (
 /obj/structure/fake_machine/scomm/r,
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 2
+	},
 /turf/open/floor/grass/cold,
 /area/outdoors/town)
 "Kg" = (
@@ -11192,6 +11280,15 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"Kj" = (
+/obj/structure/fluff/celebration/flags,
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 2;
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "Kk" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/robe/astrata,
@@ -12306,6 +12403,11 @@
 /obj/structure/soil,
 /turf/open/floor/dirt,
 /area/outdoors/town)
+"Ny" = (
+/obj/structure/chair/stool,
+/obj/structure/fake_machine/scomm,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/clinic_large)
 "NA" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/structure/carpet/purple,
@@ -14455,6 +14557,18 @@
 	dir = 1
 	},
 /area/outdoors/wilderness)
+"Ue" = (
+/obj/machinery/light/fueled/torchholder/hotspring/standing{
+	pixel_y = 0;
+	pixel_x = 11
+	},
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 2;
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/grass/cold,
+/area/outdoors/town)
 "Ug" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -14777,6 +14891,14 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
+"Vl" = (
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 8;
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "Vm" = (
 /obj/structure/door/weak/bolt{
 	dir = 1
@@ -15210,6 +15332,12 @@
 /obj/structure/flora/tree/pine/dead,
 /turf/open/floor/grass/red,
 /area/outdoors/wilderness)
+"WA" = (
+/obj/structure/fluff/signage/waypoint/default{
+	dir = 2
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "WC" = (
 /obj/effect/decal/carpet/kover_black{
 	pixel_x = 18
@@ -63216,7 +63344,7 @@ dH
 XL
 dH
 dH
-kn
+WA
 HT
 HT
 HT
@@ -66222,7 +66350,7 @@ Xp
 Xp
 Xp
 BN
-hX
+Ue
 kn
 kn
 PN
@@ -67463,7 +67591,7 @@ HT
 HT
 HT
 kn
-kn
+vQ
 SN
 fj
 fj
@@ -73934,7 +74062,7 @@ HT
 PN
 PN
 PN
-PN
+fw
 PN
 YS
 OD
@@ -74138,7 +74266,7 @@ PN
 PN
 PN
 kn
-Wq
+aD
 ri
 uq
 yc
@@ -75799,7 +75927,7 @@ HT
 HT
 HT
 kn
-kn
+WA
 dH
 dH
 TR
@@ -76354,7 +76482,7 @@ Or
 hj
 PN
 PN
-PN
+DW
 HT
 HT
 HT
@@ -76522,7 +76650,7 @@ FQ
 ap
 ap
 zh
-kn
+IE
 PN
 PN
 kn
@@ -77402,7 +77530,7 @@ Pe
 Pe
 Pe
 Pe
-yT
+Kj
 PN
 PN
 kn
@@ -77578,7 +77706,7 @@ HT
 HT
 HT
 HT
-PN
+fw
 PN
 PN
 PN
@@ -78602,7 +78730,7 @@ Vj
 Vj
 Vj
 lp
-kn
+IE
 kn
 HT
 HT
@@ -79628,7 +79756,7 @@ Pe
 Pe
 Pe
 Pe
-kn
+IE
 kn
 kn
 kn
@@ -80798,7 +80926,7 @@ HT
 HT
 kn
 zf
-EP
+ga
 PN
 PN
 PN
@@ -80846,7 +80974,7 @@ Cw
 Cw
 Cw
 Nr
-Bd
+BP
 Bd
 KT
 kn
@@ -81202,7 +81330,7 @@ dr
 HT
 HT
 FM
-PN
+kl
 HT
 HT
 PN
@@ -81253,7 +81381,7 @@ FG
 FG
 FG
 FG
-kn
+Vl
 kn
 sN
 sN
@@ -81639,7 +81767,7 @@ ad
 ad
 lX
 cy
-kn
+Vl
 kn
 FG
 Mt
@@ -82036,7 +82164,7 @@ HT
 qR
 xf
 Bd
-Bd
+cG
 cy
 cy
 ad
@@ -82367,7 +82495,7 @@ Pe
 xa
 Nn
 Pe
-PN
+DW
 PN
 PN
 PN
@@ -82427,7 +82555,7 @@ Nh
 hA
 nL
 eY
-kn
+IE
 kn
 kn
 HT
@@ -82865,7 +82993,7 @@ Ez
 Ez
 jm
 Pe
-kn
+IE
 kn
 kn
 kn
@@ -83022,7 +83150,7 @@ hX
 kn
 kn
 kn
-kn
+HQ
 Wq
 kn
 kn
@@ -83227,7 +83355,7 @@ iw
 sH
 iw
 iw
-PN
+qa
 PN
 PN
 HT
@@ -83812,7 +83940,7 @@ LC
 LC
 LC
 LC
-PN
+dY
 kn
 Oa
 hA
@@ -84031,7 +84159,7 @@ iw
 lF
 La
 iw
-PL
+Ny
 Db
 Db
 sf
@@ -84261,7 +84389,7 @@ HT
 Yz
 mo
 Bd
-Bd
+il
 Bd
 VD
 ld
@@ -88705,7 +88833,7 @@ Pe
 Ua
 Ez
 Pe
-PN
+dY
 kn
 PN
 PN
