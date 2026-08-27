@@ -43,6 +43,7 @@
 		for(var/trait in blocked_world_traits)
 			if(has_world_trait(trait))
 				return FALSE
+
 	var/antag_amt = get_antag_amount()
 	var/list/candidates = get_candidates()
 	if(length(candidates) < antag_amt)

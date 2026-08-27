@@ -134,9 +134,6 @@
 		log_world("world_traits traits is not a list!")
 		return
 
-	for(var/item in world_traits)
-		SSmapping.add_world_trait(text2path(item), -1)
-
 	var/temp = json["space_ruin_levels"]
 	if (isnum(temp))
 		space_ruin_levels = temp
@@ -193,6 +190,10 @@
 	defaulted = FALSE
 	return TRUE
 #undef CHECK_EXISTS
+
+/datum/map_config/proc/post_load()
+	for(var/item in world_traits)
+		SSmapping.add_world_trait(text2path(item), -1)
 
 /datum/map_config/proc/GetFullMapPaths()
 	if (istext(map_file))
