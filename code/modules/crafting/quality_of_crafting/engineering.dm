@@ -219,6 +219,77 @@
 	output_amount = 2
 	craft_time = 5 SECONDS
 
+/datum/repeatable_crafting_recipe/engineering/pneumatic_tube
+	name = "pneumatic tube"
+	requirements = list(
+		/obj/item/ingot/tin = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/tin
+	starting_atom = /obj/item/weapon/hammer
+	output = /obj/item/rotation_contraption/pneumatic_tube
+	output_amount = 16
+	craft_time = 5 SECONDS
+
+/datum/repeatable_crafting_recipe/engineering/pneumatic_gearbox
+	name = "pneumatic gearbox"
+	requirements = list(
+		/obj/item/ingot/tin = 1,
+		/obj/item/grown/log/tree/small= 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/tin
+	starting_atom = /obj/item/weapon/hammer
+	output = /obj/item/rotation_contraption/pneumatic_gearbox
+	output_amount = 1
+	craft_time = 5 SECONDS
+
+/datum/repeatable_crafting_recipe/engineering/pneumatic_intake
+	name = "pneumatic intake"
+	requirements = list(
+		/obj/item/ingot/tin = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/tin
+	starting_atom = /obj/item/weapon/hammer
+	output = /obj/item/rotation_contraption/pneumatic_intake
+	output_amount = 2
+	craft_time = 5 SECONDS
+
+/datum/repeatable_crafting_recipe/engineering/pneumatic_sorter
+	name = "pneumatic sorter"
+	requirements = list(
+		/obj/item/ingot/tin = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/tin
+	starting_atom = /obj/item/weapon/hammer
+	output = /obj/item/pneumatic_sorter
+	output_amount = 1
+	craft_time = 5 SECONDS
+
+/datum/repeatable_crafting_recipe/engineering/pneumatic_puller
+	name = "pneumatic puller module"
+	requirements = list(
+		/obj/item/ingot/tin = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/tin
+	starting_atom = /obj/item/weapon/hammer
+	output = /obj/item/pneumatic_puller
+	output_amount = 1
+	craft_time = 5 SECONDS
+
 /datum/repeatable_crafting_recipe/engineering/pressurizer
 	name = "pressurizer"
 	requirements = list(

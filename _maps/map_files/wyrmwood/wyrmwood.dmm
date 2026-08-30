@@ -1,12 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/pneumatic_tube{
-	color = "#ff0000"
-	},
-/obj/structure/closet/crate/chest,
-/obj/machinery/pneumatic_intake,
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "ab" = (
 /obj/structure/closet/crate/crafted_closet/inn/south,
 /turf/open/floor/ruinedwood/spiral,
@@ -114,15 +106,6 @@
 	},
 /turf/open/floor/churchrough/purple,
 /area/indoors/town/keep/magician)
-"au" = (
-/obj/structure/pneumatic_tube{
-	color = "#EEEEEE"
-	},
-/obj/structure/pneumatic_tube{
-	color = "#ff0000"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "av" = (
 /obj/structure/fake_machine/mail{
 	mailtag = "Tailor"
@@ -776,13 +759,6 @@
 	},
 /turf/open/floor/church,
 /area/indoors/cave)
-"cp" = (
-/obj/structure/pneumatic_gearbox,
-/obj/structure/pneumatic_tube{
-	color = "#ff0000"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "cq" = (
 /obj/structure/fake_machine/scomm/l,
 /turf/open/floor/churchrough/pale,
@@ -1328,6 +1304,10 @@
 	dir = 4
 	},
 /area/outdoors/town/keep)
+"dL" = (
+/obj/item/pneumatic_puller,
+/turf/open/floor/cobble,
+/area/outdoors/town)
 "dO" = (
 /obj/machinery/light/fueled/wallfire/candle/weak/l,
 /turf/open/floor/naturalstone,
@@ -2652,6 +2632,13 @@
 /area/indoors/town/smithy)
 "ih" = (
 /obj/structure/fermentation_keg/water,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
+"ii" = (
+/obj/structure/fluff/railing/tall/palisade{
+	dir = 4
+	},
+/obj/structure/pneumatic_tube,
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
 "ij" = (
@@ -4843,10 +4830,6 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
-"pb" = (
-/obj/structure/channel_connector/furnace,
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "pc" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/naturalstone,
@@ -5443,10 +5426,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
-"rf" = (
-/obj/structure/metal_channel,
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "rg" = (
 /obj/effect/mob_spawn/corpse/human/damaged/half_drow,
 /turf/open/floor/hay,
@@ -6667,12 +6646,6 @@
 	},
 /turf/open/floor/blocks/stonered,
 /area/indoors/town/keep/magician)
-"vi" = (
-/obj/structure/pneumatic_tube{
-	color = "#ff0000"
-	},
-/turf/open/openspace,
-/area/outdoors/town)
 "vj" = (
 /obj/structure/fluff/walldeco/church/line,
 /obj/structure/rack/shelf/biggest,
@@ -7103,6 +7076,15 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
+"wD" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/obj/structure/fluff/signage{
+	name = "WARNING Dangerous tube."
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "wE" = (
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
@@ -7589,10 +7571,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
-"yh" = (
-/obj/item/pneumatic_sorter,
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "yi" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
@@ -8673,6 +8651,14 @@
 /obj/structure/hotspring/border/thirteen,
 /turf/open/floor/naturalstone,
 /area/outdoors/wilderness)
+"BC" = (
+/obj/machinery/light/fueled/torchholder/hotspring/standing{
+	pixel_y = 0;
+	pixel_x = 12
+	},
+/obj/structure/pneumatic_tube,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "BD" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/bottle/tiefling_wine{
@@ -9093,12 +9079,6 @@
 /obj/structure/closet/crate/drawer,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
-"CO" = (
-/obj/structure/pneumatic_tube{
-	color = "#EEEEEE"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "CP" = (
 /turf/open/floor/woodturned,
 /area/indoors/town/clinic_large/apothecary)
@@ -9481,6 +9461,12 @@
 /obj/structure/chair/stool,
 /turf/open/floor/tile/bath,
 /area/indoors/town/tavern)
+"El" = (
+/obj/structure/pneumatic_tube,
+/obj/machinery/pneumatic_intake,
+/obj/structure/closet/crate/chest/shippingcrate,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "Em" = (
 /obj/structure/rotation_piece{
 	dir = 4
@@ -10241,6 +10227,10 @@
 /obj/structure/hotspring/border/three,
 /turf/open/floor/dirt/road,
 /area/outdoors/wilderness)
+"GL" = (
+/obj/structure/pneumatic_tube,
+/turf/open/openspace,
+/area/outdoors/wilderness)
 "GM" = (
 /obj/structure/carpet/purple,
 /obj/structure/table/vtable/v2,
@@ -10594,6 +10584,10 @@
 /obj/structure/carpet/green,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large/apothecary)
+"HY" = (
+/obj/item/reagent_containers/food/snacks/bread,
+/turf/open/floor/cobble,
+/area/outdoors/town)
 "HZ" = (
 /obj/structure/closet/crate/chest/shippingcrate,
 /obj/item/reagent_containers/food/snacks/butter,
@@ -11487,6 +11481,10 @@
 /obj/structure/fluff/clutter/books,
 /turf/open/floor/tile,
 /area/indoors/town/shop)
+"KE" = (
+/obj/structure/pneumatic_tube,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "KF" = (
 /obj/effect/landmark/start/guardsman{
 	dir = 8
@@ -11916,14 +11914,6 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/soilsons)
-"LS" = (
-/obj/machinery/pneumatic_intake,
-/obj/structure/closet/crate/chest,
-/obj/structure/pneumatic_tube{
-	color = "#EEEEEE"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "LU" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -12278,6 +12268,10 @@
 /obj/structure/fake_machine/scomm,
 /turf/open/floor/hexstone,
 /area/indoors/town/clinic_large/apothecary)
+"MO" = (
+/obj/structure/pneumatic_tube,
+/turf/open/openspace,
+/area/outdoors/town)
 "MP" = (
 /obj/structure/fluff/railing/tall{
 	dir = 1
@@ -12303,12 +12297,6 @@
 "MS" = (
 /turf/closed/wall/mineral/wooddark,
 /area/indoors/town/keep/servant)
-"MT" = (
-/obj/structure/pneumatic_tube{
-	color = "#ff0000"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "MU" = (
 /obj/item/bin/crackers,
 /turf/open/floor/woodturned,
@@ -12877,13 +12865,6 @@
 /obj/structure/table/vtable,
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/throne)
-"OJ" = (
-/obj/structure/pneumatic_gearbox,
-/obj/structure/pneumatic_tube{
-	color = "#EEEEEE"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "OK" = (
 /obj/structure/table/wood/crafted,
 /obj/item/reagent_containers/glass/bowl,
@@ -12975,13 +12956,6 @@
 /obj/structure/closet/crate/chest/wickertrunk/red,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
-"Pc" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1
-	},
-/obj/item/bin,
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "Pd" = (
 /obj/machinery/essence/harvester,
 /turf/open/floor/grass/cold,
@@ -13259,9 +13233,8 @@
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
 "PZ" = (
-/obj/structure/rotation_piece{
-	dir = 2
-	},
+/obj/structure/pneumatic_tube,
+/obj/structure/pneumatic_gearbox,
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
 "Qa" = (
@@ -15171,6 +15144,13 @@
 /obj/structure/fake_machine/scomm/l,
 /turf/open/floor/cobble,
 /area/outdoors/town)
+"VU" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/obj/structure/pneumatic_tube,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "VW" = (
 /obj/structure/fluff/railing/tall{
 	dir = 1
@@ -15971,16 +15951,6 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/halls/w)
-"Yr" = (
-/obj/machinery/light/fueled/torchholder/hotspring/standing{
-	pixel_y = 0;
-	pixel_x = 12
-	},
-/obj/structure/pneumatic_tube{
-	color = "#ff0000"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "Ys" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/ruinedwood/darker,
@@ -78420,7 +78390,7 @@ Vj
 Ou
 kn
 kn
-kn
+tZ
 kn
 kn
 kn
@@ -90522,11 +90492,11 @@ PN
 HT
 IC
 HT
-om
-kn
-kn
-LS
-kn
+wD
+El
+KE
+KE
+KE
 Rp
 ZW
 nK
@@ -90724,11 +90694,11 @@ PN
 Zw
 HT
 HT
-Pc
-MT
-MT
-CO
-AS
+om
+kn
+kn
+kn
+BC
 Rp
 Rp
 HN
@@ -90925,11 +90895,11 @@ PN
 kn
 HT
 HT
-HT
+dL
 sm
 kn
-cp
-OJ
+kn
+kn
 PZ
 ia
 Oa
@@ -91127,17 +91097,17 @@ kn
 kn
 HT
 HT
-HT
+HY
 kn
-MT
-MT
-au
-MT
-aa
 kn
-XX
-XX
 kn
+kn
+KE
+KE
+KE
+VU
+VU
+KE
 Oa
 PN
 kn
@@ -91333,13 +91303,13 @@ HT
 om
 kn
 kn
-CO
 kn
-yh
 kn
-tZ
-rf
 kn
+kn
+kn
+kn
+KE
 kn
 PN
 kn
@@ -91533,15 +91503,15 @@ HT
 HT
 HT
 om
-Yr
-MT
-MT
-MT
-MT
-MT
-MT
-rf
+AS
 kn
+kn
+kn
+kn
+kn
+kn
+kn
+KE
 kn
 kn
 kn
@@ -91741,9 +91711,9 @@ XL
 dH
 dH
 sm
-MT
-rf
 kn
+kn
+KE
 AS
 kn
 kn
@@ -91943,9 +91913,9 @@ TR
 Nl
 dH
 dH
-pb
-rf
 kn
+kn
+KE
 Oa
 PN
 kn
@@ -92147,7 +92117,7 @@ TR
 dH
 kn
 kn
-kn
+KE
 Oa
 PN
 kn
@@ -92349,7 +92319,7 @@ TR
 rH
 kn
 kn
-kn
+KE
 Oa
 PN
 PN
@@ -92551,7 +92521,7 @@ TR
 dH
 iU
 iU
-iU
+ii
 mT
 kT
 kT
@@ -131528,9 +131498,9 @@ JG
 JG
 JG
 JG
-vi
-vi
-vi
+JG
+JG
+JG
 JG
 JG
 JG
@@ -131730,7 +131700,7 @@ JG
 JG
 JG
 JG
-vi
+JG
 JG
 JG
 JG
@@ -131932,9 +131902,9 @@ JG
 JG
 JG
 JG
-vi
-vi
-vi
+JG
+JG
+JG
 JG
 JG
 JG
@@ -132952,7 +132922,7 @@ WM
 WX
 PJ
 JG
-JG
+MO
 JG
 JG
 JG
@@ -133154,7 +133124,7 @@ dH
 dH
 PJ
 PJ
-PJ
+GL
 PJ
 PJ
 PJ
@@ -133356,7 +133326,7 @@ dH
 PJ
 PJ
 PJ
-PJ
+GL
 PJ
 PJ
 PJ

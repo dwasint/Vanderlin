@@ -1,4 +1,4 @@
-#define PNEUMATIC_BASE_DELAY 3 SECONDS // deciseconds per hop at 1 RPM
+#define PNEUMATIC_BASE_DELAY 2 SECONDS // deciseconds per hop at 1 RPM
 #define PNEUMATIC_MIN_DELAY 0.1 SECONDS // fastest possible hop delay
 #define PNEUMATIC_IDLE_DELAY 5 SECONDS// hop delay when network rpm is 0 (crawl)
 
@@ -6,6 +6,7 @@
 /atom/movable/proc/try_pneumatic_insert(list/atom/movable/things)
 	for(var/atom/movable/thing as anything in things)
 		if(SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, thing, null, TRUE, FALSE))
+			SEND_SIGNAL(src, COMSIG_ATOM_PSEUDO_INSERT)
 			things -= thing
 	return things
 
@@ -109,6 +110,10 @@
 	/// Associative list mapping direction strings ("1", "2", "4", "8") to type lists.
 	/// Used for junction sorting toward specific outgoing directions.
 	var/list/sort_filters
+	/// Indicates whether a puller module item is currently installed on this segment.
+	var/has_puller_module = FALSE
+	/// Limit on items ingested per suction cycle.
+	var/max_pull_amount = 10
 
 /obj/structure/pneumatic_tube/Initialize(mapload)
 	. = ..()
@@ -127,7 +132,104 @@
 	if(pneumatic_network)
 		pneumatic_network.remove_member(src)
 		pneumatic_network = null
+	if(has_puller_module)
+		has_puller_module = FALSE
+		for(var/obj/item/pneumatic_puller/puller in src)
+			puller.forceMove(get_turf(src))
 	return ..()
+
+/obj/structure/pneumatic_tube/proc/start_pull_loop()
+	if(!has_puller_module || QDELETED(src))
+		return
+
+	attempt_pull()
+	var/next_delay = pneumatic_network ? pneumatic_network.get_step_delay() : PNEUMATIC_IDLE_DELAY
+	addtimer(CALLBACK(src, PROC_REF(start_pull_loop)), next_delay)
+
+/// Returns turfs adjacent to open/unconnected sides of this pipe segment.
+/obj/structure/pneumatic_tube/proc/get_open_intake_turfs()
+	var/list/turf/open_turfs = list()
+	var/list/connected_dirs = list()
+
+	for(var/dir_string in connected)
+		if(connected[dir_string])
+			connected_dirs += text2num(dir_string)
+
+	// If the pipe is connected on 2 or more sides (or 0 sides), it has no open intake mouth.
+	if(length(connected_dirs) != 1)
+		return open_turfs
+
+	var/opp_dir = REVERSE_DIR(connected_dirs[1])
+	var/opp_str = "[opp_dir]"
+
+	if((opp_str in connected) && !connected[opp_str])
+		var/turf/target = get_step_multiz(src, opp_dir)
+		if(target && target != get_turf(src))
+			open_turfs += target
+
+	return open_turfs
+
+/obj/structure/pneumatic_tube/proc/attempt_pull()
+	if(!has_puller_module || QDELETED(src))
+		return
+
+	var/list/turf/target_turfs = get_open_intake_turfs()
+	if(!length(target_turfs))
+		return
+
+	var/list/atom/movable/items_to_pull = list()
+
+	for(var/turf/target_turf in target_turfs)
+		if(length(items_to_pull) >= max_pull_amount)
+			break
+
+		// 1. Pull from storage containers on target turf
+		for(var/atom/movable/container in target_turf)
+			if(!container.contents.len || container == src)
+				continue
+
+			var/list/atom/movable/contents_copy = container.contents.Copy()
+			for(var/atom/movable/thing in contents_copy)
+				if(length(items_to_pull) >= max_pull_amount)
+					break
+				if(!can_pull_item(thing))
+					continue
+
+				SEND_SIGNAL(container, COMSIG_TRY_STORAGE_TAKE, thing, target_turf)
+				if(thing.loc == target_turf)
+					items_to_pull += thing
+
+		// 2. Pull loose items directly on target turf
+		for(var/atom/movable/thing in target_turf)
+			if(length(items_to_pull) >= max_pull_amount)
+				break
+			if(thing.anchored || istype(thing, /obj/structure/pneumatic_tube_parcel))
+				continue
+			if(can_pull_item(thing) && !(thing in items_to_pull))
+				items_to_pull += thing
+
+	// 3. Package and insert into network
+	if(length(items_to_pull))
+		var/obj/structure/pneumatic_tube_parcel/parcel = new(get_turf(src))
+		parcel.load(items_to_pull)
+		receive_parcel(parcel, null)
+
+/// Checks if an item passes the direct sort filter (if one exists on this segment).
+/obj/structure/pneumatic_tube/proc/can_pull_item(atom/movable/thing)
+	if(QDELETED(thing) || thing.anchored)
+		return FALSE
+
+	// Direct sort filter check
+	if(length(sort_filter))
+		var/matched = FALSE
+		for(var/filter_type in sort_filter)
+			if(istype(thing, filter_type))
+				matched = TRUE
+				break
+		if(!matched)
+			return FALSE
+
+	return TRUE
 
 ///checks our cardinals for color matches
 /obj/structure/pneumatic_tube/proc/scan_connections()
@@ -390,6 +492,31 @@
 		return
 	filter_types -= choice
 	to_chat(user, span_notice("Removed [choice] from the sort filter."))
+
+/obj/item/pneumatic_puller
+	name = "pneumatic puller module"
+	desc = "An attachment for pneumatic tubes that continuously suctions items from the turf in front of the pipe."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "metalizer"
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/pneumatic_puller/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return ..()
+
+	if(istype(target, /obj/structure/pneumatic_tube))
+		var/obj/structure/pneumatic_tube/pipe = target
+		if(pipe.has_puller_module)
+			to_chat(user, span_warning("[pipe] already has a puller module attached."))
+			return
+
+		pipe.has_puller_module = TRUE
+		to_chat(user, span_notice("You attach [src] to [pipe]."))
+		user.transferItemToLoc(src, pipe)
+		pipe.start_pull_loop()
+		return
+
+	return ..()
 
 #undef PNEUMATIC_BASE_DELAY
 #undef PNEUMATIC_MIN_DELAY

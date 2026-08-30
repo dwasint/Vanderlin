@@ -806,7 +806,7 @@
 		//Being destroyed, just move to nullspace now (so it's not in contents for the icon update)
 		removed.moveToNullspace()
 	removed.update_appearance()
-	SEND_SIGNAL(parent, COMSIG_STORAGE_REMOVED, removed)
+	SEND_SIGNAL(parent, COMSIG_STORAGE_REMOVED, removed, new_location)
 	update_icon()
 	refresh_mob_views()
 	return TRUE
@@ -843,7 +843,7 @@
 	else
 		if(!istype(storage_master))
 			return
-		storage_master.hide_from(usr)
+		storage_master.close(usr)
 
 /atom/movable/screen/close/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
