@@ -93,14 +93,15 @@
 	name = "pneumatic tube"
 	desc = "An underfloor pneumatic tube. It only couples to pipes of a matching colour."
 	icon_state = "base"
-	icon = 'icons/roguetown/misc/pipes.dmi'
+	icon = 'icons/roguetown/misc/pneumatics.dmi'
 	anchored = TRUE
 	density = FALSE
 	obj_flags = CAN_BE_HIT
 	plane = FLOOR_PLANE
 	layer = DISPOSAL_PIPE_LAYER
 	max_integrity = 200
-	var/list/connected = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
+	/// Maps direction flags ("1", "2", "4", "8", "16", "32") to connection states.
+	var/list/connected = list("2" = 0, "1" = 0, "8" = 0, "4" = 0, "16" = 0, "32" = 0)
 	var/datum/pneumatic_network/pneumatic_network
 
 	/// Direct sort filter installed on this pipe segment.
@@ -130,15 +131,16 @@
 
 ///checks our cardinals for color matches
 /obj/structure/pneumatic_tube/proc/scan_connections()
-	for(var/direction in GLOB.cardinals)
-		var/turf/neighbor_turf = get_step(src, direction)
+	for(var/direction in GLOB.cardinals_multiz)
+		var/turf/neighbor_turf = get_step_multiz(src, direction)
 		for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
 			if(!istype(neighbor))
 				continue
 			if(neighbor.color != color)
 				continue
-			set_connection(direction)
-			neighbor.set_connection(REVERSE_DIR(direction))
+			var/dir_to = get_dir_multiz(src, neighbor)
+			set_connection(dir_to)
+			neighbor.set_connection(REVERSE_DIR(dir_to))
 			merge_networks(neighbor)
 
 /obj/structure/pneumatic_tube/proc/set_connection(dir)
@@ -152,10 +154,25 @@
 /obj/structure/pneumatic_tube/update_overlays()
 	. = ..()
 	var/new_icon_state = ""
+	var/vertical = FALSE
+
 	for(var/dir_string in connected)
-		if(connected[dir_string])
+		if(!connected[dir_string])
+			continue
+		var/dir_num = text2num(dir_string)
+		if(dir_num & ALL_CARDINALS)
 			new_icon_state += dir_string
-	icon_state = new_icon_state ? new_icon_state : "base"
+		else if(dir_num & UP)
+			. += "up"
+			vertical = TRUE
+		else if(dir_num & DOWN)
+			. += "down"
+			vertical = TRUE
+
+	if(new_icon_state)
+		icon_state = new_icon_state
+	else
+		icon_state = vertical ? "" : "base"
 
 ///returns a list of matched pipes
 /obj/structure/pneumatic_tube/proc/get_connected_pipes()
@@ -164,7 +181,7 @@
 		if(!connected[dir_string])
 			continue
 		var/dir_num = text2num(dir_string)
-		var/turf/neighbor_turf = get_step(src, dir_num)
+		var/turf/neighbor_turf = get_step_multiz(src, dir_num)
 		var/rev_dir_str = "[REVERSE_DIR(dir_num)]"
 		for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
 			if(neighbor.color == color && neighbor.connected[rev_dir_str])
@@ -175,7 +192,7 @@
 /obj/structure/pneumatic_tube/proc/get_pipe_at_dir(direction)
 	if(!direction || !connected["[direction]"])
 		return null
-	var/turf/neighbor_turf = get_step(src, direction)
+	var/turf/neighbor_turf = get_step_multiz(src, direction)
 	var/rev_dir_str = "[REVERSE_DIR(direction)]"
 	for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
 		if(neighbor.color == color && neighbor.connected[rev_dir_str])
@@ -217,7 +234,7 @@
 		if(QDELETED(parcel) || !length(parcel.contents))
 			break
 
-		var/dir_str = "[get_dir(src, next_pipe)]"
+		var/dir_str = "[get_dir_multiz(src, next_pipe)]"
 		var/list/active_filter = null
 
 		if(sort_filters && length(sort_filters[dir_str]))
@@ -263,9 +280,9 @@
 
 ///attempts to shove the parcel into objects or throws it
 /obj/structure/pneumatic_tube/proc/expel_parcel(obj/structure/pneumatic_tube_parcel/parcel, obj/structure/pneumatic_tube/came_from)
-	var/exit_dir = came_from ? get_dir(came_from, src) : (dir || SOUTH)
+	var/exit_dir = came_from ? get_dir_multiz(came_from, src) : (dir || SOUTH)
 	var/turf/exit_turf = get_turf(src)
-	var/turf/ahead_turf = get_step(exit_turf, exit_dir)
+	var/turf/ahead_turf = get_step_multiz(exit_turf, exit_dir)
 
 	var/list/atom/movable/leftover = parcel.contents.Copy()
 
@@ -315,8 +332,8 @@
 /obj/item/pneumatic_sorter
 	name = "pneumatic sorting module"
 	desc = "Click an item to add its type to the filter. Click a pneumatic tube to start configuring, then click a connected pipe to route filtered items there (or click the same pipe again to set a direct segment filter)."
-	icon = 'icons/obj/tools.dmi'
-	icon_state = "construction_bag"
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "metalizer"
 	w_class = WEIGHT_CLASS_SMALL
 	var/list/filter_types = list()
 	var/obj/structure/pneumatic_tube/configuring_pipe
