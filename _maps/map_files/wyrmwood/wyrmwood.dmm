@@ -5404,12 +5404,6 @@
 /obj/structure/hotspring/border/ten,
 /turf/open/floor/sand/desert,
 /area/outdoors/wilderness)
-"qV" = (
-/obj/structure/pneumatic_tube{
-	color = "#ff0000"
-	},
-/turf/open/floor/ruinedwood/darker,
-/area/outdoors/town)
 "qW" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 1
@@ -7595,6 +7589,10 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
+"yh" = (
+/obj/item/pneumatic_sorter,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "yi" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
@@ -91337,7 +91335,7 @@ kn
 kn
 CO
 kn
-kn
+yh
 kn
 tZ
 rf
@@ -130722,11 +130720,11 @@ JG
 JG
 JG
 JG
-vi
-vi
-vi
-qV
-qV
+JG
+JG
+JG
+Qv
+Qv
 Qv
 Qv
 Qv
@@ -130924,7 +130922,7 @@ JG
 JG
 JG
 JG
-vi
+JG
 JG
 JG
 JG
@@ -131126,7 +131124,7 @@ JG
 JG
 JG
 JG
-vi
+JG
 JG
 JG
 JG
@@ -131328,7 +131326,7 @@ JG
 JG
 JG
 JG
-vi
+JG
 JG
 JG
 JG
@@ -131732,7 +131730,7 @@ JG
 JG
 JG
 JG
-JG
+vi
 JG
 JG
 JG
@@ -131934,9 +131932,9 @@ JG
 JG
 JG
 JG
-JG
-JG
-JG
+vi
+vi
+vi
 JG
 JG
 JG

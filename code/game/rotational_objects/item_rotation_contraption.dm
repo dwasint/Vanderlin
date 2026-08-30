@@ -3,7 +3,7 @@
 	name = ""
 	desc = ""
 
-	w_class =  WEIGHT_CLASS_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	grid_height = 32
 	grid_width = 32
 	item_weight = 30 GRAMS
@@ -13,6 +13,7 @@
 	var/can_stack = TRUE
 	var/place_behavior
 	var/resize_factor
+	var/chosen_color
 
 /obj/item/rotation_contraption/get_carry_weight(atom/carrier)
 	. = item_weight * in_stack
@@ -23,13 +24,11 @@
 		set_type(placed_type)
 	if(can_stack)
 		for(var/obj/item/rotation_contraption/contraption in loc)
-			if(QDELETED(contraption))
-				continue
-			if(contraption == src)
+			if(QDELETED(contraption) || contraption == src)
 				continue
 			if(!istype(contraption, src.type))
 				continue
-			if(placed_type != contraption.placed_type)
+			if(placed_type != contraption.placed_type || chosen_color != contraption.chosen_color)
 				continue
 
 			in_stack += contraption.in_stack
@@ -67,13 +66,47 @@
 	desc = initial(parent_type.desc)
 	placed_type = parent_type
 
+/obj/item/rotation_contraption/attack_self_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(ispath(placed_type, /obj/structure/pneumatic_tube))
+		select_pneumatic_color(user)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/rotation_contraption/proc/select_pneumatic_color(mob/user)
+	var/static/list/pneumatic_color_options = list(
+		"No Color (Uncolored)" = null,
+		"Red" = "#810202",
+		"Blue" = "#041e50",
+		"Green" = "#006100",
+		"Yellow" = "#866c03",
+		"Purple" = "#450366",
+		"Orange" = "#925612",
+		"White" = "#ffffff",
+		"Uncolored" = null,
+	)
+
+	var/choice = tgui_input_list(user, "Select Pneumatic Component Color", "Pneumatic Color", pneumatic_color_options)
+	if(!choice || !user.can_perform_action(src))
+		return
+
+	chosen_color = pneumatic_color_options[choice]
+	color = chosen_color
+	to_chat(user, span_notice("Set [src] color setting to [choice]."))
+	update_appearance(UPDATE_NAME)
+	var/matrix/resize = matrix()
+	resize.Scale(0.5, 0.5)
+	resize.Turn(45)
+	transform = resize
+	if(resize_factor)
+		transform = transform.Scale(resize_factor, resize_factor)
+
 /obj/item/rotation_contraption/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(istype(interacting_with, /obj/item/rotation_contraption))
 		if(!can_stack)
 			return
 
 		var/obj/item/rotation_contraption/rotator = interacting_with
-		if(placed_type != rotator.placed_type)
+		if(placed_type != rotator.placed_type || chosen_color != rotator.chosen_color)
 			return
 
 		in_stack += rotator.in_stack
@@ -85,8 +118,33 @@
 
 	var/turf/T = get_turf(interacting_with)
 
+	// Pneumatic tube placement & stacking rules
+	if(ispath(placed_type, /obj/structure/pneumatic_tube))
+		for(var/obj/structure/pneumatic_tube/existing_pipe in T)
+			// Uncolored pipes cannot stack with anything from either side
+			if(!existing_pipe.color || !chosen_color)
+				return ITEM_INTERACT_BLOCKING
+			// Same color pipes cannot stack on top of each other
+			if(existing_pipe.color == chosen_color)
+				return ITEM_INTERACT_BLOCKING
+
+	// Intake & Gearbox placement onto pneumatic tubes
+	if(place_behavior == PLACE_ON_PNEUMATIC_TUBE)
+		var/obj/structure/pneumatic_tube/target_tube = null
+		for(var/obj/structure/pneumatic_tube/pipe in T)
+			if((!pipe.color && !chosen_color) || (pipe.color == chosen_color))
+				target_tube = pipe
+				break
+		if(!target_tube)
+			balloon_alert(user, "requires matching pneumatic tube!")
+			return ITEM_INTERACT_BLOCKING
+
+		for(var/obj/structure/existing_struct in T)
+			if(istype(existing_struct, placed_type))
+				return ITEM_INTERACT_BLOCKING
+
 	for(var/obj/structure/structure in T)
-		if(structure.rotation_structure && !ispath(placed_type, /obj/structure/water_pipe))
+		if(structure.rotation_structure && !ispath(placed_type, /obj/structure/water_pipe) && !ispath(placed_type, /obj/structure/pneumatic_tube) && place_behavior != PLACE_ON_PNEUMATIC_TUBE)
 			return ITEM_INTERACT_BLOCKING
 
 		if(structure.accepts_water_input && !ispath(placed_type, /obj/structure/rotation_piece))
@@ -95,7 +153,7 @@
 			if((place_behavior == PLACE_ON_PIPE) && !istype(structure, /obj/structure/water_pipe))
 				return ITEM_INTERACT_BLOCKING
 
-		if(istype(structure, placed_type))
+		if(istype(structure, placed_type) && !ispath(placed_type, /obj/structure/pneumatic_tube))
 			return ITEM_INTERACT_BLOCKING
 
 	if(place_behavior == PLACE_ON_PIPE)
@@ -107,6 +165,16 @@
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/structure/structure = new placed_type(T)
+	if(chosen_color)
+		structure.color = chosen_color
+
+	if(istype(structure, /obj/structure/pneumatic_tube))
+		var/obj/structure/pneumatic_tube/pipe = structure
+		pipe.scan_connections()
+	else if(istype(structure, /obj/structure/pneumatic_gearbox))
+		var/obj/structure/pneumatic_gearbox/gearbox = structure
+		gearbox.relink()
+
 	if(place_behavior == PLACE_TOWARDS_USER)
 		if(get_turf(user) == T)
 			structure.setDir(REVERSE_DIR(user.dir))
@@ -263,3 +331,42 @@
 /obj/item/rotation_contraption/roller/get_mechanics_examine(mob/user)
 	. = ..()
 	. += span_info("Rollers move loose items and mobs in their facing direction while powered.")
+
+/obj/item/rotation_contraption/pneumatic_tube
+	name = "pneumatic tube item"
+	desc = "An underfloor pneumatic tube segment."
+	placed_type = /obj/structure/pneumatic_tube
+	item_weight = 100 GRAMS
+
+/obj/item/rotation_contraption/pneumatic_tube/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Pneumatic tubes use rotational force to move batches of items and insert them into containers, or shooting them out with force.")
+	. += span_info("Use Right-click to change its color before placing!")
+
+/obj/item/rotation_contraption/pneumatic_intake
+	name = "pneumatic intake item"
+	desc = "A floor-level intake for pneumatic tubes. Must be placed over a pneumatic tube of matching color."
+	placed_type = /obj/machinery/pneumatic_intake
+	place_behavior = PLACE_ON_PNEUMATIC_TUBE
+	can_stack = FALSE
+	grid_height = 64
+	grid_width = 64
+	item_weight = 1.8 KILOGRAMS
+
+/obj/item/rotation_contraption/pneumatic_intake/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Pneumatic intakes sit ontop of tubes and suck items out of closed chests.")
+
+/obj/item/rotation_contraption/pneumatic_gearbox
+	name = "pneumatic gearbox item"
+	desc = "Converts mechanical rotation to drive pneumatic networks."
+	placed_type = /obj/structure/pneumatic_gearbox
+	place_behavior = PLACE_ON_PNEUMATIC_TUBE
+	can_stack = FALSE
+	grid_height = 64
+	grid_width = 64
+	item_weight = 2.2 KILOGRAMS
+
+/obj/item/rotation_contraption/pneumatic_gearbox/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Pneumatic gearboxes sit ontop of a tube and provide the suction needed to move items.")

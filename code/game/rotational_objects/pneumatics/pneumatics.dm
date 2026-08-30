@@ -1,4 +1,4 @@
-#define PNEUMATIC_BASE_DELAY 2 SECONDS // deciseconds per hop at 1 RPM
+#define PNEUMATIC_BASE_DELAY 3 SECONDS // deciseconds per hop at 1 RPM
 #define PNEUMATIC_MIN_DELAY 0.1 SECONDS // fastest possible hop delay
 #define PNEUMATIC_IDLE_DELAY 5 SECONDS// hop delay when network rpm is 0 (crawl)
 
@@ -80,7 +80,7 @@
 /datum/pneumatic_network/proc/get_step_delay()
 	if(rpm <= 0)
 		return PNEUMATIC_IDLE_DELAY
-	return max(PNEUMATIC_MIN_DELAY, round(PNEUMATIC_BASE_DELAY / rpm))
+	return max(PNEUMATIC_MIN_DELAY, round(PNEUMATIC_BASE_DELAY / (rpm * 0.1)))
 
 /datum/pneumatic_network/Destroy()
 	for(var/obj/structure/pneumatic_tube/pipe as anything in members)
