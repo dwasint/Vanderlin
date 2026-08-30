@@ -97,7 +97,7 @@
 	icon = 'icons/roguetown/misc/pneumatics.dmi'
 	anchored = TRUE
 	density = FALSE
-	obj_flags = CAN_BE_HIT
+	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	plane = FLOOR_PLANE
 	layer = DISPOSAL_PIPE_LAYER
 	max_integrity = 200
