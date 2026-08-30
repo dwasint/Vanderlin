@@ -1,0 +1,379 @@
+#define PNEUMATIC_BASE_DELAY 2 SECONDS // deciseconds per hop at 1 RPM
+#define PNEUMATIC_MIN_DELAY 0.1 SECONDS // fastest possible hop delay
+#define PNEUMATIC_IDLE_DELAY 5 SECONDS// hop delay when network rpm is 0 (crawl)
+
+//generic stub proc, for the most part you want to override this. Tries to insert items into storage if possible.
+/atom/movable/proc/try_pneumatic_insert(list/atom/movable/things)
+	for(var/atom/movable/thing as anything in things)
+		if(SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, thing, null, TRUE, FALSE))
+			things -= thing
+	return things
+
+/datum/pneumatic_network
+	var/list/obj/structure/pneumatic_tube/members = list()
+	var/rpm = 0
+
+/datum/pneumatic_network/proc/add_member(obj/structure/pneumatic_tube/pipe)
+	if(!pipe)
+		return
+	if(pipe.pneumatic_network && pipe.pneumatic_network != src)
+		pipe.pneumatic_network.members -= pipe
+	members |= pipe
+	pipe.pneumatic_network = src
+
+/datum/pneumatic_network/proc/remove_member(obj/structure/pneumatic_tube/pipe)
+	members -= pipe
+	if(pipe && pipe.pneumatic_network == src)
+		pipe.pneumatic_network = null
+	if(!length(members))
+		qdel(src)
+		return
+	rebuild()
+
+/datum/pneumatic_network/proc/rebuild()
+	if(!length(members))
+		qdel(src)
+		return
+
+	var/list/obj/structure/pneumatic_tube/unvisited = members.Copy()
+	var/is_first_cluster = TRUE
+
+	while(length(unvisited))
+		var/obj/structure/pneumatic_tube/start_pipe = unvisited[1]
+		unvisited -= start_pipe
+
+		var/list/obj/structure/pneumatic_tube/cluster = list(start_pipe)
+		var/list/obj/structure/pneumatic_tube/queue = list(start_pipe)
+
+		while(length(queue))
+			var/obj/structure/pneumatic_tube/curr = queue[length(queue)]
+			queue.len--
+
+			for(var/obj/structure/pneumatic_tube/neighbor in curr.get_connected_pipes())
+				if(neighbor in unvisited)
+					unvisited -= neighbor
+					cluster += neighbor
+					queue += neighbor
+
+		if(is_first_cluster)
+			members = cluster
+			for(var/obj/structure/pneumatic_tube/pipe in cluster)
+				pipe.pneumatic_network = src
+			is_first_cluster = FALSE
+		else
+			var/datum/pneumatic_network/new_net = new()
+			new_net.rpm = rpm
+			for(var/obj/structure/pneumatic_tube/pipe in cluster)
+				new_net.add_member(pipe)
+
+/datum/pneumatic_network/proc/merge(datum/pneumatic_network/other)
+	if(!other || other == src)
+		return
+	for(var/obj/structure/pneumatic_tube/pipe as anything in other.members)
+		add_member(pipe)
+	other.members.Cut()
+	qdel(other)
+
+/datum/pneumatic_network/proc/set_rpm(new_rpm)
+	rpm = max(0, new_rpm)
+
+/datum/pneumatic_network/proc/get_step_delay()
+	if(rpm <= 0)
+		return PNEUMATIC_IDLE_DELAY
+	return max(PNEUMATIC_MIN_DELAY, round(PNEUMATIC_BASE_DELAY / rpm))
+
+/datum/pneumatic_network/Destroy()
+	for(var/obj/structure/pneumatic_tube/pipe as anything in members)
+		if(pipe.pneumatic_network == src)
+			pipe.pneumatic_network = null
+	members = null
+	return ..()
+
+/obj/structure/pneumatic_tube
+	name = "pneumatic tube"
+	desc = "An underfloor pneumatic tube. It only couples to pipes of a matching colour."
+	icon_state = "base"
+	icon = 'icons/roguetown/misc/pipes.dmi'
+	anchored = TRUE
+	density = FALSE
+	obj_flags = CAN_BE_HIT
+	plane = FLOOR_PLANE
+	layer = DISPOSAL_PIPE_LAYER
+	max_integrity = 200
+	var/list/connected = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
+	var/datum/pneumatic_network/pneumatic_network
+
+	/// Direct sort filter installed on this pipe segment.
+	var/list/sort_filter
+	/// Associative list mapping direction strings ("1", "2", "4", "8") to type lists.
+	/// Used for junction sorting toward specific outgoing directions.
+	var/list/sort_filters
+
+/obj/structure/pneumatic_tube/Initialize(mapload)
+	. = ..()
+	scan_connections()
+
+/obj/structure/pneumatic_tube/Destroy()
+	var/turf/old_turf = get_turf(src)
+	for(var/direction in GLOB.cardinals)
+		var/turf/neighbor_turf = get_step(old_turf, direction)
+		for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
+			if(!istype(neighbor))
+				continue
+			if(neighbor.color == color)
+				neighbor.unset_connection(REVERSE_DIR(direction))
+	connected = null
+	if(pneumatic_network)
+		pneumatic_network.remove_member(src)
+		pneumatic_network = null
+	return ..()
+
+///checks our cardinals for color matches
+/obj/structure/pneumatic_tube/proc/scan_connections()
+	for(var/direction in GLOB.cardinals)
+		var/turf/neighbor_turf = get_step(src, direction)
+		for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
+			if(!istype(neighbor))
+				continue
+			if(neighbor.color != color)
+				continue
+			set_connection(direction)
+			neighbor.set_connection(REVERSE_DIR(direction))
+			merge_networks(neighbor)
+
+/obj/structure/pneumatic_tube/proc/set_connection(dir)
+	connected["[dir]"] = 1
+	update_appearance(UPDATE_OVERLAYS)
+
+/obj/structure/pneumatic_tube/proc/unset_connection(dir)
+	connected["[dir]"] = 0
+	update_appearance(UPDATE_OVERLAYS)
+
+/obj/structure/pneumatic_tube/update_overlays()
+	. = ..()
+	var/new_icon_state = ""
+	for(var/dir_string in connected)
+		if(connected[dir_string])
+			new_icon_state += dir_string
+	icon_state = new_icon_state ? new_icon_state : "base"
+
+///returns a list of matched pipes
+/obj/structure/pneumatic_tube/proc/get_connected_pipes()
+	var/list/result = list()
+	for(var/dir_string in connected)
+		if(!connected[dir_string])
+			continue
+		var/dir_num = text2num(dir_string)
+		var/turf/neighbor_turf = get_step(src, dir_num)
+		var/rev_dir_str = "[REVERSE_DIR(dir_num)]"
+		for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
+			if(neighbor.color == color && neighbor.connected[rev_dir_str])
+				result += neighbor
+				break
+	return result
+
+/obj/structure/pneumatic_tube/proc/get_pipe_at_dir(direction)
+	if(!direction || !connected["[direction]"])
+		return null
+	var/turf/neighbor_turf = get_step(src, direction)
+	var/rev_dir_str = "[REVERSE_DIR(direction)]"
+	for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
+		if(neighbor.color == color && neighbor.connected[rev_dir_str])
+			return neighbor
+	return null
+
+/obj/structure/pneumatic_tube/proc/set_sort_filter_for_dir(dir, list/types)
+	if(!sort_filters)
+		sort_filters = list()
+	sort_filters["[dir]"] = types ? types.Copy() : null
+
+/obj/structure/pneumatic_tube/proc/merge_networks(obj/structure/pneumatic_tube/other)
+	if(!pneumatic_network)
+		pneumatic_network = new /datum/pneumatic_network()
+		pneumatic_network.add_member(src)
+	if(!other.pneumatic_network)
+		pneumatic_network.add_member(other)
+	else
+		pneumatic_network.merge(other.pneumatic_network)
+
+///Handles the dispatch of a parcel, filters split parcels if possible.
+/obj/structure/pneumatic_tube/proc/receive_parcel(obj/structure/pneumatic_tube_parcel/parcel, obj/structure/pneumatic_tube/came_from)
+	if(QDELETED(parcel))
+		return
+	parcel.forceMove(src)
+	parcel.current_pipe = src
+
+	var/list/obj/structure/pneumatic_tube/candidate_pipes = get_connected_pipes()
+	if(came_from)
+		candidate_pipes -= came_from
+
+	if(!length(candidate_pipes))
+		expel_parcel(parcel, came_from)
+		return
+
+	var/list/obj/structure/pneumatic_tube/unfiltered_candidates = list()
+
+	for(var/obj/structure/pneumatic_tube/next_pipe as anything in candidate_pipes)
+		if(QDELETED(parcel) || !length(parcel.contents))
+			break
+
+		var/dir_str = "[get_dir(src, next_pipe)]"
+		var/list/active_filter = null
+
+		if(sort_filters && length(sort_filters[dir_str]))
+			active_filter = sort_filters[dir_str]
+		else if(length(next_pipe.sort_filter))
+			active_filter = next_pipe.sort_filter
+
+		if(length(active_filter))
+			var/list/matched_items = list()
+			for(var/atom/movable/thing as anything in parcel.contents)
+				for(var/filter_type in active_filter)
+					if(istype(thing, filter_type))
+						matched_items += thing
+						break
+
+			if(length(matched_items))
+				var/obj/structure/pneumatic_tube_parcel/sorted_parcel = new(loc)
+				sorted_parcel.load(matched_items)
+				var/sort_delay = pneumatic_network ? pneumatic_network.get_step_delay() : PNEUMATIC_IDLE_DELAY
+				addtimer(CALLBACK(next_pipe, PROC_REF(receive_parcel), sorted_parcel, src), sort_delay)
+		else
+			unfiltered_candidates += next_pipe
+
+	if(QDELETED(parcel))
+		return
+
+	if(!length(parcel.contents))
+		qdel(parcel)
+		return
+
+	//random sort for leftover
+	var/obj/structure/pneumatic_tube/chosen_next = null
+	if(length(unfiltered_candidates))
+		chosen_next = pick(unfiltered_candidates)
+	else if(length(candidate_pipes))
+		chosen_next = pick(candidate_pipes)
+
+	if(chosen_next)
+		var/delay = pneumatic_network ? pneumatic_network.get_step_delay() : PNEUMATIC_IDLE_DELAY
+		addtimer(CALLBACK(chosen_next, PROC_REF(receive_parcel), parcel, src), delay)
+	else
+		expel_parcel(parcel, came_from)
+
+///attempts to shove the parcel into objects or throws it
+/obj/structure/pneumatic_tube/proc/expel_parcel(obj/structure/pneumatic_tube_parcel/parcel, obj/structure/pneumatic_tube/came_from)
+	var/exit_dir = came_from ? get_dir(came_from, src) : (dir || SOUTH)
+	var/turf/exit_turf = get_turf(src)
+	var/turf/ahead_turf = get_step(exit_turf, exit_dir)
+
+	var/list/atom/movable/leftover = parcel.contents.Copy()
+
+	if(ahead_turf)
+		for(var/obj/structure in ahead_turf)
+			if(!length(leftover))
+				break
+			leftover = structure.try_pneumatic_insert(leftover)
+
+	if(length(leftover))
+		var/rpm = pneumatic_network ? pneumatic_network.rpm : 0
+		var/throw_range = max(0, round(rpm / 10))
+		var/throw_speed = max(1, round(rpm / 20))
+		var/stagger_delay = pneumatic_network ? pneumatic_network.get_step_delay() : PNEUMATIC_IDLE_DELAY
+
+		var/delay_acc = 0
+		for(var/atom/movable/thing as anything in leftover)
+			thing.forceMove(src)
+			if(delay_acc == 0)
+				expel_single_item(thing, exit_turf, ahead_turf, exit_dir, throw_range, throw_speed)
+			else
+				addtimer(CALLBACK(src, PROC_REF(expel_single_item), thing, exit_turf, ahead_turf, exit_dir, throw_range, throw_speed), delay_acc)
+			delay_acc += stagger_delay
+
+	qdel(parcel)
+
+/// Expels and throws a single item from the tube after a stagger delay.
+/obj/structure/pneumatic_tube/proc/expel_single_item(atom/movable/thing, turf/exit_turf, turf/ahead_turf, exit_dir, throw_range, throw_speed)
+	if(QDELETED(thing))
+		return
+	thing.forceMove(exit_turf)
+	if(throw_range > 0 && ahead_turf)
+		thing.safe_throw_at(get_edge_target_turf(ahead_turf, exit_dir), throw_range, throw_speed)
+
+/obj/structure/pneumatic_tube_parcel
+	name = "pneumatic parcel"
+	invisibility = INVISIBILITY_MAXIMUM
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	anchored = TRUE
+	density = FALSE
+	var/obj/structure/pneumatic_tube/current_pipe
+
+/obj/structure/pneumatic_tube_parcel/proc/load(list/atom/movable/things)
+	for(var/atom/movable/thing as anything in things)
+		thing.forceMove(src)
+
+/obj/item/pneumatic_sorter
+	name = "pneumatic sorting module"
+	desc = "Click an item to add its type to the filter. Click a pneumatic tube to start configuring, then click a connected pipe to route filtered items there (or click the same pipe again to set a direct segment filter)."
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "construction_bag"
+	w_class = WEIGHT_CLASS_SMALL
+	var/list/filter_types = list()
+	var/obj/structure/pneumatic_tube/configuring_pipe
+
+/obj/item/pneumatic_sorter/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return ..()
+
+	if(istype(target, /obj/structure/pneumatic_tube))
+		var/obj/structure/pneumatic_tube/pipe = target
+		if(configuring_pipe)
+			if(pipe == configuring_pipe)
+				pipe.sort_filter = filter_types.Copy()
+				to_chat(user, span_notice("Installed direct sort filter on [pipe]."))
+				configuring_pipe = null
+				return
+
+			if(pipe in configuring_pipe.get_connected_pipes())
+				var/dir_to_target = get_dir(configuring_pipe, pipe)
+				configuring_pipe.set_sort_filter_for_dir(dir_to_target, filter_types)
+				to_chat(user, span_notice("[configuring_pipe] will now route filtered items toward [pipe]."))
+				configuring_pipe = null
+				return
+			else
+				to_chat(user, span_warning("[pipe] is not connected to [configuring_pipe]. Resetting selection."))
+				configuring_pipe = null
+				return
+
+		if(!length(filter_types))
+			to_chat(user, span_warning("The sort filter is empty."))
+			return
+
+		configuring_pipe = pipe
+		to_chat(user, span_notice("Sort filter selected for [pipe]. Click a connected pipe to route filtered items, or click [pipe] again to set a direct segment filter."))
+		return
+
+	if(isitem(target) && target != src)
+		var/type_to_add = target.type
+		if(type_to_add in filter_types)
+			to_chat(user, span_warning("[target] is already in the sort filter."))
+		else
+			filter_types += type_to_add
+			to_chat(user, span_notice("Added [target] to the sort filter."))
+		return
+
+	return ..()
+
+/obj/item/pneumatic_sorter/attack_self(mob/user)
+	if(!length(filter_types))
+		to_chat(user, span_notice("The sort filter is empty."))
+		return
+	var/choice = tgui_input_list(user, "Select an entry to remove.", "Conveyor Sorter", filter_types)
+	if(!choice || !(choice in filter_types))
+		return
+	filter_types -= choice
+	to_chat(user, span_notice("Removed [choice] from the sort filter."))
+
+#undef PNEUMATIC_BASE_DELAY
+#undef PNEUMATIC_MIN_DELAY
+#undef PNEUMATIC_IDLE_DELAY

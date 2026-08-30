@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/pneumatic_tube{
+	color = "#ff0000"
+	},
+/obj/structure/closet/crate/chest,
+/obj/machinery/pneumatic_intake,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "ab" = (
 /obj/structure/closet/crate/crafted_closet/inn/south,
 /turf/open/floor/ruinedwood/spiral,
@@ -106,6 +114,15 @@
 	},
 /turf/open/floor/churchrough/purple,
 /area/indoors/town/keep/magician)
+"au" = (
+/obj/structure/pneumatic_tube{
+	color = "#EEEEEE"
+	},
+/obj/structure/pneumatic_tube{
+	color = "#ff0000"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "av" = (
 /obj/structure/fake_machine/mail{
 	mailtag = "Tailor"
@@ -759,6 +776,13 @@
 	},
 /turf/open/floor/church,
 /area/indoors/cave)
+"cp" = (
+/obj/structure/pneumatic_gearbox,
+/obj/structure/pneumatic_tube{
+	color = "#ff0000"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "cq" = (
 /obj/structure/fake_machine/scomm/l,
 /turf/open/floor/churchrough/pale,
@@ -4819,6 +4843,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"pb" = (
+/obj/structure/channel_connector/furnace,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "pc" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/naturalstone,
@@ -5415,6 +5443,10 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
+"rf" = (
+/obj/structure/metal_channel,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "rg" = (
 /obj/effect/mob_spawn/corpse/human/damaged/half_drow,
 /turf/open/floor/hay,
@@ -9051,6 +9083,12 @@
 /obj/structure/closet/crate/drawer,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/soilsons)
+"CO" = (
+/obj/structure/pneumatic_tube{
+	color = "#EEEEEE"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "CP" = (
 /turf/open/floor/woodturned,
 /area/indoors/town/clinic_large/apothecary)
@@ -11868,6 +11906,14 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/soilsons)
+"LS" = (
+/obj/machinery/pneumatic_intake,
+/obj/structure/closet/crate/chest,
+/obj/structure/pneumatic_tube{
+	color = "#EEEEEE"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "LU" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -12247,6 +12293,12 @@
 "MS" = (
 /turf/closed/wall/mineral/wooddark,
 /area/indoors/town/keep/servant)
+"MT" = (
+/obj/structure/pneumatic_tube{
+	color = "#ff0000"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "MU" = (
 /obj/item/bin/crackers,
 /turf/open/floor/woodturned,
@@ -12815,6 +12867,13 @@
 /obj/structure/table/vtable,
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/keep/throne)
+"OJ" = (
+/obj/structure/pneumatic_gearbox,
+/obj/structure/pneumatic_tube{
+	color = "#EEEEEE"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "OK" = (
 /obj/structure/table/wood/crafted,
 /obj/item/reagent_containers/glass/bowl,
@@ -12906,6 +12965,13 @@
 /obj/structure/closet/crate/chest/wickertrunk/red,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
+"Pc" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/obj/item/bin,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "Pd" = (
 /obj/machinery/essence/harvester,
 /turf/open/floor/grass/cold,
@@ -13179,6 +13245,12 @@
 "PY" = (
 /obj/structure/table/wood/counter/end{
 	dir = 8
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
+"PZ" = (
+/obj/structure/rotation_piece{
+	dir = 2
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/town)
@@ -15889,6 +15961,16 @@
 	},
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/keep/halls/w)
+"Yr" = (
+/obj/machinery/light/fueled/torchholder/hotspring/standing{
+	pixel_y = 0;
+	pixel_x = 12
+	},
+/obj/structure/pneumatic_tube{
+	color = "#ff0000"
+	},
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "Ys" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/ruinedwood/darker,
@@ -78530,7 +78612,7 @@ Vj
 cd
 kn
 kn
-tZ
+kn
 GG
 kn
 kn
@@ -90433,7 +90515,7 @@ HT
 om
 kn
 kn
-kn
+LS
 kn
 Rp
 ZW
@@ -90632,10 +90714,10 @@ PN
 Zw
 HT
 HT
-om
-kn
-kn
-kn
+Pc
+MT
+MT
+CO
 AS
 Rp
 Rp
@@ -90836,9 +90918,9 @@ HT
 HT
 sm
 kn
-kn
-kn
-kn
+cp
+OJ
+PZ
 ia
 Oa
 JG
@@ -91037,11 +91119,11 @@ HT
 HT
 HT
 kn
-kn
-kn
-kn
-kn
-kn
+MT
+MT
+au
+MT
+aa
 kn
 XX
 XX
@@ -91239,14 +91321,14 @@ HT
 HT
 HT
 om
+MT
+kn
+CO
 kn
 kn
 kn
-kn
-kn
-kn
-kn
-kn
+tZ
+rf
 kn
 kn
 PN
@@ -91441,14 +91523,14 @@ HT
 HT
 HT
 om
-AS
-kn
-kn
-kn
-kn
-kn
-kn
-kn
+Yr
+MT
+MT
+MT
+MT
+MT
+MT
+rf
 kn
 kn
 kn
@@ -91649,8 +91731,8 @@ XL
 dH
 dH
 sm
-kn
-kn
+MT
+rf
 kn
 AS
 kn
@@ -91851,8 +91933,8 @@ TR
 Nl
 dH
 dH
-kn
-kn
+pb
+rf
 kn
 Oa
 PN
