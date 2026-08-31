@@ -9,7 +9,7 @@
 	return ..()
 
 /obj/structure/drill
-	name = "mining drill"
+	name = "large drill"
 	desc = "A heavy, bolted-down drill."
 	icon = 'icons/obj/drill.dmi'
 	icon_state = "drill1"

@@ -372,3 +372,17 @@
 /obj/item/rotation_contraption/pneumatic_gearbox/get_mechanics_examine(mob/user)
 	. = ..()
 	. += span_info("Pneumatic gearboxes sit ontop of a tube and provide the suction needed to move items.")
+
+/obj/item/rotation_contraption/drill
+	name = "large drill item"
+	desc = "A large drill that when deployed can drill things infront of it."
+	placed_type = /obj/structure/drill
+	can_stack = FALSE
+	grid_height = 64
+	grid_width = 64
+	item_weight = 14.5 KILOGRAMS
+
+/obj/item/rotation_contraption/pneumatic_gearbox/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Large Drills will mine the turf its pointing towards while powered by rotational force.")
+	. += span_info("A Puller Module Pneumatic tube can pull items from its storage.")

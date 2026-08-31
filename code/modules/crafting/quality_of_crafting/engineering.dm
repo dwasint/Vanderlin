@@ -248,6 +248,22 @@
 	output_amount = 1
 	craft_time = 5 SECONDS
 
+/datum/repeatable_crafting_recipe/engineering/large_drill
+	name = "large drill"
+	requirements = list(
+		/obj/item/ingot/steel = 3,
+		/obj/item/ingot/bronze = 6,
+		/obj/item/grown/log/tree/small= 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/bronze
+	starting_atom = /obj/item/weapon/hammer
+	output = /obj/item/rotation_contraption/drill
+	output_amount = 1
+	craft_time = 9 SECONDS
+
 /datum/repeatable_crafting_recipe/engineering/pneumatic_intake
 	name = "pneumatic intake"
 	requirements = list(
