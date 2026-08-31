@@ -33,10 +33,21 @@
 	START_PROCESSING(SSobj, src)
 	AddComponent(/datum/component/simple_rotation, ROTATION_REQUIRE_WRENCH|ROTATION_IGNORE_ANCHORED)
 	AddComponent(/datum/component/storage/concrete/grid/drill)
+	set_turf_weight(get_step(src, dir))
 
 /obj/structure/drill/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
+
+/obj/structure/drill/setDir(newdir)
+	var/turf/old_dir = get_step(src, dir)
+	. = ..()
+	set_turf_weight(get_step(src, newdir), old_dir)
+
+/obj/structure/drill/proc/set_turf_weight(turf/new_turf, turf/old_turf)
+	if(old_turf)
+		old_turf.path_weight -= 300
+	new_turf.path_weight += 300
 
 /obj/structure/drill/set_rotations_per_minute(speed)
 	. = ..()
