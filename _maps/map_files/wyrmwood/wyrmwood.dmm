@@ -1304,10 +1304,6 @@
 	dir = 4
 	},
 /area/outdoors/town/keep)
-"dL" = (
-/obj/item/pneumatic_puller,
-/turf/open/floor/cobble,
-/area/outdoors/town)
 "dO" = (
 /obj/machinery/light/fueled/wallfire/candle/weak/l,
 /turf/open/floor/naturalstone,
@@ -10584,10 +10580,6 @@
 /obj/structure/carpet/green,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/clinic_large/apothecary)
-"HY" = (
-/obj/item/reagent_containers/food/snacks/bread,
-/turf/open/floor/cobble,
-/area/outdoors/town)
 "HZ" = (
 /obj/structure/closet/crate/chest/shippingcrate,
 /obj/item/reagent_containers/food/snacks/butter,
@@ -90895,7 +90887,7 @@ PN
 kn
 HT
 HT
-dL
+HT
 sm
 kn
 kn
@@ -91097,7 +91089,7 @@ kn
 kn
 HT
 HT
-HY
+HT
 kn
 kn
 kn

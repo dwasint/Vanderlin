@@ -208,11 +208,11 @@
 			if(can_pull_item(thing) && !(thing in items_to_pull))
 				items_to_pull += thing
 
-	// 3. Package and insert into network
+	var/turf/first_turf = target_turfs[1]
 	if(length(items_to_pull))
 		var/obj/structure/pneumatic_tube_parcel/parcel = new(get_turf(src))
 		parcel.load(items_to_pull)
-		receive_parcel(parcel, null)
+		receive_parcel(parcel, first_turf)
 
 /// Checks if an item passes the direct sort filter (if one exists on this segment).
 /obj/structure/pneumatic_tube/proc/can_pull_item(atom/movable/thing)
@@ -238,7 +238,7 @@
 		for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
 			if(!istype(neighbor))
 				continue
-			if(neighbor.color != color)
+			if((color && neighbor.color) && (neighbor.color != color))
 				continue
 			var/dir_to = get_dir_multiz(src, neighbor)
 			set_connection(dir_to)
@@ -286,7 +286,7 @@
 		var/turf/neighbor_turf = get_step_multiz(src, dir_num)
 		var/rev_dir_str = "[REVERSE_DIR(dir_num)]"
 		for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
-			if(neighbor.color == color && neighbor.connected[rev_dir_str])
+			if((((!color || !neighbor.color) || (neighbor.color == color))) && neighbor.connected[rev_dir_str])
 				result += neighbor
 				break
 	return result
