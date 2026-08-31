@@ -110,6 +110,7 @@
 		if(!blocker.density)
 			continue
 		blocker.take_damage(drill_power, BRUTE, PIERCE, 0)
+		playsound(blocker, pick( list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')), 100, FALSE)
 
 	for(var/atom/atom in target_turf)
 		if(atom == src)
@@ -119,6 +120,7 @@
 	var/obj/structure/ore_core/core = locate(/obj/structure/ore_core) in target_turf
 	if(core)
 		core.drill_on_core(src, drill_power * 0.1)
+		playsound(core, pick( list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')), 100, FALSE)
 		return TRUE
 
 	if(ismineralturf(target_turf))
@@ -139,6 +141,7 @@
 	else
 		victim.apply_damage(power, BRUTE)
 	victim.Knockdown(2 SECONDS)
+	playsound(victim, pick( list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')), 100, FALSE)
 
 /obj/structure/drill/proc/drill_mineral_turf(turf/closed/mineral/target, power)
 	if(!istype(target))
