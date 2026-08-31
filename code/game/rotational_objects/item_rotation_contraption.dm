@@ -110,12 +110,11 @@
 		if(placed_type != rotator.placed_type || chosen_color != rotator.chosen_color)
 			return
 
-			in_stack += rotator.in_stack
-			balloon_alert(user, "stacked!")
-			update_appearance(UPDATE_NAME)
-			qdel(rotator)
+		in_stack += rotator.in_stack
+		balloon_alert(user, "stacked!")
+		update_appearance(UPDATE_NAME)
+		qdel(rotator)
 
-			return ITEM_INTERACT_SUCCESS
 		return ..()
 
 	var/turf/T = get_turf(interacting_with)
