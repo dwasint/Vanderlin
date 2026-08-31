@@ -32,7 +32,7 @@
 
 	rotation_structure = TRUE
 	stress_use = 64
-	initialize_dirs = CONN_DIR_FORWARD | CONN_DIR_FLIP | CONN_DIR_LEFT | CONN_DIR_RIGHT
+	initialize_dirs = CONN_DIR_ALL_CARDINAL
 
 	var/mill_progress = 0
 

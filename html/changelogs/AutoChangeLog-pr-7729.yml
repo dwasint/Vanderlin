@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added access helpers for Bandit, Vampire and Lich Lairs. Lich unimplemented."
+  - bugfix: "Bandits now actually get their keys, spawned in their belt."
