@@ -3810,7 +3810,7 @@
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/shop)
 "lY" = (
-/obj/structure/nocdevice,
+/obj/structure/scrying/nocdevice,
 /turf/open/floor/wood,
 /area/outdoors/town)
 "lZ" = (
