@@ -92,12 +92,7 @@
 	return ..()
 
 /obj/structure/proc/trigger_wire_network(mob/user)
-	last_redstone_state = !last_redstone_state
-	var/power = last_redstone_state ? 15 : 0
-
-	for(var/direction in GLOB.cardinals)
-		var/turf/target_turf = get_step(src, direction)
-		trigger_redstone_at(target_turf, power, user)
+	return
 
 /obj/structure/pre_lock_interact(mob/living/user)
 	if(obj_broken)
