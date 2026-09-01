@@ -59,6 +59,11 @@
 			continue
 		pending_crates += crate
 		addtimer(CALLBACK(src, PROC_REF(unload_crate), crate), CRATE_UNLOAD_DELAY)
+	for(var/obj/structure/handcart/cart in loc)
+		if((cart in pending_crates) || !length(cart.stuff_shit))
+			continue
+		pending_crates += cart
+		addtimer(CALLBACK(src, PROC_REF(unload_cart), cart), CRATE_UNLOAD_DELAY)
 
 /obj/machinery/pneumatic_intake/proc/unload_crate(obj/structure/closet/crate/crate)
 	pending_crates -= crate
@@ -67,6 +72,18 @@
 	if(crate.opened || crate.loc != loc)
 		return
 	for(var/atom/movable/thing as anything in crate.contents)
+		thing.forceMove(src)
+
+/obj/machinery/pneumatic_intake/proc/unload_cart(obj/structure/handcart/cart)
+	pending_crates -= cart
+	if(QDELETED(cart) || QDELETED(src))
+		return
+	if(cart.loc != loc)
+		return
+	for(var/atom/movable/thing as anything in cart.stuff_shit.Copy())
+		if(isliving(thing))
+			continue
+		cart.remove_from_cart(thing)
 		thing.forceMove(src)
 
 #undef CRATE_UNLOAD_DELAY
