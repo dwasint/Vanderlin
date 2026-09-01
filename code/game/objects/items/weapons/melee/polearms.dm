@@ -192,6 +192,10 @@
 	item_weight = 1 KILOGRAMS
 	max_integrity = INTEGRITY_SPEAR * INTEGRITY_MOD_IRON
 
+/obj/item/weapon/polearm/spear/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/twirlable)
+
 /obj/item/weapon/polearm/spear/getonmobprop(tag)
 	. = ..()
 	if(tag)
