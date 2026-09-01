@@ -1311,6 +1311,10 @@
 "dP" = (
 /turf/closed/wall/mineral/stone/window,
 /area/indoors/town)
+"dQ" = (
+/obj/structure/rotation_piece/cog,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "dS" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/closed/wall/mineral/wooddark,
@@ -1741,6 +1745,11 @@
 /obj/structure/chair/stool/crafted,
 /turf/open/floor/blocks,
 /area/indoors/town/garrison)
+"fp" = (
+/obj/structure/redstone/dust,
+/obj/structure/lever,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "fq" = (
 /obj/effect/decal/borderfall{
 	dir = 1
@@ -5954,6 +5963,16 @@
 "ta" = (
 /turf/open/floor/dirt/road,
 /area/indoors/cave)
+"tb" = (
+/obj/structure/closet/crate/chest/shippingcrate,
+/obj/item/ore/dust/copper,
+/obj/item/ore/dust/copper,
+/obj/item/ore/dust/copper,
+/obj/item/ore/dust/copper,
+/obj/item/ore/dust/copper,
+/obj/item/ore/dust/copper,
+/turf/open/floor/cobblerock,
+/area/outdoors/town)
 "tc" = (
 /obj/structure/table/wood/plain,
 /obj/structure/fluff/clutter/shrub/tundra{
@@ -5985,6 +6004,26 @@
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/church)
+"th" = (
+/obj/structure/closet/crate/chest/shippingcrate,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/turf/open/floor/cobblerock,
+/area/outdoors/town)
 "ti" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_x = -32;
@@ -7177,6 +7216,20 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/dwarfin)
+"wS" = (
+/obj/structure/closet/crate/chest/shippingcrate,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/obj/item/natural/stoneblock,
+/turf/open/floor/cobblerock,
+/area/outdoors/town)
 "wT" = (
 /obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/clothing/head/crown/circlet/opal,
@@ -15016,6 +15069,11 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/dwarfin)
+"Vv" = (
+/obj/structure/clutch,
+/obj/structure/redstone/dust,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "Vw" = (
 /obj/machinery/light/fueled/forge,
 /turf/open/floor/naturalstone,
@@ -78382,7 +78440,7 @@ Vj
 Ou
 kn
 kn
-tZ
+kn
 kn
 kn
 kn
@@ -88672,7 +88730,7 @@ Yz
 BG
 Bd
 Bd
-jo
+tb
 Rp
 sK
 nK
@@ -89276,8 +89334,8 @@ PN
 PN
 Yz
 Bd
-jo
-jo
+th
+wS
 Bd
 HN
 nK
@@ -90689,7 +90747,7 @@ HT
 om
 kn
 kn
-kn
+fp
 BC
 Rp
 Rp
@@ -90890,8 +90948,8 @@ HT
 HT
 sm
 kn
-kn
-kn
+dQ
+Vv
 PZ
 ia
 Oa
@@ -91498,7 +91556,7 @@ om
 AS
 kn
 kn
-kn
+tZ
 kn
 kn
 kn

@@ -114,6 +114,10 @@
 	var/has_puller_module = FALSE
 	/// Limit on items ingested per suction cycle.
 	var/max_pull_amount = 10
+	/// Whether a lock module is installed on this segment.
+	var/has_lock_module = FALSE
+	///locked segments refuse to intake or relay parcels.
+	var/locked = FALSE
 
 /obj/structure/pneumatic_tube/Initialize(mapload)
 	. = ..()
@@ -137,6 +141,30 @@
 		for(var/obj/item/pneumatic_puller/puller in src)
 			puller.forceMove(get_turf(src))
 	return ..()
+
+/obj/structure/pneumatic_tube/proc/enable_lock_module()
+	has_lock_module = TRUE
+	redstone_structure = TRUE
+	var/turf/T = get_turf(src)
+	last_redstone_power = T ? T.get_turf_power() : 0
+	if(last_redstone_power > 0)
+		set_locked(!locked)
+
+/obj/structure/pneumatic_tube/proc/disable_lock_module()
+	has_lock_module = FALSE
+	redstone_structure = FALSE
+	set_locked(FALSE)
+
+/obj/structure/pneumatic_tube/redstone_triggered(datum/source)
+	if(!has_lock_module)
+		return ..()
+	set_locked(!locked)
+
+/obj/structure/pneumatic_tube/proc/set_locked(new_locked)
+	if(locked == new_locked)
+		return
+	locked = new_locked
+	update_appearance(UPDATE_OVERLAYS)
 
 /obj/structure/pneumatic_tube/proc/start_pull_loop()
 	if(!has_puller_module || QDELETED(src))
@@ -170,7 +198,7 @@
 	return open_turfs
 
 /obj/structure/pneumatic_tube/proc/attempt_pull()
-	if(!has_puller_module || QDELETED(src))
+	if(!has_puller_module || locked || QDELETED(src))
 		return
 
 	var/list/turf/target_turfs = get_open_intake_turfs()
@@ -286,6 +314,8 @@
 		var/turf/neighbor_turf = get_step_multiz(src, dir_num)
 		var/rev_dir_str = "[REVERSE_DIR(dir_num)]"
 		for(var/obj/structure/pneumatic_tube/neighbor in neighbor_turf)
+			if(neighbor.locked)
+				continue
 			if((((!color || !neighbor.color) || (neighbor.color == color))) && neighbor.connected[rev_dir_str])
 				result += neighbor
 				break
@@ -318,6 +348,9 @@
 ///Handles the dispatch of a parcel, filters split parcels if possible.
 /obj/structure/pneumatic_tube/proc/receive_parcel(obj/structure/pneumatic_tube_parcel/parcel, obj/structure/pneumatic_tube/came_from)
 	if(QDELETED(parcel))
+		return
+	if(locked)
+		expel_parcel(parcel, came_from)
 		return
 	parcel.forceMove(src)
 	parcel.current_pipe = src
@@ -444,6 +477,15 @@
 	if(!proximity_flag)
 		return ..()
 
+	if(istype(target, /obj/structure/redstone/observer))
+		var/obj/structure/redstone/observer/obs = target
+		if(!length(filter_types))
+			to_chat(user, span_warning("The sort filter is empty."))
+			return
+		obs.filter_types = filter_types.Copy()
+		to_chat(user, span_notice("Installed detection filter on [obs]."))
+		return
+
 	if(istype(target, /obj/structure/pneumatic_tube))
 		var/obj/structure/pneumatic_tube/pipe = target
 		if(configuring_pipe)
@@ -514,6 +556,30 @@
 		to_chat(user, span_notice("You attach [src] to [pipe]."))
 		user.transferItemToLoc(src, pipe)
 		pipe.start_pull_loop()
+		return
+
+	return ..()
+
+/obj/item/pneumatic_lock
+	name = "pneumatic lock module"
+	desc = "An attachment for pneumatic tubes that toggles the tube locked or unlocked each time it receives redstone power."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "metalizer"
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/pneumatic_lock/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return ..()
+
+	if(istype(target, /obj/structure/pneumatic_tube))
+		var/obj/structure/pneumatic_tube/pipe = target
+		if(pipe.has_lock_module)
+			to_chat(user, span_warning("[pipe] already has a lock module attached."))
+			return
+
+		to_chat(user, span_notice("You attach [src] to [pipe]."))
+		user.transferItemToLoc(src, pipe)
+		pipe.enable_lock_module()
 		return
 
 	return ..()

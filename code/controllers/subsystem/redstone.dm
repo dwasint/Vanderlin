@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(redstone)
 		if(ispath(S.type, /obj/structure/redstone) && !istype(S, /obj/structure/lever) && !istype(S, /obj/structure/pressure_plate))
 			continue
 
-		// Rising edge check: power went from 0 to >0
+		//edge checking, we only care if the last power is 0 otherwise pulse networks work weirdly.
 		if(current_power > 0 && S.last_redstone_power == 0)
 			INVOKE_ASYNC(S, TYPE_PROC_REF(/obj/structure, redstone_triggered), null)
 

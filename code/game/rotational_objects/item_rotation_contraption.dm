@@ -10,6 +10,7 @@
 
 	var/obj/structure/placed_type
 	var/in_stack = 1
+	var/base_delay = 1 SECONDS
 	var/can_stack = TRUE
 	var/place_behavior
 	var/resize_factor
@@ -118,14 +119,23 @@
 		return ..()
 
 	var/turf/T = get_turf(interacting_with)
+	var/turf/wall_turf
+
+	//click a wall, structure goes on your own tile, facing it
+	if(place_behavior == PLACE_ON_WALL)
+		if(!isclosedturf(interacting_with))
+			balloon_alert(user, "must target a wall!")
+			return ITEM_INTERACT_BLOCKING
+		wall_turf = interacting_with
+		T = get_turf(user)
+		if(!T || T == wall_turf)
+			return ITEM_INTERACT_BLOCKING
 
 	// Pneumatic tube placement & stacking rules
 	if(ispath(placed_type, /obj/structure/pneumatic_tube))
 		for(var/obj/structure/pneumatic_tube/existing_pipe in T)
-			// Uncolored pipes cannot stack with anything from either side
 			if(!existing_pipe.color || !chosen_color)
 				return ITEM_INTERACT_BLOCKING
-			// Same color pipes cannot stack on top of each other
 			if(existing_pipe.color == chosen_color)
 				return ITEM_INTERACT_BLOCKING
 
@@ -145,7 +155,11 @@
 				return ITEM_INTERACT_BLOCKING
 
 	for(var/obj/structure/structure in T)
-		if(structure.rotation_structure && !ispath(placed_type, /obj/structure/water_pipe) && !ispath(placed_type, /obj/structure/pneumatic_tube) && place_behavior != PLACE_ON_PNEUMATIC_TUBE)
+		if(ispath(placed_type, /obj/structure/redstone))
+			if(istype(structure, /obj/structure/redstone))
+				return ITEM_INTERACT_BLOCKING
+			continue
+		if(structure.rotation_structure && !ispath(placed_type, /obj/structure/water_pipe) && !ispath(placed_type, /obj/structure/pneumatic_tube) && place_behavior != PLACE_ON_PNEUMATIC_TUBE && place_behavior != PLACE_ON_WALL)
 			return ITEM_INTERACT_BLOCKING
 
 		if(structure.accepts_water_input && !ispath(placed_type, /obj/structure/rotation_piece))
@@ -162,7 +176,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 	visible_message("[user] starts placing down [src].", "You start to place [src].")
-	var/delay = max(1 SECONDS - GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/craft/engineering), 0)
+	var/delay = max(base_delay - GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/craft/engineering), 0)
 	if(!do_after(user, delay, T))
 		return ITEM_INTERACT_BLOCKING
 
@@ -177,7 +191,9 @@
 		var/obj/structure/pneumatic_gearbox/gearbox = structure
 		gearbox.relink()
 
-	if(place_behavior == PLACE_TOWARDS_USER)
+	if(place_behavior == PLACE_ON_WALL)
+		structure.setDir(get_dir(T, wall_turf))
+	else if(place_behavior == PLACE_TOWARDS_USER)
 		if(get_turf(user) == T)
 			structure.setDir(REVERSE_DIR(user.dir))
 		else
@@ -364,7 +380,6 @@
 	desc = "Converts mechanical rotation to drive pneumatic networks."
 	placed_type = /obj/structure/pneumatic_gearbox
 	place_behavior = PLACE_ON_PNEUMATIC_TUBE
-	can_stack = FALSE
 	grid_height = 64
 	grid_width = 64
 	item_weight = 2.2 KILOGRAMS
@@ -382,7 +397,85 @@
 	grid_width = 64
 	item_weight = 14.5 KILOGRAMS
 
-/obj/item/rotation_contraption/pneumatic_gearbox/get_mechanics_examine(mob/user)
+/obj/item/rotation_contraption/drill/get_mechanics_examine(mob/user)
 	. = ..()
 	. += span_info("Large Drills will mine the turf its pointing towards while powered by rotational force.")
 	. += span_info("A Puller Module Pneumatic tube can pull items from its storage.")
+
+/obj/item/rotation_contraption/clutch
+	name = "clutch item"
+	desc = "A mechanical clutch."
+	placed_type = /obj/structure/clutch
+	grid_height = 64
+	grid_width = 64
+	item_weight = 200 GRAMS
+
+/obj/item/rotation_contraption/clutch/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("When given redstone power alterates between breaking and running, useful for expensive contraptions you want to turn on sometimes.")
+
+/obj/item/rotation_contraption/redstone_dust
+	name = ""
+	desc = "A pile of redstone dust."
+	placed_type = /obj/structure/redstone/dust
+	grid_height = 32
+	grid_width = 32
+	item_weight = 1 GRAMS
+	base_delay = 0.01 SECONDS
+	color = "#4A3B3B"
+
+/obj/item/rotation_contraption/redstone_dust/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("When given redstone power carries it along.")
+
+/obj/item/rotation_contraption/redstone_repeater
+	desc = "A redstone circuit that fires after a delay."
+	placed_type = /obj/structure/redstone/repeater
+	grid_height = 64
+	grid_width = 32
+	item_weight = 100 GRAMS
+
+/obj/item/rotation_contraption/redstone_repeater/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("When given redstone power after a delay sends it forward.")
+
+/obj/item/rotation_contraption/redstone_comparator
+	desc = "Compares or subtracts signals."
+	placed_type = /obj/structure/redstone/comparator
+	grid_height = 32
+	grid_width = 32
+	item_weight = 100 GRAMS
+
+/obj/item/rotation_contraption/redstone_comparator/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("When given redstone power compares or subtracts signals.")
+	. += span_info("Can be interacted with to change its mode.")
+
+/obj/item/rotation_contraption/redstone_observer
+	desc = "Compares or subtracts signals."
+	placed_type = /obj/structure/redstone/observer
+	grid_height = 32
+	grid_width = 32
+	item_weight = 100 GRAMS
+
+/obj/item/rotation_contraption/redstone_observer/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Watches the tile in front of it for changes, then sends a redstone signal")
+	. += span_info("Also watches storage containers for changes.")
+	. += span_info("Can be given a pneumatic filter to filter for specific things entering storage containers on that turf.")
+
+/obj/item/rotation_contraption/redstone_torch
+	name = "redstone torch item"
+	desc = "Burns with an inverted signal."
+	placed_type = /obj/structure/redstone/torch
+	place_behavior = PLACE_ON_WALL
+	grid_height = 32
+	grid_width = 32
+	item_weight = 15 GRAMS
+	color = "#FF2200"
+
+/obj/item/rotation_contraption/redstone_torch/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Burns with an inverted redstone signal, if the mounted wall its on is powered turns off.")
+	. += span_info("Click a wall to mount it, facing that wall.")
+
