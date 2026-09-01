@@ -571,7 +571,7 @@
 
 /obj/item/pneumatic_lock
 	name = "pneumatic lock module"
-	desc = "An attachment for pneumatic tubes that toggles the tube locked or unlocked each time it receives redstone power."
+	desc = "An attachment for pneumatic tubes that toggles the tube locked or unlocked each time it receives redstone power, can also be installed in a rail.."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "metalizer"
 	w_class = WEIGHT_CLASS_SMALL
@@ -589,6 +589,17 @@
 		to_chat(user, span_notice("You attach [src] to [pipe]."))
 		user.transferItemToLoc(src, pipe)
 		pipe.enable_lock_module()
+		return
+
+	if(istype(target, /obj/structure/minecart_rail))
+		var/obj/structure/minecart_rail/rail = target
+		if(rail.has_lock_module)
+			to_chat(user, span_warning("[rail] already has a lock module attached."))
+			return
+		to_chat(user, span_notice("You attach [src] to [rail]."))
+		user.transferItemToLoc(src, rail)
+		rail.has_lock_module = TRUE
+		rail.update_animation_effect()
 		return
 
 	return ..()
