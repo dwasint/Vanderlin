@@ -142,6 +142,15 @@
 			puller.forceMove(get_turf(src))
 	return ..()
 
+/obj/structure/pneumatic_tube/get_mechanics_examine(mob/user)
+	. = ..()
+	if(has_lock_module)
+		. += span_notice("This pipe has a lock module installed, giving it redstone signal with flip between lock states.")
+		if(has_puller_module)
+			. += span_notice("While locked with a puller module it will also disable the puller module.")
+	if(has_puller_module)
+		. += span_notice("This pipe has a puller module installed, it will try to pull items from the exposed end of the pipe.")
+
 /obj/structure/pneumatic_tube/proc/enable_lock_module()
 	has_lock_module = TRUE
 	redstone_structure = TRUE
