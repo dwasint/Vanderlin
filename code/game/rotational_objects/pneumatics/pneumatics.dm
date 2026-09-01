@@ -140,6 +140,9 @@
 		has_puller_module = FALSE
 		for(var/obj/item/pneumatic_puller/puller in src)
 			puller.forceMove(get_turf(src))
+	for(var/obj/structure/pneumatic_tube_parcel/parcel in src)
+		expel_parcel(parcel)
+
 	return ..()
 
 /obj/structure/pneumatic_tube/get_mechanics_examine(mob/user)
