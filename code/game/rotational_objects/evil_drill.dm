@@ -57,7 +57,7 @@
 
 /obj/structure/drill/update_animation_effect()
 	if(!rotation_network || length(rotation_network.connected) == 1)
-		animate(src, icon_state = "drill", time = 1)
+		animate(src, icon_state = "drill1", time = 1)
 		return
 	if(rotation_network?.overstressed || !rotations_per_minute || !rotation_network?.total_stress)
 		animate(src, icon_state = "drill1", time = 1)
