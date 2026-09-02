@@ -3,7 +3,6 @@
 	taste_description = "bitterness"
 	random_reagent_color = TRUE
 	overdose_threshold = 0
-	dead_life = TRUE
 
 /datum/reagent/medicine/on_mob_life(mob/living/carbon/M, efficiency)
 	current_cycle++
@@ -144,7 +143,7 @@
 /datum/reagent/medicine/coldvein_compress/on_bodypart_absorb(mob/living/carbon/affected_mob, obj/item/bodypart/affected_bodypart, amount_to_transfer)
 	if(affected_bodypart.heal_damage(0, 2 * REM, required_status = BODYPART_ORGANIC))
 		affected_mob.update_damage_overlays()
-	return FALSE
+	return ..()
 
 /datum/reagent/medicine/coldvein_compress/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
@@ -169,7 +168,7 @@
 /datum/reagent/medicine/ichor_of_mending/on_bodypart_absorb(mob/living/carbon/affected_mob, obj/item/bodypart/affected_bodypart, amount_to_transfer)
 	if(affected_bodypart.heal_damage(3.5 * REM, 0, required_status = BODYPART_ORGANIC))
 		affected_mob.update_damage_overlays()
-	return FALSE
+	return ..()
 
 /datum/reagent/medicine/ashbinders_salve
 	name = "Ashbinder's Salve"
@@ -261,7 +260,7 @@
 		injury.adjust_germ_level(-20)
 	affected_bodypart.disinfect_limb(3 MINUTES)
 	affected_bodypart.adjust_germ_level(-25)
-	return FALSE
+	return ..()
 
 /datum/reagent/medicine/mirewort_compress/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
@@ -286,7 +285,7 @@
 	if(affected_bodypart.post_damage_change())
 		affected_mob.update_damage_overlays()
 	affected_bodypart.adjust_germ_level(-10)
-	return FALSE
+	return ..()
 
 /datum/reagent/medicine/woundwrack_oil/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
@@ -302,7 +301,6 @@
 	scent_description = "clean sterility"
 	metabolization_rate = REAGENTS_METABOLISM * 0.75
 	boiling_point = T0C + 150
-	dead_life = TRUE
 
 /datum/reagent/medicine/pale_serum/on_mob_metabolize(mob/living/L)
 	. = ..()
@@ -420,7 +418,7 @@
 	if(affected_bodypart.post_damage_change())
 		affected_mob.update_damage_overlays()
 	affected_bodypart.adjust_germ_level(-15)
-	return FALSE
+	return ..()
 
 /datum/reagent/medicine/witchknit_paste/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)

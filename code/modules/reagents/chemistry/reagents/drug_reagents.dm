@@ -2,7 +2,6 @@
 	name = "Drug"
 	metabolization_rate = 0.1
 	taste_description = "bitterness"
-	dead_life = TRUE
 	var/trippy = TRUE //Does this drug make you trip?
 
 /datum/reagent/drug/space_drugs
