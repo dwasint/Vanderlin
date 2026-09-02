@@ -9512,7 +9512,7 @@
 /area/indoors/town/tavern)
 "El" = (
 /obj/structure/pneumatic_tube,
-/obj/machinery/pneumatic_intake,
+/obj/structure/pneumatic_intake,
 /obj/structure/closet/crate/chest/shippingcrate,
 /turf/open/floor/dirt/road,
 /area/outdoors/town)

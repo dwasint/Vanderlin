@@ -1,6 +1,6 @@
 #define CRATE_UNLOAD_DELAY (1.5 SECONDS)
 
-/obj/machinery/pneumatic_intake
+/obj/structure/pneumatic_intake
 	name = "pneumatic intake"
 	desc = "A floor-level intake for the geared pneumatic disposal system."
 	icon_state = "up"
@@ -13,15 +13,15 @@
 	max_integrity = 200
 	var/list/obj/structure/closet/crate/pending_crates = list()
 
-/obj/machinery/pneumatic_intake/Initialize(mapload)
+/obj/structure/pneumatic_intake/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/machinery/pneumatic_intake/Destroy()
+/obj/structure/pneumatic_intake/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/machinery/pneumatic_intake/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+/obj/structure/pneumatic_intake/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!user.transferItemToLoc(tool, src))
 		return NONE
 	user.visible_message(
@@ -30,18 +30,18 @@
 	)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/machinery/pneumatic_intake/proc/get_entry_pipe()
+/obj/structure/pneumatic_intake/proc/get_entry_pipe()
 	for(var/obj/structure/pneumatic_tube/pipe in loc)
 		if(color && pipe.color != color)
 			continue
 		return pipe
 	return null
 
-/obj/machinery/pneumatic_intake/process(seconds_per_tick)
+/obj/structure/pneumatic_intake/process(seconds_per_tick)
 	check_for_crates()
 	try_flush()
 
-/obj/machinery/pneumatic_intake/proc/try_flush()
+/obj/structure/pneumatic_intake/proc/try_flush()
 	if(!length(contents))
 		return
 	var/obj/structure/pneumatic_tube/entry_pipe = get_entry_pipe()
@@ -53,7 +53,7 @@
 	parcel.load(cargo)
 	entry_pipe.receive_parcel(parcel, null)
 
-/obj/machinery/pneumatic_intake/proc/check_for_crates()
+/obj/structure/pneumatic_intake/proc/check_for_crates()
 	for(var/obj/structure/closet/crate/crate in loc)
 		if(crate.opened || (crate in pending_crates))
 			continue
@@ -65,7 +65,7 @@
 		pending_crates += cart
 		addtimer(CALLBACK(src, PROC_REF(unload_cart), cart), CRATE_UNLOAD_DELAY)
 
-/obj/machinery/pneumatic_intake/proc/unload_crate(obj/structure/closet/crate/crate)
+/obj/structure/pneumatic_intake/proc/unload_crate(obj/structure/closet/crate/crate)
 	pending_crates -= crate
 	if(QDELETED(crate) || QDELETED(src))
 		return
@@ -74,7 +74,7 @@
 	for(var/atom/movable/thing as anything in crate.contents)
 		thing.forceMove(src)
 
-/obj/machinery/pneumatic_intake/proc/unload_cart(obj/structure/handcart/cart)
+/obj/structure/pneumatic_intake/proc/unload_cart(obj/structure/handcart/cart)
 	pending_crates -= cart
 	if(QDELETED(cart) || QDELETED(src))
 		return

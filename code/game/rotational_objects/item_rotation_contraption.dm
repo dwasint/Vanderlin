@@ -364,7 +364,7 @@
 /obj/item/rotation_contraption/pneumatic_intake
 	name = "pneumatic intake item"
 	desc = "A floor-level intake for pneumatic tubes. Must be placed over a pneumatic tube of matching color."
-	placed_type = /obj/machinery/pneumatic_intake
+	placed_type = /obj/structure/pneumatic_intake
 	place_behavior = PLACE_ON_PNEUMATIC_TUBE
 	can_stack = FALSE
 	grid_height = 64
