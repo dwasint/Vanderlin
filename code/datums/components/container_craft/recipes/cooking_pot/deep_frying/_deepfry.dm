@@ -2,6 +2,10 @@
 	name = "Melt Tallow"
 	category = "Deep Frying"
 	required_chem_temp = 450
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/tallow = 1
+	)
+	reagent_requirements = null
 	created_reagent = /datum/reagent/consumable/tallow
 	created_amount = 100
 	finished_smell = /datum/pollutant/food/fried_meat
@@ -29,13 +33,12 @@
 	reagent_requirements = list(
 		/datum/reagent/consumable/tallow = 100
 	)
-	reagent_requirements = null
 	reagent_consume_mod = 0.1
 	craft_verb = "fries "
 
 /datum/container_craft/cooking/deep_fry/cutlet
 	name = "Tender Birdmeat"
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet/coated = 1,
+		/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet/coated = 1
 	)
 	output = /obj/item/reagent_containers/food/snacks/cooked/frybird/fried
