@@ -14,12 +14,6 @@
 #define SHOCK_STAGE_8 200
 #define SHOCK_STAGE_MAX SHOCK_STAGE_8
 
-#define SHOCK_STAGE_HYSTERESIS 5
-/// Weight decay per rank when stacking limb pain into shock (0.5 = each subsequent limb counts half as much as the last)
-#define SHOCK_STACK_DECAY 0.5
-/// How many limbs we bother weighting before the tail becomes negligible (6 covers arms/legs/chest/head)
-#define SHOCK_STACK_MAX_LIMBS 6
-
 // ~shock modifiers
 #define SHOCK_MOD_BRUTE 0.5
 #define SHOCK_MOD_BURN 0.75
@@ -44,9 +38,6 @@
 
 /// Use this to keep the speed of pain-related systems consistent across the board
 #define PAIN_SYSTEM_SPEED_MODIFIER 10
-
-/// Recovery moves shock_stage toward traumatic_shock this much slower than growth does, at baseline endurance
-#define SHOCK_RECOVERY_COEFF 0.4
 
 /// Cooldown before resetting the injury penalty
 #define SHOCK_PENALTY_COOLDOWN_DURATION 5 SECONDS
