@@ -1810,3 +1810,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 		target.remove_enchantment(path)
 		message_admins(span_notice("[key_name_admin(usr)] has removed [path] enchantment from [target]."))
+
+/// Called when this item is offered to another mob, before the default offer message/effect happens.
+/// Return TRUE if this proc fully handled the offer (e.g. played its own messages/sounds),
+/// which will suppress the default "offers item with an outstretched hand" message.
+/// Return FALSE to let the default offer behavior play out.
+/obj/item/proc/on_offer(mob/living/offerer, mob/living/offered_to)
+	return FALSE
