@@ -201,7 +201,7 @@
 		highest_shock_stage_triggered = SHOCK_STAGE_4
 		// emote("freezes and goes limp.", intentional = TRUE)
 		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			Immobilize(2 SECONDS)
+			Immobilize(1 SECONDS)
 
 	if((shock_stage >= SHOCK_STAGE_4) && (previous_shock_stage >= SHOCK_STAGE_4))
 		if(DT_PROB(3, delta_time))
@@ -220,12 +220,14 @@
 			emote("gasp")
 
 	if((shock_stage >= SHOCK_STAGE_6) && (previous_shock_stage >= SHOCK_STAGE_6))
-		if(DT_PROB(1, delta_time))
-			if(!IsUnconscious())
-				custom_pain("[pick("I black out", "I feel like i could die at any moment now", "I'm about to lose consciousness")]!", shock_stage, nopainloss = TRUE)
-				if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-					Unconscious(10 SECONDS)
+		if(DT_PROB(5, delta_time))
+			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "My whole body is going numb")]!", shock_stage, nopainloss = TRUE)
+			if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
+				Knockdown(5 SECONDS, prevent_drop = (body_position == LYING_DOWN))
 			endorphinate()
+		if(DT_PROB(1, delta_time))
+			emote("gasp")
+
 	/**
 	 * Stage 7 begins mimicking "hard crit"
 	 */
@@ -234,15 +236,13 @@
 		if(!IsUnconscious())
 			custom_pain("[pick("I feel like I could die at any moment now", "I'm about to lose consciousness")]!", shock_stage, nopainloss = TRUE)
 		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			emote("agony")
-			Stun(12 SECONDS)
+			// emote("agony")
+			Stun(0.5 SECONDS)
 
 	if((shock_stage >= SHOCK_STAGE_7) && (previous_shock_stage >= SHOCK_STAGE_7))
-		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			Knockdown(20 SECONDS)
 		if(DT_PROB(5, delta_time))
 			if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-				Unconscious(15 SECONDS)
+				Paralyze(5 SECONDS)
 			endorphinate(TRUE)
 
 	if(shock_stage >= SHOCK_STAGE_8 && highest_shock_stage_triggered < SHOCK_STAGE_8)
@@ -252,7 +252,7 @@
 			custom_pain(span_animatedpain("OH LORD! The PAIN!"), 100, nopainloss = TRUE)
 		//Death is near...
 		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			Unconscious(10 SECONDS)
+			Unconscious(5 SECONDS)
 		endorphinate(TRUE)
 
 	if((shock_stage >= SHOCK_STAGE_8) && (previous_shock_stage >= SHOCK_STAGE_8))
@@ -262,5 +262,5 @@
 		// 	custom_pain(span_animatedpain("OH LORD! The PAIN!"), 100, nopainloss = TRUE)
 			//death_rattle()
 		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			Unconscious(20 SECONDS)
+			Unconscious(10 SECONDS)
 		endorphinate(TRUE)
