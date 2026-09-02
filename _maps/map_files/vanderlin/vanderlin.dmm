@@ -37,6 +37,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = -32
 	},
+/obj/structure/mercstatue,
 /turf/open/floor/grass/red,
 /area/outdoors/woods_safe)
 "aaX" = (
@@ -2586,6 +2587,16 @@
 "bfG" = (
 /turf/closed/wall/mineral/decowood,
 /area/under/town/basement)
+"bfN" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/structure/mercstatue,
+/turf/open/floor/cobble,
+/area/outdoors/town)
 "bfO" = (
 /obj/machinery/light/fueled/torchholder/l{
 	dir = 1
@@ -6384,12 +6395,6 @@
 "cJs" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/keep)
-"cJK" = (
-/obj/machinery/light/fueled/torchholder{
-	dir = 4
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town)
 "cJO" = (
 /obj/structure/chair/bench/church/mid{
 	dir = 1
@@ -25368,6 +25373,13 @@
 /obj/structure/bed/shit,
 /turf/open/floor/greenstone,
 /area/under/town/sewer)
+"kCm" = (
+/obj/machinery/light/fueled/torchholder{
+	dir = 4
+	},
+/obj/structure/mercstatue,
+/turf/open/floor/dirt/road,
+/area/outdoors/town)
 "kCM" = (
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/dirt,
@@ -26847,6 +26859,10 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/keep/library)
+"lht" = (
+/obj/structure/mercstatue,
+/turf/open/floor/dirt/road,
+/area/outdoors/beach)
 "lhy" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -28454,9 +28470,9 @@
 /turf/open/water/swamp,
 /area/under/town/sewer)
 "lRj" = (
-/obj/structure/mannequin/male/female,
-/turf/open/floor/wood,
-/area/indoors/town)
+/obj/structure/fluff/traveltile/oracle_cave,
+/turf/open/floor/dirt,
+/area/under/cavewet)
 "lRk" = (
 /obj/structure/flora/grass,
 /obj/structure/flora/grass/bush_meagre,
@@ -32899,14 +32915,6 @@
 "nKM" = (
 /turf/open/floor/wood,
 /area/indoors/town/church)
-"nLe" = (
-/obj/structure/mirror{
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/obj/structure/table/wood/plain_alt,
-/turf/open/floor/blocks/paving,
-/area/indoors/town/clinic_large/apothecary)
 "nLi" = (
 /obj/machinery/light/fueled/torchholder{
 	pixel_y = 32
@@ -33692,6 +33700,10 @@
 /obj/item/clothing/face/shepherd/clothmask,
 /turf/open/floor/tile,
 /area/indoors/town/keep/courtagent)
+"oaS" = (
+/obj/structure/mercstatue,
+/turf/open/floor/dirt/road,
+/area/outdoors/town/keep)
 "oba" = (
 /turf/open/floor/cobble,
 /area/indoors/dungeon)
@@ -45620,6 +45632,7 @@
 /obj/effect/decal/borderfall{
 	dir = 1
 	},
+/obj/structure/mercstatue,
 /turf/open/floor/blocks,
 /area/outdoors/town)
 "sKG" = (
@@ -51655,6 +51668,7 @@
 /area/indoors/town/shop)
 "vjZ" = (
 /obj/structure/fake_machine/hailerboard/r,
+/obj/structure/mercstatue,
 /turf/open/floor/tile/brownbrick,
 /area/indoors/town/merc_guild)
 "vkc" = (
@@ -67584,7 +67598,7 @@ pao
 uvp
 mIW
 nTH
-qAA
+lht
 npN
 npN
 qAA
@@ -111088,7 +111102,7 @@ okz
 tDy
 lHY
 lHY
-okz
+lRj
 qFx
 qFx
 qFx
@@ -111290,7 +111304,7 @@ okz
 lHY
 tDy
 lHY
-okz
+lRj
 qFx
 qFx
 qFx
@@ -111492,7 +111506,7 @@ okz
 lHY
 lHY
 lHY
-okz
+lRj
 qFx
 qFx
 qFx
@@ -113686,7 +113700,7 @@ oWd
 mFi
 kwJ
 mFi
-cJK
+kCm
 kwJ
 eYe
 xRO
@@ -118695,7 +118709,7 @@ qFx
 qVe
 weQ
 oho
-xTl
+oaS
 xTl
 vqf
 viN
@@ -124858,7 +124872,7 @@ wmF
 wrm
 wrm
 wrm
-vbp
+bfN
 mFi
 hZn
 hZn
