@@ -44,7 +44,7 @@
 	watched_turf = new_turf
 	if(!watched_turf)
 		return
-	RegisterSignal(watched_turf, list(
+	RegisterSignals(watched_turf, list(
 		COMSIG_ATOM_ENTERED,
 		COMSIG_STORAGE_TURF_INSERTED,
 		COMSIG_STORAGE_TURF_REMOVED,
