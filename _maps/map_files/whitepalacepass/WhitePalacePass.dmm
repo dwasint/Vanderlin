@@ -3301,6 +3301,10 @@
 /obj/item/flashlight/flare/torch/lantern/voidlamptern,
 /turf/open/floor/metal/barograte,
 /area/under/town/basement)
+"bSF" = (
+/obj/structure/fluff/traveltile/oracle_cave,
+/turf/open/floor/snow/patchy,
+/area/outdoors/town)
 "bSK" = (
 /obj/structure/window,
 /turf/open/floor/ruinedwood,
@@ -7309,6 +7313,10 @@
 "enh" = (
 /turf/closed/wall/mineral/craftstone,
 /area/under/cave)
+"enz" = (
+/obj/structure/fluff/traveltile/oracle_cave,
+/turf/open/floor/snow,
+/area/outdoors/town)
 "eof" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/natural/bundle/cloth{
@@ -14559,6 +14567,10 @@
 /obj/machinery/light/fueled/wallfire/candle/skull/l,
 /turf/open/floor/dirt,
 /area/under/cavewet)
+"iNM" = (
+/obj/structure/mercstatue,
+/turf/open/floor/cobble,
+/area/indoors/town/merc_guild)
 "iNV" = (
 /obj/structure/soil/mushmound,
 /obj/machinery/light/fueled/wallfire/candle/lamp,
@@ -38422,6 +38434,10 @@
 /obj/item/natural/melded/t5,
 /turf/open/floor/tile/masonic/spiral,
 /area/under/town/basement)
+"ybs" = (
+/obj/structure/mercstatue,
+/turf/open/floor/grass/cold,
+/area/outdoors/town/keep)
 "ybJ" = (
 /obj/structure/bars,
 /turf/open/floor/cobblerock,
@@ -59982,7 +59998,7 @@ qPf
 jxh
 vhP
 vhP
-vhP
+iNM
 gBj
 tnl
 dIH
@@ -84406,9 +84422,9 @@ nJJ
 nJJ
 ulG
 aZv
-aZv
-rjc
-rjc
+enz
+bSF
+bSF
 kKb
 nJJ
 nJJ
@@ -180513,7 +180529,7 @@ aYU
 ewa
 aYU
 ewa
-tck
+ybs
 tck
 gLm
 rZA
