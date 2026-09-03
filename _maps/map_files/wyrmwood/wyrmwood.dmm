@@ -407,7 +407,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town)
 "bo" = (
-/obj/structure/closet/crate/crafted_closet/crafted,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/shoes/boots/leather,
@@ -1280,6 +1280,8 @@
 	pixel_x = 4
 	},
 /obj/structure/table/wood/folding,
+/obj/item/tray,
+/obj/item/tray,
 /obj/item/tray,
 /turf/open/floor/woodturned,
 /area/indoors/town/keep/halls/n)
@@ -3581,6 +3583,10 @@
 /obj/structure/fake_machine/steward,
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town)
+"ll" = (
+/obj/structure/fake_machine/scomm,
+/turf/open/floor/grass/cold,
+/area/outdoors/wilderness)
 "lm" = (
 /obj/structure/closet/crate/drawer,
 /obj/structure/fluff/clutter/shrub/red{
@@ -5622,6 +5628,8 @@
 /obj/item/reagent_containers/glass/bowl/iron,
 /obj/item/reagent_containers/glass/bowl/iron,
 /obj/item/reagent_containers/glass/bowl/iron,
+/obj/item/tray,
+/obj/item/tray,
 /turf/open/floor/churchrough,
 /area/indoors/town/keep/kitchen)
 "rQ" = (
@@ -6029,7 +6037,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/obj/structure/closet/crate/crafted_closet/crafted,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/cloak/tabard/knight/guard{
 	pixel_x = -6;
 	pixel_y = 2
@@ -8318,6 +8326,10 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"Ar" = (
+/obj/structure/fake_machine/scomm/l,
+/turf/open/floor/grass/cold,
+/area/outdoors/wilderness)
 "As" = (
 /obj/structure/fake_machine/scomm,
 /turf/open/floor/ruinedwood/darker,
@@ -9245,6 +9257,10 @@
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/servant)
+"Dn" = (
+/obj/structure/fake_machine/scomm/r,
+/turf/open/floor/cobble,
+/area/outdoors/town)
 "Do" = (
 /obj/effect/landmark/start/cook{
 	dir = 1
@@ -9770,6 +9786,14 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/butchershop)
+"Fh" = (
+/obj/structure/door/violet{
+	name = "Kitchen"
+	},
+/obj/effect/mapping_helpers/access/keyset/manor/servant,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/churchrough/pale,
+/area/indoors/town/keep/throne)
 "Fi" = (
 /obj/structure/stairs{
 	dir = 8
@@ -12499,10 +12523,13 @@
 /turf/open/floor/dirt,
 /area/outdoors/town)
 "Ny" = (
-/obj/structure/chair/stool,
 /obj/structure/fake_machine/scomm,
 /turf/open/floor/churchrough/pale,
 /area/indoors/town/clinic_large)
+"Nz" = (
+/obj/structure/bridge,
+/turf/open/openspace,
+/area/outdoors/town)
 "NA" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/structure/carpet/purple,
@@ -13459,6 +13486,10 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors)
+"QF" = (
+/obj/structure/fake_machine/scomm/r,
+/turf/open/floor/cobblerock,
+/area/outdoors/wilderness)
 "QG" = (
 /obj/item/clothing/shirt/undershirt/fancy,
 /obj/item/clothing/shoes/nobleboot/thighboots,
@@ -14677,7 +14708,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/keep/magician)
 "Uh" = (
-/obj/structure/closet/crate/crafted_closet/crafted,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/armor/gambeson,
 /obj/item/clothing/armor/gambeson,
 /obj/item/clothing/armor/gambeson,
@@ -62244,7 +62275,7 @@ dH
 rH
 dH
 dH
-Im
+QF
 Im
 ua
 ox
@@ -75844,7 +75875,7 @@ dH
 rH
 dH
 dH
-rF
+ll
 rF
 rF
 rF
@@ -76570,8 +76601,8 @@ rW
 MD
 oq
 WS
-MD
 GR
+MD
 Us
 bU
 bU
@@ -76773,7 +76804,7 @@ Xv
 oV
 oV
 oV
-oV
+Fh
 oV
 oV
 oV
@@ -77141,7 +77172,7 @@ ox
 Im
 ox
 Dk
-HT
+Dn
 HT
 HT
 HT
@@ -93163,7 +93194,7 @@ Dk
 Dk
 rF
 rF
-rF
+Ar
 Dk
 ox
 ox
@@ -122507,18 +122538,18 @@ Qv
 Qv
 Qv
 Qv
-NS
-JG
-JG
-PJ
-PJ
-PJ
-PJ
-PJ
-PJ
-PJ
-PJ
-PJ
+Qv
+Nz
+Nz
+ye
+ye
+ye
+ye
+ye
+ye
+ye
+ye
+ye
 eX
 eX
 rF
