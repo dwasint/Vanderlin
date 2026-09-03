@@ -316,7 +316,7 @@
 	return TRUE
 
 /mob/living/carbon/can_feel_pain()
-	return !HAS_TRAIT(src, TRAIT_NOPAIN) && !IsUnconscious()
+	return !HAS_TRAIT(src, TRAIT_NOPAIN)
 
 /mob/living/carbon/getShock(painkiller_included = TRUE)
 	if(!can_feel_pain())
@@ -326,8 +326,8 @@
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 		if(!bodypart.max_pain_damage)
 			continue
-		var/frac = bodypart.get_shock(painkiller_included) / bodypart.max_pain_damage
-		fractions += clamp(frac, 0, 1)
+		var/frac = bodypart.get_shock(painkiller_included) / (bodypart.max_pain_damage * 0.7)
+		fractions += clamp(frac, 0, 1.3) // allow slight overshoot per-limb, but bounded
 
 	sortTim(fractions, GLOBAL_PROC_REF(cmp_numeric_dsc)) // worst limb first
 
@@ -337,7 +337,10 @@
 	for(var/i in 1 to length(fractions))
 		weighted_sum += fractions[i] * weight
 		max_weighted_sum += weight
-		weight *= SHOCK_STACK_DECAY
+		if(fractions[1] <= 0)
+			weight *= SHOCK_USELESS_DECAY
+		else
+			weight *= SHOCK_STACK_DECAY
 
 	// pad max_weighted_sum out to a consistent limb count so losing limbs
 	// doesn't change what "fully wounded on every remaining limb" maps to
