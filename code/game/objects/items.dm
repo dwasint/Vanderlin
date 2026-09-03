@@ -1863,16 +1863,16 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	return "<span style='color: [highlight_color];'>[highlight_symbol] [label_string] [highlight_symbol]</span>"
 
 /obj/item/proc/set_custom_examine_highlight(adjective, leader, explanation, color, symbol, desc)
-    var/datum/examine_highlight/custom/H = examine_highlight_type
-    if(!istype(H))
-        H = new /datum/examine_highlight/custom()
-    H.adjective = adjective
-    H.leader = leader
-    H.explanation = explanation
-    H.color = color
-    H.symbol = symbol
-    examine_highlight_type = H
-    examine_highlight_desc = desc
+	var/datum/examine_highlight/custom/H = examine_highlight_type
+	if(!istype(H))
+		H = new /datum/examine_highlight/custom()
+	H.adjective = adjective
+	H.leader = leader
+	H.explanation = explanation
+	H.color = color
+	H.symbol = symbol
+	examine_highlight_type = H
+	examine_highlight_desc = desc
 
 /obj/item/proc/clear_custom_examine_highlight()
 	if(istype(examine_highlight_type, /datum/examine_highlight/custom))
