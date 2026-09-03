@@ -14,8 +14,6 @@ GLOBAL_LIST_EMPTY(waypoint_targets)
 /obj/effect/landmark/waypoint_target/Initialize(mapload)
 	. = ..()
 	if(waypoint_id)
-		if(GLOB.waypoint_targets[waypoint_id])
-			stack_trace("Duplicate waypoint_id '[waypoint_id]' registered at [src.x], [src.y], [src.z]")
 		GLOB.waypoint_targets[waypoint_id] = src
 
 /obj/effect/landmark/waypoint_target/Destroy(force)
