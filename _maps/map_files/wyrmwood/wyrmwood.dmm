@@ -626,6 +626,7 @@
 	alpha = 0
 	},
 /obj/structure/pressure_plate,
+/obj/structure/door/weak,
 /turf/open/floor/herringbone,
 /area/indoors/cave)
 "bR" = (
