@@ -9720,6 +9720,7 @@
 /obj/structure/redstone/dust{
 	alpha = 0
 	},
+/obj/structure/door/weak,
 /turf/open/floor/sand,
 /area/indoors/cave)
 "Dr" = (
