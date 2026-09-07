@@ -1,0 +1,4 @@
+author: "ta3754859-max"
+delete-after: True
+changes:
+  - bugfix: "Short-people now get proper aim zones when targeting another person"
