@@ -72,7 +72,6 @@ GLOBAL_LIST_EMPTY(examine_highlight_editors) // item ref -> /datum/examine_highl
 			. = TRUE
 		if("pick_color")
 			var/datum/examine_highlight/custom/H = target.examine_highlight_type
-			var/current = istype(H) ? H.color : (pending_color || "#c43535")
 			var/new_color = input(user, "Choose a highlight color") as color|null
 			if(new_color)
 				pending_color = new_color

@@ -390,7 +390,7 @@
 	/datum/species/triton,\
 	/datum/species/medicator,\
 )
-  
+
 //Used in aiming, yes it's awful how I used each and every species but I made it use normal id instead id_override
 #define SPECIES_SHORTIES list(\
 	SPEC_ID_DWARF,\
