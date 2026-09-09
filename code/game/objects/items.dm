@@ -317,6 +317,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if (attack_verb)
 		attack_verb = typelist("attack_verb", attack_verb)
 
+	if(melting_material && !examine_highlight_type)
+		examine_highlight_type = initial(melting_material.material_examine_hint)
+
 	if(experimental_inhand)
 		var/props2gen = list("gen")
 		var/list/prop
