@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(examine_highlight_editors) // item ref -> /datum/examine_highl
 	data["explanation"] = is_custom ? H.explanation : ""
 	data["color"] = pending_color || (is_custom ? H.color : "#c43535")
 	data["symbol"] = is_custom ? H.symbol : ""
-	data["desc"] = target.examine_highlight_desc || ""
+	data["desc"] = H.item_examine_desc || ""
 	data["is_custom"] = is_custom
 	return data
 
@@ -71,7 +71,6 @@ GLOBAL_LIST_EMPTY(examine_highlight_editors) // item ref -> /datum/examine_highl
 			target.set_custom_examine_highlight(adjective, leader, explanation, pending_color || "#c43535", symbol, desc)
 			. = TRUE
 		if("pick_color")
-			var/datum/examine_highlight/custom/H = target.examine_highlight_type
 			var/new_color = input(user, "Choose a highlight color") as color|null
 			if(new_color)
 				pending_color = new_color

@@ -27,7 +27,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	///this is our highlight information
 	var/datum/examine_highlight/examine_highlight_type
-	var/examine_highlight_desc
 
 	//Dimensions of the icon file used when this item is worn, eg: hats.dmi
 	//eg: 32x32 sprite, 64x64 sprite, etc.
@@ -1836,8 +1835,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!examine_highlight_type)
 		return null
 	if(istype(examine_highlight_type))
-		return list(examine_highlight_type, examine_highlight_desc)
-	return list(GLOB.examine_highlights[examine_highlight_type], examine_highlight_desc)
+		return list(examine_highlight_type, examine_highlight_type.item_examine_desc)
+	var/datum/examine_highlight/examine_type = GLOB.examine_highlights[examine_highlight_type]
+	return list(GLOB.examine_highlights[examine_highlight_type], examine_type.item_examine_desc)
 
 /obj/item/proc/get_examine_highlight_description(list/examine_highlight_status, itis = FALSE, allcaps = TRUE)
 	if(!examine_highlight_status)
@@ -1871,11 +1871,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	H.explanation = explanation
 	H.color = color
 	H.symbol = symbol
+	H.item_examine_desc = desc
 	examine_highlight_type = H
-	examine_highlight_desc = desc
 
 /obj/item/proc/clear_custom_examine_highlight()
 	if(istype(examine_highlight_type, /datum/examine_highlight/custom))
 		qdel(examine_highlight_type)
 	examine_highlight_type = initial(examine_highlight_type)
-	examine_highlight_desc = initial(examine_highlight_desc)

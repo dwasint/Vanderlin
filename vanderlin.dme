@@ -1386,6 +1386,7 @@
 #include "code\datums\event_groups\_base.dm"
 #include "code\datums\examine_highlights\_base.dm"
 #include "code\datums\examine_highlights\custom.dm"
+#include "code\datums\examine_highlights\heresy.dm"
 #include "code\datums\faith\_devotion.dm"
 #include "code\datums\faith\devotion_subtypes.dm"
 #include "code\datums\faith\penance\_penance.dm"
