@@ -13,3 +13,5 @@ GLOBAL_LIST_INIT(examine_highlights, build_examine_highlights())
 	var/symbol
 	///this is for subtypes basically the examine desc of that specific item
 	var/item_examine_desc = ""
+	///if this is set we check whoevers examining for this matching trait
+	var/required_trait

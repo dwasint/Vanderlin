@@ -329,7 +329,7 @@
 /mob/living/proc/get_item_examine_label(obj/item/I, mob/living/user, item_examine_string)
 	if(isnull(item_examine_string))
 		item_examine_string = I.get_examine_string(user)
-	var/list/examine_highlight_status = I.get_examine_highlight_status()
+	var/list/examine_highlight_status = I.get_examine_highlight_status(user)
 	if(length(examine_highlight_status))
 		var/datum/examine_highlight/highlight_type = examine_highlight_status[1]
 		var/heresy_examine_tooltip = I.get_examine_highlight_description(examine_highlight_status) + "<br>" + highlight_type.explanation

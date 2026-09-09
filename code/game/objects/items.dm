@@ -1642,7 +1642,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/examine(mob/user)
 	. = ..()
-	var/list/examine_highlight_status = get_examine_highlight_status()
+	var/list/examine_highlight_status = get_examine_highlight_status(user)
 	if(length(examine_highlight_status))
 		var/datum/examine_highlight/highlight_type = examine_highlight_status[1]
 		var/examine_desc = get_examine_highlight_description(examine_highlight_status, itis = TRUE, allcaps = FALSE)
@@ -1834,12 +1834,14 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/proc/on_offer(mob/living/offerer, mob/living/offered_to)
 	return FALSE
 
-/obj/item/proc/get_examine_highlight_status()
+/obj/item/proc/get_examine_highlight_status(mob/user)
 	if(!examine_highlight_type)
 		return null
 	if(istype(examine_highlight_type))
 		return list(examine_highlight_type, examine_highlight_type.item_examine_desc)
 	var/datum/examine_highlight/examine_type = GLOB.examine_highlights[examine_highlight_type]
+	if(examine_type.required_trait && !HAS_TRAIT(user, examine_type.required_trait))
+		return null
 	return list(GLOB.examine_highlights[examine_highlight_type], examine_type.item_examine_desc)
 
 /obj/item/proc/get_examine_highlight_description(list/examine_highlight_status, itis = FALSE, allcaps = TRUE)
