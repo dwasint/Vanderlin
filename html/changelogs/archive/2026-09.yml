@@ -195,3 +195,6 @@
   - image: Changed the screen alert icon for blood mark and bloodsight
   - balance: Meteor Storm and Greater Fireball now require higher levels of fire form
       to unlock.
+2026-09-10:
+  realforest2001:
+  - bugfix: Fixed bandages getting stuck with blood.
