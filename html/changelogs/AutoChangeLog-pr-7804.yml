@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - balance: "Garrotte now requires 3 seconds to grab a target if they're in combat mode. Does not apply to users trained in Apprehension Techniques."
