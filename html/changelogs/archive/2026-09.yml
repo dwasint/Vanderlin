@@ -195,3 +195,24 @@
   - image: Changed the screen alert icon for blood mark and bloodsight
   - balance: Meteor Storm and Greater Fireball now require higher levels of fire form
       to unlock.
+2026-09-10:
+  realforest2001:
+  - bugfix: Fixed bandages getting stuck with blood.
+2026-09-11:
+  Archeonan:
+  - rscadd: Smithable Ornate Fluted Cuirass
+  Avalon-Proto:
+  - qol: Swimmer Trait has been made stronger, and allows you to jump from the water
+      now
+  ModDownloading:
+  - rscadd: Black Oak Guardian has been reworked into Redwood Mercenary (credit to
+      Archeon).
+  Monkeke2:
+  - balance: Decapitations dont happen if you target the eyes/nose/ears
+  realforest2001:
+  - balance: Loadout items are no longer free money.
+  - bugfix: Court roles should now always know eachother.
+  ta3754859-max:
+  - qol: Emotes now give proper runechat message over your character head
+  - rscadd: Kiss while aiming the skull is a forehead kiss, kiss while aiming head
+      is a cheek kiss
