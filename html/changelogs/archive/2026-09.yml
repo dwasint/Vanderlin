@@ -216,3 +216,9 @@
   - qol: Emotes now give proper runechat message over your character head
   - rscadd: Kiss while aiming the skull is a forehead kiss, kiss while aiming head
       is a cheek kiss
+2026-09-12:
+  realforest2001:
+  - code_imp: Added check variables for revive / cure rot miracles, such as whether
+      can work on luxless.
+  - balance: Garrotte now requires 3 seconds to grab a target if they're in combat
+      mode. Does not apply to users trained in Apprehension Techniques.
