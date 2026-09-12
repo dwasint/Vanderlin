@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Added check variables for revive / cure rot miracles, such as whether can work on luxless."
