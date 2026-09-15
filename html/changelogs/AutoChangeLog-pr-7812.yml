@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Miscellaneous fixes and tweaks to Blood Magic related things."
-  - bugfix: "Fixed Bloodstone Ore missing in cold/environment specific rocks."
