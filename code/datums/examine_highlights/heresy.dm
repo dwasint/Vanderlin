@@ -24,3 +24,7 @@
 
 /datum/examine_highlight/heresy_alarming/darksteel
 	item_examine_desc = "Steel made using the dark magics of Zizo, Crafted in Ritual from the screaming flesh of the living and dead in unnatural conjunction!"
+
+/datum/examine_highlight/heresy_alarming/bloodsteel
+	item_examine_desc = "Steel made from refined bloodstone, the cursed embodiment of ancient and dark powers."
+	symbol = EXAMINEHIGHLIGHT_SYMBOL_HERESYSEVERITY_SUSPICIOUS
