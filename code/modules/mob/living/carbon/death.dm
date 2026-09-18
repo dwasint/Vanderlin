@@ -15,7 +15,7 @@
 		BT.on_death()
 
 /mob/living/carbon/attempt_infect(force = FALSE, bite = FALSE)
-	if(!force && has_world_trait(/datum/world_trait/necra_requiem))
+	if(!force && (has_world_trait(/datum/world_trait/necra_requiem) && !bite))
 		return
 	if(!(bite || force) && (stat > DEAD))
 		return

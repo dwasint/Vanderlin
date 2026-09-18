@@ -384,7 +384,7 @@
 	if(isnull(local_temp))
 		return (limb_flags & BODYPART_FROZEN)
 	//you get some leeway...
-	if(local_temp < 15)
+	if(local_temp < 5)
 		limb_flags |= BODYPART_FROZEN
 		return (limb_flags & BODYPART_FROZEN)
 
