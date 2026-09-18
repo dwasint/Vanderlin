@@ -1,5 +1,5 @@
 #define ROT_SKELETONIZE_TIME 20 MINUTES
-#define AMBIENT_ROT_RATE (INFECTION_LEVEL_THREE / (15 MINUTES))
+#define AMBIENT_ROT_RATE (INFECTION_LEVEL_THREE / (10 MINUTES))
 
 /obj/item/bodypart
 	name = "limb"
@@ -764,6 +764,8 @@
 	// Being properly oxygenated
 	if(!artery_needed() || (arterial_efficiency >= ORGAN_FAILING_EFFICIENCY))
 		if(germ_level > 0 && (germ_level < INFECTION_LEVEL_ONE/2) && DT_PROB(immunity*0.3, delta_time))
+			if(owner?.getorganslot(ORGAN_SLOT_ZOMBIE))
+				return // we prevent decay
 			adjust_germ_level(-0.5 * delta_time)
 			return
 	// Dry gangrene
