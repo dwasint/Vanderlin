@@ -1,0 +1,12 @@
+author: "dwasint"
+delete-after: True
+changes:
+  - refactor: "redstone has been rewritten to not be as bad, and is now obtainable"
+  - rscadd: "pneumatic tube system that allows the moving of items (and kobolds) through tubes."
+  - rscadd: "claw intent on zombies now lets you damage any structure instead of just doors and windows"
+  - rscadd: "mob stock system for maps which will keep a set amount of things in stock at any given time"
+  - rscadd: "vertical gates"
+  - rscadd: "you can now twirl spears by right clicking them while holding them in your active hand."
+  - rscadd: "you can now grow rice, and with that a few rice related dishes"
+  - rscadd: "you can now deep fry bird"
+  - rscadd: "you can now click glasses together by each offering eachother the glass"
