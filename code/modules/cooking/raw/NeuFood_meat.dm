@@ -30,6 +30,7 @@
 	tastes = list("meat" = 1)
 	gender = PLURAL
 	item_weight = 200 GRAMS
+	given_ingredient_buff = RANDOM_INGREDIENT_BUFF
 
 /obj/item/reagent_containers/food/snacks/meat/on_consume(mob/living/eater)
 	var/reset_eat_effect = FALSE
@@ -283,6 +284,7 @@
 	rotprocess = SHELFLIFE_DECENT
 	nutrition = MINCE_NUTRITION * COOK_MOD
 	color = "#a0655f"
+	given_ingredient_buff = null
 
 /obj/item/reagent_containers/food/snacks/meat/mince/fish
 	name = "minced fish"
@@ -295,6 +297,7 @@
 	rotprocess = SHELFLIFE_DECENT
 	nutrition = MINCE_NUTRITION * COOK_MOD
 	color = "#a0655f"
+	given_ingredient_buff = null
 
 /obj/item/reagent_containers/food/snacks/meat/mince/poultry
 	name = "minced poultry"
@@ -307,6 +310,7 @@
 	rotprocess = SHELFLIFE_DECENT
 	nutrition = MINCE_NUTRITION * COOK_MOD
 	color = "#a0655f"
+	given_ingredient_buff = null
 
 /*	..................   METT   ................... */
 /obj/item/reagent_containers/food/snacks/meat/mince/beef/mett

@@ -614,6 +614,7 @@
 	rotprocess = SHELFLIFE_LONG
 	faretype = FARE_POOR
 	item_weight = 150 GRAMS
+	given_ingredient_buff = null
 
 /*	.............   Fried onions   ................ */
 /obj/item/reagent_containers/food/snacks/onion_fried
@@ -646,6 +647,7 @@
 	faretype = FARE_NEUTRAL
 	portable = FALSE
 	item_weight = 150 GRAMS
+	given_ingredient_buff = null
 
 /*	.............   Grilled Sunreed   ................ */
 /obj/item/reagent_containers/food/snacks/produce/vegetable/sunreed_cooked
@@ -660,6 +662,7 @@
 	rotprocess = SHELFLIFE_LONG
 	faretype = FARE_NEUTRAL
 	item_weight = 150 GRAMS
+	given_ingredient_buff = null
 
 /obj/item/reagent_containers/food/snacks/produce/vegetable/sunreed_cooked/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(modified || !istype(tool, /obj/item/reagent_containers/food/snacks/butterslice))
@@ -673,6 +676,7 @@
 	var/obj/item/reagent_containers/food/snacks/S = tool
 
 	modified = TRUE
+	merge_ingredient_buffs(list(tool))
 	user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.2))
 	user.nobles_seen_servant_work()
 	S.reagents?.trans_to(src, S.reagents.total_volume)
@@ -795,6 +799,7 @@
 	var/obj/item/reagent_containers/food/snacks/S = tool
 
 	modified = TRUE
+	merge_ingredient_buffs(list(tool))
 	user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * 0.5))
 	user.nobles_seen_servant_work()
 	S.reagents?.trans_to(src, S.reagents.total_volume)
@@ -820,7 +825,6 @@
 		name = "[name] with sunreed"
 		desc = "[desc] Crunchy sunreed has been scatered overtop."
 		add_overlay("corn_salad")
-
 	qdel(tool)
 	return ITEM_INTERACT_SUCCESS
 

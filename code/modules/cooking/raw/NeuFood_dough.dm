@@ -310,6 +310,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	modified = TRUE
+	merge_ingredient_buffs(list(tool))
 	user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking/baking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.2))
 	user.nobles_seen_servant_work()
 	S.reagents?.trans_to(src, S.reagents.total_volume)
@@ -1087,6 +1088,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	modified = TRUE
+	merge_ingredient_buffs(list(tool))
 	user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.2))
 	user.nobles_seen_servant_work()
 	S.reagents?.trans_to(src, S.reagents.total_volume)
@@ -1179,6 +1181,7 @@
 	var/obj/item/reagent_containers/food/snacks/S = tool
 
 	modified = TRUE
+	merge_ingredient_buffs(list(tool))
 	user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.2))
 	user.nobles_seen_servant_work()
 	S.reagents?.trans_to(src, S.reagents.total_volume)
@@ -1442,6 +1445,7 @@
 	var/obj/item/reagent_containers/food/snacks/S = tool
 
 	modified = TRUE
+	merge_ingredient_buffs(list(tool))
 	user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * 0.2))
 	user.nobles_seen_servant_work()
 	S.reagents?.trans_to(src, S.reagents.total_volume)
@@ -2459,6 +2463,7 @@
 	var/obj/item/reagent_containers/food/snacks/S = tool
 
 	modified = TRUE
+	merge_ingredient_buffs(list(tool))
 	faretype++
 	user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking/baking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * 0.2))
 	user.nobles_seen_servant_work()
