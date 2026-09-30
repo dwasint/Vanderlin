@@ -740,6 +740,20 @@ All foods are distributed among various categories. Use common sense.
 		user.nobles_seen_servant_work()
 		return ITEM_INTERACT_SUCCESS
 
+/// Copies this item's buff data onto a child item (slice, portion, etc).
+/// Cooked dishes pass their frozen assembled buffs; otherwise a lone given_ingredient_buff template is passed down.
+/obj/item/reagent_containers/food/snacks/proc/pass_buffs_to(obj/item/reagent_containers/food/snacks/child)
+	if(!istype(child))
+		return
+	if(length(assembled_buffs))
+		child.assembled_buffs = list()
+		for(var/datum/ingredient_buff/frozen as anything in assembled_buffs)
+			child.assembled_buffs += frozen.copy()
+		return
+	if(get_ingredient_buff_datum())
+		child.given_ingredient_buff = given_ingredient_buff.copy()
+		child.ingredient_buff_composition = ingredient_buff_composition
+
 /obj/item/reagent_containers/food/snacks/proc/slice(obj/item/W, mob/user)
 	if((slices_num <= 0 || !slices_num) || !slice_path) //is the food sliceable?
 		return FALSE
@@ -770,6 +784,7 @@ All foods are distributed among various categories. Use common sense.
 			var/obj/item/reagent_containers/food/snacks/slice = new slice_path(loc)
 			slice.filling_color = filling_color
 			initialize_slice(slice, reagents_per_slice)
+			pass_buffs_to(slice)
 		qdel(src)
 	else
 		var/reagents_per_slice = reagents.total_volume/slices_num
@@ -783,6 +798,7 @@ All foods are distributed among various categories. Use common sense.
 			slice = new slice_path(loc)
 			slice.filling_color = filling_color
 			initialize_slice(slice, reagents_per_slice)
+			pass_buffs_to(slice)
 			qdel(src)
 			return TRUE
 		if(slices_num <= 0)
