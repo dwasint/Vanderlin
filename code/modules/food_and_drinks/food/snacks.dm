@@ -109,6 +109,8 @@ All foods are distributed among various categories. Use common sense.
 	var/datum/ingredient_buff/given_ingredient_buff
 	/// Final buffs this cooked food grants when eaten
 	var/list/datum/ingredient_buff/assembled_buffs = list()
+	///if this is set we grab the ingredient effect from the parent instead.
+	var/obj/item/reagent_containers/food/snacks/ingredient_buff_from
 
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()
@@ -306,10 +308,17 @@ All foods are distributed among various categories. Use common sense.
 
 /obj/item/reagent_containers/food/snacks/proc/get_ingredient_buff_datum()
 	RETURN_TYPE(/datum/ingredient_buff)
-	if(!given_ingredient_buff)
+	if(!given_ingredient_buff && !ingredient_buff_from)
 		return FALSE
+	var/obj/item/reagent_containers/food/snacks/buff_from = ingredient_buff_from
+	if(buff_from)
+		given_ingredient_buff = initial(buff_from.given_ingredient_buff)
+
 	if(given_ingredient_buff == RANDOM_INGREDIENT_BUFF)
-		if(!(type in GLOB.randomized_ingredient_buffs))
+		var/used_type = type
+		if(ingredient_buff_from)
+			used_type = ingredient_buff_from
+		if(!(used_type in GLOB.randomized_ingredient_buffs))
 			var/static/list/allowed_types = list()
 			if(!length(allowed_types))
 				for(var/datum/ingredient_buff/buff as anything in subtypesof(/datum/ingredient_buff))
@@ -318,9 +327,9 @@ All foods are distributed among various categories. Use common sense.
 					allowed_types |= buff
 					allowed_types[buff] = initial(buff.random_choice)
 
-			GLOB.randomized_ingredient_buffs |= type
-			GLOB.randomized_ingredient_buffs[type] = pickweight(allowed_types)
-		var/datum/ingredient_buff/new_buff = GLOB.randomized_ingredient_buffs[type]
+			GLOB.randomized_ingredient_buffs |= used_type
+			GLOB.randomized_ingredient_buffs[used_type] = pickweight(allowed_types)
+		var/datum/ingredient_buff/new_buff = GLOB.randomized_ingredient_buffs[used_type]
 		given_ingredient_buff = new new_buff()
 	if(!istype(given_ingredient_buff))
 		given_ingredient_buff = new given_ingredient_buff()
