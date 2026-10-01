@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - map: "Transit Tiles to move between Vanderlin and its submaps are now faster."
