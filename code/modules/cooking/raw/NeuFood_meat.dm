@@ -202,6 +202,7 @@
 	cannibalism = TRUE
 	cannibalism_for = ALL_RACES_LIST
 	item_weight = 150 GRAMS
+	given_ingredient_buff = null
 	var/obj/item/organ/organ_inside
 
 /obj/item/reagent_containers/food/snacks/meat/organ/Destroy()
@@ -327,6 +328,10 @@
 	rotprocess = SHELFLIFE_TINY
 	faretype = FARE_POOR
 	item_weight = 150 GRAMS
+
+/obj/item/reagent_containers/food/snacks/meat/mince/beef/mett/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/food_topping, "metted", null, 10, topping_name = "grenzel mett")
 
 /obj/item/reagent_containers/food/snacks/meat/mince/beef/mett/slice
 	name = "grenzel mett"

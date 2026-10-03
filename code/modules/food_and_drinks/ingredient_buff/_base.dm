@@ -6,26 +6,28 @@
 	var/name = "ingredient buff"
 	///the weight we have for random choice, if 0 we simply don't add
 	var/random_choice = 10
-	/// The status effect applied to whoever eats the food. Must be a /datum/status_effect/buff subtype with a unique id.
 	var/status_effect_type = /datum/status_effect/buff/ingredient
-	/// Assoc list of statkey = value at quality 0
 	var/list/base_stats = list()
 	var/base_duration = 10 MINUTES
-
-	/// Each point of quality adds this fraction to stat values (0.25 = +25% per quality)
 	var/quality_potency_step = 0.25
-	/// Each point of quality adds this fraction to duration
 	var/quality_duration_step = 0.1
 
-	// Snapshot data, filled in when the buff is captured for a craft
+	// Snapshot data, frozen at craft time
 	var/quality = 0
-	/// Copied from the source item's ingredient_buff_composition
 	var/composition_required = 20
+	/// Percent of the dish's buff-bearing content this buff represented when assembled (100 for a raw ingredient)
+	var/composition_share = 100
+	/// Condiment/modifier multipliers, stacked multiplicatively
+	var/potency_mult = 1
+	var/duration_mult = 1
 
 /datum/ingredient_buff/proc/copy()
 	var/datum/ingredient_buff/new_buff = new type()
 	new_buff.quality = quality
 	new_buff.composition_required = composition_required
+	new_buff.composition_share = composition_share
+	new_buff.potency_mult = potency_mult
+	new_buff.duration_mult = duration_mult
 	return new_buff
 
 /datum/ingredient_buff/proc/get_scaled_stats(multiplier = 1)
@@ -34,14 +36,14 @@
 	for(var/stat in base_stats)
 		var/base = base_stats[stat]
 		var/value = FLOOR(base * mult, 1)
-		value = FLOOR(value * multiplier, 1)
-		if(!value) // huh
+		value = FLOOR(value * multiplier * potency_mult, 1)
+		if(!value)
 			value = (base > 0) ? 1 : -1
 		scaled[stat] = value
 	return scaled
 
 /datum/ingredient_buff/proc/get_scaled_duration()
-	return round(base_duration * (1 + (max(0, quality) * quality_duration_step)))
+	return round(base_duration * (1 + (max(0, quality) * quality_duration_step)) * duration_mult)
 
 /datum/ingredient_buff/proc/apply_to(mob/living/eater, multiplier = 1)
 	if(!istype(eater))

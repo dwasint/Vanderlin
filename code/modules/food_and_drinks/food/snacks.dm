@@ -111,6 +111,12 @@ All foods are distributed among various categories. Use common sense.
 	var/list/datum/ingredient_buff/assembled_buffs = list()
 	///if this is set we grab the ingredient effect from the parent instead.
 	var/obj/item/reagent_containers/food/snacks/ingredient_buff_from
+	/// Overlay states of toppings already applied, so each topping only goes on once
+	var/list/applied_toppings = list()
+	/// Display names of toppings applied, in order
+	var/list/topping_names = list()
+	/// The exact suffix we last appended to name, so we can strip it before rebuilding
+	var/topping_suffix
 
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()
@@ -309,7 +315,7 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/proc/get_ingredient_buff_datum()
 	RETURN_TYPE(/datum/ingredient_buff)
 	if(!given_ingredient_buff && !ingredient_buff_from)
-		return FALSE
+		return null
 	var/obj/item/reagent_containers/food/snacks/buff_from = ingredient_buff_from
 	if(buff_from)
 		given_ingredient_buff = initial(buff_from.given_ingredient_buff)
@@ -334,6 +340,19 @@ All foods are distributed among various categories. Use common sense.
 	if(!istype(given_ingredient_buff))
 		given_ingredient_buff = new given_ingredient_buff()
 	return given_ingredient_buff
+
+/// Rebuilds the "topped with a, b and c" suffix. Safe to call repeatedly.
+/obj/item/reagent_containers/food/snacks/proc/update_topping_name()
+	// Strip our previous suffix, if the name still ends with it
+	if(topping_suffix)
+		var/suffix_len = length(topping_suffix)
+		if(copytext(name, -suffix_len) == topping_suffix)
+			name = copytext(name, 1, length(name) - suffix_len + 1)
+	if(!length(topping_names))
+		topping_suffix = null
+		return
+	topping_suffix = " topped with [english_list(topping_names)]"
+	name += topping_suffix
 
 /// What this item contributes when used as an ingredient, snapshotted with its current quality.
 /// Cooked dishes pass along the buffs they already assembled.
@@ -366,20 +385,30 @@ All foods are distributed among various categories. Use common sense.
  * Ingredients without a buff datum don't count toward the total, so plain filler never dilutes a buff.
  * Fuck Ass global since this saves processing for multi creation
  */
-/proc/assemble_ingredient_buffs(list/ingredients)
+/proc/assemble_ingredient_buffs(list/ingredients, list/reagents)
 	. = list()
-	var/total = 0
-	var/list/groups = list() // buff type -> list(count, quality, required, buff)
+	var/list/contributors = list() // each entry is one contributor's list of buffs
 
 	for(var/obj/item/reagent_containers/food/snacks/S in ingredients)
-		for(var/datum/ingredient_buff/B in S.get_contributed_buffs())
-			total++
+		contributors += list(S.get_contributed_buffs())
+
+	var/total = 0
+	var/list/groups = list() // buff type -> list(weight, quality, potency, duration, required, buff)
+
+	for(var/list/contributed as anything in contributors)
+		if(!length(contributed))
+			continue
+		total++
+		for(var/datum/ingredient_buff/B as anything in contributed)
+			var/weight = B.composition_share / 100
 			var/list/entry = groups[B.type]
 			if(!entry)
-				entry = list("count" = 0, "quality" = 0, "required" = 0, "buff" = B)
+				entry = list("weight" = 0, "quality" = 0, "potency" = 0, "duration" = 0, "required" = 0, "buff" = B)
 				groups[B.type] = entry
-			entry["count"]++
-			entry["quality"] += B.quality
+			entry["weight"] += weight
+			entry["quality"] += B.quality * weight
+			entry["potency"] += B.potency_mult * weight
+			entry["duration"] += B.duration_mult * weight
 			// strictest requirement among contributors wins
 			entry["required"] = max(entry["required"], B.composition_required)
 
@@ -388,13 +417,16 @@ All foods are distributed among various categories. Use common sense.
 
 	for(var/buff_type in groups)
 		var/list/entry = groups[buff_type]
-		var/share = (entry["count"] / total) * 100
+		var/share = (entry["weight"] / total) * 100
 		if(share < entry["required"])
 			continue
 		var/datum/ingredient_buff/template = entry["buff"]
 		var/datum/ingredient_buff/result = template.copy()
-		result.quality = entry["quality"] / entry["count"] // average quality of contributors
+		result.quality = entry["quality"] / entry["weight"]
+		result.potency_mult = entry["potency"] / entry["weight"]
+		result.duration_mult = entry["duration"] / entry["weight"]
 		result.composition_required = entry["required"]
+		result.composition_share = share
 		. += result
 
 /obj/item/reagent_containers/food/snacks/cooking(input as num, atom/A)

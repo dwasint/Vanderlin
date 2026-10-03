@@ -205,6 +205,10 @@
 	foodtype = EGG
 	item_weight = 50 GRAMS
 
+/obj/item/reagent_containers/food/snacks/cooked/egg/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/food_topping, "egged", null, 10, topping_name = "a cooked egg")
+
 /obj/item/reagent_containers/food/snacks/cooked/twin_egg
 	tastes = list("fried egg" = 1)
 	name = "fried egg twins"
@@ -746,6 +750,10 @@
 	slice_batch = FALSE
 	nutrition = COOKED_VEGGIE_NUTRITION/3
 	item_weight = 70 GRAMS
+
+/obj/item/reagent_containers/food/snacks/drowsbanejam/slice/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/food_topping, "drowsbanejam", null, 3, topping_name = "drowsbane jam")
 
 /*	.............   Baked Pompkaun  ................ */
 /obj/item/reagent_containers/food/snacks/fruit/pompkaun_goo/cooked
