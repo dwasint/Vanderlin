@@ -28,13 +28,3 @@
 			qdel(I)
 			return
 	. = ..()
-
-/obj/structure/grindwheel/proc/handle_profession_sharpen(obj/item/weapon, mob/user)
-	var/sharpen_level = get_mob_highest_passive_level(user, /datum/passive/sharpening)
-	if(!sharpen_level)
-		to_chat(user, span_notice("Try as I might I can't figure out how to use this thing."))
-		return
-
-	var/maxium_repair = weapon.max_blade_int * (0.25 * sharpen_level)
-	var/repair = max(0, maxium_repair - weapon.blade_int)
-	weapon.add_bintegrity(repair)
