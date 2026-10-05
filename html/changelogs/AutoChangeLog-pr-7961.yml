@@ -1,0 +1,5 @@
+author: "Ordosian"
+delete-after: True
+changes:
+  - image: "Admin Icon File has some extra icons."
+  - code_imp: "Ghost icon file for observers changed and observers are not just blank ghosts anymore."
