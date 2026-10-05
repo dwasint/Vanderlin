@@ -367,6 +367,10 @@
 	sellprice = 10
 	color = COLOR_PALE_GREEN_GRAY
 
+/obj/item/reagent_containers/powder/herbs/Initialize(mapload, vol)
+	. = ..()
+	AddElement(/datum/element/food_topping, "herbs", /datum/ingredient_buff_modifier/herb_spice, 4, topping_name = "herbs and spices")
+
 /obj/item/reagent_containers/powder/blastpowder
 	name = "blastpowder"
 	desc = "Explosive powder known to be produced by the dwarves. It's used in many explosives."
