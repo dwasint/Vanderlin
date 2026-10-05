@@ -635,6 +635,10 @@
 	portable = FALSE
 	item_weight = 100 GRAMS
 
+/obj/item/reagent_containers/food/snacks/onion_fried/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/food_topping, "onion_fried", null, 10, topping_name = "some fried onions")
+
 /*	.............   Fried potato   ................ */
 /obj/item/reagent_containers/food/snacks/produce/vegetable/potato/fried
 	name = "fried potato"
@@ -711,6 +715,10 @@
 	faretype = FARE_NEUTRAL
 	portable = FALSE
 	item_weight = 300 GRAMS
+
+/obj/item/reagent_containers/food/snacks/cocaumole/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/food_topping, "cocaumole", null, 10, topping_name = "cocaumole")
 
 /obj/item/reagent_containers/food/snacks/cocaumole/slice
 	name = "cocaumole slice"

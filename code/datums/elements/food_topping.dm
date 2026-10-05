@@ -33,7 +33,10 @@
 /datum/element/food_topping/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	examine_list += span_notice("Can be used as a topping on finished foods.")
-
+	if(modifier)
+		var/datum/ingredient_buff/modifier_buff = initial(modifier.granted_buff_type)
+		modifier_buff = new modifier_buff() //this is evil but initial is read as a var if done the other way
+		examine_list += modifier_buff?.examine_string()
 
 /datum/element/food_topping/proc/on_interact(obj/item/source, mob/living/user, atom/interacting_with, list/modifiers)
 	SIGNAL_HANDLER
@@ -47,9 +50,6 @@
 	if(overlay_state in dish.applied_toppings)
 		to_chat(user, span_warning("[dish] already has [source] on it."))
 		return ITEM_INTERACT_BLOCKING
-	if(!source.reagents?.total_volume)
-		to_chat(user, span_warning("[source] is empty!"))
-		return ITEM_INTERACT_BLOCKING
 
 	var/free_space = dish.reagents.maximum_volume - dish.reagents.total_volume
 	if(free_space <= 0)
@@ -57,8 +57,8 @@
 		return ITEM_INTERACT_BLOCKING
 
 	// null reagent_transfer = use everything
-	var/amount = min(isnull(reagent_transfer) ? source.reagents.total_volume : reagent_transfer, source.reagents.total_volume, free_space)
-	source.reagents.trans_to(dish, amount, transfered_by = user)
+	var/amount = min(isnull(reagent_transfer) ? source.reagents?.total_volume : reagent_transfer, source.reagents?.total_volume, free_space)
+	source.reagents?.trans_to(dish, amount, transfered_by = user)
 
 	if(modifier)
 		modifier.apply_to_dish(dish)

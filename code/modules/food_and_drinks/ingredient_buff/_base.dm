@@ -65,13 +65,13 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/ingredient
 	var/quality = 1
 
-/datum/status_effect/buff/ingredient/on_creation(mob/living/new_owner, duration_override, list/scaled_stats, _quality = 1, multiplier)
+/datum/status_effect/buff/ingredient/on_creation(mob/living/new_owner, duration_override, list/scaled_stats, _quality = 1, multiplier = 1)
 	if(islist(scaled_stats) && length(scaled_stats))
 		effectedstats = scaled_stats.Copy()
 	quality = max(1, _quality) * multiplier
 	return ..()
 
-/datum/status_effect/buff/ingredient/refresh(mob/living/new_owner, duration_override, list/scaled_stats, _quality = 1, multiplier)
+/datum/status_effect/buff/ingredient/refresh(mob/living/new_owner, duration_override, list/scaled_stats, _quality = 1, multiplier = 1)
 	if(!islist(scaled_stats) || !length(scaled_stats))
 		return ..()
 	if(get_stat_power(scaled_stats) < get_stat_power(effectedstats))
@@ -93,3 +93,6 @@
 /atom/movable/screen/alert/status_effect/buff/ingredient
 	name = "Ingredient Buff"
 	desc = "You feel invigorated."
+
+/atom/movable/screen/alert/status_effect/buff/ingredient/after_attach()
+	name = attached_effect.id

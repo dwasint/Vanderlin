@@ -3410,6 +3410,7 @@
 #include "code\modules\food_and_drinks\ingredient_buff\stats.dm"
 #include "code\modules\food_and_drinks\ingredient_buff\modifiers\_base.dm"
 #include "code\modules\food_and_drinks\ingredient_buff\modifiers\generic.dm"
+#include "code\modules\food_and_drinks\ingredient_buff\modifiers\herbs.dm"
 #include "code\modules\holiday\holidays.dm"
 #include "code\modules\hydroponics\grown.dm"
 #include "code\modules\hydroponics\growninedible.dm"

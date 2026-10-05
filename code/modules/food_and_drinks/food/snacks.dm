@@ -479,7 +479,7 @@ All foods are distributed among various categories. Use common sense.
 		return
 
 	var/apply_effect = TRUE
-	var/loveness = 0
+	var/loveness = 1
 	if(ishuman(eater))
 		var/mob/living/carbon/human/human_eater = eater
 
