@@ -1,0 +1,12 @@
+author: "copper-404"
+delete-after: True
+changes:
+  - rscadd: "Adds a court physician's office to Daftmarsh."
+  - map: "Makes the mage guild area a fully separated tower, accessible via bridges."
+  - map: "Moves the garrison to the basement."
+  - map: "Readjusts position of dungeon, servant areas, ale cellar, vault and others in the basement."
+  - map: "Adjusts position of captain's office on the first floor."
+  - map: "Adjusts monarch's, heir's, guest bedroom, and meeting position on the second floor."
+  - map: "Adds a couple run down lounges."
+  - map: "Adds three abandoned rooms."
+  - map: "Generally adjusts the flow of the hallways to be more easy to grasp."
