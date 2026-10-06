@@ -1,4 +1,0 @@
-author: "ta3754859-max"
-delete-after: True
-changes:
-  - map: "fixes logs in thatchwood's smithy alongside removing broken tile objects"

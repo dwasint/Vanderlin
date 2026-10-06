@@ -1,5 +1,0 @@
-author: "Ordosian"
-delete-after: True
-changes:
-  - image: "Fixed many gloves and offsets."
-  - code_imp: "Makes decorated helmets no longer go invisible on no choice."
