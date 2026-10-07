@@ -61,7 +61,7 @@
 /obj/effect/dungeon_loot_spawner/low
 	icon_state = "lootlow"
 	name = "low value loot spawner"
-	min_item_value = LOOT_VALUE_LOW
+	min_item_value = LOOT_VALUE_LOW * 0.5
 	max_item_value = LOOT_VALUE_LOW * 1.5
 	spawn_weight = 3
 
