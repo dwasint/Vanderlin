@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 
 	var/list/loot_spawners = list()
 	/// Total loot value spread across the whole dungeon
-	var/loot_budget = 600
+	var/loot_budget = BASE_LOOTPOOL_SIZE
 	/// Budget left over after the last distribution
 	var/loot_remaining = 0
 	/// Spawner weight = spawn_weight * (1 + depth_factor * loot_depth_bias). Higher = loot clusters further out.

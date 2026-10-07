@@ -1,7 +1,3 @@
-GLOBAL_LIST_INIT(dungeon_loot_pool, list(
-
-))
-
 /obj/effect/dungeon_loot_spawner
 	name = "dungeon loot spawner"
 	invisibility = INVISIBILITY_ABSTRACT
