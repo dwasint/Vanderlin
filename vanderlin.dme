@@ -2350,6 +2350,7 @@
 #include "code\game\objects\structures\trench.dm"
 #include "code\game\objects\structures\walldeco.dm"
 #include "code\game\objects\structures\water_dam.dm"
+#include "code\game\objects\structures\waystone.dm"
 #include "code\game\objects\structures\well.dm"
 #include "code\game\objects\structures\window.dm"
 #include "code\game\objects\structures\apiary\apiary.dm"

@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 	var/depth_per_delve_level = 6
 	/// How hard rare rooms are pushed outward. 0 = no effect.
 	/// A room with remoteness r gets weight multiplier 1 + strength * r * (2 * depth_factor - 1)
-	var/rare_depth_strength = 1.5
+	var/rare_depth_strength = 2
 	/// Highest rarity value among all concrete templates, cached when created_types is built
 	var/max_rarity = 1
 
@@ -46,6 +46,8 @@ SUBSYSTEM_DEF(dungeon_generator)
 	/// Spawner weight = spawn_weight * (1 + depth_factor * loot_depth_bias). Higher = loot clusters further out.
 	var/loot_depth_bias = 3
 	var/loot_distributed = FALSE
+	///list of all the dungeon waystones
+	var/list/dungeon_waystones = list()
 
 /datum/controller/subsystem/dungeon_generator/Initialize(start_timeofday)
 	unlinked_dungeon_length = length(GLOB.unlinked_dungeon_entries)
@@ -202,6 +204,9 @@ SUBSYSTEM_DEF(dungeon_generator)
 		for(var/obj/effect/dungeon_loot_spawner/spawner in room_turf)
 			spawner.depth = room_depth
 			loot_spawners |= spawner
+		for(var/obj/structure/waystone/dungeon/stone in room_turf)
+			stone.depth = room_depth
+			dungeon_waystones |= stone
 
 /datum/controller/subsystem/dungeon_generator/proc/find_soulmate(direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love)
 	creator = get_step(creator, direction)
@@ -448,3 +453,12 @@ SUBSYSTEM_DEF(dungeon_generator)
 		spawner.used_value = 0
 		spawner.used_items = 0
 	return distribute_loot()
+
+/datum/controller/subsystem/dungeon_generator/proc/get_random_dungeon_waystone()
+	var/list/weighted = list()
+	for(var/obj/structure/waystone/dungeon/stone as anything in dungeon_waystones)
+		if(QDELETED(stone))
+			continue
+		var/factor = get_depth_factor(stone.depth, stone.z)
+		weighted[stone] = max(0.1, 1 - abs(factor - 0.5) * 2)
+	return pick_weighted_key(weighted)

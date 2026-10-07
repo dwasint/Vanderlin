@@ -1369,6 +1369,10 @@
 	},
 /turf/open/floor/churchbrick,
 /area/indoors/town/keep)
+"js" = (
+/obj/structure/waystone,
+/turf/open/floor/grass/yel,
+/area/outdoors)
 "jt" = (
 /obj/structure/hotspring/border/three,
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
@@ -2882,6 +2886,7 @@
 /obj/structure/chair/hotspring_bench/left{
 	pixel_y = 12
 	},
+/obj/item/warpstone,
 /turf/open/floor/grass/yel,
 /area/outdoors)
 "Lr" = (
@@ -14898,7 +14903,7 @@ vD
 zg
 zg
 zg
-QN
+js
 Pm
 FN
 ky

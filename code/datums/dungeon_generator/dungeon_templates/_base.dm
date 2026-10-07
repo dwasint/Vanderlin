@@ -1,4 +1,5 @@
 /datum/map_template/dungeon
+	z_levels = 2
 	///the pickweight of this dungeon type
 	var/rarity = 100
 	///our type_pick weight
