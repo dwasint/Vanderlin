@@ -496,6 +496,9 @@
 	north_offset = 12
 	south_offset = 12
 
+	unique = TRUE
+	min_depth = 12
+
 /datum/map_template/dungeon/room/mwoutpost
 	mappath = "_maps/matthios_tomb/room/mwoutpost.dmm"
 	id = "mwoutpost"

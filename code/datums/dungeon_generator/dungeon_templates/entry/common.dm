@@ -3,6 +3,27 @@
 	abstract_type = /datum/map_template/dungeon/entry
 	type_weight = 0
 
+/datum/map_template/dungeon/entry/load(turf/T, centered)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	// Find and configure any exit objects in the loaded template
+	var/list/turfs = get_affected_turfs(T, centered)
+	for(var/turf/turf in turfs)
+		for(var/obj/structure/dungeon_exit/descent in turf.contents)
+			var/delve_level = SSdungeon_generator.get_delve_level(turf.z)
+			if(delve_level > 0)
+				descent.delve_level = delve_level
+
+				// Register this exit
+				if(!SSdungeon_generator.level_entries[delve_level])
+					SSdungeon_generator.level_entries[delve_level] = list()
+				SSdungeon_generator.level_entries[delve_level] += descent
+
+			break // Only handle the first descent found
+	return TRUE
+
 /datum/map_template/dungeon/entry/tented
 	mappath = "_maps/matthios_tomb/entry/Tented Entrance.dmm"
 	id = "tented"
