@@ -3,7 +3,7 @@
 	invisibility = INVISIBILITY_ABSTRACT
 
 	/// Total item value this spawner will hold before it goes inactive
-	var/max_value = 5
+	var/max_value = LOOT_VALUE_LOW * 1.5
 	/// Only pool items with a value in this range can come from this spawner
 	var/min_item_value = 0
 	var/max_item_value = 5
@@ -50,23 +50,22 @@
 
 /obj/effect/dungeon_loot_spawner/low
 	name = "low value loot spawner"
-	max_value = 4
-	min_item_value = 0
-	max_item_value = 2
+	min_item_value = LOOT_VALUE_LOW
+	max_item_value = LOOT_VALUE_LOW * 1.5
 	spawn_weight = 3
 
 /obj/effect/dungeon_loot_spawner/medium
 	name = "medium value loot spawner"
-	max_value = 10
-	min_item_value = 3
-	max_item_value = 6
+	max_value = LOOT_VALUE_MEDIUM * 1.5
+	min_item_value = LOOT_VALUE_MEDIUM
+	max_item_value = LOOT_VALUE_MEDIUM * 1.5
 	spawn_weight = 2
 
 /obj/effect/dungeon_loot_spawner/high
 	name = "high value loot spawner"
-	max_value = 20
-	min_item_value = 7
-	max_item_value = 20
+	max_value = LOOT_VALUE_HIGH * 1.5
+	min_item_value = LOOT_VALUE_HIGH
+	max_item_value = LOOT_VALUE_HIGH * 1.5
 	spawn_weight = 1
 
 /client/proc/regenerate_dungeon_loot()
