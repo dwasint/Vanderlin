@@ -1,3 +1,8 @@
+/datum/dungeon_mob_record
+	var/mob_type
+	var/turf/spawn_turf
+	var/depth = 0
+
 SUBSYSTEM_DEF(dungeon_generator)
 	name = "Matthios Creation"
 	wait = 1 SECONDS
@@ -48,6 +53,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 	var/loot_distributed = FALSE
 	///list of all the dungeon waystones
 	var/list/dungeon_waystones = list()
+	/// Living tracked mobs -> their record
+	var/list/mob_records = list()
+	/// Records of mobs that died / were deleted, waiting to be respawned
+	var/list/dead_records = list()
 
 /datum/controller/subsystem/dungeon_generator/Initialize(start_timeofday)
 	unlinked_dungeon_length = length(GLOB.unlinked_dungeon_entries)
@@ -207,6 +216,29 @@ SUBSYSTEM_DEF(dungeon_generator)
 		for(var/obj/structure/waystone/dungeon/stone in room_turf)
 			stone.depth = room_depth
 			dungeon_waystones |= stone
+		for(var/mob/living/mob in room_turf)
+			if(mob.client)
+				continue
+			register_dungeon_mob(mob, room_depth)
+
+/datum/controller/subsystem/dungeon_generator/proc/register_dungeon_mob(mob/living/mob, room_depth, turf/spawn_turf)
+	var/datum/dungeon_mob_record/record = new
+	record.mob_type = mob.type
+	record.spawn_turf = spawn_turf || get_turf(mob)
+	record.depth = room_depth
+	mob_records[mob] = record
+	RegisterSignal(mob, COMSIG_LIVING_DEATH, PROC_REF(on_dungeon_mob_gone))
+	RegisterSignal(mob, COMSIG_QDELETING, PROC_REF(on_dungeon_mob_gone))
+
+/// Handles both death and deletion (gibbing/qdel without dying). Extra signal args are ignored because of that.
+/datum/controller/subsystem/dungeon_generator/proc/on_dungeon_mob_gone(mob/living/source)
+	SIGNAL_HANDLER
+	var/datum/dungeon_mob_record/record = mob_records[source]
+	if(!record)
+		return
+	mob_records -= source
+	UnregisterSignal(source, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING))
+	dead_records += record
 
 /datum/controller/subsystem/dungeon_generator/proc/find_soulmate(direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love)
 	creator = get_step(creator, direction)
@@ -462,3 +494,75 @@ SUBSYSTEM_DEF(dungeon_generator)
 		var/factor = get_depth_factor(stone.depth, stone.z)
 		weighted[stone] = max(0.1, 1 - abs(factor - 0.5) * 2)
 	return pick_weighted_key(weighted)
+
+/// Respawns dead dungeon mobs. Returns how many were respawned.
+/// amount          - flat number of mobs to respawn
+/// percent         - optional, 0-100: percent of the dead pool to respawn (overrides amount if set)
+/// player_range    - spawn points with a living player within this many tiles (same z) are skipped
+/// depth_weighting - RESPAWN_WEIGHT_NONE / _SHALLOW / _DEEP, which records get picked first
+/datum/controller/subsystem/dungeon_generator/proc/respawn_mobs(amount = 0, percent = null, player_range = 10, depth_weighting = RESPAWN_WEIGHT_NONE)
+	var/pool = length(dead_records)
+	if(!pool)
+		return 0
+
+	var/to_spawn = amount
+	if(!isnull(percent))
+		to_spawn = CEILING(pool * clamp(percent, 0, 100) / 100, 1)
+	to_spawn = min(to_spawn, pool)
+	if(to_spawn <= 0)
+		return 0
+
+	// Snapshot living players once instead of per record
+	var/list/living_players = list()
+	for(var/mob/living/player in GLOB.player_list)
+		if(player.client && player.stat != DEAD)
+			living_players += player
+
+	// Build the eligible set with a weight per record
+	var/list/candidates = list()
+	for(var/datum/dungeon_mob_record/record as anything in dead_records)
+		var/turf/spawn_turf = record.spawn_turf
+		if(!spawn_turf || spawn_turf.density)
+			continue
+		if(player_near_turf(spawn_turf, player_range, living_players))
+			continue
+		candidates[record] = get_respawn_weight(record, depth_weighting)
+
+	var/respawned = 0
+	while(respawned < to_spawn && length(candidates))
+		var/datum/dungeon_mob_record/record = pick_weighted_key(candidates)
+		if(!record)
+			break
+		candidates -= record
+
+		var/turf/spawn_turf = record.spawn_turf
+		var/mob/living/new_mob = new record.mob_type(spawn_turf)
+		dead_records -= record
+		register_dungeon_mob(new_mob, record.depth, spawn_turf)
+
+		var/delve_level = get_delve_level(spawn_turf.z)
+		if(delve_level > 0)
+			SSmobs.enhance_mob(new_mob, delve_level)
+
+		qdel(record)
+		respawned++
+		CHECK_TICK
+	return respawned
+
+/datum/controller/subsystem/dungeon_generator/proc/player_near_turf(turf/target, range, list/players)
+	for(var/mob/living/player as anything in players)
+		if(player.z != target.z)
+			continue
+		if(get_dist(player, target) <= range)
+			return TRUE
+	return FALSE
+
+/// Weight of a dead record for respawn picking. Uses the same depth factor as room/loot generation,
+/// so delve levels count as "deeper" too. The 0.1 floor keeps the unfavored end possible.
+/datum/controller/subsystem/dungeon_generator/proc/get_respawn_weight(datum/dungeon_mob_record/record, depth_weighting)
+	switch(depth_weighting)
+		if(RESPAWN_WEIGHT_SHALLOW)
+			return 0.1 + (1 - get_depth_factor(record.depth, record.spawn_turf.z))
+		if(RESPAWN_WEIGHT_DEEP)
+			return 0.1 + get_depth_factor(record.depth, record.spawn_turf.z)
+	return 1
