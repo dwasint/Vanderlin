@@ -1,5 +1,8 @@
 /obj/effect/dungeon_loot_spawner
 	name = "dungeon loot spawner"
+	icon = 'icons/obj/structures_spawners.dmi'
+	icon_state = "lootblank"
+
 	invisibility = INVISIBILITY_ABSTRACT
 
 	/// Total item value this spawner will hold before it goes inactive
@@ -13,6 +16,10 @@
 	var/used_value = 0
 	/// Depth (rooms from the start) of the room this spawner sits in. Set by the generator.
 	var/depth = 0
+	///total items we can spawn
+	var/total_items = 1
+	///the amount of items we've generated
+	var/used_items = 0
 
 /obj/effect/dungeon_loot_spawner/Initialize(mapload)
 	. = ..()
@@ -26,6 +33,8 @@
 	return max_value - used_value
 
 /obj/effect/dungeon_loot_spawner/proc/can_accept_loot()
+	if(used_items == total_items)
+		return FALSE
 	return get_remaining_value() > 0
 
 /// Picks a pool item that fits this spawner's value range and the given cap. Returns a path or null.
@@ -46,27 +55,43 @@
 	var/value = GLOB.dungeon_loot_pool[item_path]
 	new item_path(get_turf(src))
 	used_value += value
+	used_items++
 	return value
 
 /obj/effect/dungeon_loot_spawner/low
+	icon_state = "lootlow"
 	name = "low value loot spawner"
 	min_item_value = LOOT_VALUE_LOW
 	max_item_value = LOOT_VALUE_LOW * 1.5
 	spawn_weight = 3
 
+/obj/effect/dungeon_loot_spawner/low/chest
+	max_value = parent_type::max_value * 5
+	total_items = 5
+
 /obj/effect/dungeon_loot_spawner/medium
+	icon_state = "lootmed"
 	name = "medium value loot spawner"
 	max_value = LOOT_VALUE_MEDIUM * 1.5
 	min_item_value = LOOT_VALUE_MEDIUM
 	max_item_value = LOOT_VALUE_MEDIUM * 1.5
 	spawn_weight = 2
 
+/obj/effect/dungeon_loot_spawner/medium/chest
+	max_value = parent_type::max_value * 5
+	total_items = 5
+
 /obj/effect/dungeon_loot_spawner/high
+	icon_state = "loothigh"
 	name = "high value loot spawner"
 	max_value = LOOT_VALUE_HIGH * 1.5
 	min_item_value = LOOT_VALUE_HIGH
 	max_item_value = LOOT_VALUE_HIGH * 1.5
 	spawn_weight = 1
+
+/obj/effect/dungeon_loot_spawner/high/chest
+	max_value = parent_type::max_value * 5
+	total_items = 5
 
 /client/proc/regenerate_dungeon_loot()
 	set category = "Debug"

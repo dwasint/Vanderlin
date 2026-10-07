@@ -446,4 +446,5 @@ SUBSYSTEM_DEF(dungeon_generator)
 			loot_spawners -= spawner
 			continue
 		spawner.used_value = 0
+		spawner.used_items = 0
 	return distribute_loot()
