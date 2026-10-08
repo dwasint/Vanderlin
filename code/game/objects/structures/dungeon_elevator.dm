@@ -246,3 +246,4 @@ GLOBAL_LIST_EMPTY(dungeon_elevator_below_landmarks)
 	queue_cycle()
 
 #undef DUNGEON_ELEVATOR_SIZE
+#undef DUNGEON_ELEVATOR_LINK_ID
