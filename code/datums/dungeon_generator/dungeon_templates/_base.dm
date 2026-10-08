@@ -23,4 +23,4 @@
 	/// Max placements per dungeon. 0 = unlimited. Ignored if unique is set.
 	var/max_occurrences = 0
 	/// Each placement multiplies this template's weight by (1 - repeat_falloff). 0 = no falloff, 0.5 = halves each time, 1 = effectively unique.
-	var/repeat_falloff = 0
+	var/repeat_falloff = 0.6
