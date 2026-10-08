@@ -18,25 +18,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 
 	var/dungeon_z = -1 // The definite z level of the first level
 
-	var/multilevel_dungeons = FALSE  // Toggle for multi-level generation
-	var/max_delve_levels = 2        // Maximum dungeon depth
-	var/list/dungeon_levels = list() // Track z-levels for each delve level
-	var/list/delve_entries = list()  // Pre-generated entry points for each level
-	var/list/delve_descent = list()  // Pre-generated entry points for each level
-
-	var/list/descent_objects = list() // Track descent objects by level
-	var/list/level_entries = list()   // Track all entries by delve level
-
-	var/created_since = 0
-	var/descent_since = 0
-	var/unlinked_dungeon_length = 0
-
 	/// helper -> depth of the room that owns it (rooms placed from it get this + 1)
 	var/list/marker_depths = list()
 	/// Room depth (rooms away from the start) at which a room counts as "fully far out" (factor 1.0)
 	var/depth_full_scale = 12
-	/// Extra depth added per delve level, so deeper delve levels count as further out
-	var/depth_per_delve_level = 6
 	/// How hard rare rooms are pushed outward. 0 = no effect.
 	/// A room with remoteness r gets weight multiplier 1 + strength * r * (2 * depth_factor - 1)
 	var/rare_depth_strength = 2
@@ -79,10 +64,6 @@ SUBSYSTEM_DEF(dungeon_generator)
 	var/carve_exclude_depth = 8
 
 /datum/controller/subsystem/dungeon_generator/Initialize(start_timeofday)
-	unlinked_dungeon_length = length(GLOB.unlinked_dungeon_entries)
-
-	if(multilevel_dungeons)
-		setup_multilevel_dungeons()
 
 	while(length(markers))
 		for(var/obj/effect/dungeon_directional_helper/helper as anything in markers)
@@ -98,12 +79,6 @@ SUBSYSTEM_DEF(dungeon_generator)
 	carve_dead_ends()
 	distribute_loot()
 	return ..()
-
-/datum/controller/subsystem/dungeon_generator/proc/setup_multilevel_dungeons()
-	for(var/level = 1; level <= max_delve_levels; level++)
-		delve_entries["[level]"] = rand(2, 4)
-		delve_descent["[level]"] = rand(2, 4)
-		dungeon_levels["[level]"] = list()
 
 /datum/controller/subsystem/dungeon_generator/fire(resumed)
 	if(!length(markers))
@@ -147,10 +122,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 		for(var/datum/map_template/dungeon/template in created_types)
 			max_rarity = max(max_rarity, template.rarity || 1)
 
-/// 0..1 for how far out a room is. Combines room depth with delve level.
+/// 0..1 for how far out a room is, based on room depth.
+/// z_level is unused now that delve levels are gone, but kept so existing callers don't break.
 /datum/controller/subsystem/dungeon_generator/proc/get_depth_factor(room_depth, z_level)
-	var/effective_depth = room_depth + ((get_delve_level(z_level) || 0) * depth_per_delve_level)
-	return clamp(effective_depth / max(depth_full_scale, 1), 0, 1)
+	return clamp(room_depth / max(depth_full_scale, 1), 0, 1)
 
 /// Weight of a template at a given depth. 0 means it cannot appear here.
 /// Common rooms (rarity == max_rarity) are unaffected; the rarer a room is, the more it
@@ -171,7 +146,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 		if(only_picked)
 			if(!istype(template, picked_type))
 				continue
-		else if(istype(template, picked_type) || istype(template, /datum/map_template/dungeon/entry))
+		else if(istype(template, picked_type))
 			continue
 		var/weight = template.rarity || 1
 		if(apply_depth)
@@ -269,9 +244,6 @@ SUBSYSTEM_DEF(dungeon_generator)
 	if(creator.type != /turf/closed/dungeon_void)
 		return
 
-	// Determine current delve level
-	var/current_delve_level = get_delve_level(creator.z)
-
 	//depth of the room that owns this helper + 1
 	var/room_depth = (marker_depths[looking_for_love] || 0) + 1
 	var/depth_factor = get_depth_factor(room_depth, creator.z)
@@ -290,26 +262,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 
 	var/picked_type = pickweight(parent_types)
 
-	// Handle multi-level dungeon logic
-	if(multilevel_dungeons && current_delve_level > 0)
-		// Check if we should spawn a descent
-		if(descent_since > 30)
-			if(should_spawn_descent(current_delve_level))
-				picked_type = /datum/map_template/dungeon/descent
-		// Modify entry spawn chance based on remaining entries for this level
-		else if(unlinked_dungeon_length > 0 && delve_entries["[current_delve_level]"] > 0)
-			if(created_since > 30)
-				if(prob(10 + created_since))
-					picked_type = /datum/map_template/dungeon/entry
-	else if(unlinked_dungeon_length > 0)
-		if(created_since > 30)
-			if(prob(10 + created_since))
-				picked_type = /datum/map_template/dungeon/entry
-
-	// Entries / descents are forced picks; don't let depth scaling or min_depth exclude them.
-	var/special_pick = (picked_type == /datum/map_template/dungeon/entry || picked_type == /datum/map_template/dungeon/descent)
-
-	if(try_pickedtype_first(picked_type, direction, creator, looking_for_love, current_delve_level, room_depth, depth_factor, special_pick))
+	if(try_pickedtype_first(picked_type, direction, creator, looking_for_love, room_depth, depth_factor, FALSE))
 		return
 
 	// Fallback: anything that isn't the picked type or an entry, weighted by depth.
@@ -325,14 +278,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 
 	var/datum/map_template/dungeon/template = placed[1]
 	var/turf/true_spawn = placed[2]
-	created_since++
-	descent_since++
 	register_placed_room(template, true_spawn, room_depth)
-
-	// Apply delve modifiers if multi-level dungeons are enabled
-	if(multilevel_dungeons && current_delve_level > 0)
-		enhance_dungeon_area(template, true_spawn, current_delve_level)
-
 
 /datum/controller/subsystem/dungeon_generator/proc/carve_dead_ends()
 	var/carved = 0
@@ -346,6 +292,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 		carved++
 		CHECK_TICK
 	return carved
+
 /// Tiles near the dead end that must not count as a destination (its own hallway and walls).
 /datum/controller/subsystem/dungeon_generator/proc/get_carve_exclusion(turf/start)
 	var/list/excluded = list()
@@ -467,7 +414,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 			return side.type
 	return carve_wall_fallback
 
-/datum/controller/subsystem/dungeon_generator/proc/try_pickedtype_first(picked_type, direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love, delve_level = 0, room_depth = 1, depth_factor = 0, special_pick = FALSE)
+/datum/controller/subsystem/dungeon_generator/proc/try_pickedtype_first(picked_type, direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love, room_depth = 1, depth_factor = 0, special_pick = FALSE)
 	var/list/candidates = build_weighted_templates(room_depth, depth_factor, picked_type, TRUE, !special_pick)
 	var/list/placed = place_from_candidates(candidates, direction, creator)
 	if(!placed)
@@ -476,25 +423,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 	var/datum/map_template/dungeon/template = placed[1]
 	var/turf/true_spawn = placed[2]
 
-	created_since++
 	register_placed_room(template, true_spawn, room_depth)
-
-	// Handle special cases for multi-level dungeons
-	if(multilevel_dungeons)
-		if(picked_type == /datum/map_template/dungeon/entry && delve_level > 0)
-			delve_entries["[delve_level]"]--
-
-	if(picked_type == /datum/map_template/dungeon/entry)
-		created_since = 0
-		unlinked_dungeon_length--
-
-	if(picked_type == /datum/map_template/dungeon/descent)
-		descent_since = 0
-		delve_descent["[delve_level]"]--
-
-	// Apply delve modifiers if multi-level dungeons are enabled
-	if(multilevel_dungeons && delve_level > 0)
-		enhance_dungeon_area(template, true_spawn, delve_level)
 
 	return TRUE
 
@@ -570,37 +499,6 @@ SUBSYSTEM_DEF(dungeon_generator)
 		if(list_turf.type != /turf/closed/dungeon_void)
 			return FALSE
 	return TRUE
-
-/datum/controller/subsystem/dungeon_generator/proc/get_delve_level(z_level)
-	// Each delve level spans 2 z-levels
-	// Returns 0 for surface/non-dungeon levels
-	if(!multilevel_dungeons)
-		return
-
-	return SSmapping.get_delve(z_level)
-
-/datum/controller/subsystem/dungeon_generator/proc/should_spawn_descent(current_level)
-	if(!multilevel_dungeons)
-		return FALSE
-	if(current_level >= max_delve_levels) // No descents on the last level
-		return FALSE
-	if(delve_descent["[current_level]"] <= 0) // No more entries needed for next level
-		return FALSE
-
-	// Chance to spawn a descent - higher chance later in generation
-	return prob(15 + (descent_since * 2))
-
-/datum/controller/subsystem/dungeon_generator/proc/enhance_dungeon_area(datum/map_template/dungeon/template, turf/spawn_location, delve_level)
-	if(!multilevel_dungeons || delve_level <= 0)
-		return
-
-	var/list/affected_turfs = template.get_affected_turfs(spawn_location)
-
-	// Find and enhance all mobs in the area
-	for(var/turf/T in affected_turfs)
-		for(var/mob/M in T.contents)
-			if(isliving(M))
-				SSmobs.enhance_mob(M, delve_level)
 
 /// Spreads loot_budget across the registered spawners. Spawners are never deleted, they just
 /// stop accepting items once full, so this can be re-run after clear_loot().
@@ -697,10 +595,6 @@ SUBSYSTEM_DEF(dungeon_generator)
 		dead_records -= record
 		register_dungeon_mob(new_mob, record.depth, spawn_turf)
 
-		var/delve_level = get_delve_level(spawn_turf.z)
-		if(delve_level > 0)
-			SSmobs.enhance_mob(new_mob, delve_level)
-
 		qdel(record)
 		respawned++
 		CHECK_TICK
@@ -714,8 +608,8 @@ SUBSYSTEM_DEF(dungeon_generator)
 			return TRUE
 	return FALSE
 
-/// Weight of a dead record for respawn picking. Uses the same depth factor as room/loot generation,
-/// so delve levels count as "deeper" too. The 0.1 floor keeps the unfavored end possible.
+/// Weight of a dead record for respawn picking. Uses the same depth factor as room/loot generation.
+/// The 0.1 floor keeps the unfavored end possible.
 /datum/controller/subsystem/dungeon_generator/proc/get_respawn_weight(datum/dungeon_mob_record/record, depth_weighting)
 	switch(depth_weighting)
 		if(RESPAWN_WEIGHT_SHALLOW)
