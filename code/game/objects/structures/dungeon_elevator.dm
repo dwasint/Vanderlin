@@ -79,6 +79,7 @@ GLOBAL_LIST_EMPTY(dungeon_elevator_below_landmarks)
 	home_origin = get_turf(src)
 	level_stack = list()
 
+	#ifndef NO_DUNGEON
 	var/obj/effect/landmark/dungeon_elevator_below/marker = GLOB.dungeon_elevator_below_landmarks[stop_id]
 	if(!marker)
 		log_mapping("[src] at [AREACOORD(src)] has no below landmark with stop_id '[stop_id]'!")
@@ -100,6 +101,7 @@ GLOBAL_LIST_EMPTY(dungeon_elevator_below_landmarks)
 	link_region(below_origin, home_origin, 2, 2)
 
 	queue_cycle()
+	#endif
 
 /obj/structure/dungeon_elevator/Destroy()
 	if(timer_id)
