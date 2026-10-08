@@ -229,3 +229,6 @@ GLOBAL_LIST_EMPTY(surface_waystones)
 	to_chat(user, span_notice("[src] crumbles to dust as the gate tears open."))
 	qdel(src)
 	stone.travel(user, destination)
+
+#undef WAYSTONE_ENTRY_WINDOW
+#undef WAYSTONE_EXIT_WINDOW

@@ -43,6 +43,8 @@ GLOBAL_LIST_EMPTY(dungeon_elevator_below_landmarks)
 	layer = LOW_OBJ_LAYER
 	bound_width = 64
 	bound_height = 64
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
+
 
 	/// Matches the stop_id of the below landmark.
 	var/stop_id = DUNGEON_ELEVATOR_LINK_ID
