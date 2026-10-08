@@ -76,6 +76,7 @@
 	id = "campnotherthing"
 	width = 12
 	height = 12
+	rarity = 10 //chud ass room tbh
 
 	north_offset = 5
 	south_offset = 5
@@ -414,11 +415,15 @@
 	id = "lavafort"
 	width = 30
 	height = 30
+	rarity = 50
 
 	west_offset = 15
 	east_offset = 15
 	north_offset = 14
 	south_offset = 14
+
+	unique = TRUE
+	min_depth = 6
 
 /datum/map_template/dungeon/room/magicanvil
 	mappath = "_maps/matthios_tomb/room/magicanvil.dmm"

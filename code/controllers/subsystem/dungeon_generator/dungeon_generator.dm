@@ -58,6 +58,26 @@ SUBSYSTEM_DEF(dungeon_generator)
 	/// Records of mobs that died / were deleted, waiting to be respawned
 	var/list/dead_records = list()
 
+	/// turf of an unresolved helper -> direction it was facing
+	var/list/dead_ends = list()
+	/// Longest tunnel we're willing to carve
+	var/carve_max_length = 14
+	/// Used only if no neighbouring wall type can be sampled
+	var/carve_wall_fallback = /turf/closed/mineral/bedrock
+
+	/// Search gives up after expanding this many tiles
+	var/carve_max_nodes = 800
+	/// Paths costing more than this are discarded (roughly tunnel length)
+	var/carve_max_cost = 40
+	/// Extra cost for changing direction. Higher = straighter tunnels
+	var/carve_turn_cost = 1.5
+	/// Random per-step cost, makes tunnels meander instead of picking the same shape every time
+	var/carve_wiggle = 0.6
+	/// Extra cost for breaching an existing wall tile
+	var/carve_wall_cost = 4
+	/// Open tiles within this many steps of the dead end are its own hallway, not valid targets
+	var/carve_exclude_depth = 8
+
 /datum/controller/subsystem/dungeon_generator/Initialize(start_timeofday)
 	unlinked_dungeon_length = length(GLOB.unlinked_dungeon_entries)
 
@@ -75,6 +95,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 			find_soulmate(helper.dir, get_turf(helper), helper)
 			marker_depths -= helper
 
+	carve_dead_ends()
 	distribute_loot()
 	return ..()
 
@@ -88,6 +109,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 	if(!length(markers))
 		// Generation finished loot is good to spawn now
 		if(!loot_distributed)
+			carve_dead_ends()
 			distribute_loot()
 		return
 
@@ -298,6 +320,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 	var/list/candidates = build_weighted_templates(room_depth, depth_factor, picked_type, FALSE, TRUE)
 	var/list/placed = place_from_candidates(candidates, direction, creator)
 	if(!placed)
+		dead_ends[get_turf(looking_for_love)] = looking_for_love.dir
 		return
 
 	var/datum/map_template/dungeon/template = placed[1]
@@ -309,6 +332,140 @@ SUBSYSTEM_DEF(dungeon_generator)
 	// Apply delve modifiers if multi-level dungeons are enabled
 	if(multilevel_dungeons && current_delve_level > 0)
 		enhance_dungeon_area(template, true_spawn, current_delve_level)
+
+
+/datum/controller/subsystem/dungeon_generator/proc/carve_dead_ends()
+	var/carved = 0
+	for(var/turf/start as anything in dead_ends)
+		var/dir = dead_ends[start]
+		dead_ends -= start
+		var/list/path = find_carve_path(start, dir)
+		if(!length(path))
+			continue
+		carve_path(path, start, dir)
+		carved++
+		CHECK_TICK
+	return carved
+/// Tiles near the dead end that must not count as a destination (its own hallway and walls).
+/datum/controller/subsystem/dungeon_generator/proc/get_carve_exclusion(turf/start)
+	var/list/excluded = list()
+	var/list/depth = list()
+	var/list/queue = list(start)
+	depth[start] = 0
+	excluded[start] = TRUE
+	var/head = 1
+	while(head <= length(queue))
+		var/turf/current = queue[head++]
+		for(var/turf/wall in RANGE_TURFS(1, current))
+			if(wall.density && wall.type != /turf/closed/dungeon_void)
+				excluded[wall] = TRUE
+		if(depth[current] >= carve_exclude_depth)
+			continue
+		for(var/step_dir in GLOB.cardinals)
+			var/turf/next = get_step(current, step_dir)
+			if(!next || excluded[next] || next.density || next.type == /turf/closed/dungeon_void)
+				continue
+			excluded[next] = TRUE
+			depth[next] = depth[current] + 1
+			queue += next
+	return excluded
+
+/// Cheapest path from the dead end to any walkable tile that isn't its own hallway.
+/// Returns the turfs to carve (void and any breached wall), or null.
+/datum/controller/subsystem/dungeon_generator/proc/find_carve_path(turf/start, dir)
+	var/turf/first = get_step(start, dir)
+	if(!first || first.type != /turf/closed/dungeon_void)
+		return null
+
+	var/list/excluded = get_carve_exclusion(start)
+	var/list/cost = list()
+	var/list/came_from = list()
+	var/list/arrive_dir = list()
+	var/list/walls_used = list()
+	var/list/closed = list()
+	var/list/open_set = list(first)
+	cost[first] = 0
+	came_from[first] = start
+	arrive_dir[first] = dir
+	walls_used[first] = 0
+	var/expanded = 0
+
+	while(length(open_set) && expanded < carve_max_nodes)
+		// Pop the cheapest node (linear scan is fine at this size)
+		var/turf/current = open_set[1]
+		for(var/turf/candidate as anything in open_set)
+			if(cost[candidate] < cost[current])
+				current = candidate
+		open_set -= current
+		closed[current] = TRUE
+		expanded++
+
+		var/current_is_wall = current.density && current.type != /turf/closed/dungeon_void
+
+		for(var/step_dir in GLOB.cardinals)
+			var/turf/next = get_step(current, step_dir)
+			if(!next || closed[next] || excluded[next])
+				continue
+
+			// Reached something walkable that isn't our own hallway: done.
+			if(!next.density && next.type != /turf/closed/dungeon_void)
+				var/list/path = list()
+				var/turf/walker = current
+				while(walker != start)
+					path += walker
+					walker = came_from[walker]
+				return path
+
+			var/next_is_void = (next.type == /turf/closed/dungeon_void)
+			var/next_is_wall = next.density && !next_is_void
+			if(!next_is_void && !next_is_wall)
+				continue // doors, structures etc. that aren't open or dense: avoid
+			if(current_is_wall && next_is_void)
+				continue // once we start breaching a wall we must come out the other side
+			var/walls = walls_used[current] + (next_is_wall ? 1 : 0)
+			if(walls > 2)
+				continue
+
+			var/new_cost = cost[current] + 1 + rand() * carve_wiggle
+			if(step_dir != arrive_dir[current])
+				new_cost += carve_turn_cost
+			if(next_is_wall)
+				new_cost += carve_wall_cost
+			if(new_cost > carve_max_cost)
+				continue
+			if(!isnull(cost[next]) && cost[next] <= new_cost)
+				continue
+
+			cost[next] = new_cost
+			came_from[next] = current
+			arrive_dir[next] = step_dir
+			walls_used[next] = walls
+			open_set |= next
+	return null
+
+/datum/controller/subsystem/dungeon_generator/proc/carve_path(list/path, turf/start, dir)
+	var/floor_type = start.type // match the hallway's own floor
+	var/wall_type = sample_wall_type(start, dir)
+
+	// Gather first: ChangeTurf invalidates the old turf refs
+	var/list/to_wall = list()
+	for(var/turf/T as anything in path)
+		for(var/step_dir in GLOB.alldirs)
+			var/turf/neighbor = get_step(T, step_dir)
+			if(neighbor?.type == /turf/closed/dungeon_void && !(neighbor in path))
+				to_wall |= neighbor
+
+	for(var/turf/T as anything in path)
+		T.ChangeTurf(floor_type)
+	for(var/turf/T as anything in to_wall)
+		T.ChangeTurf(wall_type)
+
+/datum/controller/subsystem/dungeon_generator/proc/sample_wall_type(turf/start, dir)
+	for(var/turn_angle in list(90, -90))
+		var/turf/side = get_step(start, turn(dir, turn_angle))
+		if(side?.density && side.type != /turf/closed/dungeon_void)
+			return side.type
+	return carve_wall_fallback
 
 /datum/controller/subsystem/dungeon_generator/proc/try_pickedtype_first(picked_type, direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love, delve_level = 0, room_depth = 1, depth_factor = 0, special_pick = FALSE)
 	var/list/candidates = build_weighted_templates(room_depth, depth_factor, picked_type, TRUE, !special_pick)
