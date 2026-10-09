@@ -409,6 +409,7 @@
 	east_offset = 15
 	north_offset = 14
 	south_offset = 14
+	unique = TRUE
 
 /datum/map_template/dungeon/room/lavafort
 	mappath = "_maps/matthios_tomb/room/lavafort.dmm"
