@@ -541,4 +541,7 @@
 	totals["max_pool"] = min(totals["capacity"], budget)
 	loot_tally = totals
 
+#undef DEMIR_VANDERLIN_AMBUSH_COLOR
+#undef DEMIR_VANDERLIN_WEATHER_COLOR
+
 #endif
