@@ -4730,5 +4730,5 @@
 #include "interface\fonts\datums\vaticanus.dm"
 #include "interface\fonts\datums\wernicke.dm"
 #include "interface\fonts\datums\yataghan.dm"
-#include "code\rmd.dm"
+#include "code\zze_rmd\rmd.dm"
 // END_INCLUDE
