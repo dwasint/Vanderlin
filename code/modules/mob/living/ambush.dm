@@ -57,7 +57,7 @@ GLOBAL_VAR_INIT(ambush_mobconsider_cooldown, 2 MINUTES) // Cooldown for each ind
 	if(!length(AR?.ambush_mobs))
 		return
 	var/turf/turf = get_turf(src)
-	if(!turf.type in AR.ambush_types)
+	if(!(turf.type in AR.ambush_types))
 		return
 	var/datum/threat_region/TR = SSregionthreat.get_region(AR.threat_region)
 	if(TR && !COOLDOWN_FINISHED(TR, natural_ambush))
