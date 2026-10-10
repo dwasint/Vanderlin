@@ -184,6 +184,11 @@
 
 /datum/demir/vanderlin
 	default = TRUE
+
+	var/list/loot_tally
+	var/list/loot_spawners
+	var/list/loot_items
+
 	var/sun_color
 	// Hour of the station day, 0 to 24, on the same scale as the `start` values on /datum/time_of_day.
 	// 10 is the start of daytime, which matches the fixed noon tint this profile used before.
@@ -205,6 +210,8 @@
 		if(!GLOB)
 			GLOB = new /datum/controller/global_vars/demir_preview
 		light_sources = list()
+		loot_spawners = list()
+		loot_items = list()
 		// Same order as SSoutdoor_effects.time_cycle_steps, midnight last.
 		tod_steps = list(
 			/datum/time_of_day/dawn,
@@ -384,6 +391,7 @@
 	if(imgui_begin("Vanderlin"))
 		ui_time_of_day()
 		ui_highlights()
+	ui_loot_summary()
 	// Dear ImGui style: end is called even when begin returns false (collapsed window).
 	imgui_end()
 
@@ -416,6 +424,13 @@
 	target.demir_prepare_light_state()
 	if(target.light_on && target.light_outer_range && target.light_power)
 		light_sources += target
+
+	if(istype(target, /obj/effect/dungeon_loot_spawner))
+		if(!(target in loot_spawners))
+			loot_spawners += target
+	else if(istype(target, /obj/item))
+		if(!(target in loot_items))
+			loot_items += target
 
 /atom/proc/demir_bake_appearance()
 	if(smoothing_flags & USES_SMOOTHING)
@@ -487,5 +502,43 @@
 
 /datum/demir/vanderlin/light(atom/target)
 	target.demir_apply_light()
+
+/datum/demir/vanderlin/proc/ui_loot_summary()
+	imgui_separator("Loot summary")
+	if(imgui_button("Tally loot"))
+		tally_loot()
+	if(loot_tally)
+		imgui_text("Max usable pool: [loot_tally["max_pool"]] (spawner capacity [loot_tally["capacity"]], budget [loot_tally["budget"]])")
+		imgui_text("Low: [loot_tally["low"]]  Medium: [loot_tally["medium"]]  High: [loot_tally["high"]]")
+		imgui_text("Item sell total: [loot_tally["sell"]] across [loot_tally["items"]] items")
+		imgui_text("Spawners: [loot_tally["spawners"]]")
+
+/datum/demir/vanderlin/proc/tally_loot()
+	var/list/totals = list("capacity" = 0, "low" = 0, "medium" = 0, "high" = 0, "sell" = 0, "items" = 0, "spawners" = 0)
+
+	for(var/obj/effect/dungeon_loot_spawner/spawner as anything in loot_spawners)
+		if(!spawner)
+			continue
+		var/value = spawner.get_remaining_value()
+		totals["spawners"]++
+		totals["capacity"] += value
+		switch(spawner.min_item_value)
+			if(LOOT_VALUE_LOW to LOOT_VALUE_MEDIUM - 1)
+				totals["low"] += value
+			if(LOOT_VALUE_MEDIUM to LOOT_VALUE_HIGH - 1)
+				totals["medium"] += value
+			if(LOOT_VALUE_HIGH to LOOT_VALUE_HIGH * 10)
+				totals["high"] += value
+
+	for(var/obj/item/I as anything in loot_items)
+		if(!I)
+			continue
+		totals["sell"] += isnum(I.sellprice) ? I.sellprice : 0
+		totals["items"]++
+
+	var/budget = BASE_LOOTPOOL_SIZE
+	totals["budget"] = budget
+	totals["max_pool"] = min(totals["capacity"], budget)
+	loot_tally = totals
 
 #endif
