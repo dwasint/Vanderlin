@@ -25,4 +25,4 @@
 #define THREAT_REGION_COAST "Coast"
 
 /// A fully lit turf is dropped as an ambush spawn point this often.
-#define AMBUSH_LIGHT_REDUCTION 1
+#define AMBUSH_LIGHT_REDUCTION 100

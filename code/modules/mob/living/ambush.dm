@@ -48,7 +48,7 @@ GLOBAL_VAR_INIT(ambush_mobconsider_cooldown, 2 MINUTES) // Cooldown for each ind
 /proc/filter_ambush_spawns_by_light(list/turfs)
 	var/list/kept = turfs.Copy()
 	for(var/turf/spawn_turf as anything in turfs)
-		if(prob(AMBUSH_LIGHT_REDUCTION * 100 * get_ambush_turf_light(spawn_turf)))
+		if(prob(AMBUSH_LIGHT_REDUCTION * get_ambush_turf_light(spawn_turf)))
 			kept -= spawn_turf
 	return kept
 
